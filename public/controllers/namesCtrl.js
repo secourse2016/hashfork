@@ -45,10 +45,14 @@ counter: 1,
 firstName: '',
 middleName: '',
 lastName: '',
-passport: ''},
+passport: ''}
 
 ];
 
+$scope.user = [
+  {name: '',
+  email: ''}
+];
 
 
 }]);
