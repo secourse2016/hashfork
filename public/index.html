@@ -17,6 +17,7 @@
   
   <link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
 
   <script src="./js/dummyFlights.js"></script>
 
@@ -83,10 +84,19 @@
       <img src="./images/outgoing.png" width="60" height="60" >
     </div>
     
-    <div class="col-md-8">
-      <p style ="font-family: 'Chewy', cursive; font-size:250%;  height:150%; color:#0D4F8B;"> From : {{from}}  To : {{to}}
+    <div class="col-md-3">
+      <p style = "font-family: 'Chewy', cursive; font-size:250%;  height:150%; color:#0D4F8B;"> 
+        From : <span style="color:#1C86EE ">{{from}}</span> 
       </p>
     </div>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-3">
+        <p style = "font-family: 'Chewy', cursive; font-size:250%;  height:150%; color:#0D4F8B;"> 
+         To : <span style="color:#1C86EE">{{to}} </span>
+        </p>
+      </div>
+
 
    
    <div class = "row"> <br> <br>  </div>
@@ -98,11 +108,11 @@
             <div class = "row">
               <div class="col-md-2"></div>
               <div class="col-md-1"><input type="radio" name="chosen" value = "" ></div>
-              <div class="col-md-1"> Date</div>
+              <div class="col-md-1"><h4><strong>Date</strong></h4></div>
               <div class="col-md-2"></div>
-              <div class="col-md-1">Time</div>
+              <div class="col-md-1"><h4><strong>Time</strong></h4></div>
               <div class="col-md-2"></div>
-              <div class="col-md-1">From</div>
+              <div class="col-md-1"><h4><strong>From</strong></h4></div>
             </div>
 
             <div class = "row">
@@ -117,11 +127,11 @@
 
             <div class = "row">
               <div class="col-md-3"></div>
-              <div class="col-md-1">Date</div>
+              <div class="col-md-1"><h4><strong>Date</strong></h4></div>
               <div class="col-md-2"></div>
-              <div class="col-md-1">Time</div>
+              <div class="col-md-1"><h4><strong>Time</strong></h4></div>
               <div class="col-md-2"></div>
-              <div class="col-md-1">To</div>
+              <div class="col-md-1"><h4><strong>To</strong></h4></div>
             </div>
 
             <div class = "row">
@@ -136,11 +146,11 @@
 
             <div class = "row">
             <div class="col-md-3"></div>
-            <div class="col-md-1">Duration : </div>
-            <div class="col-md-1">{{flight.duartion}}</div>
+            <div class="col-md-1"><h4><strong>Duration : </strong></h4></div>
+            <div class="col-md-1" style="margin-top:0.5%">{{flight.duartion}}</div>
             <div class="col-md-3"></div>
-            <div class="col-md-1">Cost : </div>
-            <div class="col-md-1">{{flight.cost}}</div>
+            <div class="col-md-1"><h4><strong>Cost : </strong></h4></div>
+            <div class="col-md-1"style="margin-top:0.5%">{{flight.cost}}</div>
 
     </li>
 
