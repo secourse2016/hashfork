@@ -21,7 +21,7 @@
   <script src="./js/dummyFlights.js"></script>
 
 </head>
-<body>
+<body ng-controller="flightListCtrl" >
 
   
     <div class = "row" id="PreNext" position:relative; >
@@ -37,19 +37,90 @@
       <button style = " width: 100% ;font-size: 100%;font-family: 'Bevan', cursive;"name="next" type="button" class="btn btn-primary">Next</button>
     </div>
   </div>
-  <br><br><br>
+
+  
+    <br>
+    <br>
+    <br>
+  
+
+
   <div class = "row" id="fromTo" position:relative; >
     <div class="col-md-2"></div>
     <div class="col-md-1">
       <img src="./images/outgoing.png" width="60" height="60" >
     </div>
     
-    <div class="col-md-9" ng-controller="flightListCtrl">
-      <p style ="font-family: 'Chewy', cursive; font-size:250%; margin-top:4%; height:150%; color:#0D4F8B;"> From : {{from}}  To : {{to}}
+    <div class="col-md-8">
+      <p style ="font-family: 'Chewy', cursive; font-size:250%;  height:150%; color:#0D4F8B;"> From : {{from}}  To : {{to}}
       </p>
     </div>
 
-  </div>
+   
+    <br>
+    <br>
+    <br>
+    
+
+    
+    
+    <li ng-repeat="flight in flights">
+            
+            <div class = "row">
+              <div class="col-md-3"></div>
+              <div class="col-md-1">Date</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">Time</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">From</div>
+            </div>
+
+            <div class = "row">
+              <div class="col-md-3"></div>
+              <div class="col-md-1">{{flight.dateFrom}}</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">{{flight.timeFrom}}</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">{{flight.from}}</div>
+
+            </div>
+
+            <div class = "row">
+              <div class="col-md-3"></div>
+              <div class="col-md-1">Date</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">Time</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">To</div>
+            </div>
+
+            <div class = "row">
+              <div class="col-md-3"></div>
+              <div class="col-md-1">{{flight.dateTo}}</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">{{flight.timeTo}}</div>
+              <div class="col-md-2"></div>
+              <div class="col-md-1">{{flight.to}}</div>
+              
+            </div>
+
+            <div class = "row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1">Duration : </div>
+            <div class="col-md-1">{{flight.duartion}}</div>
+            <div class="col-md-3"></div>
+            <div class="col-md-1">Cost : </div>
+            <div class="col-md-1">{{flight.cost}}</div>
+
+
+
+            <div class = "row"> <br> <br>  </div>
+            
+
+        </li>
+    
+
+
   <div class="row" id="bottomOfPage" position:relative;>  
     <div class="col-md-2"></div>  
     <div class="col-md-4">
