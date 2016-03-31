@@ -1,35 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title>Outgoing Flights</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!doctype html>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-<html ng-app="HashFork">
-  <head>
-    <title>KLM</title>
-    <script src="/js/jquery-2.2.0.min.js"></script>
-    <script src="/js/angular.min.js"></script>
-    <script src="/js/angular-route.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/ui-bootstrap-tpls-1.2.5.min.js"></script>
-    <script src="core.js"></script>
-    <link rel="stylesheet" href="/styles/bootstrap.min.css">
-  </head>
-    <body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous">
+  </script>
 
-    <!-- TOP NAVBAR -->
-    <nav class='navbar navbar-inverse navbar-fixed-top'>
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-        			<img alt="Brand" src="https://www.klm.com/ams/frontend/img/klm_head@2x.png">
-      			</a>
-        </div>
-      </div>
-    </nav>
-    <!-- TOP NAVBAR -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
 
-    <!-- ANGULAR DYNAMIC TEMPLATING -->
-    <div ng-view>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+
+  <script src="./js/dummyFlights.js"></script>
+
+</head>
+<body>
+
+  
+    <div class = "row" id="PreNext" position:relative; >
+
+
+  <div class="col-md-2"></div>
+    <div class="col-md-1">
+      <button style = " width: 100% ;font-size: 100%;font-family: 'Bevan', cursive;"name="previous" type="button" class="btn btn-info">Previous
+      </button>
     </div>
-    <!-- ANGULAR DYNAMIC TEMPLATING -->
+    <div class="col-md-5"></div>
+    <div class="col-md-1">
+      <button style = " width: 100% ;font-size: 100%;font-family: 'Bevan', cursive;"name="next" type="button" class="btn btn-primary">Next</button>
+    </div>
+  </div>
+  <br><br><br>
+  <div class = "row" id="fromTo" position:relative; >
+    <div class="col-md-2"></div>
+    <div class="col-md-1">
+      <img src="./images/outgoing.png" width="60" height="60" >
+    </div>
+    
+    <div class="col-md-9" ng-controller="flightListCtrl">
+      <p style ="font-family: 'Chewy', cursive; font-size:250%; margin-top:4%; height:150%; color:#0D4F8B;"> From : {{from}}  To : {{to}}
+      </p>
+    </div>
 
-    </body>
+  </div>
+  <div class="row" id="bottomOfPage" position:relative;>  
+    <div class="col-md-2"></div>  
+    <div class="col-md-4">
+      <button  style="width:1000px; margin-left:6%; font-family: 'Bevan'"  type="button" class="btn btn-default btn-lg btn-block">Show more</button>
+    </div>
+      <div class="row"></div> 
+      <div class="col-md-2"></div>
+      <div class="col-md-4">
+          <button style=" width:1000px; margin-left:6%; font-family: 'Bevan'" type="button" class="btn btn-primary btn-lg btn-block">To top of Page</button>
+    </div>
+
+  </div>
+
+  
+    
+  
+
+  
+  <footer>
+    <div id="footer" background-color:black;>
+      <div class="container center-block">
+      <h3 class="center-block">&copy;HashFork</h3>
+      </div>
+      <div class="pull-left"><a href="#">about KLM</a></div>
+      <div class="pull-right"><a href="#">Contact us</a></div>
+    </div>
+  </footer>
+  
+
+</body>
 </html>
