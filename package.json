@@ -1,0 +1,11 @@
+{
+  "name"         : "hashfork",
+  "version"      : "0.0.0",
+  "description"  : "plan booking application.",
+  "main"         : "server.js",
+  "dependencies" : {
+    "express"    : "~4.7.2",
+    "mongodb"   : "*",
+    
+    }
+}
