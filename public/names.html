@@ -4,7 +4,7 @@
 
 <!-- Header of the code -->
 <head>
-  <title>Travellers Information</title>
+  <title>Travellers Details</title>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- Latest compiled and minified CSS -->
@@ -24,6 +24,11 @@
     hr {
 
           border-width: thick;
+    }
+
+    astrix {
+
+      color:red;
     }
 
     /*body {
@@ -88,6 +93,13 @@
   <div class="col-md-8"><h2>Traveller(s) Details</h2></div>
 </div>
 
+<div class="row">
+  <div class="col-md-1"></div>
+    <!-- Astrix Required Field -->
+  <div class="col-md-8"><b><astrix>*</astrix>Required Field</b></div>
+</div>
+
+
 <!-- Repeating the body -->
 <div ng-repeat="elements in travellers">
  <div class="row">
@@ -102,13 +114,13 @@
   <div class="col-md-2"></div>
   <div class="col-md-2">
   <!-- Hint text -->
-  <label for="fname">First Name</label>
+  <label for="fname">First Name<astrix>*</astrix></label>
   </div>
   <div class="col-md-2">
-  <label for="mname">Middle Name</label>
+  <label for="mname">Middle Name<astrix>*</astrix></label>
   </div>
   <div class="col-md-2">
-  <label for="lname">Last Name</label>
+  <label for="lname">Last Name<astrix>*</astrix></label>
   </div>
 </div>
 
@@ -116,13 +128,13 @@
   <div class="col-md-2"></div>
   <div class="col-xs-2">
   <!-- Text fields -->
-  <input class="form-control" id="fn" ng-model = "travellers[$index].firstName" placeholder="First Name" type="text">
+  <input class="form-control" id="fn" ng-model = "travellers[$index].firstName" placeholder="First Name" type="text" required>
   </div>
   <div class="col-xs-2">
-  <input class="form-control" id="mn" ng-model = "travellers[$index].middleName" placeholder="Middle Name" type="text">
+  <input class="form-control" id="mn" ng-model = "travellers[$index].middleName" placeholder="Middle Name" type="text" required>
   </div>
   <div class="col-xs-2">
-    <input class="form-control" id="ln" ng-model = "travellers[$index].lastName" placeholder="Last Name" type="text">
+    <input class="form-control" id="ln" ng-model = "travellers[$index].lastName" placeholder="Last Name" type="text" required>
   </div>
 </div>
 
@@ -132,14 +144,14 @@
 
 <div class="row">
   <div class="col-md-2"></div>
-  <div class="col-md-4"><label for="passport">Passport Country</div>
+  <div class="col-md-4"><label for="passport">Passport Country<astrix>*</astrix></div>
 </div>
 
 <div class = "row">
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <!-- The legendary country's list -->
-  <select ng-model = "travellers[$index].passport">
+  <select ng-model = "travellers[$index].firstName" required>
     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
     <option value="Albania" title="Albania">Albania</option>
     <option value="Algeria" title="Algeria">Algeria</option>
