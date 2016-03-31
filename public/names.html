@@ -5,6 +5,7 @@
 <!-- Header of the code -->
 <head>
   <title>Travellers Information</title>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -115,13 +116,13 @@
   <div class="col-md-2"></div>
   <div class="col-xs-2">
   <!-- Text fields -->
-  <input class="form-control" id="ex2" type="text">
+  <input class="form-control" id="fn" ng-model = "travellers[$index].firstName" placeholder="First Name" type="text">
   </div>
   <div class="col-xs-2">
-  <input class="form-control" id="ex2" type="text">
+  <input class="form-control" id="mn" ng-model = "travellers[$index].middleName" placeholder="Middle Name" type="text">
   </div>
   <div class="col-xs-2">
-    <input class="form-control" id="ex2" type="text">
+    <input class="form-control" id="ln" ng-model = "travellers[$index].lastName" placeholder="Last Name" type="text">
   </div>
 </div>
 
@@ -138,7 +139,7 @@
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <!-- The legendary country's list -->
-  <select>
+  <select ng-model = "travellers[$index].passport">
     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
     <option value="Albania" title="Albania">Albania</option>
     <option value="Algeria" title="Algeria">Algeria</option>
@@ -387,7 +388,8 @@
     <option value="Yemen" title="Yemen">Yemen</option>
     <option value="Zambia" title="Zambia">Zambia</option>
     <option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
-  </select></div>
+  </select>
+</div>
   <br>
 
 
