@@ -68,9 +68,41 @@
 
                   </ul>
 
-                  <ul class="nav navbar-nav navbar-left">
+                  <!-- Register and Sign In -->
 
-                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#">Sign Up</a></li>
+                  <li class="dropdown">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
+                     <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                        <li>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                    <div class="form-group">
+                                       <label class="sr-only" for="email">Email Address</label>
+                                       <input type="email" class="form-control" id="emailAdd" placeholder="Email Address" required>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="sr-only" for="password">Password</label>
+                                       <input type="password" class="form-control" id="pass" placeholder="Password" required>
+                                    </div>
+                                    <div class="checkbox">
+                                       <label>
+                                       <input type="checkbox"> Remember Me
+                                       </label>
+                                    </div>
+                                    <div class="form-group">
+                                       <button type="submit" class="btn btn-success btn-block">Sign In</button>
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                        </li>
+
+                     </ul>
+                  </li>
+               </ul>
                 </div>
         <!-- /.navbar-collapse -->
       </nav>
@@ -456,11 +488,12 @@
 
       <ul class="nav navbar-nav navbar-left">
           <li><a href="#"><span class=""></span>About KLM</a></li>
-          <li><a href="#"><span class=""></span>HashFork © 2016</a></li></ul>
+
     </ul>
     <ul class="navbar-center navbar-brand" href="#"><a class="navbar-brand"></a></ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class=""></span>Contact Us</a></li>
+      <li><a href="#"><span class=""></span>HashFork © 2016</a></li>
+      <li><a href="#"><span class=""></span>Contact Us</a></li></ul>
 
     </ul>
   </div>
