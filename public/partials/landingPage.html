@@ -1,0 +1,30 @@
+<div ng-controller="mainController" class="ng-scope">
+    <link rel="stylesheet" href="styles/landingbage.css">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+                    <div class="list-group">
+                        <a href="" class="list-group-item text-center {{f1}}" ng-click="S1()">
+                            <h4 class="glyphicon glyphicon-plane"></h4><br>
+                        </a>
+                        <a href="" class="list-group-item  text-center {{f2}}" ng-click="S2()">
+                            <h4 class="glyphicon glyphicon-road"></h4><br>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                    <!-- flight section -->
+                    <div class="bhoechie-tab-content {{f1}}">
+
+                    </div>
+                    <!-- train section -->
+                    <div class="bhoechie-tab-content {{f2}}">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
