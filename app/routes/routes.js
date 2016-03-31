@@ -10,6 +10,7 @@ module.exports = function(app,mongo) {
 		res.json(flights);
 	});
 	app.get('*', function(req, res) {
+		console.log("request reeceived");
         res.sendfile('./public/index.html');
     });
 };
