@@ -90,7 +90,16 @@
 <div class="row">
   <div class="col-md-1"></div>
     <!-- Title -->
-  <div class="col-md-8"><h2>Traveller(s) Details</h2></div>
+
+    <!-- Condition to check on title whether to add (s) after Traveller or not -->
+
+    <div ng-if="travellers.length > 1">
+      <div class="col-md-8"><h2>Travellers Details</h2></div>
+    </div>
+    <div ng-if="travellers.length === 1">
+      <div class="col-md-8"><h2>Traveller Details</h2></div>
+    </div>
+
 </div>
 
 <div class="row">
