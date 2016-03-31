@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app = "app1">
   <head>
     <meta charset="utf-8">
     <title>Confirmation</title>
@@ -8,9 +8,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   </head>
   <body>
-    <div class="container-fluid">
+
+    <nav class='navbar navbar-default'>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+        			KLM
+      			</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li>
+           <a href="#">Home</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid"  ng-controller="ctrl1">
 
       <div class="row">
             <div class="col-md-1"></div>
@@ -114,29 +131,29 @@
             <div class="col-md-2"></div>
       </div>
 
-      <div class="row">
+      <div class="row" ng-controller="ctrl1">
             <div class="col-md-2"></div>
-            <div class="col-md-3"><h4>Number of Adults: 2</h4></div>
+            <div class="col-md-3"><h4>Number of Adults: {{adultNo}}</h4></div>
             <div class="col-md-3"></div>
-            <div class="col-md-3"><h4>Price per adult: 100$</h4></div>
+            <div class="col-md-3"><h4>Price per adult: {{adultPrice}}$</h4></div>
       </div>
 
       <br>
 
-      <div class="row">
+      <div class="row" ng-controller="ctrl1">
             <div class="col-md-2"></div>
-            <div class="col-md-3"><h4>Number of children: 1</h4></div>
+            <div class="col-md-3"><h4>Number of children: {{childNo}}</h4></div>
             <div class="col-md-3"></div>
-            <div class="col-md-3"><h4>Price per child: 50$</h4></div>
+            <div class="col-md-3"><h4>Price per child: {{childPrice}}$</h4></div>
       </div>
 
       <br>
 
-      <div class="row">
+      <div class="row" ng-controller="ctrl1">
             <div class="col-md-2"></div>
-            <div class="col-md-3"><h4>Number of babies: 1</h4></div>
+            <div class="col-md-3"><h4>Number of babies: {{babyNo}}</h4></div>
             <div class="col-md-3"></div>
-            <div class="col-md-3"><h4>Price per baby: 10$</h4></div>
+            <div class="col-md-3"><h4>Price per baby: {{babyPrice}}$</h4></div>
       </div>
 
       <br>
@@ -152,9 +169,9 @@
             <div class="col-md-2"></div>
       </div>
 
-      <div class="row">
+      <div class="row" ng-controller="ctrl1">
             <div class="col-md-5"></div>
-            <div class="col-md-3"><h4>Total cost: 260$</h4></div>
+            <div class="col-md-3"><h4>Total cost: {{total}}$</h4></div>
       </div>
 
       <br>
@@ -171,6 +188,14 @@
 			<button style = " width: 100% ;font-size: 100%;, cursive;"name="next" type="button" class="btn btn-primary">Next</button>
 		</div>
 	</div>
+
+  <div id="footer">
+        <div class="container center-block">
+        <h3 class="center-block">&copy;HashFork</h3>
+        </div>
+        <div class="pull-left"><a href="#">about KLM</a></div>
+        <div class="pull-right"><a href="#">Contact us</a></div>
+      </div>
 
     </div>
   </body>
