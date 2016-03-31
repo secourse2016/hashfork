@@ -2,8 +2,8 @@ var app1 = angular.module('app1',[]);
 
 app1.controller('ctrl1', function($scope) {
   $scope.adultNo = 2;
-  $scope.childNo = 1;
-  $scope.babyNo = 1;
+  $scope.childNo = 0;
+  $scope.babyNo = 2;
   $scope.adultPrice = 100;
   $scope.childPrice = 50;
   $scope.babyPrice = 20;
@@ -17,7 +17,7 @@ app1.controller('ctrl1', function($scope) {
   $scope.time4 = "02:20";
   $scope.from = "Cairo, Egypt";
   $scope.to = "Dubai, United Arab Emirates";
-
+  $scope.returnFlight = 1;
 
   $scope.total = $scope.adultNo*$scope.adultPrice + $scope.childNo*$scope.childPrice + $scope.babyNo*$scope.babyPrice;
 
