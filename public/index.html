@@ -15,13 +15,18 @@
     <body>
 
     <!-- TOP NAVBAR -->
-    <nav class='navbar navbar-inverse navbar-fixed-top'>
-      <div class="container">
+    <nav class='navbar navbar-default'>
+      <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">
-        			<img alt="Brand" src="https://www.klm.com/ams/frontend/img/klm_head@2x.png">
+        			KLM
       			</a>
         </div>
+        <ul class="nav navbar-nav">
+          <li>
+           <a href="#">Home</a>
+          </li>
+        </ul>
       </div>
     </nav>
     <!-- TOP NAVBAR -->
@@ -30,6 +35,13 @@
     <div ng-view>
     </div>
     <!-- ANGULAR DYNAMIC TEMPLATING -->
-
+    <!-- THE FOOTER-->
+    <div id="footer">
+      <div class="container center-block">
+      <h3 class="center-block">&copy;HashFork</h3>
+      </div>
+      <div class="pull-left"><a href="#">about KLM</a></div>
+      <div class="pull-right"><a href="#">Contact us</a></div>
+    </div>
     </body>
 </html>
