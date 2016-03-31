@@ -1,5 +1,5 @@
 
-module.exports = function(app,mongo) {
+module.exports = function(app) {
 	app.get('api/airports',function(req,res){
 		var airports =  require('../../airports.json');
 		res.json(airports);
@@ -11,6 +11,6 @@ module.exports = function(app,mongo) {
 	});
 	app.get('*', function(req, res) {
 		console.log("request reeceived");
-        res.sendfile('./public/index.html');
+        res.sendfile('../../public/index.html');
     });
 };
