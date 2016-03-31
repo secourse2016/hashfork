@@ -13,7 +13,7 @@
   </head>
   <body>
 
-    <nav class='navbar navbar-default'>
+    <!-- <nav class='navbar navbar-default'>
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">
@@ -26,10 +26,44 @@
           </li>
         </ul>
       </div>
-    </nav>
+    </nav> -->
+
+    <!-- TOP NAVBAR -->
+  <div class="container">
+<div class="row">
+  <div class="col-md-12">
+     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href=""><img src="./images/logo.png"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+              <li class="active"><a href="">Home</a></li>
+
+           </ul>
+
+           <ul class="nav navbar-nav navbar-left">
+
+           </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+     </nav>
+  </div>
+</div>
+</div>
+   <!-- TOP NAVBAR -->
 
     <div class="container-fluid"  ng-controller="ctrl1">
-
+      <div class="row"><br></div>
+      <div class="row"><br></div>
       <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-3"><h2>Trip Summary</h2></div>
@@ -192,7 +226,11 @@
 		</div>
 	</div>
 
-  <div id="footer">
+<br>
+<br>
+<br>
+<br>
+  <!-- <div id="footer">
         <div class="container center-block">
         <h3 class="center-block">&copy;HashFork</h3>
         </div>
@@ -200,6 +238,26 @@
         <div class="pull-right"><a href="#">Contact us</a></div>
       </div>
 
-    </div>
+    </div> -->
+
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" >
+<div class="container">
+<div class="navbar-header">
+</div>
+<ul class="nav navbar-nav">
+</ul>
+
+<ul class="nav navbar-nav navbar-left">
+<li><a href="#"><span class=""></span>About KLM</a></li>
+<li><a href="#"><span class=""></span>HashFork © 2016</a></li></ul>
+</ul>
+<ul class="navbar-center navbar-brand" href="#"><a class="navbar-brand"></a></ul>
+<ul class="nav navbar-nav navbar-right">
+<li><a href="#"><span class=""></span>Contact Us</a></li>
+
+
+</ul>
+</div>
+</nav>
   </body>
 </html>
