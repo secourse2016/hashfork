@@ -11,6 +11,6 @@ module.exports = function(app) {
 	});
 	app.get('*', function(req, res) {
 		console.log("request reeceived");
-        res.sendfile('../../public/index.html');
+        res.sendfile('./public/index.html');
     });
 };
