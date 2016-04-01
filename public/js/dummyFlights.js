@@ -1,6 +1,19 @@
 var app = angular.module('app',[]);
 
+app.controller('ScrollCtrl', function($scope, $location, $anchorScroll) {
+   $scope.goToTop = function() {
+      // set the location.hash to the id of
+      // the element you wish to scroll to.
+      $location.hash('topOfPage');
+	  //$window.scrollTo(0, 0);
+      // call $anchorScroll()
+      $anchorScroll();
+    };
+});
+
 app.controller('flightListCtrl', function ($scope){
+
+
 
 	$scope.from = "Cairo";
 	$scope.to = "Amsterdam";
@@ -31,3 +44,4 @@ app.controller('flightListCtrl', function ($scope){
 
 	]
 });
+
