@@ -30,4 +30,20 @@ app.controller('flightListCtrl', function ($scope){
 
 
 	]
+
+var pagesShown = 1;
+
+var pageSize = 3;
+
+$scope.paginationLimit = function(flights) {
+ return pageSize * pagesShown;
+};
+
+$scope.hasMoreItemsToShow = function() {
+ return pagesShown < ($scope.datalists.length / pageSize);
+};
+
+$scope.showMoreItems = function() {
+ pagesShown = pagesShown + 1;       
+}; 
 });
