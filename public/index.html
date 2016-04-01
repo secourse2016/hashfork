@@ -1,0 +1,79 @@
+
+<!doctype html>
+
+<html ng-app="HashFork">
+  <head>
+    <title>KLM</title>
+    <script src="/js/jquery-2.2.0.min.js"></script>
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/ui-bootstrap-tpls-1.2.5.min.js"></script>
+    <script src="core.js"></script>
+    <link rel="stylesheet" href="styles/landingbage.css">
+    <script src="controllers/mainCtrl.js"></script>
+     <script src="controllers/paymentCtrl.js"></script>
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/payment.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+    <body background="./img/back1.jpg" style="min-height: 100vh; background-size: cover;">
+
+    <!-- TOP NAVBAR -->
+    
+     <nav class="navbar navbar-inverse" role="navigation" >
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+           <span class="sr-only">Toggle navigation</span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           <span class="icon-bar"></span>
+           </button>
+           <a class="navbar-brand" href=""><img src="./images/logo.png"></a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           <ul class="nav navbar-nav">
+              <li class="active"><a href="">Home</a></li>
+
+           </ul>
+
+           <ul class="nav navbar-nav navbar-left">
+
+           </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+     </nav>
+ 
+    <!-- TOP NAVBAR -->
+
+    <!-- ANGULAR DYNAMIC TEMPLATING -->
+    <div ng-view>
+    </div>
+    <!-- ANGULAR DYNAMIC TEMPLATING -->
+
+
+    <!-- THE FOOTER-->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" >
+<div class="container">
+<div class="navbar-header">
+</div>
+<ul class="nav navbar-nav">
+</ul>
+
+<ul class="nav navbar-nav navbar-left">
+<li><a href="#"><span class=""></span>About KLM</a></li>
+<li><a href="#"><span class=""></span>HashFork © 2016</a></li></ul>
+</ul>
+<ul class="navbar-center navbar-brand" href="#"><a class="navbar-brand"></a></ul>
+<ul class="nav navbar-nav navbar-right">
+<li><a href="#"><span class=""></span>Contact Us</a></li>
+
+
+</ul>
+</div>
+</nav>
+
+    </body>
+</html>
