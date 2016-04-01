@@ -1,67 +1,4 @@
-<!DOCTYPE html>
-<html ng-app = "app1">
-  <head>
-    <meta charset="utf-8">
-    <title>Confirmation</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-    <script src="./controllers/confirmation.js"></script>
-  </head>
-  <body>
-
-    <!-- <nav class='navbar navbar-default'>
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">
-        			KLM
-      			</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li>
-           <a href="#">Home</a>
-          </li>
-        </ul>
-      </div>
-    </nav> -->
-
-    <!-- TOP NAVBAR -->
-  <div class="container">
-<div class="row">
-  <div class="col-md-12">
-     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" >
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-           <span class="sr-only">Toggle navigation</span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           <span class="icon-bar"></span>
-           </button>
-           <a class="navbar-brand" href=""><img src="./images/logo.png"></a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-           <ul class="nav navbar-nav">
-              <li class="active"><a href="">Home</a></li>
-
-           </ul>
-
-           <ul class="nav navbar-nav navbar-left">
-
-           </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-     </nav>
-  </div>
-</div>
-</div>
-   <!-- TOP NAVBAR -->
-
-    <div class="container-fluid"  ng-controller="ctrl1">
+<div class="container-fluid" >
       <div class="row"><br></div>
       <div class="row"><br></div>
       <div class="row">
@@ -113,7 +50,7 @@
             <div class="col-md-1"><p>{{to}}</p></div>
       </div>
 
-      <div ng-controller="ctrl1" ng-if="returnFlight>0">
+      <div ng-if="returnFlight>0">
 
       <div class="row">
             <div class="col-md-2"></div>
@@ -170,7 +107,7 @@
             <div class="col-md-2"></div>
       </div>
 
-      <div class="row" ng-controller="ctrl1">
+      <div class="row" >
             <div class="col-md-2"></div>
             <div class="col-md-3"><h4>Number of Adults: {{adultNo}}</h4></div>
             <div class="col-md-3"></div>
@@ -179,7 +116,7 @@
 
       <br>
 
-      <div class="row" ng-controller="ctrl1" ng-if="childNo>0">
+      <div class="row" ng-if="childNo>0">
             <div class="col-md-2"></div>
             <div class="col-md-3"><h4>Number of children: {{childNo}}</h4></div>
             <div class="col-md-3"></div>
@@ -187,7 +124,7 @@
             <br>
       </div>
 
-      <div class="row" ng-controller="ctrl1" ng-if="babyNo>0">
+      <div class="row" ng-if="babyNo>0">
             <div class="col-md-2"></div>
             <div class="col-md-3"><h4>Number of babies: {{babyNo}}</h4></div>
             <div class="col-md-3"></div>
@@ -206,7 +143,7 @@
             <div class="col-md-2"></div>
       </div>
 
-      <div class="row" ng-controller="ctrl1">
+      <div class="row" >
             <div class="col-md-5"></div>
             <div class="col-md-3"><h4>Total cost: {{total}}$</h4></div>
       </div>
@@ -226,38 +163,4 @@
 		</div>
 	</div>
 
-<br>
-<br>
-<br>
-<br>
-  <!-- <div id="footer">
-        <div class="container center-block">
-        <h3 class="center-block">&copy;HashFork</h3>
-        </div>
-        <div class="pull-left"><a href="#">about KLM</a></div>
-        <div class="pull-right"><a href="#">Contact us</a></div>
-      </div>
 
-    </div> -->
-
-    <nav class="navbar navbar-inverse navbar-fixed-bottom" >
-<div class="container">
-<div class="navbar-header">
-</div>
-<ul class="nav navbar-nav">
-</ul>
-
-<ul class="nav navbar-nav navbar-left">
-<li><a href="#"><span class=""></span>About KLM</a></li>
-<li><a href="#"><span class=""></span>HashFork © 2016</a></li></ul>
-</ul>
-<ul class="navbar-center navbar-brand" href="#"><a class="navbar-brand"></a></ul>
-<ul class="nav navbar-nav navbar-right">
-<li><a href="#"><span class=""></span>Contact Us</a></li>
-
-
-</ul>
-</div>
-</nav>
-  </body>
-</html>

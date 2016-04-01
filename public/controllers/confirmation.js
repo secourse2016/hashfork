@@ -1,6 +1,4 @@
-var app1 = angular.module('app1',[]);
-
-app1.controller('ctrl1', function($scope) {
+App.controller('confirmation', function($scope) {
   $scope.adultNo = 2;
   $scope.childNo = 0;
   $scope.babyNo = 2;
