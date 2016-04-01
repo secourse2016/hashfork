@@ -38,7 +38,7 @@
 
                       <!-- Register and Sign In -->
 
-                      <div ng-if="user.name === '' ">
+                      <div ng-if="user.email === '' ">
 
 
 
@@ -66,8 +66,7 @@
                                         </div> -->
 
                                         <div class="form-group">
-                                           <button type="submit" class="btn btn-success btn-block" ng-disabled="form.$invalid"
-                                           >Sign In</a>
+                                           <button type="submit" class="btn btn-success btn-block" ng-disabled="form.$invalid">Sign In</a>
                                            <button type="reset" class="btn btn-danger btn-block">Reset</button>
                                         </div>
 
@@ -85,7 +84,7 @@
 
                    <!-- Already Signed In -->
 
-                   <div ng-if="user.name !== '' ">
+                   <div ng-if="user.email !== '' ">
 
                      <ul class="nav navbar-nav navbar-right">
                       <li class="dropdown">
@@ -117,7 +116,7 @@
                                         <div class="col-lg-2"></div>
                                           <div class="col-lg-8">
                                               <p>
-                                                  <a href="#" class="btn btn-danger btn-block">Log Out</a>
+                                                  <a href="#" class="btn btn-danger btn-block" ng-click="user.email = ''">Log Out</a>
                                               </p>
                                           </div>
                                       </div>

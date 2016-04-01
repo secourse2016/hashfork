@@ -72,7 +72,7 @@
 
                   <!-- Register and Sign In -->
 
-                  <div ng-if="user.name === '' ">
+                  <div ng-if="user.email === '' ">
 
 
 
@@ -87,7 +87,7 @@
                                  <form class="form" name="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                                     <div class="form-group">
                                        <label class="sr-only" for="email">Email Address</label>
-                                       <input type="email" class="form-control" ng-model="email" id="emailAdd" placeholder="Email Address"required="required">
+                                       <input type="email" class="form-control" ng-model="user.temp" id="emailAdd" placeholder="Email Address"required="required">
                                     </div>
                                     <div class="form-group">
                                        <label class="sr-only" for="password">Password</label>
@@ -100,8 +100,7 @@
                                     </div> -->
 
                                     <div class="form-group">
-                                       <button type="submit" class="btn btn-success btn-block" ng-disabled="form.$invalid"
-                                       >Sign In</a>
+                                       <a href"#" class="btn btn-success btn-block" ng-disabled="form.$invalid" ng-click="user.email=user.temp">Sign In</a>
                                        <button type="reset" class="btn btn-danger btn-block">Reset</button>
                                     </div>
 
@@ -119,7 +118,7 @@
 
                <!-- Already Signed In -->
 
-               <div ng-if="user.name !== '' ">
+               <div ng-if="user.email !== '' ">
 
                  <ul class="nav navbar-nav navbar-right">
                   <li class="dropdown">
@@ -151,7 +150,7 @@
                                     <div class="col-lg-2"></div>
                                       <div class="col-lg-8">
                                           <p>
-                                              <a href="#" class="btn btn-danger btn-block">Log Out</a>
+                                              <a href="#" class="btn btn-danger btn-block" ng-click="user.email =''">Log Out</a>
                                           </p>
                                       </div>
                                   </div>
@@ -263,7 +262,7 @@
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <!-- The legendary country's list -->
-  <select ng-model = "travellers[$index].firstName" required="required">
+  <select ng-model = "travellers[$index].passport" required="required">
     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
     <option value="Albania" title="Albania">Albania</option>
     <option value="Algeria" title="Algeria">Algeria</option>
