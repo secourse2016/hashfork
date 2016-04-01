@@ -84,24 +84,29 @@
                         <li>
                            <div class="row">
                               <div class="col-md-12">
-                                 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                                 <form class="form" name="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
                                     <div class="form-group">
                                        <label class="sr-only" for="email">Email Address</label>
-                                       <input type="email" class="form-control" id="emailAdd" placeholder="Email Address" required>
+                                       <input type="email" class="form-control" ng-model="email" id="emailAdd" placeholder="Email Address"required="required">
                                     </div>
                                     <div class="form-group">
                                        <label class="sr-only" for="password">Password</label>
-                                       <input type="password" class="form-control" id="pass" placeholder="Password" required>
+                                       <input type="password" class="form-control" ng-model="pass" id="pass" placeholder="Password"required="required">
                                     </div>
-                                    <div class="checkbox">
+                                    <!-- <div class="checkbox">
                                        <label>
                                        <input type="checkbox"> Remember Me
                                        </label>
-                                    </div>
+                                    </div> -->
+
                                     <div class="form-group">
-                                       <button type="submit" class="btn btn-success btn-block">Sign In</button>
+                                       <button type="submit" class="btn btn-success btn-block" ng-disabled="form.$invalid"
+                                       >Sign In</a>
+                                       <button type="reset" class="btn btn-danger btn-block">Reset</button>
                                     </div>
+
                                  </form>
+
                               </div>
                            </div>
                         </li>
@@ -195,9 +200,11 @@
   <div class="col-md-8"><b><astrix>*</astrix>Required Field</b></div>
 </div>
 
+<form name="buttons">
 
 <!-- Repeating the body -->
 <div ng-repeat="elements in travellers">
+
  <div class="row">
    <div class="col-md-2"></div>
    <!-- Repeat header -->
@@ -233,13 +240,13 @@
   <div class="col-md-2"></div>
   <div class="col-xs-2">
   <!-- Text fields -->
-  <input class="form-control" id="fn" ng-model = "travellers[$index].firstName" placeholder="First Name" type="text" required>
+  <input class="form-control" id="fn" ng-model = "travellers[$index].firstName" placeholder="First Name" type="text" required="required">
   </div>
   <div class="col-xs-2">
-  <input class="form-control" id="mn" ng-model = "travellers[$index].middleName" placeholder="Middle Name" type="text" required>
+  <input class="form-control" id="mn" ng-model = "travellers[$index].middleName" placeholder="Middle Name" type="text" required="required">
   </div>
   <div class="col-xs-2">
-    <input class="form-control" id="ln" ng-model = "travellers[$index].lastName" placeholder="Last Name" type="text" required>
+    <input class="form-control" id="ln" ng-model = "travellers[$index].lastName" placeholder="Last Name" type="text" required="required">
   </div>
 </div>
 
@@ -256,7 +263,7 @@
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <!-- The legendary country's list -->
-  <select ng-model = "travellers[$index].firstName" required>
+  <select ng-model = "travellers[$index].firstName" required="required">
     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
     <option value="Albania" title="Albania">Albania</option>
     <option value="Algeria" title="Algeria">Algeria</option>
@@ -506,7 +513,9 @@
     <option value="Zambia" title="Zambia">Zambia</option>
     <option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
   </select>
+
 </div>
+
   <br>
 
 
@@ -519,20 +528,25 @@
 
 
 </div>
+
   <div class = "row" id="PreNext" position:relative; >
+
     <!-- Previous and Next buttons -->
 
 		<div class="col-md-2"></div>
 		<div class="col-md-1">
-			<button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info">Previous
+			<button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info" >Previous
 			</button>
 		</div>
 		<div class="col-md-6"></div>
 		<div class="col-md-1">
-			<button style = " width: 100% ;font-size: 100%;, cursive;"name="next" type="button" class="btn btn-primary">Next</button>
+			<button style = " width: 100% ;font-size: 100%;, cursive;"name="next" ng-disabled="buttons.$invalid" type="button" class="btn btn-primary">Next</button>
 		</div>
+
 	</div>
 </div>
+
+  </form>
 
 <div class="row">
   <br>
