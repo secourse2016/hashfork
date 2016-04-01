@@ -4,6 +4,10 @@ app.controller('flightListCtrl', function ($scope){
 
 	$scope.from = "Cairo";
 	$scope.to = "Amsterdam";
+	$scope.scrollTo = function(div) {
+    $location.hash(div);
+    $anchorScroll();
+	}
 	$scope.flights = [
 		{dateFrom : "01/03/2017" , timeFrom : "7PM", from : "Cairo" , dateTo : "01/03/2017", timeTo : "11PM" , to : "Amsterdam", cost : 200 , duartion:"4h"},
 
