@@ -1,7 +1,12 @@
+body {
+    background-image: url("https://wallpaperscraft.com/image/sky_altitude_clouds_airplane_wing_flying_soaring_earth_48100_1280x1024.jpg");
+    background-size: cover;
+}
+
 .container {
     margin-top: -10px;
-   /* z-index: 1;
-    opacity: 0.9;*/
+    z-index: 1;
+    opacity: 0.8;
 }
 
 /* CSS for Credit Card Payment form */
