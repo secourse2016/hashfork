@@ -10,7 +10,8 @@ module.exports = function(app) {
 		res.json(flights);
 	});
 	app.get('*', function(req, res) {
-		console.log("request reeceived");
+	console.log("request reeceived");
         res.sendfile('./public/index.html');
     });
 };
+
