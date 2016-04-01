@@ -1,0 +1,166 @@
+<div class="container-fluid" >
+      <div class="row"><br></div>
+      <div class="row"><br></div>
+      <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-3"><h2>Trip Summary</h2></div>
+      </div>
+
+      <br>
+
+      <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><img src="./images/out-flight.png" width="50px" height="50px"></div>
+            <div class="col-md-4"><h3>Outgoing Flight</h3></div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1"><p>Date</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>Time</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>From</p></div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1"><p>{{date1}}</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>{{time1}}</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>{{from}}</p></div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1"><p>Date</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>Time</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>To</p></div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1"><p>{{date2}}</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>{{time2}}</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>{{to}}</p></div>
+      </div>
+
+      <div ng-if="returnFlight>0">
+
+      <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><img src="./images/return-flight.png" width="50px" height="50px"></div>
+            <div class="col-md-4"><h3>Return Flight</h3></div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1"><p>Date</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>Time</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>From</p></div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1"><p>{{date3}}</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>{{time3}}</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>{{to}}</p></div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1"><p>Date</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>Time</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>To</p></div>
+      </div>
+
+      <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-1"><p>{{date4}}</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>{{time4}}</p></div>
+            <div class="col-md-2"></div>
+            <div class="col-md-1"><p>{{from}}</p></div>
+      </div>
+
+    </div>
+
+      <div class="row">
+        <style>
+          hr{
+            border-width: thick;
+          }
+        </style>
+            <div class="col-md-2"></div>
+            <div class="col-md-8"><hr></div>
+            <div class="col-md-2"></div>
+      </div>
+
+      <div class="row" >
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><h4>Number of Adults: {{adultNo}}</h4></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><h4>Price per adult: {{adultPrice}}$</h4></div>
+      </div>
+
+      <br>
+
+      <div class="row" ng-if="childNo>0">
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><h4>Number of children: {{childNo}}</h4></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><h4>Price per child: {{childPrice}}$</h4></div>
+            <br>
+      </div>
+
+      <div class="row" ng-if="babyNo>0">
+            <div class="col-md-2"></div>
+            <div class="col-md-3"><h4>Number of babies: {{babyNo}}</h4></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3"><h4>Price per baby: {{babyPrice}}$</h4></div>
+            <br>
+      </div>
+
+      <div class="row">
+        <style>
+          hr{
+            border-width: thick;
+          }
+        </style>
+            <div class="col-md-2"></div>
+            <div class="col-md-8"><hr></div>
+            <div class="col-md-2"></div>
+      </div>
+
+      <div class="row" >
+            <div class="col-md-5"></div>
+            <div class="col-md-3"><h4>Total cost: {{total}}$</h4></div>
+      </div>
+
+      <br>
+      <br>
+
+      <div class = "row" id="PreNext" position:relative; >
+		<div class="col-md-2"></div>
+		<div class="col-md-1">
+			<button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info">Previous
+			</button>
+		</div>
+		<div class="col-md-6"></div>
+		<div class="col-md-1">
+			<button style = " width: 100% ;font-size: 100%;, cursive;"name="next" type="button" class="btn btn-primary">Next</button>
+		</div>
+	</div>
+
+
