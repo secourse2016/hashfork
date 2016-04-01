@@ -2,11 +2,9 @@ var app = angular.module('app',[]);
 
 app.controller('ScrollCtrl', function($scope, $location, $anchorScroll) {
    $scope.goToTop = function() {
-      // set the location.hash to the id of
-      // the element you wish to scroll to.
+      
       $location.hash('topOfPage');
-	  //$window.scrollTo(0, 0);
-      // call $anchorScroll()
+	  
       $anchorScroll();
     };
 });
@@ -43,5 +41,23 @@ app.controller('flightListCtrl', function ($scope){
 
 
 	]
+
+
+	var pagesShown = 1;
+
+	var pageSize = 3;
+
+	$scope.paginationLimit = function(flights) {
+ 		return pageSize * pagesShown;
+	};
+
+	$scope.hasMoreItemsToShow = function() {
+ 		return pagesShown < ($scope.datalists.length / pageSize);
+	};
+
+	$scope.showMoreItems = function() {
+		 pagesShown = pagesShown + 1;       
+	}; 
+
 });
 
