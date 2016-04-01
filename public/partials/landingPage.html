@@ -13,7 +13,7 @@
         }
     </style>
 
-    <h1 style="text-align: center ; font-family: Helvetica; font-size: 200%; color: #fff4e0;">b o o k .  y o u r .  f l i g h t</h1>
+    <h1 style="text-align: center ; font-family: Helvetica; font-size: 200%; color: #fff4e0;">welcome on board</h1>
 
     <link rel="stylesheet" href="styles/landingbage.css">
     <div class="container">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
                     <!-- flight section -->
-                    <div class="bhoechie-tab-content {{f1}}">
+                    <div class="bhoechie-tab-content active">
                         <div>
                             <label for="from">From</label>
                             <input id="from" type="text" style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px; ">
@@ -46,13 +46,13 @@
                             <br>
                             <br>
                             <label >Departure Date</label>
-                            <label style="position: relative; padding-left: 22%" >Return date</label>
+                            <label ng-show="showMe==1"style="position: relative; padding-left: 22%" >Return date</label>
                             <div >
                                 <div class="row">
                                     <div class="col-md-6">
                                         <p class="input-group" ng-controller="DatepickerDemoCtrl">
 
-                                            <input id="date1"type="text" style="font-size: small;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <input id="date1"type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -61,11 +61,11 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <p class="input-group" ng-controller="DatepickerDemoCtrl">
+                                        <p ng-show="showMe==1" class="input-group" ng-controller="DatepickerDemoCtrl">
 
-                                            <input id="date2" type="text" style="font-size: small;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            <input ng-show="showMe==1" id="date2" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span ng-show="showMe==1" class="input-group-btn">
+            <button ng-show="showMe==1" type="button" class="btn btn-default" ng-click="open1()"><i ng-show="showMe==1" class="glyphicon glyphicon-calendar"></i></button>
           </span>
                                         </p>
 
@@ -78,31 +78,56 @@
                         </div>
                         <br>
                         <div>
-                            <div class="form-group">
-                                <label for="sel1">Adults:</label>
-                                <label for="sel1">Children:</label>
+
+
+
+
+
+                            </div>
+                          <div>
+
+                              </div>
+
+
                                 <div class="row">
-                                    <select style="width : 20%; " class="form-control" id="sel1">
+                                    <p class="col-md-1 "></p>
+                                    <select style="width : 20%; " class="form-control col-md-3 " id="sel1">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
                                     </select>
-
-                                    <select style="width : 20% ;" class="form-control" id="sel2">
+                                     <p class="col-md-1 "></p>
+                                    <select style="width : 20% ;" class="form-control col-md-3 " id="sel2">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>
+                                    <p class="col-md-1 "></p>
+                                    <select style="width : 20% ;" class="form-control col-md-3 " id="sel3">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
                                     </select>
                                 </div>
-                            </div>
+                        <br>
+                             <h4>choose class:</h4>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="optradio">Economy</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="optradio">Business</label>
+                        </div>
+                        <div class="radio-inline">
+                            <label><input type="radio" name="optradio" >First</label>
+                        </div>
+                        <button style=" background-color:#02294E;position:relative;margin-left: 27%" type="button" class="btn btn-primary">View Flights</button>
                         </div>
                     </div>
-                    <!-- train section -->
-                    <div class="bhoechie-tab-content {{f2}}">
+                    <!-- One way section -->
 
-                    </div>
                 </div>
             </div>
         </div>

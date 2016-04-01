@@ -16,15 +16,17 @@ animateApp.config(function($routeProvider) {
 });
 animateApp.controller('mainController', function ($scope) {
         //$scope.pageClass = 'page-home';
-
+        $scope.showMe=1;
         $scope.f1 = "active";
         $scope.f2 = "";
         $scope.S1 = function () {
+            $scope.showMe=1;
             $scope.f1 = "active";
             $scope.f2 = "";
 
         }
         $scope.S2 = function () {
+            $scope.showMe=0;
             $scope.f2 = "active";
             $scope.f1 = "";
 
