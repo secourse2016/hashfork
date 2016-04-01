@@ -36,8 +36,8 @@ div.bhoechie-tab-menu div.list-group>a:last-child{
 div.bhoechie-tab-menu div.list-group>a.active,
 div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
 div.bhoechie-tab-menu div.list-group>a.active .fa{
-    background-color: #E02F2F;
-    background-image: #E02F2F;
+    background-color: #00274A;
+    background-image: #00274A;
     color: #ffffff;
 }
 div.bhoechie-tab-menu div.list-group>a.active:after{
@@ -49,7 +49,7 @@ div.bhoechie-tab-menu div.list-group>a.active:after{
     border-left: 0;
     border-bottom: 13px solid transparent;
     border-top: 13px solid transparent;
-    border-left: 10px solid #E02F2F;
+    border-left: 10px solid #00274A;
 }
 
 div.bhoechie-tab-menu {

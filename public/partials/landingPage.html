@@ -1,15 +1,31 @@
 <div ng-controller="mainController" class="ng-scope">
+
+    <style>
+        .full button span {
+            background-color: limegreen;
+            border-radius: 32px;
+            color: black;
+        }
+        .partially button span {
+            background-color: orange;
+            border-radius: 32px;
+            color: black;
+        }
+    </style>
+
+    <h1 style="text-align: center ; font-family: Helvetica; font-size: 200%; color: #fff4e0;">b o o k .  y o u r .  f l i g h t</h1>
+
     <link rel="stylesheet" href="styles/landingbage.css">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                     <div class="list-group">
-                        <a href="" class="list-group-item text-center {{f1}}" ng-click="S1()">
-                            <h4 class="glyphicon glyphicon-plane"></h4><br>
+                        <a  class="list-group-item text-center {{f1}}" ng-click="S1()">
+                            <h4 style="cursor:pointer;">Round Trip</h4>
                         </a>
-                        <a href="" class="list-group-item  text-center {{f2}}" ng-click="S2()">
-                            <h4 class="glyphicon glyphicon-road"></h4><br>
+                        <a  class="list-group-item  text-center {{f2}}" ng-click="S2()">
+                            <h4 style="cursor:pointer;">One Way</h4>
                         </a>
 
                     </div>
@@ -17,7 +33,71 @@
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
                     <!-- flight section -->
                     <div class="bhoechie-tab-content {{f1}}">
+                        <div>
+                            <label for="from">From</label>
+                            <input id="from" type="text" style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px; ">
 
+                            </input>
+                            <label for="to">To</label>
+                            <input id="to" type="text" style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px; ">
+
+                            </input>
+                             <br>
+                              <br>
+                            <br>
+                            <label >Departure Date</label>
+                            <label style="position: relative; padding-left: 22%" >Return date</label>
+                               <div >
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <p class="input-group" ng-controller="DatepickerDemoCtrl">
+
+                                               <input id="date1"type="text" style="font-size: small;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                                           </p>
+
+                                       </div>
+
+                                       <div class="col-md-6">
+                                           <p class="input-group" ng-controller="DatepickerDemoCtrl">
+
+                                               <input id="date2" type="text" style="font-size: small;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                                           </p>
+
+                                       </div>
+</div>
+
+                        </div>
+
+
+                   </div>
+                        <br>
+                        <div>
+                            <div class="form-group">
+                                <label for="sel1">Adults:</label>
+                                <label for="sel1">Children:</label>
+                                <div class="row">
+                                <select style="width : 20%; " class="form-control" id="sel1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+
+                                <select style="width : 20% ;" class="form-control" id="sel2">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- train section -->
                     <div class="bhoechie-tab-content {{f2}}">
