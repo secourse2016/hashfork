@@ -49,10 +49,9 @@ passport: ''}
 
 ];
 
-$scope.user = [
+$scope.user =
   {name: '',
-  email: ''}
-];
+  email: ''};
 
 
 }]);
