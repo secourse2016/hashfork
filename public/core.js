@@ -11,5 +11,9 @@ App.config(function($routeProvider) {
             templateUrl : '/partials/main.html',
             controller  : 'mainCtrl'
         })
+        .when('/payment', {
+            templateUrl : '/partials/payment.html',
+            controller  : 'paymentCtrl'
+        })
 });
 
