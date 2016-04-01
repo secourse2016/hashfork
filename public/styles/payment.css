@@ -1,0 +1,37 @@
+.container {
+    margin-top: -10px;
+   /* z-index: 1;
+    opacity: 0.9;*/
+}
+
+/* CSS for Credit Card Payment form */
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+
+/* The old "center div vertically" hack */
+.credit-card-box .display-table {
+    display: table;
+    background-color: #424242;
+    
+}
+.credit-card-box .display-tr {
+    display: table-row;
+}
+.credit-card-box .display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+/* Just looks nicer */
+.credit-card-box .panel-heading img {
+    min-width: 180px;
+}
+
+.notification {
+    margin-top: 20px;
+    color: #B0D1FB;
+    font-weight: bold;
+    text-align: center;
+}
