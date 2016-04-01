@@ -16,6 +16,10 @@ animateApp.config(function($routeProvider) {
 });
 animateApp.controller('mainController', function ($scope) {
         //$scope.pageClass = 'page-home';
+
+
+
+
         $scope.showMe=1;
         $scope.f1 = "active";
         $scope.f2 = "";
@@ -129,3 +133,20 @@ animateApp.controller('mainController', function ($scope) {
         }
     });
 
+var tips = [
+    "Enjoy your Flight"
+    ,
+    "Travelling is the most beautiful thing in life ",
+    "Want to know about our offers?",
+    "Want to know about our services?",
+    "keep on touch",
+    "KLM is the Airline company",
+    "Choose your favourite class",
+    "Choose your favourite time",
+    "We know what do you want !!"
+];
+setInterval(function() {
+    var i = Math.round((Math.random()) * tips.length);
+    if (i == tips.length) --i;
+    $("#tip").html(tips[i]);
+}, 2 * 1000);
