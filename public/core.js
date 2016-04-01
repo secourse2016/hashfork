@@ -8,8 +8,18 @@ App.config(function($routeProvider) {
 
         // route for the home page
         .when('/', {
+<<<<<<< HEAD
             templateUrl : '/partials/main.html',
             controller  : 'mainCtrl'
         })
+=======
+            templateUrl : '/partials/landingPage.html',
+            controller  : 'mainCtrl'
+        })
+        .when('/payment', {
+            templateUrl : '/partials/payment.html',
+            controller  : 'paymentCtrl'
+        })
+>>>>>>> dev
 });
 
