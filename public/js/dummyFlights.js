@@ -1,4 +1,12 @@
 var app = angular.module('app',[]);
+app.controller('ScrollCtrl', function($scope, $location, $anchorScroll) {
+   $scope.goToTop = function() {
+      
+      $location.hash('topOfPage');
+	  
+      $anchorScroll();
+    };
+});
 
 app.controller('flightListCtrl', function ($scope){
 
