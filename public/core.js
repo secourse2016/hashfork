@@ -32,6 +32,9 @@ App.config(function($routeProvider) {
         .when('/returnFlights', {
             templateUrl : '/partials/returnFlights.html',
             controller  : 'flightListCtrl'
+        }) .when('/names', {
+            templateUrl : '/partials/names.html',
+            controller  : 'namesCtrl'
         });
 
 });
