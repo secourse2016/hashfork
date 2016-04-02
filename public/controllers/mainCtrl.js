@@ -1,4 +1,6 @@
 
+<<<<<<< HEAD
+=======
 App.controller('mainCtrl', function($scope) {
     //$scope.pageClass = 'page-home';
 
@@ -16,3 +18,4 @@ App.controller('mainCtrl', function($scope) {
     }
 });
 
+>>>>>>> origin/dev
