@@ -1,6 +1,4 @@
-var namesView = angular.module('namesView',[]);
-
-namesView.controller('nCtrl',['$scope', function($scope) {
+App.controller('nCtrl',['$scope', function($scope) {
 
 
 $scope.travellers = [

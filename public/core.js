@@ -4,14 +4,14 @@ App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute']);
  * Angular Routes
  */
 
-App.controller('ctrl',['$scope', function($scope) {
+// App.controller('ctrl',['$scope'], function($scope) {
 
-  $scope.user =
-    {name: '',
-    email: '',
-    tempEmail: '',
-    tempPass: ''};
-
+//   $scope.user =
+//     {name: '',
+//     email: '',
+//     tempEmail: '',
+//     tempPass: ''};
+// })
 App.config(function($routeProvider) {
     $routeProvider
 
@@ -34,7 +34,7 @@ App.config(function($routeProvider) {
             controller  : 'flightListCtrl'
         }) .when('/names', {
             templateUrl : '/partials/names.html',
-            controller  : 'namesCtrl'
+            controller  : 'nCtrl'
         });
 
 });
