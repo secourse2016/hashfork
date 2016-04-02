@@ -8,9 +8,9 @@ App.controller('ctrl',['$scope', function($scope) {
 
   $scope.user =
     {name: '',
-    email: ''};
-
-  }]);
+    email: '',
+    tempEmail: '',
+    tempPass: ''};
 
 App.config(function($routeProvider) {
     $routeProvider
