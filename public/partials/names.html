@@ -1,3 +1,36 @@
+<div class = container-fluid>
+
+
+
+<!-- Content of the body -->
+
+<div class="row">
+     <br>
+     <br>
+</div>
+
+
+<div class="row">
+  <div class="col-md-1"></div>
+    <!-- Title -->
+
+    <!-- Condition to check on title whether to add (s) after Traveller or not -->
+
+    <div ng-if="travellers.length > 1">
+      <div class="col-md-8"><h2>Travellers Details</h2></div>
+    </div>
+    <div ng-if="travellers.length === 1">
+      <div class="col-md-8"><h2>Traveller Details</h2></div>
+    </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-1"></div>
+    <!-- Astrix Required Field -->
+  <div class="col-md-8"><b><astrix>*</astrix>Required Field</b></div>
+</div>
+
 <form name="buttons">
 
 <!-- Repeating the body -->
@@ -345,3 +378,12 @@
 </div>
 
   </form>
+
+<div class="row">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+
