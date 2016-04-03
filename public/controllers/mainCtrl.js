@@ -96,7 +96,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
 
 
 
-
+ 
         $scope.today = function () {
             $scope.dt = new Date();
         };
@@ -143,7 +143,12 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         };
 
         $scope.setDate = function (year, month, day) {
+            if($scope.popup1.opened===true){
             $scope.dt = new Date(year, month, day);
+        }else{
+            $scope.dt2 = new Date(year, month, day);
+        }
+
         };
 
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -190,6 +195,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
 
             return '';
         };
+ 
         $scope.SetOriginAirport=function(value){
             FlightsSrv.setFrom(value);
 

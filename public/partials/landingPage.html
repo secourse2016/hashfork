@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/landingbage.css">
 
     <!--start-->
-    <div style="position: fixed;top: 20% ;left: 50%;width: 50%;">
+    <div style="position: fixed;top: 20% ;left: 50%;width: 50%;" class="hidden-xs hidden-sm">
         <div  >
             <div style="height: 305px">
                 <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
@@ -99,12 +99,12 @@
 
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6" >
                                         <p ng-show="showMe==1" class="input-group"  >
 
-                                            <input ng-show="showMe==1" id="date2" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <input ng-show="showMe==1" id="date2" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt2" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span ng-show="showMe==1" class="input-group-btn">
-            <button ng-show="showMe==1" type="button" class="btn btn-default" ng-click="open1()"><i ng-show="showMe==1" class="glyphicon glyphicon-calendar"></i></button>
+            <button ng-show="showMe==1" type="button" class="btn btn-default" ng-click="open2()"><i ng-show="showMe==1" class="glyphicon glyphicon-calendar"></i></button>
           </span>
                                         </p>
 
