@@ -19,7 +19,7 @@ App.config(function($routeProvider) {
         .when('/', {
 
             templateUrl : '/partials/landingPage.html',
-            controller  : 'mainCtrl'
+            controller  : 'mainController'
         })
         .when('/confirmation',{
             templateUrl : '/partials/confirmation.html',
@@ -29,12 +29,15 @@ App.config(function($routeProvider) {
             templateUrl : '/partials/payment.html',
             controller  : 'paymentCtrl'
         })
-        .when('/returnFlights', {
-            templateUrl : '/partials/returnFlights.html',
-            controller  : 'flightListCtrl'
-        }) .when('/names', {
+         .when('/names', {
             templateUrl : '/partials/names.html',
             controller  : 'nCtrl'
+        }).when('/returnflights', {
+            templateUrl : '/partials/ReturnFlight.html',
+            controller  : 'flightListCtrl'
+        }).when('/outgoingflights', {
+            templateUrl : '/partials/outgoingFlight.html',
+            controller  : 'flightListCtrl'
         });
 
 });
