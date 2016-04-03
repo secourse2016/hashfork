@@ -1,4 +1,5 @@
 
+
 App.controller('mainCtrl', function($scope) {
     //$scope.pageClass = 'page-home';
 

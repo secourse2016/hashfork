@@ -1,5 +1,7 @@
 
+
 module.exports = function(app) {
+
 	app.get('api/airports',function(req,res){
 		var airports =  require('../../airports.json');
 		res.json(airports);
@@ -10,6 +12,7 @@ module.exports = function(app) {
 		res.json(flights);
 	});
 	app.get('*', function(req, res) {
+
 	console.log("request reeceived");
         res.sendfile('./public/index.html');
     });
