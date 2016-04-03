@@ -1,4 +1,5 @@
 
+
 var animateApp = angular.module('HashFork', ['ngRoute','ui.bootstrap']);
 
 // ROUTING ===============================================
@@ -128,4 +129,5 @@ animateApp.controller('mainController', function ($scope) {
             return '';
         }
     });
+
 
