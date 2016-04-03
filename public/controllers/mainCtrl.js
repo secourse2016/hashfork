@@ -3,7 +3,6 @@ App.controller('mainController', function ($scope) {
 
 
 
-
         $scope.showMe=1;
         $scope.f1 = "active";
         $scope.f2 = "";
@@ -64,6 +63,7 @@ App.controller('mainController', function ($scope) {
         }
         return shuffle(indexes);
     }
+
 
     // http://stackoverflow.com/questions/962802#962890
     function shuffle(array) {
@@ -205,4 +205,5 @@ var tips = [
 //    $(g2).addClass("active");
 //    $(g2).siblings().removeClass("active");
 //}, 2 * 1000);
+
 

@@ -1,0 +1,22 @@
+{
+    "name": "nodetest2b",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "body-parser": "~1.12.4",
+        "debug": "~2.2.0",
+        "assert":"*",
+        "chai": "~3.5.0",
+    "express": "4.13.4",
+    "mongodb": "~1.4.0",
+    "supertest": "~1.2.0",
+    "mocha": "~2.4.5",
+    "istanbul": "~0.4.2",
+    "mongoose" : "*"
+
+
+    }
+}
