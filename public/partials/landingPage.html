@@ -55,10 +55,13 @@
                     <!-- flight section -->
                     <div class="bhoechie-tab-content active">
                         <div>
+                        <form name="buttons">
                             <label for="from">From</label>
                             <input 
                                 id="from" 
-                                type="text" 
+                                type="text"
+                                
+                                required="required" 
                                 placeholder="Origin"
                                 ng-model="selectedOrigin"
                                 
@@ -66,12 +69,14 @@
                                 style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px; "
                                 typeahead-on-select="SetOriginAirport($item)">
 
-                            </input>
+                            
                              
                             <label for="to">To</label>
                             <input 
                                 id="to" 
                                 type="text" 
+                                
+                                required="required"
                                 placeholder="Destination"
                                 ng-model="selectedDestination"
                                 style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px;"
@@ -80,7 +85,7 @@
 
                                 >
 
-                            </input>
+                            
                             <br>
                             <br>
                             <br>
@@ -91,7 +96,7 @@
                                     <div class="col-md-6">
                                         <p class="input-group"  >
 
-                                            <input id="date1"type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <input id="date1"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -102,7 +107,7 @@
                                     <div class="col-md-6" >
                                         <p ng-show="showMe==1" class="input-group"  >
 
-                                            <input ng-show="showMe==1" id="date2" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt2" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <input ng-show="showMe==1"  required="required" id="date2" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt2" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span ng-show="showMe==1" class="input-group-btn">
             <button ng-show="showMe==1" type="button" class="btn btn-default" ng-click="open2()"><i ng-show="showMe==1" class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -132,14 +137,15 @@
                         <label style="position: relative; left: 40%;">Babies:</label>
                                 <div class="row">
                                     <p class="col-md-1 "></p>
-                                    <select style="width : 20%; " class="form-control col-md-3 " id="sel1">
+                                    <select style="width : 20%; " class="form-control col-md-3 "
+                                required="required" id="sel1">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                         <option>4</option>
                                     </select>
                                      <p class="col-md-1 "></p>
-                                    <select style="width : 20% ;" class="form-control col-md-3 " id="sel2">
+                                    <select style="width : 20% ;" class="form-control col-md-3 " required="required" id="sel2">
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -147,7 +153,7 @@
                                         <option>4</option>
                                     </select>
                                     <p class="col-md-1 "></p>
-                                    <select style="width : 20% ;" class="form-control col-md-3 " id="sel3">
+                                    <select style="width : 20% ;" class="form-control col-md-3 " required="required" id="sel3">
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -158,15 +164,15 @@
                         <br>
                              <h4>choose class:</h4>
                         <div class="radio-inline">
-                            <label><input type="radio" name="optradio">Economy</label>
+                            <label><input type="radio" required="required" name="optradio">Economy</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" name="optradio">Business</label>
+                            <label><input type="radio"  required="required" name="optradio">Business</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" name="optradio" >First</label>
+                            <label><input type="radio" required="required" name="optradio" >First</label>
                         </div>
-                        <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary" ng-click="goToNextPage()">View Flights</button>
+                        <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary" ng-click="goToNextPage()" ng-disabled="buttons.$invalid">View Flights</button>
                         </div>
                     </div>
                     <!-- One way section -->
