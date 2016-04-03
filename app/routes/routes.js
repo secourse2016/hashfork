@@ -1,5 +1,4 @@
 
-
 module.exports = function(app) {
 
 	app.get('api/airports',function(req,res){
@@ -17,4 +16,5 @@ module.exports = function(app) {
         res.sendfile('./public/index.html');
     });
 };
+
 
