@@ -1,7 +1,7 @@
 App.controller('confirmation', function($scope,FlightsSrv,$location) {
-  $scope.adultNo = 2;
-  $scope.childNo = 0;
-  $scope.babyNo = 2;
+  $scope.adultNo = FlightsSrv.getAdults();
+  $scope.childNo = FlightsSrv.getChild();
+  $scope.babyNo = FlightsSrv.getBaby();
   $scope.adultPrice = 100;
   $scope.childPrice = 50;
   $scope.babyPrice = 20;
@@ -15,9 +15,14 @@ App.controller('confirmation', function($scope,FlightsSrv,$location) {
   $scope.time4 = "02:20";
   $scope.from = "Cairo, Egypt";
   $scope.to = "Dubai, United Arab Emirates";
+  if(FlightsSrv.isReturn() === true){
   $scope.returnFlight = 1;
+}else{
+  $scope.returnFlight=0;
+}
 
   $scope.total = $scope.adultNo*$scope.adultPrice + $scope.childNo*$scope.childPrice + $scope.babyNo*$scope.babyPrice;
+  FlightsSrv.setCost($scope.total)
   $scope.goToPrev=function(){
     var returning = FlightsSrv.isReturn();
   if(returning === true){

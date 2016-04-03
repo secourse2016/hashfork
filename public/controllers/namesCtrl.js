@@ -1,52 +1,48 @@
 App.controller('nCtrl',function($scope,FlightsSrv,$location) {
 
 
-$scope.travellers = [
+$scope.travellers = [];
+	var adults=FlightsSrv.getAdults();
+	var child =FlightsSrv.getChild();
+	var baby =FlightsSrv.getBaby();
+	var i =1;
+	while(i<=adults){
+		var entry={};
+		entry.type='Adult';
+		entry.counter=i;
+		entry.firstName='';
+		entry.middleName='';
+		entry.lastName='';
+		entry.passport='';
+		i++;
+		$scope.travellers.push(entry);
 
-{"type": 'Adult',
-"counter": 1,
-"firstName": '',
-"middleName": '',
-"lastName": '',
-"passport": ''},
+	}
+	var i =1;
+	while(i<=child){
+		var entry={};
+		entry.type='Child';
+		entry.counter=i;
+		entry.firstName='';
+		entry.middleName='';
+		entry.lastName='';
+		entry.passport='';
+		i++;
+		$scope.travellers.push(entry);
 
-{"type": 'Adult',
-"counter": 2,
-"firstName": '',
-"middleName": '',
-"lastName": '',
-"passport": ''},
+	}	var i =1;
+	while(i<=baby){
+		var entry={};
+		entry.type='Baby';
+		entry.counter=i;
+		entry.firstName='';
+		entry.middleName='';
+		entry.lastName='';
+		entry.passport='';
+		i++;
+		$scope.travellers.push(entry);
 
-{"type": 'Adult',
-"counter": 3,
-"firstName": '',
-"middleName": '',
-"lastName": '',
-"passport": ''},
-
-{"type": 'Child',
-"counter": 1,
-"firstName": '',
-"middleName": '',
-"lastName": '',
-"passport": ''},
-
-{"type": 'Child',
-"counter": 2,
-"firstName": '',
-"middleName": '',
-"lastName": '',
-"passport": ''},
-
-{"type": 'Baby',
-"counter": 1,
-"firstName": '',
-"middleName": '',
-"lastName": '',
-"passport": ''}
-
-];
-
+	}
 $scope.user =
   {name: '',
   email: ''};
