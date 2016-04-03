@@ -1,5 +1,5 @@
 var app = require('./app/app');
-app.listen(3000,function(err){
+app.listen(80,function(err){
 	if(err){
 		console.log("This is an error");
 	}else{
