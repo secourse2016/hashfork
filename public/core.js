@@ -19,7 +19,7 @@ App.config(function($routeProvider) {
         .when('/', {
 
             templateUrl : '/partials/landingPage.html',
-            controller  : 'mainCtrl'
+            controller  : 'mainController'
         })
         .when('/confirmation',{
             templateUrl : '/partials/confirmation.html',
