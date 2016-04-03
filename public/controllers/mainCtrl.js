@@ -1,5 +1,9 @@
 App.controller('mainController', function ($scope) {
         //$scope.pageClass = 'page-home';
+
+
+
+
         $scope.showMe=1;
         $scope.f1 = "active";
         $scope.f2 = "";
@@ -15,8 +19,72 @@ App.controller('mainController', function ($scope) {
             $scope.f1 = "";
 
         }
-    });
-    animateApp.controller('DatepickerDemoCtrl', function ($scope) {
+    
+    $scope.myInterval = 2000;
+    $scope.noWrapSlides = false;
+    $scope.active = 0;
+    var slides = $scope.slides = [];
+    var currIndex = 0;
+
+    //$scope.addSlide = function() {
+    //    var newWidth = 600 + slides.length + 1;
+    //    slides.push({
+    //        image: 'http://lorempixel.com/' + newWidth + '/300',
+    //        text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+    //        id: currIndex++
+    //    });
+    //};
+
+    $scope.randomize = function() {
+        var indexes = generateIndexesArray();
+        assignNewIndexesToSlides(indexes);
+    };
+
+    for (var i = 3; i <=7; i++) {
+
+        slides.push({
+            image: 'img/back'+i+'.jpg',
+            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+            id: currIndex++
+        });
+    }
+
+    // Randomize logic below
+
+    function assignNewIndexesToSlides(indexes) {
+        for (var i = 0, l = slides.length; i < l; i++) {
+            slides[i].id = indexes.pop();
+        }
+    }
+
+    function generateIndexesArray() {
+        var indexes = [];
+        for (var i = 0; i < currIndex; ++i) {
+            indexes[i] = i;
+        }
+        return shuffle(indexes);
+    }
+
+    // http://stackoverflow.com/questions/962802#962890
+    function shuffle(array) {
+        var tmp, current, top = array.length;
+
+        if (top) {
+            while (--top) {
+                current = Math.floor(Math.random() * (top + 1));
+                tmp = array[current];
+                array[current] = array[top];
+                array[top] = tmp;
+            }
+        }
+
+        return array;
+    }
+
+
+
+
+
 
         $scope.today = function () {
             $scope.dt = new Date();
@@ -113,4 +181,28 @@ App.controller('mainController', function ($scope) {
         }
     });
 
+
+var tips = [
+    "Enjoy your Flight"
+    ,
+    "Travelling is the most beautiful thing in life ",
+    "Want to know about our offers?",
+    "Want to know about our services?",
+    "keep on touch",
+    "KLM is the Airline company",
+    "Choose your favourite class",
+    "Choose your favourite time",
+    "We know what do you want !!"
+];
+//setInterval(function() {
+//    var i = Math.round((Math.random()) * 5);
+//    if (i == 5) --i;
+//    if (i== 0)++i;
+//    var g="#"+i;
+//    var g2="#"+i+""+i;
+//    $(g).addClass("active");
+//    $(g).siblings().removeClass("active");
+//    $(g2).addClass("active");
+//    $(g2).siblings().removeClass("active");
+//}, 2 * 1000);
 

@@ -14,20 +14,39 @@
         }
     </style>
 
-    <h1 style="text-align: center ; font-family: Helvetica; font-size: 200%; color: #fff4e0;">welcome on board</h1>
+    <h1 style="text-align: center ; font-family: Helvetica; font-size: 250%; color: #fff4e0;">B o o k . Y o u r . F l i g h t </h1>
 
     <link rel="stylesheet" href="styles/landingbage.css">
-    <div class="container">
+
+    <!--start-->
+    <div style="position: fixed;top: 20% ;left: 50%;width: 50%;">
+        <div  >
+            <div style="height: 305px">
+                <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                    <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                        <img  ng-src="{{slide.image}}" style="margin:auto;width: auto;height: 300px;max-height: 300px;">
+                        <div class="carousel-caption">
+
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </uib-slide>
+                </uib-carousel>
+            </div>
+
+        </div>
+    </div>
+     <!--end-->
+    <div class="container ">
 
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
                     <div class="list-group">
-                        <a  class="list-group-item text-center {{f1}}" ng-click="S1()">
-                            <h4 style="cursor:pointer;">Round Trip</h4>
+                        <a style="cursor:pointer;" class="list-group-item text-center {{f1}}" ng-click="S1()">
+                            <h4 >Round Trip</h4>
                         </a>
-                        <a  class="list-group-item  text-center {{f2}}" ng-click="S2()">
-                            <h4 style="cursor:pointer;">One Way</h4>
+                        <a style="cursor:pointer;" class="list-group-item  text-center {{f2}}" ng-click="S2()">
+                            <h4 >One Way</h4>
                         </a>
 
                     </div>
@@ -52,7 +71,7 @@
                             <div >
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p class="input-group" ng-controller="DatepickerDemoCtrl">
+                                        <p class="input-group"  >
 
                                             <input id="date1"type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span class="input-group-btn">
@@ -63,7 +82,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <p ng-show="showMe==1" class="input-group" ng-controller="DatepickerDemoCtrl">
+                                        <p ng-show="showMe==1" class="input-group"  >
 
                                             <input ng-show="showMe==1" id="date2" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span ng-show="showMe==1" class="input-group-btn">
@@ -78,7 +97,7 @@
 
 
                         </div>
-                        <br>
+
                         <div>
 
 
@@ -90,7 +109,9 @@
 
                               </div>
 
-
+                                 <label style="position: relative; left: 7%;">Adults:</label>
+                        <label style="position: relative; left: 25%;">Children:</label>
+                        <label style="position: relative; left: 40%;">Babies:</label>
                                 <div class="row">
                                     <p class="col-md-1 "></p>
                                     <select style="width : 20%; " class="form-control col-md-3 " id="sel1">
@@ -125,7 +146,7 @@
                         <div class="radio-inline">
                             <label><input type="radio" name="optradio" >First</label>
                         </div>
-                        <button style=" background-color:#02294E;position:relative;margin-left: 27%" type="button" class="btn btn-primary">View Flights</button>
+                        <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary">View Flights</button>
                         </div>
                     </div>
                     <!-- One way section -->
@@ -133,4 +154,8 @@
                 </div>
             </div>
         </div>
+
+
+    </div>
 </div>
+
