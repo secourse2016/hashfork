@@ -1,4 +1,4 @@
-App.controller('confirmation', function($scope) {
+App.controller('confirmation', function($scope,FlightsSrv,$location) {
   $scope.adultNo = 2;
   $scope.childNo = 0;
   $scope.babyNo = 2;
@@ -18,6 +18,15 @@ App.controller('confirmation', function($scope) {
   $scope.returnFlight = 1;
 
   $scope.total = $scope.adultNo*$scope.adultPrice + $scope.childNo*$scope.childPrice + $scope.babyNo*$scope.babyPrice;
-
-
+  $scope.goToPrev=function(){
+    var returning = FlightsSrv.isReturn();
+  if(returning === true){
+    $location.url('/returnflights');
+  }else{
+    $location.url('/outgoingflights');
+  }
+  };
+  $scope.goNext=function(){
+    $location.url('/names');
+  };
 });

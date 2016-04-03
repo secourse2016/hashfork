@@ -1,4 +1,4 @@
-App.controller('nCtrl',['$scope', function($scope) {
+App.controller('nCtrl',function($scope,FlightsSrv,$location) {
 
 
 $scope.travellers = [
@@ -50,6 +50,14 @@ $scope.travellers = [
 $scope.user =
   {name: '',
   email: ''};
+  $scope.goToPrev=function(){
+   
+    $location.url('/confirmation');
+  
+  };
+  $scope.goNext=function(){
+    $location.url('/payment');
+  };
 
 
-}]);
+});
