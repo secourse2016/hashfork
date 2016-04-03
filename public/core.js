@@ -37,7 +37,7 @@ App.config(function($routeProvider) {
             controller  : 'flightListCtrl'
         }).when('/outgoingflights', {
             templateUrl : '/partials/outgoingFlight.html',
-            controller  : 'flightListCtrl'
+            controller  : 'flightOutgoingCtrl'
         });
 
 });

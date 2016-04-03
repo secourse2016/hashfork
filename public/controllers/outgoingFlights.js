@@ -1,7 +1,7 @@
-App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchorScroll){
+App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $anchorScroll){
 
-	$scope.from = FlightsSrv.getTo().name;
-	$scope.to = FlightsSrv.getFrom().name;
+	$scope.from = FlightsSrv.getFrom().name;
+	$scope.to = FlightsSrv.getTo().name;
 	$scope.scrollTo = function(div) {
     $location.hash(div);
     $anchorScroll();
@@ -51,11 +51,14 @@ $scope.goToTop = function() {
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
- 	
+ 	var returning = FlightsSrv.isReturn();
+ 	if(returning === true){
+ 		$location.url('/returnflights');
+ 	}else{
  		$location.url('/confirmation');
- 	
+ 	}
  };
  $scope.goToPreviousPage=function(){
- 	$location.url('/outgoingflights');
+ 	$location.url('/');
  }
 });
