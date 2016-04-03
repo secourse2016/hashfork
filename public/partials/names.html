@@ -366,12 +366,12 @@
 
         <div class="col-md-2"></div>
         <div class="col-md-1">
-            <button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info" >Previous
+            <button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info" ng-click="goToPrev()">Prev
             </button>
         </div>
         <div class="col-md-6"></div>
         <div class="col-md-1">
-            <button style = " width: 100% ;font-size: 100%;, cursive;"name="next" ng-disabled="buttons.$invalid" type="button" class="btn btn-primary">Next</button>
+            <button style = " width: 100% ;font-size: 100%;, cursive;"name="next" ng-disabled="buttons.$invalid" type="button" class="btn btn-primary" ng-click="goNext()">Next</button>
         </div>
 
     </div>
