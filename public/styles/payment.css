@@ -34,3 +34,7 @@
     font-weight: bold;
     text-align: center;
 }
+.row .profile{
+    background-color: rgba(254, 254, 254, 0.59);
+    box-shadow: 3px 2px 1px RGBA(0, 0, 0, 0.51);
+}

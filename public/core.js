@@ -38,6 +38,12 @@ App.config(function($routeProvider) {
         }).when('/outgoingflights', {
             templateUrl : '/partials/outgoingFlight.html',
             controller  : 'flightOutgoingCtrl'
+        }).when('/contact',{
+            templateUrl:'/partials/contact.html'
+        }).when('/about',{
+            templateUrl:'/partials/aboutklm.html'
+        }).otherwise({
+            templateUrl:'/partials/error.html'
         });
 
 });
