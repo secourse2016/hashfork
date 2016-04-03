@@ -1,8 +1,4 @@
-
-<!-- Body of the code -->
-
-
-  <div class = container-fluid>
+<div class = "container-fluid" style="background-color: rgba(254, 254, 254, 0.59); box-shadow: 3px 2px 1px RGBA(0, 0, 0, 0.51);">
 
 
 
@@ -45,7 +41,7 @@
    <!-- Repeat header -->
 
    <!-- Adding condition to check for first Adult to be Primary status -->
-   <div >
+   <div ng-if="$index === 0">
      <div class="col-md-4"><h3>{{elements.type}} {{elements.counter}} (Primary)</h3></div>
    </div>
 
@@ -53,7 +49,6 @@
      <div class="col-md-4"><h3>{{elements.type}} {{elements.counter}}</h3></div>
    </div>
 
-</div>
 </div>
 
 <div class="row"> </div>
@@ -92,7 +87,7 @@
 
 <div class="row">
   <div class="col-md-2"></div>
-  <div class="col-md-4"><label for="passport">Passport Country<astrix>*</astrix></label></div>
+  <div class="col-md-4"><label for="passport">Passport Country<astrix>*</astrix></div>
 </div>
 
 <div class = "row">
@@ -351,12 +346,11 @@
   </select>
 
 </div>
-</div>
+
   <br>
 
 
-</form>
-
+</div>
   <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8"><hr></div>
@@ -364,34 +358,35 @@
 </div>
 
 
-
+</div>
 
   <div class = "row" id="PreNext" position:relative; >
 
     <!-- Previous and Next buttons -->
 
-		<div class="col-md-2"></div>
-		<div class="col-md-1">
-			<button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info" >Previous
-			</button>
-		</div>
-		<div class="col-md-6"></div>
-		<div class="col-md-1">
-			<button style = " width: 100% ;font-size: 100%;, cursive;"name="next" ng-disabled="buttons.$invalid" type="button" class="btn btn-primary">Next</button>
-		</div>
+        <div class="col-md-2"></div>
+        <div class="col-md-1">
+            <button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info" >Previous
+            </button>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-1">
+            <button style = " width: 100% ;font-size: 100%;, cursive;"name="next" ng-disabled="buttons.$invalid" type="button" class="btn btn-primary">Next</button>
+        </div>
 
-	</div>
-
-
-
-
-<div class="row">
+    </div>
+    <div class="row">
   <br>
   <br>
-  <br>
-  <br>
-  <br>
+  
 </div>
 </div>
 
- 
+  </form>
+  <div class="row">
+  <br>
+  <br>
+</div>
+
+
+
