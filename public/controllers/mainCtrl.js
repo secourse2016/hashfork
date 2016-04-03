@@ -2,8 +2,11 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         //$scope.pageClass = 'page-home';
 
         $scope.Airports=[];
+        
          $scope.goToNextPage=function(){
-           
+           FlightsSrv.setAdults($scope.adults);
+           FlightsSrv.setChild($scope.child);
+           FlightsSrv.setBaby($scope.baby);
             $location.url('/outgoingflights');
         };
 
@@ -15,12 +18,18 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
             $scope.showMe=1;
             $scope.f1 = "active";
             $scope.f2 = "";
+            $scope.adults=1;
+            $scope.child=0;
+            $scope.baby=0;
             FlightsSrv.setReturn(true);
         };
         $scope.S2 = function () {
             $scope.showMe=0;
             $scope.f2 = "active";
             $scope.f1 = "";
+            $scope.adults=1;
+            $scope.child=0;
+            $scope.baby=0;
             FlightsSrv.setReturn(false);
         };
     
@@ -206,6 +215,9 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
             
         };
         AirportCodes();
+        $scope.adults="1";
+        $scope.child="0";
+        $scope.baby="0";
     });
 
 
