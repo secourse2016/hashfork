@@ -1,21 +1,4 @@
-
-
-var animateApp = angular.module('HashFork', ['ngRoute','ui.bootstrap']);
-
-// ROUTING ===============================================
-// set our routing for this application
-// each route will pull in a different controller
-animateApp.config(function($routeProvider) {
-
-    $routeProvider
-
-    // home page
-        .when('/', {
-            templateUrl: 'partials/landingPage.html',
-            controller: 'mainController'
-        })
-});
-animateApp.controller('mainController', function ($scope) {
+App.controller('mainController', function ($scope) {
         //$scope.pageClass = 'page-home';
         $scope.showMe=1;
         $scope.f1 = "active";
