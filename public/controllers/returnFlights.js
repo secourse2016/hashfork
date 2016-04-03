@@ -1,7 +1,7 @@
-App.controller('flightListCtrl', function ($scope, $location, $anchorScroll){
+App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchorScroll){
 
-	$scope.from = "Cairo";
-	$scope.to = "Amsterdam";
+	$scope.from = FlightsSrv.getFrom().name;
+	$scope.to = FlightsSrv.getTo().name;
 	$scope.scrollTo = function(div) {
     $location.hash(div);
     $anchorScroll();
@@ -38,7 +38,7 @@ $scope.paginationLimit = function(flights) {
 };
 
 $scope.hasMoreItemsToShow = function() {
- return pagesShown < ($scope.datalists.length / pageSize);
+ return pagesShown < ($scope.flights.length / pageSize);
 };
 
 $scope.showMoreItems = function() {
@@ -50,4 +50,15 @@ $scope.goToTop = function() {
 	  
       $anchorScroll();
     };
+ $scope.goToNextPage=function(){
+ 	var returning = FlightsSrv.isReturn();
+ 	if(returning === true){
+ 		$location.url('/returnflights');
+ 	}else{
+ 		$location.url('/confirmation');
+ 	}
+ };
+ $scope.goToPreviousPage=function(){
+ 	$location.url('/');
+ }
 });

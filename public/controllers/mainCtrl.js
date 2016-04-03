@@ -1,23 +1,28 @@
-App.controller('mainController', function ($scope) {
+App.controller('mainController', function ($scope,FlightsSrv, $location) {
         //$scope.pageClass = 'page-home';
 
-
+        $scope.Airports=[];
+         $scope.goToNextPage=function(){
+           
+            $location.url('/outgoingflights');
+        };
 
         $scope.showMe=1;
         $scope.f1 = "active";
         $scope.f2 = "";
+        FlightsSrv.setReturn(true);
         $scope.S1 = function () {
             $scope.showMe=1;
             $scope.f1 = "active";
             $scope.f2 = "";
-
-        }
+            FlightsSrv.setReturn(true);
+        };
         $scope.S2 = function () {
             $scope.showMe=0;
             $scope.f2 = "active";
             $scope.f1 = "";
-
-        }
+            FlightsSrv.setReturn(false);
+        };
     
     $scope.myInterval = 2000;
     $scope.noWrapSlides = false;
@@ -33,7 +38,13 @@ App.controller('mainController', function ($scope) {
     //        id: currIndex++
     //    });
     //};
-
+     function AirportCodes() {
+        FlightsSrv.getAirportCodes().success(function(airports) {
+            console.log(airports);
+         $scope.Airports = airports;
+     });
+  };
+   
     $scope.randomize = function() {
         var indexes = generateIndexesArray();
         assignNewIndexesToSlides(indexes);
@@ -178,7 +189,17 @@ App.controller('mainController', function ($scope) {
             }
 
             return '';
-        }
+        };
+        $scope.SetOriginAirport=function(value){
+            FlightsSrv.setFrom(value);
+
+        };
+        $scope.SetDestinationAirport=function(value){
+           
+            FlightsSrv.setTo(value);
+            
+        };
+        AirportCodes();
     });
 
 
