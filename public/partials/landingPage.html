@@ -16,10 +16,25 @@
     <h1 style="text-align: center ; font-family: Helvetica; font-size: 250%; color: #fff4e0;">B o o k . Y o u r . F l i g h t </h1>
 
     <link rel="stylesheet" href="styles/landingbage.css">
-    <div>
-        <h1 style="position: fixed; top: 30%;left: 60%; font-size: 200%;font-family: Helvetica; color: white;" id="tip">Welcome To KLM</h1>
+    <!--start-->
+    <div style="position: fixed;top: 20% ;left: 50%;width: 50%;">
+        <div ng-controller="CarouselDemoCtrl">
+            <div style="height: 305px">
+                <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                    <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                        <img  ng-src="{{slide.image}}" style="margin:auto;width: auto;height: 300px;max-height: 300px;">
+                        <div class="carousel-caption">
+
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </uib-slide>
+                </uib-carousel>
+            </div>
+
+        </div>
     </div>
-    <div class="container">
+     <!--end-->
+    <div class="container ">
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
@@ -128,7 +143,7 @@
                         <div class="radio-inline">
                             <label><input type="radio" name="optradio" >First</label>
                         </div>
-                        <button style=" background-color:#02294E;position:relative;margin-left: 27%" type="button" class="btn btn-primary">View Flights</button>
+                        <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary">View Flights</button>
                         </div>
                     </div>
                     <!-- One way section -->
@@ -136,5 +151,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
