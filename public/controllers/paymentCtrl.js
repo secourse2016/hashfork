@@ -5,6 +5,6 @@ $scope.goToPrev=function(){
   
   };
   $scope.goNext=function(){
-    $location.url('/');
+    $location.url('/ref');
   };
 });
