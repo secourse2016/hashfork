@@ -18,18 +18,18 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
             $scope.showMe=1;
             $scope.f1 = "active";
             $scope.f2 = "";
-            $scope.adults=1;
-            $scope.child=0;
-            $scope.baby=0;
+            $scope.adults="1";
+            $scope.child="0";
+            $scope.baby="0";
             FlightsSrv.setReturn(true);
         };
         $scope.S2 = function () {
             $scope.showMe=0;
             $scope.f2 = "active";
             $scope.f1 = "";
-            $scope.adults=1;
-            $scope.child=0;
-            $scope.baby=0;
+            $scope.adults="1";
+            $scope.child="0";
+            $scope.baby="0";
             FlightsSrv.setReturn(false);
         };
     
