@@ -63,7 +63,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
 
         slides.push({
             image: 'img/back'+i+'.jpg',
-            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+            text: tips[slides.length % 5],
             id: currIndex++
         });
     }
@@ -222,15 +222,11 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
 
 
 var tips = [
-    "Enjoy your Flight"
-    ,
+    "Enjoy your Flight",
     "Travelling is the most beautiful thing in life ",
-    "Want to know about our offers?",
     "Want to know about our services?",
     "keep on touch",
     "KLM is the Airline company",
-    "Choose your favourite class",
-    "Choose your favourite time",
     "We know what do you want !!"
 ];
 //setInterval(function() {
