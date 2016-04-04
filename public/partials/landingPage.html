@@ -89,9 +89,7 @@
                                 >
 
 
-                            <br>
-                            <br>
-                            <br>
+                           
                             <label >Departure Date</label>
                             <label ng-show="showMe==1"style="position: relative; padding-left: 22%" >Return date</label>
                             <div >
@@ -136,21 +134,31 @@
                           <div>
 
                               </div>
-
-                                 <label style="position: relative; left: 7%;">Adults:</label>
-                        <label style="position: relative; left: 25%;">Children:</label>
-                        <label style="position: relative; left: 40%;">Babies:</label>
+                              <div class="row">
+                                
+                                <div class="col-md-1 col-sm-1 col-xs-1">
+                                 <label >Adults:</label>
+                                 </div>
+                                  <div class="col-md-1 col-sm-1 col-xs-1"></div>
+                                 <div class="col-md-2 col-sm-2 col-xs-2">
+                                     <label >Children:</label>
+                                    </div>
+                         <div class="col-md-1 col-sm-1 col-xs-1"></div>
+                        <div class="col-md-1 col-sm-1 col-xs-1">
+                        <label >Babies:</label>
+                        </div>
+                        </div>
                                 <div class="row">
-                                    <p class="col-md-1 "></p>
-                                    <select style="width : 20%; " ng-model="adults" class="form-control col-md-3 "
+                                     
+                                    <select style="width : 20%; " ng-model="adults" class="form-control col-md-2 col-sm-2 col-xs-2  "
                                 required="required" id="sel1">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                     </select>
-                                     <p class="col-md-1 "></p>
-                                    <select style="width : 20% ;" ng-model="child" class="form-control col-md-3 "  id="sel2">
+                                      <div class="col-md-1 col-sm-1 col-xs-1"></div>
+                                    <select style="width : 20% ;" ng-model="child" class="form-control col-md-2 col-sm-2 col-xs-2"  id="sel2">
 
                                         <option value="0">0</option>
                                         <option value="1">1</option>
@@ -158,8 +166,8 @@
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                     </select>
-                                    <p class="col-md-1 "></p>
-                                    <select style="width : 20% ;" ng-model="baby" class="form-control col-md-3 "  id="sel3">
+                                    <div class="col-md-1 col-sm-1 col-xs-1"></div>
+                                    <select style="width : 20% ;" ng-model="baby" class="form-control col-md-2 col-sm-2 col-xs-2"  id="sel3">
 
                                         <option value="0">0</option>
                                         <option value="1">1</option>
@@ -168,18 +176,22 @@
                                         <option value="4">4</option>
                                     </select>
                                 </div>
-                        <br>
+                        
                              <h4>choose class:</h4>
+                             <div class="row">
                         <div class="radio-inline" >
-                            <label><input type="radio" ng-required="true" name="optradio">Economy</label>
+                            <label><input type="radio" class="form-control col-md-2 col-sm-2 col-xs-2" ng-required="true" name="optradio">Economy</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio"  ng-required="true" name="optradio">Business</label>
+                            <label><input type="radio" class="form-control col-md-2 col-sm-2 col-xs-2"  ng-required="true" name="optradio">Business</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" ng-required="true" name="optradio" >First</label>
+                            <label><input type="radio" class="form-control col-md-2 col-sm-2 col-xs-2"ng-required="true" name="optradio" >First</label>
                         </div>
+                        </div>
+                        <div class="row">
                         <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary" ng-click="goToNextPage()" ng-disabled="buttons.$invalid">View Flights</button>
+                        </div>
                         </div>
                     </div>
                     <!-- One way section -->
