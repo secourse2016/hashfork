@@ -27,7 +27,11 @@
                         <img  ng-src="{{slide.image}}" style="margin:auto;width: auto;height: 300px;max-height: 300px;">
                         <div class="carousel-caption">
 
+<<<<<<< HEAD
 
+=======
+                            <p>{{slide.text}}</p>
+>>>>>>> origin/dev2
                         </div>
                     </uib-slide>
                 </uib-carousel>
@@ -57,6 +61,7 @@
                         <div>
                         <form name="buttons">
                             <label for="from">From</label>
+<<<<<<< HEAD
                             <input
                                 id="from"
                                 type="text"
@@ -76,6 +81,27 @@
                                 id="to"
                                 type="text"
 
+=======
+                            <input 
+                                id="from" 
+                                type="text"
+                                
+                                required="required" 
+                                placeholder="Origin"
+                                ng-model="selectedOrigin"
+                                
+                                uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10"
+                                style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px; "
+                                typeahead-on-select="SetOriginAirport($item)">
+
+                            
+                             
+                            <label for="to">To</label>
+                            <input 
+                                id="to" 
+                                type="text" 
+                                
+>>>>>>> origin/dev2
                                 required="required"
                                 placeholder="Destination"
                                 ng-model="selectedDestination"
@@ -85,7 +111,11 @@
 
                                 >
 
+<<<<<<< HEAD
 
+=======
+                            
+>>>>>>> origin/dev2
                             <br>
                             <br>
                             <br>
@@ -95,6 +125,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <p class="input-group"  >
+<<<<<<< HEAD
 
                                             <input id="date1"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span class="input-group-btn">
@@ -107,6 +138,20 @@
                                     <div class="col-md-6" >
                                         <p ng-show="showMe==1" class="input-group"  >
 
+=======
+
+                                            <input id="date1"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                                        </p>
+
+                                    </div>
+
+                                    <div class="col-md-6" >
+                                        <p ng-show="showMe==1" class="input-group"  >
+
+>>>>>>> origin/dev2
                                             <input ng-show="showMe==1" id="date2"  type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt2" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="false" close-text="Close" alt-input-formats="altInputFormats" />
           <span ng-show="showMe==1" class="input-group-btn">
             <button ng-show="showMe==1" type="button" class="btn btn-default" ng-click="open2()"><i ng-show="showMe==1" class="glyphicon glyphicon-calendar"></i></button>
@@ -146,7 +191,11 @@
                                     </select>
                                      <p class="col-md-1 "></p>
                                     <select style="width : 20% ;" ng-model="child" class="form-control col-md-3 "  id="sel2">
+<<<<<<< HEAD
 
+=======
+                                        
+>>>>>>> origin/dev2
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -155,7 +204,11 @@
                                     </select>
                                     <p class="col-md-1 "></p>
                                     <select style="width : 20% ;" ng-model="baby" class="form-control col-md-3 "  id="sel3">
+<<<<<<< HEAD
 
+=======
+                                       
+>>>>>>> origin/dev2
                                         <option value="0">0</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -185,5 +238,9 @@
 
 
     </div>
+<<<<<<< HEAD
     <br><br><br><br><br><br>
+=======
+>>>>>>> origin/dev2
 </div>
+
