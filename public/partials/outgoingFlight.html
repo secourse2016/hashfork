@@ -1,0 +1,132 @@
+
+  <div class = "row" id="topOfPage" >
+    <img src="/images/head.jpg" class="img-responsive" style='  margin: 0 auto; object-fit: contain'>
+    <br><br>
+  </div>
+
+<div  class ="container" style="background-color: rgba(254, 254, 254, 0.59); box-shadow: 3px 2px 1px RGBA(0, 0, 0, 0.51);">
+<div class="row"><br></div>
+  <div class = "row" id="PreNext" position:relative; >
+
+<form name="buttons">
+    <div class="col-md-2"></div>
+    <div class="col-md-1">
+      <button style = " width: 100% ;font-size: 100%;"name="previous" type="button" class="btn btn-info"
+      ng-click="goToPreviousPage()">Prev
+      </button>
+    </div>
+    <div class="col-md-6"></div>
+    <div class="col-md-1">
+      <button style = " width: 100% ;font-size: 100%;"name="next" type="button" class="btn btn-primary" ng-disabled="buttons.$invalid" ng-click="goToNextPage()">Next</button>
+    </div>
+  </div>
+
+
+    <br>
+    <br>
+    <br>
+
+
+
+  <div class = "row" id="fromTo" position:relative;  >
+    <div class="col-md-2 col-xs-2"></div>
+    <div class="col-md-1 col-xs-2">
+      <img src="./images/outgoing.png" class="img-responsive"width="60" height="60" >
+    </div>
+
+    <div class="col-md-3 col-xs-3">
+      <p style = " font-size:250%;  height:150%; color:#0D4F8B;">
+        From : <span style="color:#1C86EE ">{{from}}</span>
+      </p>
+    </div>
+
+      <div class="col-md-1 col-xs-1"></div>
+      <div class="col-md-3 col-xs-3">
+        <p style = "font-size:250%;  height:150%; color:#0D4F8B;">
+         To : <span style="color:#1C86EE">{{to}} </span>
+        </p>
+      </div>
+
+
+
+   <div class = "row"> <br> <br>  </div>
+
+
+
+    <li ng-repeat="flight in flights | limitTo: paginationLimit()">
+
+      <div class = "row"> <br> <br>  </div>
+      <div class="stylingOfEachFlight" style=" font-size:150%;">
+        <div class = "row">
+
+          <div class="col-md-1 col-xs-1"><input type="radio" ng-required="true" name="chosen" value = "" style="height:35px; width:35px; vertical-align: middle;" required></div>
+          <div class="col-md-1 col-xs-1" ><h4><strong>Date</strong></h4></div>
+          <div class="col-md-2 col-xs-2"></div>
+          <div class="col-md-1 col-xs-1"><h4><strong>Time</strong></h4></div>
+          <div class="col-md-2 col-xs-2"></div>
+          <div class="col-md-1 col-xs-1"><h4><strong>From</strong></h4></div>
+        </div>
+
+        <div class = "row">
+          <div class="col-md-1 col-xs-1"></div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.dateFrom | date}}</div>
+          <div class="col-md-2 col-xs-2"></div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.timeFrom | date}}</div>
+          <div class="col-md-2 col-xs-2"></div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.from}}</div>
+
+        </div>
+
+        <div class = "row">
+          <div class="col-md-1 col-xs-1"></div>
+          <div class="col-md-1 col-xs-1"><h4><strong>Date</strong></h4></div>
+          <div class="col-md-2 col-xs-2"></div>
+          <div class="col-md-1 col-xs-1"><h4><strong>Time</strong></h4></div>
+          <div class="col-md-2 col-xs-2"></div>
+          <div class="col-md-1 col-xs-1"><h4><strong>To</strong></h4></div>
+        </div>
+
+        <div class = "row">
+          <div class="col-md-1 col-xs-1"></div>
+          <div class="col-md-1 col-xs-1" style="color:#0D4F8B; ">{{flight.dateTo | date }}</div>
+          <div class="col-md-2 col-xs-2"></div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.timeTo | date }}</div>
+          <div class="col-md-2 col-xs-2"></div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.to}}</div>
+
+        </div>
+
+        <div class = "row" style="color:#1464F4">
+          <div class="col-md-1 col-xs-1"></div>
+          <div class="col-md-2 col-xs-2"><h4><strong>Duration : </strong></h4></div>
+          <div class="col-md-1 col-xs-1" >{{flight.duartion}}</div>
+          <div class="col-md-3 col-xs-3"></div>
+          <div class="col-md-2 col-xs-2"><h4><strong>Cost : </strong></h4></div>
+          <div class="col-md-1 col-xs-1">{{flight.cost | currency}}</div>
+        </div>
+      </div>
+    </li>
+
+    <div class = "row"> <br> <br> <br> <br> <br> <br>  </div>
+
+</form>
+
+  <div class="row" id="bottomOfPage" position:relative;>
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <button style="width:100%;" type="button" class="btn btn-default btn-lg btn-block" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">Show more</button>
+    </div>
+      <div class="row"></div>
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+          <button style=" width:100%;" type="button" class="btn btn-primary btn-lg btn-block" ng-click="goToTop();">To top of Page</button>
+    </div>
+
+  </div>
+  </div>
+
+
+
+
+
+  <div class = "row"> <br> <br> <br> <br> <br> <br> <br></div>
