@@ -37,6 +37,8 @@
   <script src="controllers/namesCtrl.js"></script>
   <script src="controllers/returnFlights.js"></script>
   <script src="controllers/outgoingFlights.js"></script>
+  <script src="controllers/bookingCtrl.js"></script>
+  <script src="controllers/bookingrefCtrl.js"></script>
    <style>
 
     hr {
@@ -96,97 +98,29 @@
 
                       <!-- Register and Sign In -->
 
-                      <div ng-if="user.email === '' ">
+                     
 
 
-
-                      <ul class="nav navbar-nav navbar-right">
-                      <li><a href="#">Register</a></li>
-                      <li class="dropdown">
-                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
-                         <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
-                            <li>
-                               <div class="row">
-                                  <div class="col-md-12">
-                                     <form class="form" name="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
-                                        <div class="form-group">
-                                           <label class="sr-only" for="email">Email Address</label>
-                                           <input type="email" class="form-control" ng-model="user.tempEmail" id="emailAdd" placeholder="Email Address"required="required">
-                                        </div>
-                                        <div class="form-group">
-                                           <label class="sr-only" for="password">Password</label>
-                                           <input type="password" class="form-control" ng-model="user.tempPass" id="pass" placeholder="Password"required="required">
-                                        </div>
-                                        <!-- <div class="checkbox">
-                                           <label>
-                                           <input type="checkbox"> Remember Me
-                                           </label>
-                                        </div> -->
-
-                                        <div class="form-group">
-                                           <button type="submit" class="btn btn-success btn-block" ng-disabled="form.$invalid" ng-click="user.email = user.tempEmail">Sign In</button>
-                                           <button type="reset" class="btn btn-danger btn-block">Reset</button>
-                                        </div>
-
-                                     </form>
-
-                                  </div>
-                               </div>
-                            </li>
-
-                         </ul>
-                      </li>
+                      <ul class="nav pull-right">
+                          <form class="navbar-form" role="search" method="get" action="/#/bookings">
+                            <div class="input-group">
+                              <input type="text" class="form-control pull-right" style="width: 300px; margin-right: 35px, border: 1px solid black; " placeholder="Search" name="q">
+                              <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                  <span class="glyphicon glyphicon-search">
+                                    <span class="sr-only">Search</span>
+                                  </span>
+                                </button>
+                              </span>
+                            </div>
+                          </form>
                    </ul>
-
+                   
                      </div>
 
                    <!-- Already Signed In -->
 
-                   <div ng-if="user.email !== '' ">
-
-                     <ul class="nav navbar-nav navbar-right">
-                      <li class="dropdown">
-                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                              <span class="glyphicon glyphicon-user"></span> 
-                              <strong>{{user.name}}</strong>
-                              <span class="glyphicon glyphicon-chevron-down"></span>
-                          </a>
-                          <ul class="dropdown-menu">
-                              <li>
-                                  <div class="navbar-login">
-                                      <div class="row">
-
-
-                                              <p class="text-center"><strong>{{user.name}}</strong></p>
-                                              <p class="text-center small">{{user.email}}</p>
-
-
-                                      </div>
-                                  </div>
-                              </li>
-                              <li class="divider"></li>
-                              <li>
-                                <div class="row">
-                                    <div class="col-md-4"></div>
-                                  </div>
-                                  <div class="navbar-login navbar-login-session" style="">
-                                      <div class="row">
-                                        <div class="col-lg-2"></div>
-                                          <div class="col-lg-8">
-                                              <p>
-                                                  <a href="#" class="btn btn-danger btn-block" ng-click="user.email = ''">Log Out</a>
-                                              </p>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </li>
-                          </ul>
-                      </li>
-                  </ul>
-
-                    </div>
-
-                   </div>
+              </div>
             <!-- /.navbar-collapse -->
           </nav>
         </div>
@@ -203,7 +137,7 @@
     <br>
     <br>
     <footer class="ui inverted vertical footer segment">
-     <nav class="navbar navbar-inverse navbar-fixed-bottom" >
+     <nav class="navbar navbar-inverse navbar-fixed-bottom" style="max-height: 30px;" >
         <div class="container">
           <div class="navbar-header">
             </div>
