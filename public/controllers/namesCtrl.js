@@ -52,7 +52,7 @@ $scope.user =
   
   };
   $scope.goNext=function(){
-    $location.url('/payment');
+    $location.url('/ref');
   };
 
 
