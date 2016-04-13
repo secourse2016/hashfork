@@ -224,10 +224,10 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
 var tips = [
     "Enjoy your Flight",
     "Travelling is the most beautiful thing in life ",
-    "Want to know about our services?",
-    "keep on touch",
-    "KLM is the Airline company",
-    "We know what do you want !!"
+    "Do want to know about our services?",
+    "keep in touch",
+    "KLM is the Airline company for you",
+    "We know what you want !!"
 ];
 //setInterval(function() {
 //    var i = Math.round((Math.random()) * 5);
