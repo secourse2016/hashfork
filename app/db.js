@@ -68,17 +68,24 @@ exports.clearDB = function(done) {
 //------------------------------------------------------------------------------------------------------------------------------------
 
 function find(orig , dest , deptDate , class , callback , retDate){
+	var data={
+        outgoingFlights:'1',
+        returnFlights: '1'
+	};
+	var er1;
+	var er2;
 	DB.collection('Flights').find({orig : origin , destination : dest , departureDateTime : deptDate ,class: class }).toArray(
 		function (err, outgoings){
-			if (err)return callback(err);
-			else callback();
+			data.outgoingFlights=outgoings;
+			er1=err;
 	});
 
 	DB.collection('Flights').find({orig: dest , destination : orig , departureDateTime : retDate ,class:class}).toArray(
 		function(err, returns){
-			if(err) return callback(err);
-			else callback();
+			data.returnFlights=returns;
+			er2=err;
 		});
+	callback(er1|| er2 , data);
 }
 
 exports.find = find;
