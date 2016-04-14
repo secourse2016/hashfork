@@ -9,7 +9,11 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 	console.log(FlightsSrv.getClass());
 	function getOutgoingFlights(){
 		if(FlightsSrv.isReturn()){
-			FlightsSrv.getOurAirlineRound().success(function(flight){
+			FlightsSrv.searchOurAirlineRound().success(function(flight){
+				$scope.flights =flight.outgoingFlights;
+			});
+		}else{
+			FlightsSrv.searchOurAirline().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
 			});
 		}

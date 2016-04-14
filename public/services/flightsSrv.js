@@ -2,12 +2,16 @@
  * Flights Service
  */
 App.factory('FlightsSrv', function ($http) {
-     return {
+    
+         return {
          getAirportCodes : function() {
            return $http.get('/api/airports');
          },
          searchOurAirlineRound: function(){
-            return $http.get('/api/flights/search/'+this.from+'/'+this.to+'/'+this.departDate+'/'+this.returnDate+'/'+this.class+'')
+            return $http.get('/api/flights/search/'+this.from+'/'+this.to+'/'+this.departDate+'/'+this.returnDate+'/'+this.class+'');
+         },
+         searchOurAirline: function(){
+            return $http.get('/api/flights/search/'+this.from+'/'+this.to+'/'+this.departDate+'/'+this.class+'');
          },
          getClass:function(){
           return this.class;
