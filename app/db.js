@@ -3,6 +3,8 @@ var DB = null;
 var dbURL = 'mongodb://localhost:27017/klm';
 var Airports = require('../airports.json');
 var Flights = require('../flights.json');
+// var assert = require('assert');
+// var ObjectId = require('mongodb').ObjectID;
 
 
 exports.connect = function(cb) {
@@ -13,6 +15,7 @@ exports.connect = function(cb) {
         cb(null, db);
     });
 };
+
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 function seed(cb) {
@@ -40,7 +43,11 @@ function seed(cb) {
         }
     });
 }
+
 //----------------------------------------------------------------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------------------------------------------------------------
 exports.db = function() {
     if (DB === null) throw Error('DB Object has not yet been initialized');
     return DB;
@@ -50,6 +57,14 @@ exports.close = function(){
 	db.close();
 };
 //----------------------------------------------------------------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------------------------------------------------------------
+exports.close = function(){
+	db.close();
+};
+
+//------------------------------------------------------------------------------------------------------------------------------------
 exports.clearDB = function(done) {
     DB.listCollections().toArray().then(function (collections) {
         collections.forEach(function (c) {
@@ -66,3 +81,27 @@ exports.clearDB = function(done) {
 
 //----------------------------------------------------------------------------------------------------------------------------------------
 exports.seed = seed;
+//------------------------------------------------------------------------------------------------------------------------------------
+
+function find(orig , dest , deptDate , class , callback , retDate){
+	var data={
+        outgoingFlights:'1',
+        returnFlights: '1'
+	};
+	var er1;
+	var er2;
+	DB.collection('Flights').find({orig : origin , destination : dest , departureDateTime : deptDate ,class: class }).toArray(
+		function (err, outgoings){
+			data.outgoingFlights=outgoings;
+			er1=err;
+	});
+
+	DB.collection('Flights').find({orig: dest , destination : orig , departureDateTime : retDate ,class:class}).toArray(
+		function(err, returns){
+			data.returnFlights=returns;
+			er2=err;
+		});
+	callback(er1|| er2 , data);
+}
+
+exports.find = find;
