@@ -1,5 +1,5 @@
 var  express =require('express');
-var db=require('../db');
+//var db=require('../db');
 module.exports = function(app) {
 
 	app.get('/api/airports',function(req,res){
@@ -34,17 +34,11 @@ module.exports = function(app) {
                       res.send(data);
 			},req.params.returningDate);
 		});
-	app.get('/api/flights/search/:origin/:departingDate/:class', function(req, res) {
+	app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
 
 		db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
 			res.send(data);
 		});
 	});
 
-
-
-
-
 };
-
-
