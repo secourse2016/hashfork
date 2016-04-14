@@ -15,6 +15,11 @@ function connect (cb) {
     });
 };
 
+//------------------------------------------------------------------------------------------------------------------------------------
+exports.db = function() {
+    if (DB === null) throw Error('DB Object has not yet been initialized');
+    return DB;
+};
 
 //-------------------------------------------------------------------------------------------------------------------------------------
  function seed (cb) {	
@@ -118,11 +123,14 @@ function find(orig , dest , deptDate , class1 , callback , retDate){
 
 }
 //----------------------------------------------------------------------------------------------------------------------------------------
-//  function insert(booking){
+//insert({"reference": "Marawan Mohsen 30"});
 
-// DB.collection('Bookings').insert(booking);
+ function insert(booking){
+	connect(function(err,DB){
+		DB.collection('Bookings').insert(booking);
+	});
  
-//  }
+ }
 
 //  //---------------------------------------------------------------------------------------------------------------------------------------
 // findAirports(function(err,data){
@@ -153,27 +161,28 @@ function find(orig , dest , deptDate , class1 , callback , retDate){
 
 //-------------------------------------------------------------------------------------------------------------------------------------
 
-//  function findByReference(reference ,cb){
+findByReference("Marawan Mohsen 30", function(){});
 
-// DB.collection('Bookings').find({ bookref : reference}).toArray(
-// 		function (err, bookings){
-// 			if (err) cb(err);
-// 			else cb(err, bookings);
+ function findByReference(ref ,cb){
+	connect(function(err,DB){
+		DB.collection('Bookings').find({reference : ref}).toArray(
+		function (err, bookings){
+			if (err) cb(err);
+			else cb(err, bookings);
+		});
 			
-// 	});
+	});
 
 
 
 
-//  }
-// exports.findByReference = findByReference;
-// exports.insert = insert; 
-// exports.findAirports = findAirports;
-// exports.find = find;
+ }
+
+exports.findByReference = findByReference;
+exports.insert = insert; 
+exports.findAirports = findAirports;
+exports.findFlights = findFlights;
 exports.seed = seed;
 exports.connect = connect;
 exports.clearDB = clearDB;
 exports.find = find;
-
-//-------------------------------------------------------------------------------------------------------------------------------------
-
