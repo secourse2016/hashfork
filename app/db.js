@@ -83,7 +83,7 @@ exports.clearDB = function(done) {
 exports.seed = seed;
 //------------------------------------------------------------------------------------------------------------------------------------
 
-function find(orig , dest , deptDate , class , callback , retDate){
+function find(orig , dest , deptDate , class1 , callback , retDate){
 	var data={
         outgoingFlights:'1',
         returnFlights: '1'
@@ -94,7 +94,7 @@ function find(orig , dest , deptDate , class , callback , retDate){
 	};
 	var er1;
 	var er2;
-	DB.collection('Flights').find({orig : origin , destination : dest , departureDateTime : deptDate ,class: class }).toArray(
+	DB.collection('Flights').find({orig : origin , destination : dest , departureDateTime : deptDate ,"class": class1 }).toArray(
 		function (err, outgoings){
 			data.outgoingFlights=outgoings;
 			data1.outgoingFlights=outgoings;
@@ -102,7 +102,7 @@ function find(orig , dest , deptDate , class , callback , retDate){
 	});
 
 	if(retDate !== undefined){
-	DB.collection('Flights').find({orig: dest , destination : orig , departureDateTime : retDate ,class:class}).toArray(
+	DB.collection('Flights').find({orig: dest , destination : orig , departureDateTime : retDate ,"class":class1 }).toArray(
 		function(err, returns){
 			data.returnFlights=returns;
 			er2=err;
@@ -119,7 +119,3 @@ function find(orig , dest , deptDate , class , callback , retDate){
 exports.find = find;
 
 //-------------------------------------------------------------------------------------------------------------------------------------
-
-function getAirports (){
-
-}
