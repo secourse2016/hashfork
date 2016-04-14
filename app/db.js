@@ -125,18 +125,30 @@ function find(orig , dest , deptDate , class1 , callback , retDate){
 //  }
 
 //  //---------------------------------------------------------------------------------------------------------------------------------------
-// findAirports(function(){});
+// findAirports(function(err,data){
+// 	console.log(data);
+// });
 
 
-//  function findAirports(cb){
-//  	connect(function(err,DB){
-// 		console.log(DB.collection('Airports').find({}).toArray(cb));
+ function findAirports(cb){
+ 	connect(function(err,DB){
+		DB.collection('Airports').find({}).toArray(cb);
 
-// 	});
-//  }
-//  //---------------------------------------------------------------------------------------------------------------------------------------
+	});
+ }
+ //---------------------------------------------------------------------------------------------------------------------------------------
+
+// findFlights(function(err,data){
+// 	console.log(data);
+// });
 
 
+ function findFlights(cb){
+ 	connect(function(err,DB){
+		DB.collection('Flights').find({}).toArray(cb);
+
+	});
+ }
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------
