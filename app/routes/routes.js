@@ -47,7 +47,7 @@ module.exports = function(app) {
 
 		} catch (err) {
 
-			res.status(403).sendFile(path.join(__dirname, '../../public', '/partials/403.html'));
+			res.status(403).send("403: Forbidden");
 			app.use(express.static('public'));
 
 
@@ -63,13 +63,12 @@ module.exports = function(app) {
 			{
 				var payload = jwt.verify(token, secret);
 				req.payload = payload;
-				console.log(4);
 				next();
 			}
 			catch (err)
 			{
 
-				res.status(403).sendFile(path.join(__dirname, '../../public', '/partials/403.html'));
+				res.status(403).send("403: Forbidden");
 				app.use(express.static('public'));
 
 
