@@ -6,6 +6,15 @@ App.factory('FlightsSrv', function ($http) {
          getAirportCodes : function() {
            return $http.get('/api/airports');
          },
+         searchOurAirlineRound: function(){
+
+         },
+         getClass:function(){
+          return this.class;
+         },
+         setClass:function(val){
+          this.class=val;
+         },
          setFrom: function(value) {
            this.from = value;
          },
@@ -40,6 +49,18 @@ App.factory('FlightsSrv', function ($http) {
          },
          getBaby:function(){
           return this.Baby;
+         },
+         setReturning:function(returnDate){
+          this.returnDate=returnDate;
+         },
+         setDepart:function(departDate){
+          this.departDate=departDate;
+         },
+         getReturn: function(){
+          return this.returnDate;
+         },
+         getDepart:function(){
+            return this.departDate;
          },
          setCost:function(value){
           this.cost=value;
