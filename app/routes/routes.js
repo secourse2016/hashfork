@@ -31,7 +31,7 @@ module.exports = function(app) {
 		app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res){
 
 			db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
-                      res.js(data);
+                      res.send(data);
 			},req.params.returningDate);
 		});
 
