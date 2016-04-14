@@ -21,12 +21,13 @@ module.exports = function(app) {
 		db.seed(function(res,err){
 
 		});
+		});
 		app.get('/db/delete', function(req, res) {
 			db.clearDB(function(res,err){
 
 			});
 		});
-	});
+	
 
 
 
