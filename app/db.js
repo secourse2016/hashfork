@@ -88,20 +88,38 @@ function find(orig , dest , deptDate , class , callback , retDate){
         outgoingFlights:'1',
         returnFlights: '1'
 	};
+	var data1={
+        outgoingFlights:'1',
+        
+	};
 	var er1;
 	var er2;
 	DB.collection('Flights').find({orig : origin , destination : dest , departureDateTime : deptDate ,class: class }).toArray(
 		function (err, outgoings){
 			data.outgoingFlights=outgoings;
+			data1.outgoingFlights=outgoings;
 			er1=err;
 	});
 
+	if(retDate !== undefined){
 	DB.collection('Flights').find({orig: dest , destination : orig , departureDateTime : retDate ,class:class}).toArray(
 		function(err, returns){
 			data.returnFlights=returns;
 			er2=err;
+
 		});
-	callback(er1|| er2 , data);
+		callback(er1|| er2 , data);
+	}
+	else {
+		callback(er1 , data1);
+	}
+
 }
 
 exports.find = find;
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+function getAirports (){
+
+}
