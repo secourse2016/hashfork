@@ -23,6 +23,20 @@ module.exports = function(app) {
 		app.use(function(req, res, next) {
 
 
+			var token = req.body.wt || req.query.wt || req.headers['x-access-token'];
+
+			var secret = process.env.JWTSECRET;
+
+			try
+      {
+        var payload = jwt.verify(token, secret);
+        req.payload = payload;
+        next();
+      }
+      catch (err)
+      {
+        res.status(403).sendFile(path.join(__dirname, '../public', '403.html'));
+      }
 
 
 			});
