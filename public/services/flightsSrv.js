@@ -72,6 +72,15 @@ App.factory('FlightsSrv', function ($http) {
          ,
          getCost:function(){
           return this.cost;
+         },
+         getFlight:function(){
+          return this.booking.flight;
+         },
+         setOutGoing:function(value){
+          this.booking.flight.outgoing=value;
+         },
+         setReturningFlight:function(value){
+          this.booking.flight.return=value;
          }
 
      };

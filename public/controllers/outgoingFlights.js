@@ -42,6 +42,7 @@ $scope.goToTop = function() {
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
+ 	FlightsSrv.setOutgoing($scope.selectedFlight);
  	var returning = FlightsSrv.isReturn();
  	if(returning === true){
  		$location.url('/returnflights');

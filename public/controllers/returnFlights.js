@@ -36,7 +36,7 @@ $scope.goToTop = function() {
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
- 	
+ 		FlightsSrv.setReturningFlight($scope.selectedFlight);
  		$location.url('/confirmation');
  	
  };

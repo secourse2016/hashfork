@@ -1,20 +1,22 @@
 App.controller('confirmation', function($scope,FlightsSrv,$location) {
+  var moment = require('moment');
+  var flight = FlightsSrv.getFlight();
   $scope.adultNo = FlightsSrv.getAdults();
   $scope.childNo = FlightsSrv.getChild();
   $scope.babyNo = FlightsSrv.getBaby();
-  $scope.adultPrice = 100;
+  $scope.adultPrice = flight.outgoing.cost+flight.returning.cost;
   $scope.childPrice = 50;
   $scope.babyPrice = 20;
-  $scope.date1 = "31/03/2016";
-  $scope.date2 = "31/03/2016";
-  $scope.date3 = "05/05/2016";
-  $scope.date4 = "06/05/2016";
-  $scope.time1 = "16:20";
-  $scope.time2 = "19:30";
-  $scope.time3 = "23:20";
-  $scope.time4 = "02:20";
-  $scope.from = "Cairo, Egypt";
-  $scope.to = "Dubai, United Arab Emirates";
+  $scope.date1 = moment(flight.outgoing.departureDateTime).format('MM-DD-YYYY');
+  $scope.date2 = moment(flight.outgoing.arrivalDateTime).format('MM-DD-YYYY');
+  $scope.date3 =  moment(flight.returning.departureDateTime).format('MM-DD-YYYY');
+  $scope.date4 = moment(flight.returning.arrivalDateTime).format('MM-DD-YYYY');
+  $scope.time1 = moment(flight.outgoing.departureDateTime).format('hh:mm');
+  $scope.time2 = moment(flight.outgoing.arrivalDateTime).format('hh:mm');
+  $scope.time3 = moment(flight.returning.departureDateTime).format('hh:mm');
+  $scope.time4 = moment(flight.returning.arrivalDateTime).format('hh:mm');
+  $scope.from = flight.outgoing.origin;
+  $scope.to = flight.outgoing.destination;
   if(FlightsSrv.isReturn() === true){
   $scope.returnFlight = 1;
 }else{
