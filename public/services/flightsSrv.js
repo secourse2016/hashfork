@@ -7,7 +7,7 @@ App.factory('FlightsSrv', function ($http) {
            return $http.get('/api/airports');
          },
          searchOurAirlineRound: function(){
-
+            return $http.get('/api/flights/search/'+this.from+'/'+this.to+'/'+this.departDate+'/'+this.returnDate+'/'+this.class+'')
          },
          getClass:function(){
           return this.class;

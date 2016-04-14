@@ -166,13 +166,13 @@
                         <br>
                              <h4>choose class:</h4>
                         <div class="radio-inline" >
-                            <label><input type="radio" ng-required="true" name="optradio">Economy</label>
+                            <label><input type="radio" ng-model="class" ng-required="true" name="optradio" value="economy">Economy</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio"  ng-required="true" name="optradio">Business</label>
+                            <label><input type="radio" ng-model="class" ng-required="true" name="optradio" value="business">Business</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" ng-required="true" name="optradio" >First</label>
+                            <label><input type="radio" ng-model="class" ng-required="true" name="optradio" value="first">First</label>
                         </div>
                         <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary" ng-click="goToNextPage()" ng-disabled="buttons.$invalid">View Flights</button>
                         </div>
