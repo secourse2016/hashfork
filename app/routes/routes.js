@@ -15,6 +15,7 @@ module.exports = function(app) {
 	console.log("request reeceived");
         res.sendfile('./public/index.html');
     });
+   
 };
 
 
