@@ -1,5 +1,5 @@
 var  express =require('express');
-//var db=require('../db');
+var db=require('../db');
 module.exports = function(app) {
 
 	app.get('/api/airports',function(req,res){
@@ -30,18 +30,18 @@ module.exports = function(app) {
 			});
 		});
 
-		app.use(function(req, res, next) {
-		});
+		//app.use(function(req, res, next) {
+		//});
 		
-		app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res){
-				console.log("wala");
-			db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
+		app.get('/api/flights/search/:origin/:destination/:departureDateTime/:arrivalDateTime/:class', function(req, res){
+				
+			db.find(req.params.origin,req.params.destination,req.params.departureDateTime,req.params.class,function(err,data){
                       res.send(data);
-			},req.params.returningDate);
+			},req.params.arrivalDateTime);
 		});
-	app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
+	app.get('/api/flights/search/:origin/:destination/:departureDateTime/:class', function(req, res) {
 
-		db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
+		db.find(req.params.origin,req.params.destination,req.params.departureDateTime,req.params.class,function(err,data){
 			res.send(data);
 		});
 	});
