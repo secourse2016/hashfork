@@ -38,19 +38,27 @@ module.exports = function(app) {
 		/* Middlewear for securing the APIs */
 
 		app.use(function(req, res, next) {
+
+			//Handling the undefined condition of thrown
 			try {
+
 			var token = req.headers['x-access-token'];
+
+
 		} catch (err) {
-			console.log(5);
+
 			res.status(403).sendFile(path.join(__dirname, '../../public', '/partials/403.html'));
 			app.use(express.static('public'));
-				console.log(6);
+
 
 		}
-			//var token = "eyJ0eXAiOiJKhV1QiLdsdfsdfewdsCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYxODM2NiwiZXhwIjoxNDkyMTU0NjA1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IiLCJhZG1pbiI6InRydWUifQ.G3aktpbPm_JOat4L8eDlj5ASuKc_VJnkBly0u8hA_08"
+
 			var secret = process.env.JWTSECRET;
+
 			//Trying to verify, if failed throws an error.
-			if(token) {
+
+
+
 			try
 			{
 				var payload = jwt.verify(token, secret);
@@ -60,19 +68,14 @@ module.exports = function(app) {
 			}
 			catch (err)
 			{
-				console.log(5);
+
 				res.status(403).sendFile(path.join(__dirname, '../../public', '/partials/403.html'));
 				app.use(express.static('public'));
-					console.log(6);
+
 
 			}
 
-		} else {
 
-			console.log(5);
-			res.status(403).sendFile(path.join(__dirname, '../../public', '/partials/403.html'));
-				console.log(6);
-		}
 
 
 			});
