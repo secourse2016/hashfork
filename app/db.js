@@ -5,7 +5,6 @@ var Airports = require('../airports.json');
 var Flights = require('../flights.json');
 
 
-
 exports.connect = function(cb) {
     return mongo.connect(dbURL, function(err, db) {
         if (err) return cb(err);
@@ -14,6 +13,7 @@ exports.connect = function(cb) {
         cb(null, db);
     });
 };
+
 
 
 
@@ -40,10 +40,29 @@ function seed(cb) {
         if (docs.length > 0)
             cb(null, false);
         else {
-            db.db().collection('Flights').insertMany(Flights, function (err) { 
+            db.db().collection('Flights').insert	Many(Flights, function (err) { 
                 if (err) return cb(err);
                 cb(null, true);
             });
         }
     });
 }
+
+exports.db = function() {
+    if (DB === null) throw Error('DB Object has not yet been initialized');
+    return DB;
+};
+
+exports.close = function(){
+	db.close();
+};
+
+exports.clearDB = function(done) {
+    DB.listCollections().toArray().then(function (collections) {
+        collections.forEach(function (c) {
+            DB.collection(c.name).removeMany();   
+        });
+        done();
+    }).catch(done);
+};
+
