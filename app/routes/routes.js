@@ -17,15 +17,24 @@ module.exports = function(app) {
         res.sendfile('./public/index.html');
     });
 	app.get('/db/seed', function(req, res) {
-		db.seed(function(res,err){
+		db.seed(function (res, err) {
 
 		});
+	});
 		app.get('/db/delete', function(req, res) {
 			db.clearDB(function(res,err){
 
 			});
 		});
-	});
+		app.use(function(req, res, next) {
+		});
+		app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res){
+
+			db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
+                      res.js(data);
+			},req.params.returningDate);
+		});
+
 
 
 
