@@ -3,7 +3,10 @@ var DB = null;
 var dbURL = 'mongodb://localhost:27017/klm';
 var Airports = require('../airports.json');
 var Flights = require('../flights.json');
+seed(function(){
 
+
+});
 
 exports.connect = function(cb) {
     return mongo.connect(dbURL, function(err, db) {
@@ -16,7 +19,7 @@ exports.connect = function(cb) {
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------
-var seed = function (cb) {
+function seed(cb) {
 	exports.connect(function(err,DB){
    DB.collection('Airports').find().toArray(function (err, docs) {
         if (err) return cb(err);
