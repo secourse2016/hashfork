@@ -7,7 +7,10 @@ module.exports = function(app) {
 
 	// Unsecured Part
 
-
+	app.get('/api/airports',function(req,res){
+		var airports =  require('../../airports.json');
+		res.json(airports);
+	});
 
 	app.get('/api/flights',function(req,res){
 		var flights =  require('../../dummydata/flights.json');
@@ -86,10 +89,7 @@ module.exports = function(app) {
 			},req.params.returningDate);
 		});*/
 
-		app.get('/api/airports',function(req,res){
-			var airports =  require('../../airports.json');
-			res.json(airports);
-		});
+
 
 
 };
