@@ -14,13 +14,6 @@ exports.connect = function(cb) {
     });
 };
 
-
-
-
-
-
-
-
 //----------------------------------------------------------------------------------------------------------------------------------------
 function seed(cb) {
    DB.collection('Airports').find().toArray(function (err, docs) {
@@ -40,7 +33,7 @@ function seed(cb) {
         if (docs.length > 0)
             cb(null, false);
         else {
-            db.db().collection('Flights').insert	Many(Flights, function (err) { 
+            db.db().collection('Flights').insertMany(Flights, function (err) { 
                 if (err) return cb(err);
                 cb(null, true);
             });
@@ -66,3 +59,4 @@ exports.clearDB = function(done) {
     }).catch(done);
 };
 
+exports.seed = seed;
