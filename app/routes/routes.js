@@ -18,15 +18,17 @@ module.exports = function(app) {
     });
 
 	app.get('/db/seed', function(req, res) {
-		db.seed(function (res, err) {
+
+		db.seed(function (err, seeded) {
 
 		});
 
 	});
 
 		app.get('/db/delete', function(req, res) {
-			db.clearDB(function(res,err){
-
+			db.clearDB(function(){
+				var airports =  require('../../airports.json');
+				res.json(airports);
 			});
 		});
 
