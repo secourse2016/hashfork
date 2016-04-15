@@ -78,7 +78,7 @@
      
      
     function find(orig , dest , deptDate , class1 , callback , retDate){
-        console.log(orig);
+        
         connect(function(err,DB){
         var data={
      
@@ -105,8 +105,6 @@
                     callback(er1|| er2 , data);
      
             });
-     
-                    //console.log(data.returnFlights);
      
         }else {
      

@@ -43,48 +43,48 @@ module.exports = function(app) {
 		
 		/* Middlewear for securing the APIs */
 
-		// app.use(function(req, res, next) {
+		app.use(function(req, res, next) {
 
-		// 	//Handling the undefined condition of thrown error
+			//Handling the undefined condition of thrown error
 
-		// 	try {
+			try {
 
-		// 	//Checking only on GET
+			//Checking only on GET
 
-		// 	var token = req.headers['x-access-token'];
-
-
-		// } catch (err) {
-
-		// 	//res.status(403).send("403: Forbidden");
-		// 	res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'))
-		// 	app.use(express.static('public'));
+			var token = req.headers['x-access-token'];
 
 
-		// }
+		} catch (err) {
 
-		// 	var secret = process.env.JWTSECRET;
-
-		// 	//Trying to verify, if failed throws an error.
-
-		// 	try
-		// 	{
-		// 		var payload = jwt.verify(token, secret);
-		// 		req.payload = payload;
-		// 		next();
-		// 	}
-		// 	catch (err)
-		// 	{
-
-		// 		//res.status(403).send("403: Forbidden");
-		// 		res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'));
-		// 		app.use(express.static('public'));
+			//res.status(403).send("403: Forbidden");
+			res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'))
+			app.use(express.static('public'));
 
 
-		// 	}
+		}
+
+			var secret = process.env.JWTSECRET;
+
+			//Trying to verify, if failed throws an error.
+
+			try
+			{
+				var payload = jwt.verify(token, secret);
+				req.payload = payload;
+				next();
+			}
+			catch (err)
+			{
+
+				//res.status(403).send("403: Forbidden");
+				res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'));
+				app.use(express.static('public'));
 
 
-		// 	});
+			}
+
+
+			});
 
 
 
