@@ -78,6 +78,7 @@
      
      
     function find(orig , dest , deptDate , class1 , callback , retDate){
+        console.log(orig);
         connect(function(err,DB){
         var data={
      
