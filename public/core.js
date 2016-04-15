@@ -48,6 +48,8 @@ App.config(function($routeProvider) {
             templateUrl:'/partials/contact.html'
         }).when('/about',{
             templateUrl:'/partials/aboutklm.html'
+        }).when('/403',{
+            templateUrl:'/partials/403.html'
         }).otherwise({
             templateUrl:'/partials/error.html'
         });
