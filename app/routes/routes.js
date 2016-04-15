@@ -1,4 +1,4 @@
-var  express =require('express');
+
 var db=require('../db');
 module.exports = function(app) {
 
@@ -8,7 +8,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/api/flights',function(req,res){
-		var flights =  require('../../dummydata/flights.json');
+		var flights =  require('../../flights.json');
 		res.json(flights);
 	});
 	app.get('/', function(req, res) {
