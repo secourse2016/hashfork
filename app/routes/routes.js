@@ -4,7 +4,7 @@ module.exports = function(app) {
 	var jwt = require('jsonwebtoken');
 	var path = require('path');
 	var express = require('express');
-
+	var db = require('../db');
 	// Unsecured Part
 
 	app.get('/api/airports',function(req,res){
@@ -29,16 +29,18 @@ module.exports = function(app) {
 
 
 	app.get('/db/seed', function(req, res) {
-		db.seed(function (res, err) {
+
+		db.seed(function (err, seeded) {
 
 		});
 	});
 		app.get('/db/delete', function(req, res) {
-			db.clearDB(function(res,err){
-
+			db.clearDB(function(){
+				var airports =  require('../../airports.json');
+				res.json(airports);
 			});
 		});
-
+		
 		/* Middlewear for securing the APIs */
 
 		app.use(function(req, res, next) {
@@ -93,12 +95,11 @@ module.exports = function(app) {
 			},req.params.returningDate);
 		});
 
-	app.get('/api/flights/search/:origin/:departingDate/:class', function(req, res) {
+	app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
 
 		db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
 			res.send(data);
 		});
 	});
 
-
-};
+}
