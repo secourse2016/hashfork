@@ -1,4 +1,4 @@
-var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute']);
+var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute','angularMoment']);
 
 /**
  * Angular Routes

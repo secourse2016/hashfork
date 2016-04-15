@@ -2,24 +2,41 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 	$scope.flights = [];
 	$scope.from = FlightsSrv.getFrom().name;
 	$scope.to = FlightsSrv.getTo().name;
+	$scope.dateFrom=[];
+	$scope.dateTo=[];
+	$scope.timeFrom=[];
+	$scope.timeTo=[];
 	$scope.scrollTo = function(div) {
     $location.hash(div);
     $anchorScroll();
 	};
 	console.log(FlightsSrv.getClass());
+	function time(){
+			for(var i=0;i<$scope.flights.length;i++){
+				$scope.dateFrom.push(moment($scope.flights[i].departureDateTime).format('YYYY-MM-DD'));
+				$scope.dateTo.push(moment($scope.flights[i].arrivalDateTime).format('YYYY-MM-DD'));
+				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
+				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
+				}	
+
+	}
 	function getOutgoingFlights(){
 		if(FlightsSrv.isReturn()){
 			FlightsSrv.searchOurAirlineRound().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
-				console.log(flight);
+				time();
+				
 			});
 		}else{
 			FlightsSrv.searchOurAirline().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
-				console.log(flight);
+				time();
+				
 			});
 		}
+		
 	};
+
 	
 
 var pagesShown = 1;
