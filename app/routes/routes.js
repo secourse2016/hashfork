@@ -17,6 +17,7 @@ module.exports = function(app) {
 		res.json(flights);
 	});
 
+
 	app.get('/', function(req, res) {
 	console.log("request received");
 
@@ -53,7 +54,8 @@ module.exports = function(app) {
 
 		} catch (err) {
 
-			res.status(403).send("403: Forbidden");
+			//res.status(403).send("403: Forbidden");
+			res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'))
 			app.use(express.static('public'));
 
 
@@ -72,7 +74,8 @@ module.exports = function(app) {
 			catch (err)
 			{
 
-				res.status(403).send("403: Forbidden");
+				//res.status(403).send("403: Forbidden");
+				res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'));
 				app.use(express.static('public'));
 
 
@@ -96,7 +99,6 @@ module.exports = function(app) {
 			res.send(data);
 		});
 	});
-
 
 
 };
