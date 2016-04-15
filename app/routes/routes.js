@@ -13,7 +13,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/api/flights',function(req,res){
-		var flights =  require('../../dummydata/flights.json');
+		var flights =  require('../../flights.json');
 		res.json(flights);
 	});
 
@@ -27,7 +27,7 @@ module.exports = function(app) {
 		app.use(express.static('public'));
 
 
-/*	app.get('/db/seed', function(req, res) {
+	app.get('/db/seed', function(req, res) {
 		db.seed(function (res, err) {
 
 		});
@@ -36,14 +36,17 @@ module.exports = function(app) {
 			db.clearDB(function(res,err){
 
 			});
-		});*/
+		});
 
 		/* Middlewear for securing the APIs */
 
 		app.use(function(req, res, next) {
 
-			//Handling the undefined condition of thrown
+			//Handling the undefined condition of thrown error
+
 			try {
+
+			//Checking only on GET
 
 			var token = req.headers['x-access-token'];
 
@@ -59,8 +62,6 @@ module.exports = function(app) {
 			var secret = process.env.JWTSECRET;
 
 			//Trying to verify, if failed throws an error.
-
-
 
 			try
 			{
@@ -78,17 +79,23 @@ module.exports = function(app) {
 			}
 
 
-
-
 			});
 
-	/*	app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res){
+
+
+	app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res){
 
 			db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
                       res.send(data);
 			},req.params.returningDate);
-		});*/
+		});
 
+	app.get('/api/flights/search/:origin/:departingDate/:class', function(req, res) {
+
+		db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
+			res.send(data);
+		});
+	});
 
 
 

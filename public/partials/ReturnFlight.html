@@ -3,7 +3,7 @@
 <!-- <<<<<<< HEAD
     <img src="/images/head.jpg" class="img-responsive" style='  margin: 0 auto; object-fit: contain'>
 ======= -->
-    <img src="/images/head.jpg" class="img-responsive" style='  margin: 0 auto; object-fit: contain'> 
+    <img src="/images/head.jpg" class="img-responsive" style='  margin: 0 auto; object-fit: contain'>
 <!-- >>>>>>> origin/dev2 -->
     <br><br>
   </div>
@@ -56,11 +56,11 @@
     </div>
   </div>
 
-  
+
     <br>
     <br>
     <br>
-  
+
 
 
   <div class = "row" id="fromTo" position:relative;  >
@@ -68,16 +68,16 @@
     <div class="col-md-1">
       <img src="./images/returnflight.png" class="img-responsive"width="60" height="60" >
     </div>
-    
+
     <div class="col-md-3">
-      <p style = " font-size:250%;  height:150%; color:#0D4F8B;"> 
-        From : <span style="color:#1C86EE ">{{from}}</span> 
+      <p style = " font-size:250%;  height:150%; color:#0D4F8B;">
+        From : <span style="color:#1C86EE ">{{from}}</span>
       </p>
     </div>
 
       <div class="col-md-1"></div>
       <div class="col-md-3">
-        <p style = "font-size:250%;  height:150%; color:#0D4F8B;"> 
+        <p style = "font-size:250%;  height:150%; color:#0D4F8B;">
  --><!-- >>>>>>> origin/dev2 -->
          To : <span style="color:#1C86EE">{{to}} </span>
         </p>
@@ -96,7 +96,7 @@
       <div class="stylingOfEachFlight" style=" font-size:150%;">
         <div class = "row">
 
-          <div class="col-md-1 col-xs-1"><input type="radio" ng-required="true" name="chosen" value = "" style="height:35px; width:35px; vertical-align: middle;" required></div>
+          <div class="col-md-1 col-xs-1"><input type="radio" ng-required="true" name="chosen" ng-model="selectedFlight"  value = "{{$scope.flight}}" style="height:35px; width:35px; vertical-align: middle;" required></div>
           <div class="col-md-1 col-xs-1" ><h4><strong>Date</strong></h4></div>
           <div class="col-md-2 col-xs-2"></div>
           <div class="col-md-1 col-xs-1"><h4><strong>Time</strong></h4></div>
@@ -110,19 +110,19 @@
           <div class="col-md-2 col-xs-2"></div>
           <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.timeFrom | date}}</div>
           <div class="col-md-2 col-xs-2"></div>
-          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.from}}</div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.origin}}</div>
 <!-- =======
-   
-   <div class = "row"> <br> <br>  </div>
-    
 
-    
+   <div class = "row"> <br> <br>  </div>
+
+
+
     <li ng-repeat="flight in flights | limitTo: paginationLimit()">
-      
+
       <div class = "row"> <br> <br>  </div>
       <div class="stylingOfEachFlight" style=" font-size:150%;">
         <div class = "row">
-          
+
           <div class="col-md-1"><input type="radio" ng-required="true" name="chosen" value = "" style="height:35px; width:35px; vertical-align: middle;" required></div>
           <div class="col-md-1" ><h4><strong>Date</strong></h4></div>
           <div class="col-md-2"></div>
@@ -158,15 +158,15 @@
           <div class="col-md-2 col-xs-2"></div>
           <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.timeTo | date }}</div>
           <div class="col-md-2 col-xs-2"></div>
-          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.to}}</div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.destination}}</div>
 
         </div>
 
         <div class = "row" style="color:#1464F4">
           <div class="col-md-1 col-xs-1"></div>
-          <div class="col-md-2 col-xs-2"><h4><strong>Duration : </strong></h4></div>
+          <!-- <div class="col-md-2 col-xs-2"><h4><strong>Duration : </strong></h4></div>
           <div class="col-md-1 col-xs-1" >{{flight.duartion}}</div>
-          <div class="col-md-3 col-xs-3"></div>
+          <div class="col-md-3 col-xs-3"></div> -->
           <div class="col-md-2 col-xs-2"><h4><strong>Cost : </strong></h4></div>
           <div class="col-md-1 col-xs-1">{{flight.cost | currency}}</div>
 <!-- =======
@@ -185,7 +185,7 @@
           <div class="col-md-1"style="color:#0D4F8B; ">{{flight.timeTo | date }}</div>
           <div class="col-md-2"></div>
           <div class="col-md-1"style="color:#0D4F8B; ">{{flight.to}}</div>
-              
+
         </div>
 
         <div class = "row" style="color:#1464F4">
@@ -215,15 +215,15 @@
       <div class="col-md-10">
           <button style=" width:100%;; " type="button" class="btn btn-primary btn-lg btn-block" ng-click="goToTop();">To top of Page</button>
 <!-- =======
-    
+
 </form>
 
-  <div class="row" id="bottomOfPage" position:relative;>  
-    <div class="col-md-1"></div>  
+  <div class="row" id="bottomOfPage" position:relative;>
+    <div class="col-md-1"></div>
     <div class="col-md-4">
       <button style="width:1000px; margin-left:6%; f" type="button" class="btn btn-default btn-lg btn-block" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">Show more</button>
     </div>
-      <div class="row"></div> 
+      <div class="row"></div>
       <div class="col-md-1"></div>
       <div class="col-md-4">
           <button style=" width:1000px; margin-left:6%; " type="button" class="btn btn-primary btn-lg btn-block" ng-click="goToTop();">To top of Page</button>
@@ -240,10 +240,10 @@
 
   <div class = "row"> <br> <br> <br> <br> <br> <br> <br></div>
 =======
-  
+
      -->
-  
+
 
   <div class = "row"> <br> <br> <br> <br></div>
-  
+
 <!-- >>>>>>> origin/dev2 -->

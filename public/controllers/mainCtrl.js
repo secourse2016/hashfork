@@ -4,6 +4,11 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         $scope.Airports=[];
         
          $scope.goToNextPage=function(){
+            if($scope.dt2){
+            FlightsSrv.setReturning($scope.dt2);
+            }
+            FlightsSrv.setClass($scope.class);
+            FlightsSrv.setDepart($scope.dt);
            FlightsSrv.setAdults($scope.adults);
            FlightsSrv.setChild($scope.child);
            FlightsSrv.setBaby($scope.baby);
