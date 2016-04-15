@@ -10,7 +10,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         };
          $scope.goToNextPage=function(){
             if(FlightsSrv.isReturn()){
-            FlightsSrv.setReturning(1461255900000);
+            FlightsSrv.setReturning(1461342300000);
             }
            
             FlightsSrv.setClass($scope.class);

@@ -6,6 +6,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 	$scope.dateTo=[];
 	$scope.timeFrom=[];
 	$scope.timeTo=[];
+	$scope.selectedFlight={};
 	$scope.scrollTo = function(div) {
     $location.hash(div);
     $anchorScroll();
@@ -17,13 +18,15 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				$scope.dateTo.push(moment($scope.flights[i].arrivalDateTime).format('YYYY-MM-DD'));
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
 				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
-				}	
+				}
+				$scope.selectedFlight=$scope.flights[0];	
 
 	}
 	function getOutgoingFlights(){
 		if(FlightsSrv.isReturn()){
 			FlightsSrv.searchOurAirlineRound().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
+				FlightsSrv.setReturningFlight(flight.returnFlights);
 				time();
 				
 			});
@@ -61,6 +64,7 @@ $scope.goToTop = function() {
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
+ 	console.log($scope.selectedFlight);
  	FlightsSrv.setOutGoing($scope.selectedFlight);
  	var returning = FlightsSrv.isReturn();
  	if(returning === true){
