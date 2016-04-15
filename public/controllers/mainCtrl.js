@@ -1,14 +1,15 @@
 App.controller('mainController', function ($scope,FlightsSrv, $location) {
         //$scope.pageClass = 'page-home';
-
-        $scope.Airports=[];
         
+        $scope.Airports=[];
+        FlightsSrv.setBooking();
          $scope.goToNextPage=function(){
-            if($scope.dt2){
-            FlightsSrv.setReturning($scope.dt2);
+            if(FlightsSrv.isReturn()){
+            FlightsSrv.setReturning(1460478300000);
             }
+            console.log(moment($scope.dt).fromNow());
             FlightsSrv.setClass($scope.class);
-            FlightsSrv.setDepart($scope.dt);
+            FlightsSrv.setDepart(1460478300000);
            FlightsSrv.setAdults($scope.adults);
            FlightsSrv.setChild($scope.child);
            FlightsSrv.setBaby($scope.baby);

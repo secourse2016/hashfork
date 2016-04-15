@@ -5,8 +5,8 @@ App.controller('confirmation', function($scope,FlightsSrv,$location) {
   $scope.childNo = FlightsSrv.getChild();
   $scope.babyNo = FlightsSrv.getBaby();
   $scope.adultPrice = flight.outgoing.cost+flight.returning.cost;
-  $scope.childPrice = 50;
-  $scope.babyPrice = 20;
+  $scope.childPrice = (flight.outgoing.cost+flight.returning.cost)/2;
+  $scope.babyPrice = (flight.outgoing.cost+flight.returning.cost)/4;
   $scope.date1 = moment(flight.outgoing.departureDateTime).format('MM-DD-YYYY');
   $scope.date2 = moment(flight.outgoing.arrivalDateTime).format('MM-DD-YYYY');
   $scope.date3 =  moment(flight.returning.departureDateTime).format('MM-DD-YYYY');

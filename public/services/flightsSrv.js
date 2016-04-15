@@ -6,10 +6,16 @@ App.factory('FlightsSrv', function ($http) {
            return $http.get('/api/airports');
          },
          searchOurAirlineRound: function(){
-            return $http.get('/api/flights/search/'+this.from+'/'+this.to+'/'+this.departDate+'/'+this.returnDate+'/'+this.class+'');
+            console.log('/api/flights/search/'+this.from.iata+'/'+this.to.iata+'/'+this.departDate+'/'+this.returnDate+'/'+this.class+'');
+            return $http.get('/api/flights/search/'+this.from.iata+'/'+this.to.iata+'/'+this.departDate+'/'+this.returnDate+'/'+this.class+'', {
+        "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+      });
          },
          searchOurAirline: function(){
-            return $http.get('/api/flights/search/'+this.from+'/'+this.to+'/'+this.departDate+'/'+this.class+'');
+          console.log('/api/flights/search/'+this.from.iata+'/'+this.to.iata+'/'+this.departDate+'/'+this.class+'');
+            return $http.get('/api/flights/search/'+this.from.iata+'/'+this.to.iata+'/'+this.departDate+'/'+this.class+'', {
+        "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+      });
          },
          getClass:function(){
           return this.class;
@@ -79,6 +85,9 @@ App.factory('FlightsSrv', function ($http) {
          },
          setReturningFlight:function(value){
           this.booking.flight.return=value;
+         },
+         setBooking:function(){
+           this.booking={};
          }
 
      };

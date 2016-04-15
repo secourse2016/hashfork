@@ -11,10 +11,12 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 		if(FlightsSrv.isReturn()){
 			FlightsSrv.searchOurAirlineRound().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
+				console.log(flight);
 			});
 		}else{
 			FlightsSrv.searchOurAirline().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
+				console.log(flight);
 			});
 		}
 	};
@@ -42,7 +44,7 @@ $scope.goToTop = function() {
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
- 	FlightsSrv.setOutgoing($scope.selectedFlight);
+ 	FlightsSrv.setOutGoing($scope.selectedFlight);
  	var returning = FlightsSrv.isReturn();
  	if(returning === true){
  		$location.url('/returnflights');
