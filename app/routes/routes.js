@@ -17,7 +17,6 @@ module.exports = function(app) {
 		res.json(flights);
 	});
 
-
 	app.get('/', function(req, res) {
 	console.log("request received");
 
@@ -26,20 +25,20 @@ module.exports = function(app) {
 		});
 
 		app.use(express.static('public'));
-
-
-	app.get('/db/seed', function(req, res) {
+		app.get('/db/seed', function(req, res) {
 		db.seed(function (res, err) {
 
 		});
+
 	});
+
 		app.get('/db/delete', function(req, res) {
 			db.clearDB(function(res,err){
 
 			});
 		});
 
-		/* Middlewear for securing the APIs */
+		/* Middleware for securing the APIs */
 
 		app.use(function(req, res, next) {
 
@@ -66,25 +65,23 @@ module.exports = function(app) {
 			//Trying to verify, if failed throws an error.
 
 			try
+
 			{
+
 				var payload = jwt.verify(token, secret);
 				req.payload = payload;
 				next();
+
 			}
 			catch (err)
 			{
-
 				//res.status(403).send("403: Forbidden");
 				res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'));
 				app.use(express.static('public'));
 
-
 			}
 
-
 			});
-
-
 
 	app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class', function(req, res){
 
@@ -99,6 +96,5 @@ module.exports = function(app) {
 			res.send(data);
 		});
 	});
-
 
 };
