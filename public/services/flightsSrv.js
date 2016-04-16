@@ -88,6 +88,7 @@ App.factory('FlightsSrv', function ($http) {
          },
          setBooking:function(){
            this.booking={};
+           this.booking.flight={};
          }
 
      };

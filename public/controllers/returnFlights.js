@@ -20,6 +20,7 @@ App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchor
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
 				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
 				};
+				$scope.selectedFlight=$scope.flights[0];
 			
 	};
 

@@ -5,16 +5,16 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         FlightsSrv.setBooking();
         function changeTime(value){
             var date=moment(value).format('YYYY-MM-DD');
-            var datetime=moment(date+' 12:25 AM','YYYY-MM-DD hh:mm A').toDate().getTime();
+            var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
             return datetime;
         };
          $scope.goToNextPage=function(){
             if(FlightsSrv.isReturn()){
-            FlightsSrv.setReturning(1461342300000);
+            FlightsSrv.setReturning(changeTime(moment($scope.dt2).toDate().getTime()));
             }
-           
+           console.log(changeTime(moment($scope.dt).toDate().getTime()));
             FlightsSrv.setClass($scope.class);
-            FlightsSrv.setDepart(1461342300000);
+            FlightsSrv.setDepart(changeTime(moment($scope.dt).toDate().getTime()));
            FlightsSrv.setAdults($scope.adults);
            FlightsSrv.setChild($scope.child);
            FlightsSrv.setBaby($scope.baby);
