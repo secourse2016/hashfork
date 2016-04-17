@@ -4,13 +4,10 @@
      "type": "git",
      "url" : "http://github.com/secourse2016/hashfork"
    },
-   "directories": {
-    "test": "test"
-  },
-  "scripts": {
-    "test": "mocha",
-    "start": "node server.js",
-    "coverage":"./node_modules/.bin/istanbul cover _mocha -- -R spec"
+   "scripts": {
+    "start": "nodemon server.js", 
+    "test": "./node_modules/mocha/bin/mocha ./test/test.js",
+    "coverage": "istanbul cover ./test/quote.js"
   },
    "dependencies": {
      "body-parser" : "*", 
@@ -22,6 +19,7 @@
      "moment"      : "*",
      "mocha"		:"*",
      "chai"			: "*",
-     "supertest"	: "*"
+     "supertest"	: "*",
+     "nodemon" :"*"
      }
  }
