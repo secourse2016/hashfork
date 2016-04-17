@@ -13,11 +13,11 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
          $scope.goToNextPage=function(){
             FlightsSrv.setOtherAirlines($scope.otherAirlines);
             if(FlightsSrv.isReturn()){
-            FlightsSrv.setReturning(moment($scope.dt2).toDate().getTime());
+            FlightsSrv.setReturning(changeTime(moment($scope.dt2).toDate().getTime()));
             }
            console.log(moment($scope.dt).toDate().getTime());
             FlightsSrv.setClass($scope.class);
-            FlightsSrv.setDepart(moment($scope.dt).toDate().getTime());
+            FlightsSrv.setDepart(changeTime(moment($scope.dt).toDate().getTime()));
            FlightsSrv.setAdults($scope.adults);
            FlightsSrv.setChild($scope.child);
            FlightsSrv.setBaby($scope.baby);
