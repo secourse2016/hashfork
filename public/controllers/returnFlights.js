@@ -13,7 +13,7 @@ App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchor
 	};
 	function getReturning(){
 		
-				$scope.flights =FlightsSrv.getFlight().return;
+				$scope.flights =FlightsSrv.getFlight().returnFlights;
 				for(var i=0;i<$scope.flights.length;i++){
 				$scope.dateFrom.push(moment($scope.flights[i].departureDateTime).format('YYYY-MM-DD'));
 				$scope.dateTo.push(moment($scope.flights[i].arrivalDateTime).format('YYYY-MM-DD'));

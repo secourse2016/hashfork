@@ -3,6 +3,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         
         $scope.Airports=[];
         FlightsSrv.setBooking();
+        $scope.class='economy'
         function changeTime(value){
             var date=moment(value).format('YYYY-MM-DD');
             var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();

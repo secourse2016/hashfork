@@ -78,7 +78,7 @@
      
      
     function find(orig , dest , deptDate , class1 , callback , retDate){
-        
+        // deptDate=deptDate/86400000;
         connect(function(err,DB){
         var data={
      
@@ -118,11 +118,12 @@
      
     }
     //----------------------------------------------------------------------------------------------------------------------------------------
-    //insert({"reference": "Marawan Mohsen 30"});
+    // insert({"reference": "Marawan Mohsen 30"});
      
-     function insert(booking){
-        connect(function(err,DB){
+     function insert(booking,cb){
+        connect(function(err,DB){console.log(booking);
             DB.collection('Bookings').insert(booking);
+            cb();
         });
      
      }

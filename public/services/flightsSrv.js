@@ -84,14 +84,27 @@ App.factory('FlightsSrv', function ($http) {
           return x.booking.flight;
          }
          x.setOutGoing=function(value){
-          x.booking.flight.outgoing=value;
+          x.booking.flight.outgoingFlights=value;
          }
          x.setReturningFlight=function(value){
-          x.booking.flight.return=value;
+          x.booking.flight.returnFlights=value;
          }
          x.setBooking=function(){
            x.booking={};
            x.booking.flight={};
+
+         }
+         x.getBookingFromDb=function(ref){
+          return  $http.get('/api/booking/'+ref+'', {
+        "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+      });
+         }
+         x.postBooking=function(ref){
+          x.booking.reference=ref;
+          return $http.post('api/booking',{
+            'booking':x.booking},{
+        "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+      });
          }
              x.getDataFromAllCompanies2=function(idx,cb) {
                  if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
@@ -101,7 +114,7 @@ App.factory('FlightsSrv', function ($http) {
       }).success(function (res) {
                          allC.push(res);
                          
-                         x.getDataFromAllCompanies2(idx + 1,cb);
+                    x.getDataFromAllCompanies2(idx + 1,cb);
                      }).error(function(data){
                          x.getDataFromAllCompanies2(idx + 1,cb);
                      });

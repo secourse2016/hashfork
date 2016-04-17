@@ -4,12 +4,9 @@ App.controller('bookingCtrl',function($scope,FlightsSrv,$location){
 	$scope.bookingref=generateCode();
 	var found = false;
 	// while(!found){
-	// 	FlightsSrv.getBooking($scope.bookingref).success(function(data){
-	// 		if(!data){
-	// 			found=true;
-	// 		}else{
-	// 			$scope.bookingref=generateCode();
-	// 		}
+	// 	FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
+	// 		console.log(data);
+	// 		found=true;
 	// 	});
 	// } 
 	
@@ -22,7 +19,7 @@ App.controller('bookingCtrl',function($scope,FlightsSrv,$location){
   };
   $scope.goNext=function(){
   	// FlightsSrv.setBookingRef($scope.bookingref);
-  	// FlightsSrv.postBooking();
+  	FlightsSrv.postBooking($scope.bookingref);
     $location.url('/payment');
   };
   function generateCode(){

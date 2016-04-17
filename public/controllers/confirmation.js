@@ -4,19 +4,19 @@ App.controller('confirmation', function($scope,FlightsSrv,$location) {
   $scope.adultNo = FlightsSrv.getAdults();
   $scope.childNo = FlightsSrv.getChild();
   $scope.babyNo = FlightsSrv.getBaby();
-  $scope.adultPrice = Number(flight.outgoing.cost)+Number(flight.return.cost);
+  $scope.adultPrice = Number(flight.outgoingFlights.cost)+Number(flight.returnFlights.cost);
   $scope.childPrice = ($scope.adultPrice)/2;
   $scope.babyPrice = ($scope.adultPrice)/4;
-  $scope.date1 = moment(flight.outgoing.departureDateTime).format('MM-DD-YYYY');
-  $scope.date2 = moment(flight.outgoing.arrivalDateTime).format('MM-DD-YYYY');
-  $scope.date3 =  moment(flight.return.departureDateTime).format('MM-DD-YYYY');
-  $scope.date4 = moment(flight.return.arrivalDateTime).format('MM-DD-YYYY');
-  $scope.time1 = moment(flight.outgoing.departureDateTime).format('hh:mm');
-  $scope.time2 = moment(flight.outgoing.arrivalDateTime).format('hh:mm');
-  $scope.time3 = moment(flight.return.departureDateTime).format('hh:mm');
-  $scope.time4 = moment(flight.return.arrivalDateTime).format('hh:mm');
-  $scope.from = flight.outgoing.origin;
-  $scope.to = flight.outgoing.destination;
+  $scope.date1 = moment(flight.outgoingFlights.departureDateTime).format('MM-DD-YYYY');
+  $scope.date2 = moment(flight.outgoingFlights.arrivalDateTime).format('MM-DD-YYYY');
+  $scope.date3 =  moment(flight.returnFlights.departureDateTime).format('MM-DD-YYYY');
+  $scope.date4 = moment(flight.returnFlights.arrivalDateTime).format('MM-DD-YYYY');
+  $scope.time1 = moment(flight.outgoingFlights.departureDateTime).format('hh:mm');
+  $scope.time2 = moment(flight.outgoingFlights.arrivalDateTime).format('hh:mm');
+  $scope.time3 = moment(flight.returnFlights.departureDateTime).format('hh:mm');
+  $scope.time4 = moment(flight.returnFlights.arrivalDateTime).format('hh:mm');
+  $scope.from = flight.outgoingFlights.origin;
+  $scope.to = flight.outgoingFlights.destination;
   if(FlightsSrv.isReturn() === true){
   $scope.returnFlight = 1;
 }else{
@@ -26,8 +26,8 @@ App.controller('confirmation', function($scope,FlightsSrv,$location) {
   $scope.total = $scope.adultNo*$scope.adultPrice + $scope.childNo*$scope.childPrice + $scope.babyNo*$scope.babyPrice;
   FlightsSrv.setCost($scope.total)
   $scope.goToPrev=function(){
-    var returning = FlightsSrv.isReturn();
-  if(returning === true){
+    var returnFlights = FlightsSrv.isReturn();
+  if(returnFlights === true){
     $location.url('/returnflights');
   }else{
     $location.url('/outgoingflights');
