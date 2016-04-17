@@ -105,9 +105,6 @@ module.exports = function(app) {
 		});
 	});
 
-<<<<<<< HEAD
-}
-=======
 
 	app.get('/api/booking/:ref', function(req, res) {
 		db.findByReference(req.params.ref,function(err,data){
@@ -115,7 +112,7 @@ module.exports = function(app) {
 		});
 
 	});
-	app.post('/api/booking/', function(req, res) {
+	app.post('/api/booking', function(req, res) {
 		if(!req.body.hasOwnProperty('booking') ) {
 			res.statusCode = 400;
 			return res.send('Error 400: Post syntax incorrect.');
@@ -133,5 +130,3 @@ module.exports = function(app) {
 
 
 
-
->>>>>>> 61039d90f27685bb2761511f57228dfbcc9d8768
