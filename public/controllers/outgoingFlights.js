@@ -33,6 +33,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 			FlightsSrv.searchOurAirlineRound().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
 				FlightsSrv.setReturningFlights(flight.returnFlights);
+				console.log(flight.outgoingFlights);
 				time();
 				
 			});
