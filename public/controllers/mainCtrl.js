@@ -2,6 +2,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         //$scope.pageClass = 'page-home';
         
         $scope.Airports=[];
+        $scope.otherAirlines=false;
         FlightsSrv.setBooking();
         $scope.class='economy'
         function changeTime(value){
