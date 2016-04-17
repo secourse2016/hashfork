@@ -96,7 +96,7 @@
       <div class="stylingOfEachFlight" style=" font-size:150%;">
         <div class = "row">
 
-          <div class="col-md-1 col-xs-1"><input type="radio" ng-required="true" name="chosen" ng-model="selectedFlight"  value = "{{$scope.flight}}" style="height:35px; width:35px; vertical-align: middle;" required></div>
+          <div class="col-md-1 col-xs-1"><input type="radio" ng-required="true" name="chosen" ng-model="selectedFlight"  ng-value = "flight" style="height:35px; width:35px; vertical-align: middle;" required></div>
           <div class="col-md-1 col-xs-1" ><h4><strong>Date</strong></h4></div>
           <div class="col-md-2 col-xs-2"></div>
           <div class="col-md-1 col-xs-1"><h4><strong>Time</strong></h4></div>
@@ -106,9 +106,9 @@
 
         <div class = "row">
           <div class="col-md-1 col-xs-1"></div>
-          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.dateFrom | date}}</div>
-          <div class="col-md-2 col-xs-2"></div>
-          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.timeFrom | date}}</div>
+          <div class="col-md-2 col-xs-2"style="color:#0D4F8B; ">{{dateFrom[$index] | date}}</div>
+          <div class="col-md-1 col-xs-1"></div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{timeFrom[$index] | date}}</div>
           <div class="col-md-2 col-xs-2"></div>
           <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.origin}}</div>
 <!-- =======
@@ -154,9 +154,9 @@
 
         <div class = "row">
           <div class="col-md-1 col-xs-1"></div>
-          <div class="col-md-1 col-xs-1" style="color:#0D4F8B; ">{{flight.dateTo | date }}</div>
-          <div class="col-md-2 col-xs-2"></div>
-          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.timeTo | date }}</div>
+          <div class="col-md-2 col-xs-2" style="color:#0D4F8B; ">{{dateTo[$index] | date }}</div>
+          <div class="col-md-1 col-xs-1"></div>
+          <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{timeTo[$index] | date }}</div>
           <div class="col-md-2 col-xs-2"></div>
           <div class="col-md-1 col-xs-1"style="color:#0D4F8B; ">{{flight.destination}}</div>
 
@@ -164,7 +164,7 @@
 
         <div class = "row" style="color:#1464F4">
           <div class="col-md-1 col-xs-1"></div>
-          <!-- <div class="col-md-2 col-xs-2"><h4><strong>Duration : </strong></h4></div>
+         <!--  <div class="col-md-2 col-xs-2"><h4><strong>Duration : </strong></h4></div>
           <div class="col-md-1 col-xs-1" >{{flight.duartion}}</div>
           <div class="col-md-3 col-xs-3"></div> -->
           <div class="col-md-2 col-xs-2"><h4><strong>Cost : </strong></h4></div>

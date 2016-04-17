@@ -2,14 +2,26 @@ App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchor
 	$scope.flights = [];
 	$scope.from = FlightsSrv.getTo().name;
 	$scope.to = FlightsSrv.getFrom().name;
+	$scope.dateFrom=[];
+	$scope.dateTo=[];
+	$scope.timeFrom=[];
+	$scope.timeTo=[];
+	$scope.selectedFlight={};
 	$scope.scrollTo = function(div) {
     $location.hash(div);
     $anchorScroll();
 	};
 	function getReturning(){
-		FlightsSrv.searchOurAirlineRound().success(function(flight){
-				$scope.flights =flight.returningFlights;
-			});
+		
+				$scope.flights =FlightsSrv.getFlight().returnFlights;
+				for(var i=0;i<$scope.flights.length;i++){
+				$scope.dateFrom.push(moment($scope.flights[i].departureDateTime).format('YYYY-MM-DD'));
+				$scope.dateTo.push(moment($scope.flights[i].arrivalDateTime).format('YYYY-MM-DD'));
+				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
+				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
+				};
+				$scope.selectedFlight=$scope.flights[0];
+			
 	};
 
 	
@@ -36,11 +48,13 @@ $scope.goToTop = function() {
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
+
  		FlightsSrv.setReturningFlight($scope.selectedFlight);
  		$location.url('/confirmation');
  	
  };
  $scope.goToPreviousPage=function(){
+ 	
  	$location.url('/outgoingflights');
  }
  getReturning();

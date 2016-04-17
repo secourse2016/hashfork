@@ -16,7 +16,7 @@
      "mongodb"     : "*",
      "jsonwebtoken": "*",
      "underscore"  : "*",
-     "moment"      : "*",
+     "angular-momentjs"      : "*",
      "mocha"		:"*",
      "chai"			: "*",
      "supertest"	: "*",

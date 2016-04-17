@@ -1,3 +1,4 @@
+
 module.exports = function(app) {
 
 	var jwt = require('jsonwebtoken');
@@ -125,13 +126,23 @@ module.exports = function(app) {
 	});
 
 		app.post('/api/booking', function(req, res) {
+
 		if(!req.body.hasOwnProperty('booking') ) {
 			res.statusCode = 400;
 			return res.send('Error 400: Post syntax incorrect.');
 		}
 
-		db.insert(req.body.booking);
-		res.statusCode = 200;
-		res.send("done");
+
+		console.log(req.body.booking);
+		db.insert(req.body.booking,function(){
+			res.statusCode = 200;
+			res.send("done");
+		});
+		
 	});
 };
+
+
+
+
+
