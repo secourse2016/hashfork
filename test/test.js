@@ -51,13 +51,22 @@ describe('API', function() {
          done();});
    });
 
-   it('Without secure token embedded in header /api/booking/:ref should return staus 403', function(done) {
+   it('Without secure token embedded in header /api/booking/:ref should return status 403', function(done) {
         request
-       .get('/api/booking/Marawan Mohsen 30')
+       .get('/api/booking/12345')
        .set('Accept', 'application/json')
        .end(function(err,res) {
          expect(res.status).to.equal(403);
-         //assert.isArray(res.body, 'should be JSON array of a single reference (or references if duplication is in some way allowed)');
+         done();});
+   });
+      it('With secure token embedded in header /api/booking/:ref should return status 200 with an array of objects technically one object', function(done) {
+        request
+       .get('/api/booking/12345')
+       .set('x-access-token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c')
+       .set('Accept', 'application/json')
+       .end(function(err,res) {
+         expect(res.status).to.equal(200);
+         assert.isArray(res.body, 'should be JSON array of a single reference (or references if duplication is in some way allowed)');
          done();});
    });
 
