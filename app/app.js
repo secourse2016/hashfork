@@ -11,4 +11,7 @@ require('./routes/routes')(app);
 //app.use(bodyParser.urlencoded({ extended: false }));
 
 
+app.use(express.static('public'));
+
+
 module.exports = app;

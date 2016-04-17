@@ -11,7 +11,9 @@ app.listen(process.env.PORT,function(err){
 	} else {
 		db.seed(function(err, seeded){
 		console.log("App is running on port",process.env.PORT);
+
 		});
+
 	}
 
 

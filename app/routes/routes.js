@@ -1,7 +1,4 @@
 
-
-var db=require('../db');
-
 module.exports = function(app) {
 
 	var jwt = require('jsonwebtoken');
@@ -45,24 +42,31 @@ module.exports = function(app) {
 				res.json(airports);
 			});
 		});
-		
-		/* Middlewear for securing the APIs */
+
+		/* Middleware for securing the APIs */
 
 		app.use(function(req, res, next) {
 
-			//Handling the undefined condition of thrown error
+			//Handling the undefined condition of thrown error when x-access-token is not defined
 
 			try {
 
-			//Checking only on GET
+			//Checking only on GET using header "x-access-token"
 
 			var token = req.headers['x-access-token'];
 
 
 		} catch (err) {
 
+			//Option #1 for error message
 			//res.status(403).send("403: Forbidden");
+
+			//Option #2 for error message
+			//res.status(403).sendFile(path.join(__dirname, '../../public/partials', 'forbidden.html'));
+
+			//Option #3 for error message
 			res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'))
+			
 			app.use(express.static('public'));
 
 
@@ -81,8 +85,15 @@ module.exports = function(app) {
 			catch (err)
 			{
 
+				//Option #1 for error message
 				//res.status(403).send("403: Forbidden");
+
+				//Option #2 for error message
+				//res.status(403).sendFile(path.join(__dirname, '../../public/partials', 'forbidden.html'));
+
+				//Option #3 for error message
 				res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'));
+
 				app.use(express.static('public'));
 
 
@@ -120,6 +131,8 @@ module.exports = function(app) {
 			res.statusCode = 400;
 			return res.send('Error 400: Post syntax incorrect.');
 		}
+
+
 		console.log(req.body.booking);
 		db.insert(req.body.booking,function(){
 			res.statusCode = 200;
@@ -128,6 +141,7 @@ module.exports = function(app) {
 		
 	});
 };
+
 
 
 
