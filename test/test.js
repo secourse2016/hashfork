@@ -50,4 +50,15 @@ describe('API', function() {
          assert.isArray(res.body.outgoingFlights, 'should be JSON array of outgoingFlights');
          done();});
    });
+
+   it('Without secure token embedded in header /api/booking/:ref should return staus 403', function(done) {
+        request
+       .get('/api/booking/Marawan Mohsen 30')
+       .set('Accept', 'application/json')
+       .end(function(err,res) {
+         expect(res.status).to.equal(403);
+         //assert.isArray(res.body, 'should be JSON array of a single reference (or references if duplication is in some way allowed)');
+         done();});
+   });
+
 });
