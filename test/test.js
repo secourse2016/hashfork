@@ -85,21 +85,21 @@ describe('API', function() {
        });
    });
 
-   //        it('With secure token embedded in header /api/booking/ post request should return status 200', function(done) {
-   //      request
-   //     .post('/api/booking') 
-   //     .set('x-access-token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c')      
-   //     .type('json')
-   //     .send({"booking":{"reference":"98ASDF988SDF89SDF89989SDF9898"}})
-   //     .end(function(err,res) {
-   //      if(err) {
-   //        done(err);
-   //      } else {
-   //        expect(res.text).to.contain("done");
-   //        expect(res.status).to.equal(200);
-   //        done();
-   //      }
-   //     });
-   // });
+          it('With secure token embedded in header /api/booking/ post request should return status 200', function(done) {
+        request
+       .post('/api/booking') 
+       .set('x-access-token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c')      
+       .type('json')
+       .send({"booking":{"reference":"98ASDF988SDF89SDF89989SDF9898"}})
+       .end(function(err,res) {
+        if(err) {
+          done(err);
+        } else {
+          expect(res.text).to.contain("done");
+          expect(res.status).to.equal(200);
+          done();
+        }
+       });
+   });
 
 });
