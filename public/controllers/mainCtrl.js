@@ -144,7 +144,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         function disabled(data) {
             var date = data.date,
                 mode = data.mode;
-            return mode === 'day' && (date.getDay() === 7);
+            return mode === 'day' && (date.getDay() ===7 );
         }
 
         $scope.toggleMin = function () {

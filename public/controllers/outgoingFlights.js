@@ -1,4 +1,7 @@
 App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $anchorScroll){
+	FlightsSrv.getDataFromAllCompanies(function(data){
+            console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk "+data.outgoingFlights);
+        });
 	$scope.flights = [];
 	$scope.from = FlightsSrv.getFrom().name;
 	$scope.to = FlightsSrv.getTo().name;
@@ -19,8 +22,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
 				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
 				}
-				$scope.selectedFlight=$scope.flights[0];	
-
+				$scope.selectedFlight=$scope.flights[0];
 	}
 	function getOutgoingFlights(){
 		if(FlightsSrv.isReturn()){
