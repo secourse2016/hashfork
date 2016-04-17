@@ -3,7 +3,7 @@ var expect = require('chai').expect
 var request = require('supertest');
 var app=require("../app/app.js");
 
-
+// testing secure apis
 
 describe('API', function() {
     request = request(app);
