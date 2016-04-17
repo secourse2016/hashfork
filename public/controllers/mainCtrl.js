@@ -8,7 +8,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         function changeTime(value){
             var date=moment(value).format('YYYY-MM-DD');
             var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
-            return value;
+            return datetime;
         };
          $scope.goToNextPage=function(){
             FlightsSrv.setOtherAirlines($scope.otherAirlines);
@@ -17,7 +17,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
             }
            console.log(moment($scope.dt).toDate().getTime());
             FlightsSrv.setClass($scope.class);
-            FlightsSrv.setDepart(changeTime(moment($scope.dt).toDate().getTime()));
+            FlightsSrv.setDepart(moment($scope.dt).toDate().getTime());
            FlightsSrv.setAdults($scope.adults);
            FlightsSrv.setChild($scope.child);
            FlightsSrv.setBaby($scope.baby);
