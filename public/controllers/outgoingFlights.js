@@ -1,7 +1,5 @@
 App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $anchorScroll){
-	FlightsSrv.getDataFromAllCompanies(function(data){
-            console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk "+data.outgoingFlights);
-        });
+	
 	$scope.flights = [];
 	$scope.from = FlightsSrv.getFrom().name;
 	$scope.to = FlightsSrv.getTo().name;
@@ -9,23 +7,29 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 	$scope.dateTo=[];
 	$scope.timeFrom=[];
 	$scope.timeTo=[];
+	$scope.duration=[];
 	$scope.selectedFlight={};
 	$scope.scrollTo = function(div) {
     $location.hash(div);
     $anchorScroll();
 	};
-	console.log(FlightsSrv.getClass());
+	
 	function time(){
 			for(var i=0;i<$scope.flights.length;i++){
+				var differnece=Number($scope.flights[i].arrivalDateTime)-Number($scope.flights[i].departureDateTime);
+				differnece=differnece/(3600000);
 				$scope.dateFrom.push(moment($scope.flights[i].departureDateTime).format('YYYY-MM-DD'));
 				$scope.dateTo.push(moment($scope.flights[i].arrivalDateTime).format('YYYY-MM-DD'));
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
 				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
+				$scope.duration.push(differnece);
+				console.log(differnece)
 				}
 				$scope.selectedFlight=$scope.flights[0];
 	}
 	function getOutgoingFlights(){
-		if(FlightsSrv.isReturn()){
+		if(!FlightsSrv.getOtherAirlines()){
+			if(FlightsSrv.isReturn()){
 			FlightsSrv.searchOurAirlineRound().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
 				FlightsSrv.setReturningFlights(flight.returnFlights);
@@ -36,9 +40,19 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 			FlightsSrv.searchOurAirline().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
 				time();
-				
+				console.log("this is the end");
 			});
 		}
+		}else{
+
+			FlightsSrv.getDataFromAllCompanies(function(data){
+            $scope.flights =data.outgoingFlights;
+				FlightsSrv.setReturningFlights(data.returnFlights);
+				time();
+				console.log("this is the end");
+        });
+		}
+		
 		
 	};
 

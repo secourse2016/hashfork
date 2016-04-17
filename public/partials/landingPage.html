@@ -86,8 +86,8 @@
                                 >
 
                             
-                            <br>
-                            <br>
+                            <!-- <br>
+                            <br> -->
                             <br>
                             <label >Departure Date</label>
                             <label ng-show="showMe==1"style="position: relative; padding-left: 22%" >Return date</label>
@@ -173,6 +173,12 @@
                         </div>
                         <div class="radio-inline">
                             <label><input type="radio" ng-model="class" ng-required="true" name="optradio" value="first">First</label>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-3"></div>
+                        <label >Other Airlines
+                        <input type="checkbox" ng-model="otherAirlines">
+                        </label>
                         </div>
                         <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary" ng-click="goToNextPage()" ng-disabled="buttons.$invalid">View Flights</button>
                         </div>

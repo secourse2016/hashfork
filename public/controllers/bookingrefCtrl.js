@@ -1,8 +1,9 @@
 App.controller('bookingrefCtrl',function($scope,FlightsSrv,$location){
 	$scope.bookingref=getUrlParameter("q");
   $scope.flight={};
+  $scope.isthereFlights=true;
   FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
-      
+      if(data.length>0){
       $scope.flight=data[0].flight;
       $scope.date1 = moment($scope.flight.outgoingFlights.departureDateTime).format('MM-DD-YYYY');
   $scope.date2 = moment($scope.flight.outgoingFlights.arrivalDateTime).format('MM-DD-YYYY');
@@ -14,6 +15,10 @@ App.controller('bookingrefCtrl',function($scope,FlightsSrv,$location){
   $scope.time4 = moment($scope.flight.returnFlights.arrivalDateTime).format('hh:mm');
   $scope.from = $scope.flight.outgoingFlights.origin;
   $scope.to = $scope.flight.outgoingFlights.destination;
+}
+else{
+  $scope.isthereFlights=false;
+}
   });
    
   function getUrlParameter(param) {
