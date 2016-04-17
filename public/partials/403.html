@@ -1,8 +1,6 @@
-<!doctype html>
-
 <html ng-app="HashFork">
   <head>
-    <title>KLM</title>
+    <title>403: Forbidden</title>
     <meta name="viewport" content="width=device-width , intial-scale=1"  >
     <script src="/js/jquery-2.2.0.min.js"></script>
     <script src="/js/angular.min.js"></script>
@@ -12,7 +10,7 @@
    <!-- <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"> -->
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/styles/bootstrap.min.css">
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <!-- Optional theme -->
@@ -26,26 +24,19 @@
   <link href='https://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
  -->
- <!-- load momentJS (required for angular-moment) -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-
-<!-- load angular-moment -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
-
-  <script src="core.js"></script>
+  <!-- <script src="core.js"></script>
   <script src="services/flightsSrv.js"></script>
   <link rel="stylesheet" href="styles/landingbage.css">
-  <link rel="stylesheet" href="/styles/payment.css">
-  
-  <script src="controllers/mainCtrl.js"></script>
+  <link rel="stylesheet" href="/styles/payment.css"> -->
+
+  <!-- <script src="controllers/mainCtrl.js"></script>
   <script src="controllers/paymentCtrl.js"></script>
   <script src="controllers/confirmation.js"></script>
   <script src="controllers/namesCtrl.js"></script>
   <script src="controllers/returnFlights.js"></script>
   <script src="controllers/outgoingFlights.js"></script>
   <script src="controllers/bookingCtrl.js"></script>
-  <script src="controllers/bookingrefCtrl.js"></script>
-
+  <script src="controllers/bookingrefCtrl.js"></script> -->
    <style>
 
     hr {
@@ -69,14 +60,14 @@
   </head>
 
 
-    <body  background="img/new.png">
+    <body background="../img/new.png">
 
     <!-- TOP NAVBAR -->
 
 
 
 
-    
+
 
 
       <!-- TOP NAVBAR -->
@@ -94,7 +85,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </button>
-                      <a class="navbar-brand" href="/#/"><img src="./images/logo.png"></a>
+                      <a class="navbar-brand" href="/#/"><img src="../images/logo.png"></a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -105,7 +96,7 @@
 
                       <!-- Register and Sign In -->
 
-                     
+
 
 
                       <ul class="nav pull-right">
@@ -122,7 +113,7 @@
                             </div>
                           </form>
                    </ul>
-                   
+
                      </div>
 
                    <!-- Already Signed In -->
@@ -135,13 +126,29 @@
       </div>
 
        <!-- TOP NAVBAR END -->
-    <!-- ANGULAR DYNAMIC TEMPLATING -->
-    <div ng-view>
-    </div>
-    <!-- ANGULAR DYNAMIC TEMPLATING -->
+
+    <!-- BODY -->
+      <div class="container">
+        <div class="jumbotron">
+          <h2><center>Error 403: Forbidden</center></h2>
+          <br>
+          <center>
+          <p>
+          <img src="../images/403.jpg" style=" margin:auto; display: block">
+          <br>
+
+          You are not allowed to access this content.
+          <br>
+          If you're authorised, kindly contact hashfork@gmail.com to resolve this issue.
+          </p>
+          </center>
+        </div>
+        </div>
+
+        <!-- BODY END -->
+
     <!-- THE FOOTER-->
 
-    <br>
     <br>
     <footer class="ui inverted vertical footer segment">
      <nav class="navbar navbar-inverse navbar-fixed-bottom" style="max-height: 30px;" >
@@ -164,6 +171,5 @@
 </nav>
 </footer>
     </body>
-    
-</html>
 
+</html>

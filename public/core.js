@@ -1,4 +1,4 @@
-var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute']);
+var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute','angularMoment']);
 
 /**
  * Angular Routes
@@ -48,6 +48,8 @@ App.config(function($routeProvider) {
             templateUrl:'/partials/contact.html'
         }).when('/about',{
             templateUrl:'/partials/aboutklm.html'
+        }).when('/403',{
+            templateUrl:'/partials/403.html'
         }).otherwise({
             templateUrl:'/partials/error.html'
         });
