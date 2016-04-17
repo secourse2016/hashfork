@@ -1,4 +1,4 @@
-var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute']);
+var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute','angularMoment']);
 
 /**
  * Angular Routes
@@ -37,7 +37,21 @@ App.config(function($routeProvider) {
             controller  : 'flightListCtrl'
         }).when('/outgoingflights', {
             templateUrl : '/partials/outgoingFlight.html',
-            controller  : 'flightListCtrl'
+            controller  : 'flightOutgoingCtrl'
+        }).when('/ref',{
+            templateUrl:'/partials/bookingreg.html',
+            controller:'bookingCtrl'
+        }).when('/bookings',{
+            templateUrl:'/partials/bookings.html',
+            controller:'bookingrefCtrl'
+        }).when('/contact',{
+            templateUrl:'/partials/contact.html'
+        }).when('/about',{
+            templateUrl:'/partials/aboutklm.html'
+        }).when('/403',{
+            templateUrl:'/partials/403.html'
+        }).otherwise({
+            templateUrl:'/partials/error.html'
         });
 
 });

@@ -1,11 +1,25 @@
-{
-  "name"         : "hashfork",
-  "version"      : "0.0.0",
-  "description"  : "plan booking application.",
-  "main"         : "server.js",
-  "dependencies" : {
-    "express"    : "~4.7.2",
-    "mongodb"   : "*",
-     "body-parser": "~1.5.2" 
-    }
-}
+ {
+   "name": "secourse.com",
+   "repository": {
+     "type": "git",
+     "url" : "http://github.com/secourse2016/hashfork"
+   },
+   "scripts": {
+    "start": "nodemon server.js", 
+    "test": "./node_modules/mocha/bin/mocha ./test/test.js",
+    "coverage": "istanbul cover ./test/quote.js"
+  },
+   "dependencies": {
+     "body-parser" : "*", 
+     "express"     : "*",
+     "dotenv"      : "*",
+     "mongodb"     : "*",
+     "jsonwebtoken": "*",
+     "underscore"  : "*",
+     "moment"      : "*",
+     "mocha"		:"*",
+     "chai"			: "*",
+     "supertest"	: "*",
+     "nodemon" :"*"
+     }
+ }

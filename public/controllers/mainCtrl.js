@@ -1,23 +1,51 @@
-App.controller('mainController', function ($scope) {
+App.controller('mainController', function ($scope,FlightsSrv, $location) {
         //$scope.pageClass = 'page-home';
-
-
+        
+        $scope.Airports=[];
+        $scope.otherAirlines=false;
+        FlightsSrv.setBooking();
+        $scope.class='economy'
+        function changeTime(value){
+            var date=moment(value).format('YYYY-MM-DD');
+            var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
+            return value;
+        };
+         $scope.goToNextPage=function(){
+            FlightsSrv.setOtherAirlines($scope.otherAirlines);
+            if(FlightsSrv.isReturn()){
+            FlightsSrv.setReturning(moment($scope.dt2).toDate().getTime());
+            }
+           console.log(moment($scope.dt).toDate().getTime());
+            FlightsSrv.setClass($scope.class);
+            FlightsSrv.setDepart(changeTime(moment($scope.dt).toDate().getTime()));
+           FlightsSrv.setAdults($scope.adults);
+           FlightsSrv.setChild($scope.child);
+           FlightsSrv.setBaby($scope.baby);
+            $location.url('/outgoingflights');
+        };
 
         $scope.showMe=1;
         $scope.f1 = "active";
         $scope.f2 = "";
+        FlightsSrv.setReturn(true);
         $scope.S1 = function () {
             $scope.showMe=1;
             $scope.f1 = "active";
             $scope.f2 = "";
-
-        }
+            $scope.adults="1";
+            $scope.child="0";
+            $scope.baby="0";
+            FlightsSrv.setReturn(true);
+        };
         $scope.S2 = function () {
             $scope.showMe=0;
             $scope.f2 = "active";
             $scope.f1 = "";
-
-        }
+            $scope.adults="1";
+            $scope.child="0";
+            $scope.baby="0";
+            FlightsSrv.setReturn(false);
+        };
     
     $scope.myInterval = 2000;
     $scope.noWrapSlides = false;
@@ -33,7 +61,13 @@ App.controller('mainController', function ($scope) {
     //        id: currIndex++
     //    });
     //};
-
+     function AirportCodes() {
+        FlightsSrv.getAirportCodes().success(function(airports) {
+            
+         $scope.Airports = airports;
+     });
+  };
+   
     $scope.randomize = function() {
         var indexes = generateIndexesArray();
         assignNewIndexesToSlides(indexes);
@@ -43,7 +77,7 @@ App.controller('mainController', function ($scope) {
 
         slides.push({
             image: 'img/back'+i+'.jpg',
-            text: ['Nice image','Awesome photograph','That is so cool','I love that'][slides.length % 4],
+            text: tips[slides.length % 5],
             id: currIndex++
         });
     }
@@ -85,7 +119,7 @@ App.controller('mainController', function ($scope) {
 
 
 
-
+ 
         $scope.today = function () {
             $scope.dt = new Date();
         };
@@ -113,7 +147,7 @@ App.controller('mainController', function ($scope) {
         function disabled(data) {
             var date = data.date,
                 mode = data.mode;
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+            return mode === 'day' && (date.getDay() ===7 );
         }
 
         $scope.toggleMin = function () {
@@ -132,7 +166,12 @@ App.controller('mainController', function ($scope) {
         };
 
         $scope.setDate = function (year, month, day) {
-            $scope.dt = new Date(year, month, day);
+            if($scope.popup1.opened===true){
+            $scope.dt = new Date(year, month, day,6, 25, 0, 250);
+        }else{
+            $scope.dt2 = new Date(year, month, day,6, 25, 0, 250);
+        }
+
         };
 
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -166,10 +205,10 @@ App.controller('mainController', function ($scope) {
             var date = data.date,
                 mode = data.mode;
             if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+                var dayToCheck = new Date(date).setHours(6, 25, 0, 250);
 
                 for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+                    var currentDay = new Date($scope.events[i].date).setHours(6, 25, 0, 250);
 
                     if (dayToCheck === currentDay) {
                         return $scope.events[i].status;
@@ -178,21 +217,31 @@ App.controller('mainController', function ($scope) {
             }
 
             return '';
-        }
+        };
+ 
+        $scope.SetOriginAirport=function(value){
+            FlightsSrv.setFrom(value);
+
+        };
+        $scope.SetDestinationAirport=function(value){
+           
+            FlightsSrv.setTo(value);
+            
+        };
+        AirportCodes();
+        $scope.adults="1";
+        $scope.child="0";
+        $scope.baby="0";
     });
 
 
 var tips = [
-    "Enjoy your Flight"
-    ,
+    "Enjoy your Flight",
     "Travelling is the most beautiful thing in life ",
-    "Want to know about our offers?",
-    "Want to know about our services?",
-    "keep on touch",
-    "KLM is the Airline company",
-    "Choose your favourite class",
-    "Choose your favourite time",
-    "We know what do you want !!"
+    "Do want to know about our services?",
+    "keep in touch",
+    "KLM is the Airline company for you",
+    "We know what you want !!"
 ];
 //setInterval(function() {
 //    var i = Math.round((Math.random()) * 5);

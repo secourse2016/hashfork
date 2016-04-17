@@ -1,4 +1,4 @@
-<div class = "container-fluid" style="background-color: rgba(254, 254, 254, 0.59); box-shadow: 3px 2px 1px RGBA(0, 0, 0, 0.51);">
+<div class = "container" style="background-color: rgba(254, 254, 254, 0.59); box-shadow: 3px 2px 1px RGBA(0, 0, 0, 0.51);">
 
 
 
@@ -54,15 +54,18 @@
 <div class="row"> </div>
 
 <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-2">
+  <div class="col-md-2 "></div>
   <!-- Hint text -->
+    <div class="col-md-2 col-sm-2 col-xs-2">
+
   <label for="fname">First Name<astrix>*</astrix></label>
   </div>
-  <div class="col-md-2">
-  <label for="mname">Middle Name<astrix>*</astrix></label>
+  <div class="col-md-2 col-sm-2 col-xs-2">
+
+  <label for="mname">Middle Name</label>
   </div>
-  <div class="col-md-2">
+    <div class="col-md-2 col-sm-2 col-xs-2">
+
   <label for="lname">Last Name<astrix>*</astrix></label>
   </div>
 </div>
@@ -74,7 +77,7 @@
   <input class="form-control" id="fn" ng-model = "travellers[$index].firstName" placeholder="First Name" type="text" required="required">
   </div>
   <div class="col-xs-2">
-  <input class="form-control" id="mn" ng-model = "travellers[$index].middleName" placeholder="Middle Name" type="text" required="required">
+  <input class="form-control" id="mn" ng-model = "travellers[$index].middleName" placeholder="Middle Name" type="text" >
   </div>
   <div class="col-xs-2">
     <input class="form-control" id="ln" ng-model = "travellers[$index].lastName" placeholder="Last Name" type="text" required="required">
@@ -366,19 +369,26 @@
 
         <div class="col-md-2"></div>
         <div class="col-md-1">
-            <button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info" >Previous
+<!-- <<<<<<< HEAD -->
+            <button style = " width: 100% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info" ng-click="goToPrev()">Prev
+<!-- =======
+            <button style = " width: 150% ;font-size: 100%;, cursive;"name="previous" type="button" class="btn btn-info" ng-click="goToPrev()">Prev
+>>>>>>> origin/dev2 -->
             </button>
         </div>
         <div class="col-md-6"></div>
         <div class="col-md-1">
-            <button style = " width: 100% ;font-size: 100%;, cursive;"name="next" ng-disabled="buttons.$invalid" type="button" class="btn btn-primary">Next</button>
-        </div>
+<!-- <<<<<<< HEAD -->
+            <button style = " width: 100% ;font-size: 100%;, cursive;"name="next" ng-disabled="buttons.$invalid" type="button" class="btn btn-primary" ng-click="goNext()">Next</button>
+<!-- =======
+            <button style = " width: 150% ;font-size: 100%;, cursive;"name="next" ng-disabled="buttons.$invalid" type="button" class="btn btn-primary" ng-click="goNext()">Next</button>
+>>>>>>> origin/dev2
+ -->        </div>
 
     </div>
     <div class="row">
   <br>
   <br>
-  
 </div>
 </div>
 
@@ -386,7 +396,13 @@
   <div class="row">
   <br>
   <br>
+
+  <br>
+  <br>
 </div>
+<br>
+</div>
+
 
 
 

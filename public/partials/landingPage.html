@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/landingbage.css">
 
     <!--start-->
-    <div style="position: fixed;top: 20% ;left: 50%;width: 50%;">
+    <div style="position: fixed;top: 20% ;left: 50%;width: 50%;" class="hidden-xs hidden-sm">
         <div  >
             <div style="height: 305px">
                 <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
@@ -55,16 +55,39 @@
                     <!-- flight section -->
                     <div class="bhoechie-tab-content active">
                         <div>
+                        <form name="buttons">
                             <label for="from">From</label>
-                            <input id="from" type="text" style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px; ">
+                            <input 
+                                id="from" 
+                                type="text"
+                                
+                                required="required" 
+                                placeholder="Origin"
+                                ng-model="selectedOrigin"
+                                
+                                uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10"
+                                style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px; "
+                                typeahead-on-select="SetOriginAirport($item)">
 
-                            </input>
+                            
+                             
                             <label for="to">To</label>
-                            <input id="to" type="text" style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px; ">
+                            <input 
+                                id="to" 
+                                type="text" 
+                                
+                                required="required"
+                                placeholder="Destination"
+                                ng-model="selectedDestination"
+                                style="width : 35% ;padding: 5px 10px; margin: 2px 0; box-sizing: border-box; border: 2px solid #CACBCC; border-radius: 4px;"
+                                uib-typeahead="airport.iata for airport in Airports | filter:$viewValue | limitTo:10"
+                                typeahead-on-select="SetDestinationAirport($item)"
 
-                            </input>
-                            <br>
-                            <br>
+                                >
+
+                            
+                            <!-- <br>
+                            <br> -->
                             <br>
                             <label >Departure Date</label>
                             <label ng-show="showMe==1"style="position: relative; padding-left: 22%" >Return date</label>
@@ -73,7 +96,7 @@
                                     <div class="col-md-6">
                                         <p class="input-group"  >
 
-                                            <input id="date1"type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <input id="date1"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
           </span>
@@ -81,12 +104,12 @@
 
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-6" >
                                         <p ng-show="showMe==1" class="input-group"  >
 
-                                            <input ng-show="showMe==1" id="date2" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                            <input ng-show="showMe==1" id="date2"  type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt2" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="false" close-text="Close" alt-input-formats="altInputFormats" />
           <span ng-show="showMe==1" class="input-group-btn">
-            <button ng-show="showMe==1" type="button" class="btn btn-default" ng-click="open1()"><i ng-show="showMe==1" class="glyphicon glyphicon-calendar"></i></button>
+            <button ng-show="showMe==1" type="button" class="btn btn-default" ng-click="open2()"><i ng-show="showMe==1" class="glyphicon glyphicon-calendar"></i></button>
           </span>
                                         </p>
 
@@ -110,43 +133,54 @@
                               </div>
 
                                  <label style="position: relative; left: 7%;">Adults:</label>
-                        <label style="position: relative; left: 25%;">Children:</label>
-                        <label style="position: relative; left: 40%;">Babies:</label>
+                        <label style="position: relative; left: 22%;">Children:</label>
+                        <label style="position: relative; left: 32%;">Babies:</label>
                                 <div class="row">
-                                    <p class="col-md-1 "></p>
-                                    <select style="width : 20%; " class="form-control col-md-3 " id="sel1">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                    <div class="col-md-1 col-sm-1 col-xs-1 "></div>
+                                    <select style="width : 20%; " ng-model="adults" class="form-control col-md-3 col-sm-3 col-xs-3 "
+                                required="required" id="sel1">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
                                     </select>
-                                     <p class="col-md-1 "></p>
-                                    <select style="width : 20% ;" class="form-control col-md-3 " id="sel2">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                     <div class="col-md-1 col-sm-1 col-xs-1 "></div>
+                                    <select style="width : 20% ;" ng-model="child" class="form-control col-md-3 col-sm-3 col-xs-3 "  id="sel2">
+                                        
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
                                     </select>
-                                    <p class="col-md-1 "></p>
-                                    <select style="width : 20% ;" class="form-control col-md-3 " id="sel3">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
+                                     <div class="col-md-1 col-sm-1 col-xs-1 "></div>
+                                    <select style="width : 20% ;" ng-model="baby" class="form-control col-md-3 col-sm-3 col-xs-3 "  id="sel3">
+                                       
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
                                     </select>
                                 </div>
                         <br>
                              <h4>choose class:</h4>
-                        <div class="radio-inline">
-                            <label><input type="radio" name="optradio">Economy</label>
+                        <div class="radio-inline" >
+                            <label><input type="radio" ng-model="class" ng-required="true" name="optradio" value="economy">Economy</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" name="optradio">Business</label>
+                            <label><input type="radio" ng-model="class" ng-required="true" name="optradio" value="business">Business</label>
                         </div>
                         <div class="radio-inline">
-                            <label><input type="radio" name="optradio" >First</label>
+                            <label><input type="radio" ng-model="class" ng-required="true" name="optradio" value="first">First</label>
                         </div>
-                        <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary">View Flights</button>
+                        <div class="row">
+                        <div class="col-md-3"></div>
+                        <label >Other Airlines
+                        <input type="checkbox" ng-model="otherAirlines">
+                        </label>
+                        </div>
+                        <button style=" background-color:#009CDA;position:relative;margin-left: 27%" type="button" class="btn btn-primary" ng-click="goToNextPage()" ng-disabled="buttons.$invalid">View Flights</button>
                         </div>
                     </div>
                     <!-- One way section -->
@@ -158,4 +192,3 @@
 
     </div>
 </div>
-
