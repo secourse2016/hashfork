@@ -105,4 +105,33 @@ module.exports = function(app) {
 		});
 	});
 
+<<<<<<< HEAD
 }
+=======
+
+	app.get('/api/booking/:ref', function(req, res) {
+		db.findByReference(req.params.ref,function(err,data){
+			res.send(data);
+		});
+
+	});
+	app.post('/api/booking/', function(req, res) {
+		if(!req.body.hasOwnProperty('booking') ) {
+			res.statusCode = 400;
+			return res.send('Error 400: Post syntax incorrect.');
+		}
+		db.insert(req.body.booking);
+
+	});
+
+
+
+
+
+};
+
+
+
+
+
+>>>>>>> 61039d90f27685bb2761511f57228dfbcc9d8768
