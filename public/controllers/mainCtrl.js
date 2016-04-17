@@ -11,7 +11,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
             return datetime;
         };
          $scope.goToNextPage=function(){
-            FlightsSrv.setOtherAirlines($scope.otherAirlines);
+            // FlightsSrv.setOtherAirlines($scope.otherAirlines);
             if(FlightsSrv.isReturn()){
             FlightsSrv.setReturning(changeTime(moment($scope.dt2).toDate().getTime()));
             }
