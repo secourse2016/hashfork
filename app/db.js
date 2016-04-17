@@ -3,7 +3,14 @@
     var dbURL = 'mongodb://localhost:27017/klm';
     var Airports = require('../airports.json');
     var Flights = require('../flights.json');
-     
+    var moment=require('moment');
+    function changeTime(value){
+            var date=moment(Number(value)).format('YYYY-MM-DD');
+            // console.log(isNaN(value));
+            var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
+            // console.log(datetime+" "+isNaN(datetime));
+            return datetime;
+        }
      
      
     function connect (cb) {
@@ -79,6 +86,8 @@
      
     function find(orig , dest , deptDate , class1 , callback , retDate){
         // deptDate=deptDate/86400000;
+        deptDate=changeTime(deptDate);
+
         connect(function(err,DB){
         var data={
      
@@ -96,6 +105,7 @@
                 data1.outgoingFlights=outgoings;
                 er1=err;
                 if(retDate !== undefined){
+                    retDate=changeTime(retDate);
                     
                     DB.collection('Flights').find({origin : dest , destination : orig , departureDateTime : Number(retDate) ,"class":class1}).toArray(
                     function(err, returns){

@@ -7,6 +7,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 	$scope.dateTo=[];
 	$scope.timeFrom=[];
 	$scope.timeTo=[];
+	$scope.duration=[];
 	$scope.selectedFlight={};
 	$scope.scrollTo = function(div) {
     $location.hash(div);
@@ -15,10 +16,14 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 	
 	function time(){
 			for(var i=0;i<$scope.flights.length;i++){
+				var differnece=Number($scope.flights[i].arrivalDateTime)-Number($scope.flights[i].departureDateTime);
+				differnece=differnece/(3600000);
 				$scope.dateFrom.push(moment($scope.flights[i].departureDateTime).format('YYYY-MM-DD'));
 				$scope.dateTo.push(moment($scope.flights[i].arrivalDateTime).format('YYYY-MM-DD'));
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
 				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
+				$scope.duration.push(differnece);
+				console.log(differnece)
 				}
 				$scope.selectedFlight=$scope.flights[0];
 	}
