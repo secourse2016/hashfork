@@ -133,7 +133,7 @@ module.exports = function(app) {
 		}
 
 
-		console.log(req.body.booking);
+		
 		db.insert(req.body.booking,function(){
 			res.statusCode = 200;
 			res.send("done");

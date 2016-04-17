@@ -89,6 +89,12 @@ App.factory('FlightsSrv', function ($http) {
          x.setReturningFlight=function(value){
           x.booking.flight.returnFlights=value;
          }
+         x.setReturningFlights=function(value){
+          x.returnFlights=value;
+         }
+         x.getReturningFlights=function(){
+          return x.returnFlights;
+         }
          x.setBooking=function(){
            x.booking={};
            x.booking.flight={};
@@ -123,18 +129,18 @@ App.factory('FlightsSrv', function ($http) {
              x.getDataFromAllCompanies=function(cb) {
                  var tmp={outgoingFlights:[],returnFlights:[]};
                  x.getDataFromAllCompanies2(0,function(data){
-                  console.log(data.length);
+                 
                      for (var i=0;i<data.length;i++){
-                      console.log(data[i].outgoingFlights.length);
+                      
                          for (var j=0;j<data[i].outgoingFlights.length;j++){
                              tmp.outgoingFlights.push(data[i].outgoingFlights[j]);
                          }
-                         console.log(data[i].returnFlights.length);
+                         
                          for (var j=0;j<data[i].returnFlights.length;j++){
                              tmp.returnFlights.push(data[i].returnFlights[j]);
                          }
                      }
-                     console.log(tmp);
+                     
                      cb(tmp);
                  });
  

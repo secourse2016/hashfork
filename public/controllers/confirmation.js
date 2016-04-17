@@ -28,6 +28,7 @@ App.controller('confirmation', function($scope,FlightsSrv,$location) {
   $scope.goToPrev=function(){
     var returnFlights = FlightsSrv.isReturn();
   if(returnFlights === true){
+   
     $location.url('/returnflights');
   }else{
     $location.url('/outgoingflights');

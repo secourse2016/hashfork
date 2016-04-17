@@ -121,7 +121,7 @@
     // insert({"reference": "Marawan Mohsen 30"});
      
      function insert(booking,cb){
-        connect(function(err,DB){console.log(booking);
+        connect(function(err,DB){
             DB.collection('Bookings').insert(booking);
             cb();
         });

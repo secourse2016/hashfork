@@ -2,7 +2,7 @@ App.controller('bookingrefCtrl',function($scope,FlightsSrv,$location){
 	$scope.bookingref=getUrlParameter("q");
   $scope.flight={};
   FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
-      console.log(data[0]);
+      
       $scope.flight=data[0].flight;
       $scope.date1 = moment($scope.flight.outgoingFlights.departureDateTime).format('MM-DD-YYYY');
   $scope.date2 = moment($scope.flight.outgoingFlights.arrivalDateTime).format('MM-DD-YYYY');
