@@ -7,6 +7,8 @@ module.exports = function(app) {
 	var db = require('../db');
 	// Unsecured Part
 
+	app.use(require('body-parser').json());
+
 	app.get('/api/airports',function(req,res){
 		var airports =  require('../../airports.json');
 		res.json(airports);
@@ -102,26 +104,23 @@ module.exports = function(app) {
 		});
 	});
 
-
 	app.get('/api/booking/:ref', function(req, res) {
-		db.findByReference(req.params.ref,function(err,data){
-			res.send(data);
-		});
+	db.findByReference(req.params.ref,function(err,data){
+		res.send(data);
+	});
 
 	});
-	app.post('/api/booking/', function(req, res) {
+
+		app.post('/api/booking', function(req, res) {
 		if(!req.body.hasOwnProperty('booking') ) {
 			res.statusCode = 400;
 			return res.send('Error 400: Post syntax incorrect.');
 		}
+
 		db.insert(req.body.booking);
-
+		res.statusCode = 200;
+		res.send("done");
 	});
-
-
-
-
-
 };
 
 
