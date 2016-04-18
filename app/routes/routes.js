@@ -6,7 +6,7 @@ module.exports = function(app) {
 	var path = require('path');
 	var express = require('express');
 	var db = require('../db');
-	var request =require('request');
+	var http =require('http');
 	var ips =['ec2-52-26-166-80.us-west-2.compute.amazonaws.com'];
 var allC=[];
 app.use(require('body-parser').json());
