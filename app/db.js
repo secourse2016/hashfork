@@ -85,14 +85,11 @@
 
 
     function find(orig , dest , deptDate , class1 , callback , retDate){
-        deptDate=deptDate/86400000;
-        //deptDate=changeTime(deptDate);
+        // deptDate=deptDate/86400000;
+        deptDate=changeTime(deptDate);
 
         connect(function(err,DB){
         var data={
-
-        };
-        var tmp={
 
         };
         var data1={
@@ -102,39 +99,25 @@
         var er1;
         var er2;
 
-        DB.collection('Flights').find({origin : orig , destination : dest ,"class": class1 }).toArray(
+        DB.collection('Flights').find({origin : orig , destination : dest , departureDateTime : Number(deptDate) ,"class": class1 }).toArray(
             function (err, outgoings){
-                tmp.outgoingFlights=outgoings;
-                //data1.outgoingFlights=outgoings;
+                data.outgoingFlights=outgoings;
+                data1.outgoingFlights=outgoings;
                 er1=err;
                 if(retDate !== undefined){
-                    retDate=deptDate/86400000;
+                    retDate=changeTime(retDate);
 
-                    DB.collection('Flights').find({origin : dest , destination : orig ,"class":class1}).toArray(
+                    DB.collection('Flights').find({origin : dest , destination : orig , departureDateTime : Number(retDate) ,"class":class1}).toArray(
                     function(err, returns){
 
-                    tmp.returnFlights=returns;
+                    data.returnFlights=returns;
                     er2=err;
-                    for(i=0; i<tmp.outgoingFlights.length; i++){
-                      if((tmp.outgoingFlights[i].departureDateTime/86400000) === deptDate){
-                        data1.outgoingFlights.insert(tmp.outgoingFlights[i]);
-                      }
-                    }
-                    for(i=0; i<tmp.returnFlights.length; i++){
-                      if((tmp.returnFlights[i].departureDateTime/86400000) === retDate){
-                        data1.returnFlights.insert(tmp.returnFlights[i]);
-                      }
-                    }
                     callback(er1|| er2 , data);
 
             });
 
         }else {
-            for(i=0; i<tmp.outgoingFlights.length; i++){
-              if((tmp.outgoingFlights[i].departureDateTime/86400000) === deptDate){
-                data1.outgoingFlights.insert(tmp.outgoingFlights[i]);
-              }
-            }
+
             callback(er1 , data1);
         }
         });
