@@ -25,7 +25,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				$scope.duration.push(differnece);
 				console.log(differnece);
 				}
-				// $scope.selectedFlight=$scope.flights[0];
+				$scope.my.flight=$scope.flights[0];
 	}
 	function getOutgoingFlights(){
 		if(!FlightsSrv.getOtherAirlines()){

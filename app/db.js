@@ -87,45 +87,69 @@
     function find(orig , dest , deptDate , class1 , callback , retDate){
         // deptDate=deptDate/86400000;
         // deptDate=changeTime(deptDate);
+deptDate=deptDate/86400000;
+        //deptDate=changeTime(deptDate);
 
         connect(function(err,DB){
         var data={
-     
+
         };
-        var data1={
-     
-     
+        var tmp={
+
         };
+        var data1={outgoingFlights:[],returnFlights:[] };
         var er1;
         var er2;
 
-        DB.collection('Flights').find({origin : orig , destination : dest , departureDateTime : Number(deptDate) ,"class": class1 }).toArray(
+        DB.collection('Flights').find({origin : orig , destination : dest ,"class": class1 }).toArray(
             function (err, outgoings){
-                data.outgoingFlights=outgoings;
-                data1.outgoingFlights=outgoings;
+                tmp.outgoingFlights=outgoings;
+                //data1.outgoingFlights=outgoings;
                 er1=err;
                 if(retDate !== undefined){
-                    // retDate=changeTime(retDate);
-                    
-                    DB.collection('Flights').find({origin : dest , destination : orig , departureDateTime : Number(retDate) ,"class":class1}).toArray(
+                    retDate=deptDate/86400000;
+
+                    DB.collection('Flights').find({origin : dest , destination : orig ,"class":class1}).toArray(
                     function(err, returns){
-     
-                    data.returnFlights=returns;
+
+                    tmp.returnFlights=returns;
                     er2=err;
-                    callback(er1|| er2 , data);
-     
+                    console.log("The number of flights found is"+tmp.outgoingFlights.length);
+                    for(var i=0; i<tmp.outgoingFlights.length; i++){
+                      if((tmp.outgoingFlights[i].departureDateTime/86400000) === deptDate){
+                        console.log("One found" + tmp.outgoingFlights[i]);
+                        data1.outgoingFlights.push(tmp.outgoingFlights[i]);
+                      }
+                    }
+                    console.log("The number of flights found is"+tmp.returnFlights.length);
+                    for(var i=0; i<tmp.returnFlights.length; i++){
+                      if((tmp.returnFlights[i].departureDateTime/86400000) === retDate){
+                        console.log("One found" + tmp.outgoingFlights[i]);
+                        data1.returnFlights.push(tmp.returnFlights[i]);
+                      }
+                    }
+                    console.log(data);
+                    console.log(data1);
+                    callback(er1|| er2 , data1);
+
             });
-     
+
         }else {
-     
+          console.log("The number of flights found is "+tmp.outgoingFlights.length);
+            for(var i=0; i<tmp.outgoingFlights.length; i++){
+              if((tmp.outgoingFlights[i].departureDateTime/86400000) === deptDate){
+                console.log("One found" + tmp.outgoingFlights[i].departureDateTime);
+                data1.outgoingFlights.push(tmp.outgoingFlights[i]);
+              }
+            }
             callback(er1 , data1);
         }
         });
-     
-     
-     
+
+
+
         });
-     
+
     }
     //----------------------------------------------------------------------------------------------------------------------------------------
     // insert({"reference": "Marawan Mohsen 30"});
