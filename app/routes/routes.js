@@ -2,67 +2,67 @@
 
 module.exports = function(app) {
 
-var jwt = require('jsonwebtoken');
-var path = require('path');
-var express = require('express');
-var db = require('../db');
-var http =require('http');
-var ips =['ec2-52-26-166-80.us-west-2.compute.amazonaws.com'];
+	var jwt = require('jsonwebtoken');
+	var path = require('path');
+	var express = require('express');
+	var db = require('../db');
+	var http =require('http');
+	var ips =['ec2-52-26-166-80.us-west-2.compute.amazonaws.com'];
 var allC=[];
 app.use(require('body-parser').json());
-app.use('*', function(req, res, next) {
-res.header('Access-Control-Allow-Origin', '*');
-res.header('Access-Control-Allow-Methods','PUT,GET,POST,OPTIONS');
-res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-next();
+	app.use('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods','PUT,GET,POST,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  next();
 });
 
 // 	// Unsecured Part
 
 
 
-app.get('/api/airports',function(req,res){
-  var airports =  require('../../airports.json');
-  res.json(airports);
-});
+	app.get('/api/airports',function(req,res){
+		var airports =  require('../../airports.json');
+		res.json(airports);
+	});
 
-// app.get('api/otherflights/:origin/:destination/:departingDate/:class',function(req,res){
-// 	console.log(req);
-// 	// getDataFromAllCompanies(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(data){
-// 	// 	console.log(data);
-// 	// 	res.json(data);
-// 	// });
-// });
-app.get('/api/flights',function(req,res){
-  var flights =  require('../../flights.json');
-  res.json(flights);
-});
-
-
-app.get('/', function(req, res) {
-console.log("request received");
-
-    //	res.send("end");
-      res.sendFile(path.join(__dirname, '../../public', 'index.html'));
-  });
-
-  app.use(express.static('public'));
+	// app.get('api/otherflights/:origin/:destination/:departingDate/:class',function(req,res){
+	// 	console.log(req);
+	// 	// getDataFromAllCompanies(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(data){
+	// 	// 	console.log(data);
+	// 	// 	res.json(data);
+	// 	// });
+	// });
+	app.get('/api/flights',function(req,res){
+		var flights =  require('../../flights.json');
+		res.json(flights);
+	});
 
 
-app.get('/db/seed', function(req, res) {
+  app.get('/', function(req, res) {
+  	console.log("request received");
 
-  db.seed(function (err, seeded) {
+  			//	res.send("end");
+  				res.sendFile(path.join(__dirname, '../../public', 'index.html'));
+  		});
 
-  });
-});
-  app.get('/db/delete', function(req, res) {
-    db.clearDB(function(){
-      var airports =  require('../../airports.json');
-      res.json(airports);
-    });
-  });
+  		app.use(express.static('public'));
 
-  /* Middleware for securing the APIs */
+
+  	app.get('/db/seed', function(req, res) {
+
+  		db.seed(function (err, seeded) {
+
+  		});
+  	});
+  		app.get('/db/delete', function(req, res) {
+  			db.clearDB(function(){
+  				var airports =  require('../../airports.json');
+  				res.json(airports);
+  			});
+  		});
+
+      /* Middleware for securing the APIs */
 
   app.use(function(req, res, next) {
 
@@ -73,7 +73,6 @@ app.get('/db/seed', function(req, res) {
     //Checking on request body, url, and request header
 
     var token = req.body.wt || req.query.wt || req.headers['x-access-token'];
-
 
 
   } catch (err) {
@@ -111,10 +110,10 @@ app.get('/db/seed', function(req, res) {
       //Option #2 for error message
       //res.status(403).sendFile(path.join(__dirname, '../../public/partials', 'forbidden.html'));
 
-      //Option #3 for error message
-      res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'));
+			//Option #3 for error message
+			res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'));
 
-      app.use(express.static('public'));
+			app.use(express.static('public'));
 
 
     }

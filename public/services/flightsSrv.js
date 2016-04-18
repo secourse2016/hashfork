@@ -32,7 +32,8 @@ App.factory('FlightsSrv', function ($http) {
 
   "52.28.246.230",
 
-
+  "mynksh.com",
+  "ec2-52-90-41-197.compute-1.amazonaws.com",
 
   "52.207.211.179",
 
@@ -148,10 +149,10 @@ App.factory('FlightsSrv', function ($http) {
          x.postBooking=function(ref){
           x.booking.reference=ref;
           return $http.post('api/booking',{
-            'booking':x.booking}, {
-              "wt" : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'
-            });
-         }
+            'booking':x.booking},{
+          "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+        });
+           }
              x.getDataFromAllCompaniesRound=function(idx,cb) {
                  if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
                  else {
@@ -167,17 +168,20 @@ App.factory('FlightsSrv', function ($http) {
                  }
              }
               x.getDataFromAllCompaniesOneWay=function(idx,cb) {
-                 if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
+                 if (idx === ips.length ) cb(allC);
                  else {
+                    if((idx === 0 && allC.length > 0)){
+                      allC=[];
+                    }
                         console.log('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'');
                      $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'', {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       }).success(function (res) {
                          allC.push(res);
 
-                    x.getDataFromAllCompaniesOneWay(idx + 1,cb);
+                    x.getDataFromAllCompaniesOneWay(idx + 1);
                      }).error(function(data){
-                         x.getDataFromAllCompaniesOneWay(idx + 1,cb);
+                         x.getDataFromAllCompaniesOneWay(idx + 1);
                      });
                  }
              }
@@ -187,15 +191,18 @@ App.factory('FlightsSrv', function ($http) {
                    x.getDataFromAllCompaniesRound(0,function(data){
                   console.log(data);
                      for (var i=0;i<data.length;i++){
-
+                      if(data[i].outgoingFlights)
                          for (var j=0;j<data[i].outgoingFlights.length;j++){
+                            console.log(data[i].outgoingFlights[j]);
                              tmp.outgoingFlights.push(data[i].outgoingFlights[j]);
                          }
-
+                         if(data[i].returnFlights)
                          for (var j=0;j<data[i].returnFlights.length;j++){
+
                              tmp.returnFlights.push(data[i].returnFlights[j]);
                          }
                      }
+                     console.log(tmp);
 
                      cb(tmp);
                  });
@@ -203,7 +210,7 @@ App.factory('FlightsSrv', function ($http) {
                    x.getDataFromAllCompaniesOneWay(0,function(data){
                       // tmp.returnFlights=[];
                      for (var i=0;i<data.length;i++){
-
+                      if(data[i].outgoingFlights)
                          for (var j=0;j<data[i].outgoingFlights.length;j++){
                              tmp.outgoingFlights.push(data[i].outgoingFlights[j]);
                          }
