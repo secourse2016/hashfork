@@ -7,7 +7,7 @@ App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchor
 	$scope.timeFrom=[];
 	$scope.timeTo=[];
 	$scope.duration=[];
-	$scope.selectedFlight={};
+	$scope.my = { flight: 'unicorns' };
 	$scope.scrollTo = function(div) {
     $location.hash(div);
     $anchorScroll();
@@ -26,7 +26,7 @@ App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchor
 				$scope.duration.push(differnece);
 				console.log(differnece)
 				};
-				$scope.selectedFlight=$scope.flights[0];
+				$scope.my.flight=$scope.flights[0];
 			
 	};
 
@@ -55,7 +55,7 @@ $scope.goToTop = function() {
     };
  $scope.goToNextPage=function(){
 
- 		FlightsSrv.setReturningFlight($scope.selectedFlight);
+ 		FlightsSrv.setReturningFlight($scope.my.light);
  		$location.url('/confirmation');
  	
  };
