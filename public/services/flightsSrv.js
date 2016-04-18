@@ -141,7 +141,7 @@ App.factory('FlightsSrv', function ($http) {
                      });
                  }
              }
-             x.getDataFromAllCompanies=function(cb) {
+             x.getDataFromAllCompanies=function() {
                  var tmp={outgoingFlights:[],returnFlights:[]};
                  if(x.isReturn()){
                    x.getDataFromAllCompaniesRound(0,function(data){
@@ -174,7 +174,9 @@ App.factory('FlightsSrv', function ($http) {
                      cb(tmp);
                  });
                  }
-                
+      //           return $http.get('/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'', {
+      //   "headers" : { 'x-access-token' :'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+      // });
  
              }
              x.setOtherAirlines=function(value){
