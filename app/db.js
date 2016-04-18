@@ -107,7 +107,7 @@ deptDate=deptDate/86400000;
                 //data1.outgoingFlights=outgoings;
                 er1=err;
                 if(retDate !== undefined){
-                    retDate=deptDate/86400000;
+                    retDate=retDate/86400000;
 
                     DB.collection('Flights').find({origin : dest , destination : orig ,"class":class1}).toArray(
                     function(err, returns){

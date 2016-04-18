@@ -1,10 +1,9 @@
 
 App.factory('FlightsSrv', function ($http) {
-               var ips=[  "ec2-54-152-123-100.compute-1.amazonaws.com",
+               var ips=[ "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
+                "ec2-54-152-123-100.compute-1.amazonaws.com",
 
   "52.27.150.19",
-
-  "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
 
   "52.90.46.68",
 
