@@ -3,7 +3,7 @@ var app = require('./app/app');
 var db = require('./app/db.js');
 
 
-app.listen(process.env.PORT,function(err){
+app.listen(80,function(err){
 
 
 	if(err) {

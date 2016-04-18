@@ -1,3 +1,4 @@
+  
 
 module.exports = function(app) {
 
@@ -5,20 +6,33 @@ module.exports = function(app) {
 	var path = require('path');
 	var express = require('express');
 	var db = require('../db');
-	// Unsecured Part
-	app.all('*', function(req, res, next) {
+	var http =require('http');
+	var ips =['ec2-52-26-166-80.us-west-2.compute.amazonaws.com'];
+var allC=[];
+app.use(require('body-parser').json());
+	app.use('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods','PUT,GET,POST,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
   next();
 });
-	app.use(require('body-parser').json());
+ 
+// 	// Unsecured Part
+	
+	
 
 	app.get('/api/airports',function(req,res){
 		var airports =  require('../../airports.json');
 		res.json(airports);
 	});
-
+		
+	// app.get('api/otherflights/:origin/:destination/:departingDate/:class',function(req,res){
+	// 	console.log(req);
+	// 	// getDataFromAllCompanies(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(data){
+	// 	// 	console.log(data);
+	// 	// 	res.json(data);
+	// 	// });
+	// });
 	app.get('/api/flights',function(req,res){
 		var flights =  require('../../flights.json');
 		res.json(flights);
@@ -70,7 +84,7 @@ module.exports = function(app) {
 			//res.status(403).sendFile(path.join(__dirname, '../../public/partials', 'forbidden.html'));
 
 			//Option #3 for error message
-			res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'))
+			res.status(403).sendFile(path.join(__dirname, '../../public/partials', '403.html'));
 			
 			app.use(express.static('public'));
 
@@ -104,7 +118,6 @@ module.exports = function(app) {
 
 			}
 
-
 			});
 
 
@@ -114,6 +127,7 @@ module.exports = function(app) {
 			db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
                       res.send(data);
 			},req.params.returningDate);
+
 		});
 
 	app.get('/api/flights/search/:origin/:destination/:departingDate/:class', function(req, res) {
@@ -121,6 +135,7 @@ module.exports = function(app) {
 		db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
 			res.send(data);
 		});
+		 
 	});
 
 	app.get('/api/booking/:ref', function(req, res) {
@@ -145,9 +160,8 @@ module.exports = function(app) {
 		});
 		
 	});
+
+
 };
-
-
-
 
 

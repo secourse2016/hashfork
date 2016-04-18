@@ -8,7 +8,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 	$scope.timeFrom=[];
 	$scope.timeTo=[];
 	$scope.duration=[];
-	$scope.selectedFlight={};
+	$scope.my = { flight: 'unicorns' };
 	$scope.scrollTo = function(div) {
     $location.hash(div);
     $anchorScroll();
@@ -23,15 +23,16 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
 				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
 				$scope.duration.push(differnece);
-				console.log(differnece)
+				console.log(differnece);
 				}
-				$scope.selectedFlight=$scope.flights[0];
+				// $scope.selectedFlight=$scope.flights[0];
 	}
 	function getOutgoingFlights(){
 		if(!FlightsSrv.getOtherAirlines()){
 			if(FlightsSrv.isReturn()){
 			FlightsSrv.searchOurAirlineRound().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
+				
 				FlightsSrv.setReturningFlights(flight.returnFlights);
 				console.log(flight.outgoingFlights);
 				time();
@@ -41,7 +42,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 			FlightsSrv.searchOurAirline().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
 				time();
-				console.log("this is the end");
+				
 			});
 		}
 		}else{
@@ -51,7 +52,14 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				FlightsSrv.setReturningFlights(data.returnFlights);
 				time();
 				console.log("this is the end");
-        });
+   // //      });
+   // FlightsSrv.getDataFromAllCompanies().success(function(data){
+   // 		 $scope.flights =data.outgoingFlights;
+			// 	FlightsSrv.setReturningFlights(data.returnFlights);
+			// 	time();
+   // 		console.log(data);
+   });
+
 		}
 		
 		
@@ -81,14 +89,20 @@ $scope.goToTop = function() {
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
- 	console.log($scope.selectedFlight);
- 	FlightsSrv.setOutGoing($scope.selectedFlight);
+ 	console.log($scope.my.flight);
+ 	
+ 	FlightsSrv.setOutGoing($scope.my.flight);
  	var returning = FlightsSrv.isReturn();
  	if(returning === true){
  		$location.url('/returnflights');
  	}else{
  		$location.url('/confirmation');
  	}
+ };
+ $scope.handleRadioClick=function(value){
+ 	// $scope.selectedFlight=value;
+ 	// window.checkedFlight=value;
+ 	console.log(value);
  };
  $scope.goToPreviousPage=function(){
  	$location.url('/');

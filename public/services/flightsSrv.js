@@ -1,6 +1,47 @@
 
 App.factory('FlightsSrv', function ($http) {
-               var ips=['ec2-52-26-166-80.us-west-2.compute.amazonaws.com'];
+               var ips=[  "ec2-54-152-123-100.compute-1.amazonaws.com",
+
+  "52.27.150.19",
+
+  "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
+
+  "52.90.46.68",
+
+  "52.34.160.140",
+
+  "52.36.195.124",
+
+  "www.swiss-air.me",
+
+  "52.25.15.124",
+
+  "52.36.250.55",
+
+  "54.187.208.145",
+
+  "sebitsplease.com.s3-website-us-east-1.amazonaws.com",
+
+  "52.58.46.74",
+
+  "54.93.36.94",
+
+  "54.191.202.17",
+
+  "54.213.157.185",
+
+  "52.28.246.230",
+
+  "mynksh.com",
+  "ec2-52-90-41-197.compute-1.amazonaws.com",
+
+  "52.207.211.179",
+
+  "52.32.109.147",
+
+  "52.36.169.206",
+
+  "ec2-52-91-94-227.compute-1.amazonaws.com"];
     var allC=[];
          var x={};
          x.getAirportCodes = function() {
@@ -127,17 +168,20 @@ App.factory('FlightsSrv', function ($http) {
                  }
              }
               x.getDataFromAllCompaniesOneWay=function(idx,cb) {
-                 if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
+                 if (idx === ips.length ) cb(allC);
                  else {
-
+                    if((idx === 0 && allC.length > 0)){
+                      allC=[];
+                    }
+                        console.log('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'');
                      $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'', {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       }).success(function (res) {
                          allC.push(res);
                          
-                    x.getDataFromAllCompaniesOneWay(idx + 1,cb);
+                    x.getDataFromAllCompaniesOneWay(idx + 1);
                      }).error(function(data){
-                         x.getDataFromAllCompaniesOneWay(idx + 1,cb);
+                         x.getDataFromAllCompaniesOneWay(idx + 1);
                      });
                  }
              }
@@ -145,17 +189,20 @@ App.factory('FlightsSrv', function ($http) {
                  var tmp={outgoingFlights:[],returnFlights:[]};
                  if(x.isReturn()){
                    x.getDataFromAllCompaniesRound(0,function(data){
-                 
+                  console.log(data);
                      for (var i=0;i<data.length;i++){
-                      
+                      if(data[i].outgoingFlights)
                          for (var j=0;j<data[i].outgoingFlights.length;j++){
+                            console.log(data[i].outgoingFlights[j]);
                              tmp.outgoingFlights.push(data[i].outgoingFlights[j]);
                          }
-                         
+                         if(data[i].returnFlights)
                          for (var j=0;j<data[i].returnFlights.length;j++){
+
                              tmp.returnFlights.push(data[i].returnFlights[j]);
                          }
                      }
+                     console.log(tmp);
                      
                      cb(tmp);
                  });
@@ -163,7 +210,7 @@ App.factory('FlightsSrv', function ($http) {
                    x.getDataFromAllCompaniesOneWay(0,function(data){
                       // tmp.returnFlights=[];
                      for (var i=0;i<data.length;i++){
-                      
+                      if(data[i].outgoingFlights)
                          for (var j=0;j<data[i].outgoingFlights.length;j++){
                              tmp.outgoingFlights.push(data[i].outgoingFlights[j]);
                          }
@@ -174,7 +221,9 @@ App.factory('FlightsSrv', function ($http) {
                      cb(tmp);
                  });
                  }
-                
+      //           return $http.get('/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'', {
+      //   "headers" : { 'x-access-token' :'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+      // });
  
              }
              x.setOtherAirlines=function(value){

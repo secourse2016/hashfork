@@ -8,12 +8,12 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         function changeTime(value){
             var date=moment(value).format('YYYY-MM-DD');
             var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
-            return value;
+            return datetime;
         };
          $scope.goToNextPage=function(){
             FlightsSrv.setOtherAirlines($scope.otherAirlines);
             if(FlightsSrv.isReturn()){
-            FlightsSrv.setReturning(moment($scope.dt2).toDate().getTime());
+            FlightsSrv.setReturning(changeTime(moment($scope.dt2).toDate().getTime()));
             }
            console.log(moment($scope.dt).toDate().getTime());
             FlightsSrv.setClass($scope.class);

@@ -17,6 +17,8 @@
      "jsonwebtoken": "*",
      "underscore"  : "*",
      "moment"      : "*",
+     "cors"       :"*",
+     "http"  :"*",
      "mocha"		:"*",
      "chai"			: "*",
      "supertest"	: "*",
