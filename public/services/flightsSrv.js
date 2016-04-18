@@ -177,9 +177,9 @@ App.factory('FlightsSrv', function ($http) {
       }).success(function (res) {
                          allC.push(res);
                          
-                    x.getDataFromAllCompaniesOneWay(idx + 1);
+                    x.getDataFromAllCompaniesOneWay(idx + 1,cb);
                      }).error(function(data){
-                         x.getDataFromAllCompaniesOneWay(idx + 1);
+                         x.getDataFromAllCompaniesOneWay(idx + 1,cb);
                      });
                  }
              }
