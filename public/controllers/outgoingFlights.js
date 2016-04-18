@@ -23,7 +23,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
 				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
 				$scope.duration.push(differnece);
-				console.log(differnece)
+				console.log(differnece);
 				}
 				$scope.selectedFlight=$scope.flights[0];
 	}

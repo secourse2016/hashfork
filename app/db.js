@@ -7,7 +7,7 @@
     function changeTime(value){
             var date=moment(Number(value)).format('YYYY-MM-DD');
             // console.log(isNaN(value));
-            var datetime=moment('2016-04-13 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
+            var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
             // console.log(datetime+" "+isNaN(datetime));
             return datetime;
         }

@@ -6,13 +6,16 @@ module.exports = function(app) {
 	var express = require('express');
 	var db = require('../db');
 	// Unsecured Part
+	app.use(require('body-parser').json());
 	app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods','PUT,GET,POST,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
   next();
+}).options('*',function(req,res,next){
+ res.end();
 });
-	app.use(require('body-parser').json());
+	
 
 	app.get('/api/airports',function(req,res){
 		var airports =  require('../../airports.json');
