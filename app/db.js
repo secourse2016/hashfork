@@ -86,7 +86,7 @@
 
     function find(orig , dest , deptDate , class1 , callback , retDate){
         // deptDate=deptDate/86400000;
-        deptDate=changeTime(deptDate);
+        // deptDate=changeTime(deptDate);
 
         connect(function(err,DB){
         var data={
@@ -106,6 +106,7 @@
                 er1=err;
                 if(retDate !== undefined){
                     retDate=changeTime(retDate);
+
 
                     DB.collection('Flights').find({origin : dest , destination : orig , departureDateTime : Number(retDate) ,"class":class1}).toArray(
                     function(err, returns){

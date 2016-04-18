@@ -47,17 +47,17 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 		}
 		}else{
 
-			// FlightsSrv.getDataFromAllCompanies(function(data){
-   //          $scope.flights =data.outgoingFlights;
-			// 	FlightsSrv.setReturningFlights(data.returnFlights);
-			// 	time();
-			// 	console.log("this is the end");
-   //      });
-   FlightsSrv.getDataFromAllCompanies().success(function(data){
-   		 $scope.flights =data.outgoingFlights;
+			FlightsSrv.getDataFromAllCompanies(function(data){
+            $scope.flights =data.outgoingFlights;
 				FlightsSrv.setReturningFlights(data.returnFlights);
 				time();
-   		console.log(data);
+				console.log("this is the end");
+   // //      });
+   // FlightsSrv.getDataFromAllCompanies().success(function(data){
+   // 		 $scope.flights =data.outgoingFlights;
+			// 	FlightsSrv.setReturningFlights(data.returnFlights);
+			// 	time();
+   // 		console.log(data);
    });
 
 		}
