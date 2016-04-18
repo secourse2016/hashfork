@@ -28,7 +28,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				$scope.selectedFlight=$scope.flights[0];
 	}
 	function getOutgoingFlights(){
-		if(!FlightsSrv.getOtherAirlines()){
+		// if(!FlightsSrv.getOtherAirlines()){
 			if(FlightsSrv.isReturn()){
 			FlightsSrv.searchOurAirlineRound().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
@@ -44,15 +44,15 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				console.log("this is the end");
 			});
 		}
-		}else{
+		// }else{
 
-			FlightsSrv.getDataFromAllCompanies(function(data){
-            $scope.flights =data.outgoingFlights;
-				FlightsSrv.setReturningFlights(data.returnFlights);
-				time();
-				console.log("this is the end");
-        });
-		}
+		// 	FlightsSrv.getDataFromAllCompanies(function(data){
+  //           $scope.flights =data.outgoingFlights;
+		// 		FlightsSrv.setReturningFlights(data.returnFlights);
+		// 		time();
+		// 		console.log("this is the end");
+  //       });
+		// }
 		
 		
 	};
