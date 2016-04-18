@@ -55,7 +55,7 @@ $scope.goToTop = function() {
     };
  $scope.goToNextPage=function(){
 
- 		FlightsSrv.setReturningFlight($scope.my.light);
+ 		FlightsSrv.setReturningFlight($scope.my.flight);
  		$location.url('/confirmation');
  	
  };

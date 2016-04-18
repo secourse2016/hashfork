@@ -7,12 +7,12 @@
     function changeTime(value){
             var date=moment(Number(value)).format('YYYY-MM-DD');
             // console.log(isNaN(value));
-            var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
+            var datetime=moment(date+' 12:00:00:000 AM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
             // console.log(datetime+" "+isNaN(datetime));
             return datetime;
         }
      
-    console.log(changeTime('1460930916099')); 
+    console.log(changeTime('1460930000000')); 
     function connect (cb) {
         return mongo.connect(dbURL, function(err, db) {
             if (err) return cb(err);
@@ -87,8 +87,8 @@
     function find(orig , dest , deptDate , class1 , callback , retDate){
         // deptDate=deptDate/86400000;
         // deptDate=changeTime(deptDate);
-deptDate=deptDate/86400000;
-        //deptDate=changeTime(deptDate);
+        // deptDate=deptDate/86400000;
+        deptDate=changeTime(deptDate);
 
         connect(function(err,DB){
         var data={
@@ -107,7 +107,7 @@ deptDate=deptDate/86400000;
                 //data1.outgoingFlights=outgoings;
                 er1=err;
                 if(retDate !== undefined){
-                    retDate=retDate/86400000;
+                    retDate=changeTime(retDate);
 
                     DB.collection('Flights').find({origin : dest , destination : orig ,"class":class1}).toArray(
                     function(err, returns){
@@ -116,14 +116,14 @@ deptDate=deptDate/86400000;
                     er2=err;
                     console.log("The number of flights found is"+tmp.outgoingFlights.length);
                     for(var i=0; i<tmp.outgoingFlights.length; i++){
-                      if((tmp.outgoingFlights[i].departureDateTime/86400000) === deptDate){
+                      if((changeTime(tmp.outgoingFlights[i].departureDateTime)) === deptDate){
                         console.log("One found" + tmp.outgoingFlights[i]);
                         data1.outgoingFlights.push(tmp.outgoingFlights[i]);
                       }
                     }
                     console.log("The number of flights found is"+tmp.returnFlights.length);
                     for(var i=0; i<tmp.returnFlights.length; i++){
-                      if((tmp.returnFlights[i].departureDateTime/86400000) === retDate){
+                      if((changeTime(tmp.returnFlights[i].departureDateTime)) === retDate){
                         console.log("One found" + tmp.outgoingFlights[i]);
                         data1.returnFlights.push(tmp.returnFlights[i]);
                       }
@@ -137,7 +137,7 @@ deptDate=deptDate/86400000;
         }else {
           console.log("The number of flights found is "+tmp.outgoingFlights.length);
             for(var i=0; i<tmp.outgoingFlights.length; i++){
-              if((tmp.outgoingFlights[i].departureDateTime/86400000) === deptDate){
+              if((changeTime(tmp.outgoingFlights[i].departureDateTime)) === deptDate){
                 console.log("One found" + tmp.outgoingFlights[i].departureDateTime);
                 data1.outgoingFlights.push(tmp.outgoingFlights[i]);
               }
