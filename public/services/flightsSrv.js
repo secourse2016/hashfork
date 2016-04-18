@@ -1,8 +1,6 @@
 
 App.factory('FlightsSrv', function ($http) {
-
                var ips=['ec2-52-26-166-80.us-west-2.compute.amazonaws.com'];
-
     var allC=[];
          var x={};
          x.getAirportCodes = function() {
@@ -114,7 +112,7 @@ App.factory('FlightsSrv', function ($http) {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       });
          }
-             x.getDataFromAllCompanies2=function(idx,cb) {
+             x.getDataFromAllCompaniesRound=function(idx,cb) {
                  if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
                  else {
                      $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.returnDate+'/'+x.class+'', {
@@ -122,15 +120,31 @@ App.factory('FlightsSrv', function ($http) {
       }).success(function (res) {
                          allC.push(res);
                          
-                    x.getDataFromAllCompanies2(idx + 1,cb);
+                    x.getDataFromAllCompaniesRound(idx + 1,cb);
                      }).error(function(data){
-                         x.getDataFromAllCompanies2(idx + 1,cb);
+                         x.getDataFromAllCompaniesRound(idx + 1,cb);
+                     });
+                 }
+             }
+              x.getDataFromAllCompaniesOneWay=function(idx,cb) {
+                 if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
+                 else {
+                        console.log('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'');
+                     $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'', {
+        "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+      }).success(function (res) {
+                         allC.push(res);
+                         
+                    x.getDataFromAllCompaniesOneWay(idx + 1,cb);
+                     }).error(function(data){
+                         x.getDataFromAllCompaniesOneWay(idx + 1,cb);
                      });
                  }
              }
              x.getDataFromAllCompanies=function(cb) {
                  var tmp={outgoingFlights:[],returnFlights:[]};
-                 x.getDataFromAllCompanies2(0,function(data){
+                 if(x.isReturn()){
+                   x.getDataFromAllCompaniesRound(0,function(data){
                  
                      for (var i=0;i<data.length;i++){
                       
@@ -145,7 +159,29 @@ App.factory('FlightsSrv', function ($http) {
                      
                      cb(tmp);
                  });
+                 }else{
+                   x.getDataFromAllCompaniesOneWay(0,function(data){
+                      // tmp.returnFlights=[];
+                     for (var i=0;i<data.length;i++){
+                      
+                         for (var j=0;j<data[i].outgoingFlights.length;j++){
+                             tmp.outgoingFlights.push(data[i].outgoingFlights[j]);
+                         }
+                         
+                         
+                     }
+                     
+                     cb(tmp);
+                 });
+                 }
+                
  
+             }
+             x.setOtherAirlines=function(value){
+              x.otherAirlines=value;
+             }
+             x.getOtherAirlines=function(){
+              return x.otherAirlines;
              }
 
      return x;
