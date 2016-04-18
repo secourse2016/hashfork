@@ -117,7 +117,7 @@ App.factory('FlightsSrv', function ($http) {
          x.setCost=function(value){
           x.cost=value;
          }
-         
+
          x.getCost=function(){
           return x.cost;
          }
@@ -150,9 +150,9 @@ App.factory('FlightsSrv', function ($http) {
           x.booking.reference=ref;
           return $http.post('api/booking',{
             'booking':x.booking},{
-        "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
-      });
-         }
+          "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
+        });
+           }
              x.getDataFromAllCompaniesRound=function(idx,cb) {
                  if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
                  else {
@@ -160,7 +160,7 @@ App.factory('FlightsSrv', function ($http) {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       }).success(function (res) {
                          allC.push(res);
-                         
+
                     x.getDataFromAllCompaniesRound(idx + 1,cb);
                      }).error(function(data){
                          x.getDataFromAllCompaniesRound(idx + 1,cb);
@@ -176,7 +176,7 @@ App.factory('FlightsSrv', function ($http) {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       }).success(function (res) {
                          allC.push(res);
-                         
+
                     x.getDataFromAllCompaniesOneWay(idx + 1);
                      }).error(function(data){
                          x.getDataFromAllCompaniesOneWay(idx + 1);
@@ -202,7 +202,7 @@ App.factory('FlightsSrv', function ($http) {
                          }
                      }
                      console.log(tmp);
-                     
+
                      cb(tmp);
                  });
                  }else{
@@ -213,17 +213,17 @@ App.factory('FlightsSrv', function ($http) {
                          for (var j=0;j<data[i].outgoingFlights.length;j++){
                              tmp.outgoingFlights.push(data[i].outgoingFlights[j]);
                          }
-                         
-                         
+
+
                      }
-                     
+
                      cb(tmp);
                  });
                  }
       //           return $http.get('/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'', {
       //   "headers" : { 'x-access-token' :'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       // });
- 
+
              }
              x.setOtherAirlines=function(value){
               x.otherAirlines=value;
