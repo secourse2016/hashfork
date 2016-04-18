@@ -2,11 +2,8 @@
 App.factory('FlightsSrv', function ($http) {
                var ips=[ "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
                "ec2-52-90-41-197.compute-1.amazonaws.com",
-                "ec2-54-152-123-100.compute-1.amazonaws.com",
-
-  "52.27.150.19",
-
-  "52.90.46.68",
+               "www.swiss-air.me",
+                
 
   "52.34.160.140",
 
@@ -32,7 +29,7 @@ App.factory('FlightsSrv', function ($http) {
 
   "52.28.246.230",
 
-  "mynksh.com",
+  "www.mynksh.com",
   
 
   "52.207.211.179",
@@ -41,7 +38,12 @@ App.factory('FlightsSrv', function ($http) {
 
   "52.36.169.206",
 
-  "ec2-52-91-94-227.compute-1.amazonaws.com"];
+  "ec2-52-91-94-227.compute-1.amazonaws.com",
+  "ec2-54-152-123-100.compute-1.amazonaws.com",
+
+  "52.27.150.19",
+
+  "52.90.46.68",];
     var allC=[];
          var x={};
          x.getAirportCodes = function() {
