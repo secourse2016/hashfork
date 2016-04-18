@@ -1,33 +1,44 @@
 App.controller('confirmation', function($scope,FlightsSrv,$location) {
-  var moment = require('moment');
+  $scope.isThereFlights=true;
   var flight = FlightsSrv.getFlight();
-  $scope.adultNo = FlightsSrv.getAdults();
+  if(!flight.outgoingFlights){
+    $scope.isThereFlights=false;
+  }else{
+    $scope.adultNo = FlightsSrv.getAdults();
   $scope.childNo = FlightsSrv.getChild();
   $scope.babyNo = FlightsSrv.getBaby();
-  $scope.adultPrice = flight.outgoing.cost+flight.returning.cost;
-  $scope.childPrice = 50;
-  $scope.babyPrice = 20;
-  $scope.date1 = moment(flight.outgoing.departureDateTime).format('MM-DD-YYYY');
-  $scope.date2 = moment(flight.outgoing.arrivalDateTime).format('MM-DD-YYYY');
-  $scope.date3 =  moment(flight.returning.departureDateTime).format('MM-DD-YYYY');
-  $scope.date4 = moment(flight.returning.arrivalDateTime).format('MM-DD-YYYY');
-  $scope.time1 = moment(flight.outgoing.departureDateTime).format('hh:mm');
-  $scope.time2 = moment(flight.outgoing.arrivalDateTime).format('hh:mm');
-  $scope.time3 = moment(flight.returning.departureDateTime).format('hh:mm');
-  $scope.time4 = moment(flight.returning.arrivalDateTime).format('hh:mm');
-  $scope.from = flight.outgoing.origin;
-  $scope.to = flight.outgoing.destination;
-  if(FlightsSrv.isReturn() === true){
+   if(FlightsSrv.isReturn() === true){
   $scope.returnFlight = 1;
+  $scope.adultPrice = Number(flight.outgoingFlights.cost)+Number(flight.returnFlights.cost);
+  $scope.date3 =  moment(flight.returnFlights.departureDateTime).format('MM-DD-YYYY');
+  $scope.date4 = moment(flight.returnFlights.arrivalDateTime).format('MM-DD-YYYY');
+  $scope.time3 = moment(flight.returnFlights.departureDateTime).format('hh:mm');
+  $scope.time4 = moment(flight.returnFlights.arrivalDateTime).format('hh:mm');
 }else{
   $scope.returnFlight=0;
+  $scope.adultPrice = Number(flight.outgoingFlights.cost)
 }
+  
+  $scope.childPrice = ($scope.adultPrice)/2;
+  $scope.babyPrice = ($scope.adultPrice)/4;
+  $scope.date1 = moment(flight.outgoingFlights.departureDateTime).format('MM-DD-YYYY');
+  $scope.date2 = moment(flight.outgoingFlights.arrivalDateTime).format('MM-DD-YYYY');
+  
+  $scope.time1 = moment(flight.outgoingFlights.departureDateTime).format('hh:mm');
+  $scope.time2 = moment(flight.outgoingFlights.arrivalDateTime).format('hh:mm');
+  
+  $scope.from = flight.outgoingFlights.origin;
+  $scope.to = flight.outgoingFlights.destination;
+ 
 
   $scope.total = $scope.adultNo*$scope.adultPrice + $scope.childNo*$scope.childPrice + $scope.babyNo*$scope.babyPrice;
   FlightsSrv.setCost($scope.total)
+  }
+  
   $scope.goToPrev=function(){
-    var returning = FlightsSrv.isReturn();
-  if(returning === true){
+    var returnFlights = FlightsSrv.isReturn();
+  if(returnFlights === true){
+   
     $location.url('/returnflights');
   }else{
     $location.url('/outgoingflights');

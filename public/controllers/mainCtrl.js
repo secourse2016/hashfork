@@ -1,14 +1,23 @@
 App.controller('mainController', function ($scope,FlightsSrv, $location) {
         //$scope.pageClass = 'page-home';
-
-        $scope.Airports=[];
         
+        $scope.Airports=[];
+        $scope.otherAirlines=false;
+        FlightsSrv.setBooking();
+        $scope.class='economy'
+        function changeTime(value){
+            var date=moment(value).format('YYYY-MM-DD');
+            var datetime=moment(date+' 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
+            return datetime;
+        };
          $scope.goToNextPage=function(){
-            if($scope.dt2){
-            FlightsSrv.setReturning($scope.dt2);
+            FlightsSrv.setOtherAirlines($scope.otherAirlines);
+            if(FlightsSrv.isReturn()){
+            FlightsSrv.setReturning(changeTime(moment($scope.dt2).toDate().getTime()));
             }
+           console.log(moment($scope.dt).toDate().getTime());
             FlightsSrv.setClass($scope.class);
-            FlightsSrv.setDepart($scope.dt);
+            FlightsSrv.setDepart(changeTime(moment($scope.dt).toDate().getTime()));
            FlightsSrv.setAdults($scope.adults);
            FlightsSrv.setChild($scope.child);
            FlightsSrv.setBaby($scope.baby);
@@ -54,7 +63,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
     //};
      function AirportCodes() {
         FlightsSrv.getAirportCodes().success(function(airports) {
-            console.log(airports);
+            
          $scope.Airports = airports;
      });
   };
@@ -138,7 +147,7 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
         function disabled(data) {
             var date = data.date,
                 mode = data.mode;
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
+            return mode === 'day' && (date.getDay() ===7 );
         }
 
         $scope.toggleMin = function () {
@@ -158,9 +167,9 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
 
         $scope.setDate = function (year, month, day) {
             if($scope.popup1.opened===true){
-            $scope.dt = new Date(year, month, day);
+            $scope.dt = new Date(year, month, day,6, 25, 0, 250);
         }else{
-            $scope.dt2 = new Date(year, month, day);
+            $scope.dt2 = new Date(year, month, day,6, 25, 0, 250);
         }
 
         };
@@ -196,10 +205,10 @@ App.controller('mainController', function ($scope,FlightsSrv, $location) {
             var date = data.date,
                 mode = data.mode;
             if (mode === 'day') {
-                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+                var dayToCheck = new Date(date).setHours(6, 25, 0, 250);
 
                 for (var i = 0; i < $scope.events.length; i++) {
-                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+                    var currentDay = new Date($scope.events[i].date).setHours(6, 25, 0, 250);
 
                     if (dayToCheck === currentDay) {
                         return $scope.events[i].status;

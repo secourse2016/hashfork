@@ -1,15 +1,33 @@
 App.controller('bookingrefCtrl',function($scope,FlightsSrv,$location){
 	$scope.bookingref=getUrlParameter("q");
-   $scope.date1 = moment(flight.outgoing.departureDateTime).format('MM-DD-YYYY');
-  $scope.date2 = moment(flight.outgoing.arrivalDateTime).format('MM-DD-YYYY');
-  $scope.date3 =  moment(flight.returning.departureDateTime).format('MM-DD-YYYY');
-  $scope.date4 = moment(flight.returning.arrivalDateTime).format('MM-DD-YYYY');
-  $scope.time1 = moment(flight.outgoing.departureDateTime).format('hh:mm');
-  $scope.time2 = moment(flight.outgoing.arrivalDateTime).format('hh:mm');
-  $scope.time3 = moment(flight.returning.departureDateTime).format('hh:mm');
-  $scope.time4 = moment(flight.returning.arrivalDateTime).format('hh:mm');
-  $scope.from = flight.outgoing.origin;
-  $scope.to = flight.outgoing.destination;
+  $scope.flight={};
+  $scope.isthereFlights=true;
+  $scope.isReturn=true;
+  FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
+      if(data.length>0){
+      $scope.flight=data[0].flight;
+      if(!$scope.flight.returnFlights){
+        $scope.isReturn=false;
+      }else{
+         $scope.date3 =  moment($scope.flight.returnFlights.departureDateTime).format('MM-DD-YYYY');
+  $scope.date4 = moment($scope.flight.returnFlights.arrivalDateTime).format('MM-DD-YYYY');
+        $scope.time3 = moment($scope.flight.returnFlights.departureDateTime).format('hh:mm');
+  $scope.time4 = moment($scope.flight.returnFlights.arrivalDateTime).format('hh:mm');
+      }
+      $scope.date1 = moment($scope.flight.outgoingFlights.departureDateTime).format('MM-DD-YYYY');
+  $scope.date2 = moment($scope.flight.outgoingFlights.arrivalDateTime).format('MM-DD-YYYY');
+ 
+  $scope.time1 = moment($scope.flight.outgoingFlights.departureDateTime).format('hh:mm');
+  $scope.time2 = moment($scope.flight.outgoingFlights.arrivalDateTime).format('hh:mm');
+  
+  $scope.from = $scope.flight.outgoingFlights.origin;
+  $scope.to = $scope.flight.outgoingFlights.destination;
+}
+else{
+  $scope.isthereFlights=false;
+}
+  });
+   
   function getUrlParameter(param) {
         var sPageURL = window.location.search.substring(1),
             sURLVariables = sPageURL.split(/[&||?]/),
