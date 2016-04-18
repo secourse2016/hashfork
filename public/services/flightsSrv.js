@@ -1,6 +1,6 @@
 
 App.factory('FlightsSrv', function ($http) {
-               var ips=['localhost:3000'];
+               var ips=['ec2-52-26-166-80.us-west-2.compute.amazonaws.com'];
     var allC=[];
          var x={};
          x.getAirportCodes = function() {

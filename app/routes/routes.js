@@ -6,7 +6,12 @@ module.exports = function(app) {
 	var express = require('express');
 	var db = require('../db');
 	// Unsecured Part
-
+	app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods','PUT,GET,POST,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  next();
+});
 	app.use(require('body-parser').json());
 
 	app.get('/api/airports',function(req,res){
