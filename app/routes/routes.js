@@ -49,18 +49,18 @@ app.use(require('body-parser').json());
   		app.use(express.static('public'));
 
 
-  	app.get('/db/seed', function(req, res) {
+  	// app.get('/db/seed', function(req, res) {
 
-  		db.seed(function (err, seeded) {
+  	// 	db.seed(function (err, seeded) {
 
-  		});
-  	});
-  		app.get('/db/delete', function(req, res) {
-  			db.clearDB(function(){
-  				var airports =  require('../../airports.json');
-  				res.json(airports);
-  			});
-  		});
+  	// 	});
+  	// });
+  	// 	app.get('/db/delete', function(req, res) {
+  	// 		db.clearDB(function(){
+  	// 			var airports =  require('../../airports.json');
+  	// 			res.json(airports);
+  	// 		});
+  	// 	});
 
       /* Middleware for securing the APIs */
 
