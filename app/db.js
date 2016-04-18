@@ -7,7 +7,7 @@
     function changeTime(value){
             var date=moment(Number(value)).format('YYYY-MM-DD');
             // console.log(isNaN(value));
-            var datetime=moment('2016-04-13 12:25 AM','YYYY-MM-DD hh:mm A').toDate().getTime();
+            var datetime=moment('2016-04-13 06:25:00:250 PM','YYYY-MM-DD hh:mm:ss:ms A').toDate().getTime();
             // console.log(datetime+" "+isNaN(datetime));
             return datetime;
         }
@@ -86,7 +86,7 @@
      
     function find(orig , dest , deptDate , class1 , callback , retDate){
         // deptDate=deptDate/86400000;
-        // deptDate=changeTime(deptDate);
+        deptDate=changeTime(deptDate);
 
         connect(function(err,DB){
         var data={
@@ -105,7 +105,7 @@
                 data1.outgoingFlights=outgoings;
                 er1=err;
                 if(retDate !== undefined){
-                    // retDate=changeTime(retDate);
+                    retDate=changeTime(retDate);
                     
                     DB.collection('Flights').find({origin : dest , destination : orig , departureDateTime : Number(retDate) ,"class":class1}).toArray(
                     function(err, returns){
