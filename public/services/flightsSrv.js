@@ -4,43 +4,42 @@ App.factory('FlightsSrv', function ($http) {
                "ec2-52-90-41-197.compute-1.amazonaws.com",
                "www.swiss-air.me",
                  "54.93.36.94",
-                  // "www.mynksh.com",
+                  // "www.mynksh.com", //Loads Forever
 
 
-  // "52.34.160.140",
+  // "52.27.150.19", //works correctley but wrong DateTime format
   //
-  // "52.36.195.124",
+  // "52.28.246.230", //works correctley but wrong dateTime format
   //
-  // "www.swiss-air.me",
+  // "52.25.15.124"  //working but return empty array
   //
-  // "52.25.15.124",
+  // "52.36.250.55", //Loads forever
   //
-  // "52.36.250.55",
+  // "54.187.208.145", //Throws Error
   //
-  // "54.187.208.145",
+  // "sebitsplease.com.s3-website-us-east-1.amazonaws.com", //return HTML page
   //
-  // "sebitsplease.com.s3-website-us-east-1.amazonaws.com",
+  // "52.58.46.74", // not working yet
   //
-  // "52.58.46.74",
+  // "54.191.202.17", //working but return empty array
   //
-  // "54.191.202.17",
+  // "54.213.157.185", //not working yet
   //
-  // "54.213.157.185",
+  // "52.36.195.124", // not working yet
   //
-  // "52.28.246.230",
+  // "52.207.211.179", //throws error
   //
-  // "52.207.211.179",
+  // "52.32.109.147", // not working yet
   //
-  // "52.32.109.147",
+  // "52.36.169.206", // not working yet
   //
-  // "52.36.169.206",
+  // "ec2-52-91-94-227.compute-1.amazonaws.com", // not working yet
   //
-  // "ec2-52-91-94-227.compute-1.amazonaws.com",
-  // "ec2-54-152-123-100.compute-1.amazonaws.com",
+  // "ec2-54-152-123-100.compute-1.amazonaws.com", //loads forever
   //
-  // //"52.27.150.19",
+  // "52.34.160.140", // not working yet
   //
-  // "52.90.46.68",
+  // "52.90.46.68", //not working yet
 ];
     var allC=[];
          var x={};
