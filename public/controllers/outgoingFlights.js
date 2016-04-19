@@ -1,5 +1,5 @@
 App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $anchorScroll){
-	
+
 	$scope.flights = [];
 	$scope.from = FlightsSrv.getFrom().name;
 	$scope.to = FlightsSrv.getTo().name;
@@ -13,11 +13,12 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
     $location.hash(div);
     $anchorScroll();
 	};
-	
+
 	function time(){
 			for(var i=0;i<$scope.flights.length;i++){
 				var differnece=Number($scope.flights[i].arrivalDateTime)-Number($scope.flights[i].departureDateTime);
-				differnece=differnece/(3600000);
+				differnece = differnece/3600000;
+				differnece= Math.round( differnece * 10) / 10
 				$scope.dateFrom.push(moment($scope.flights[i].departureDateTime).format('YYYY-MM-DD'));
 				$scope.dateTo.push(moment($scope.flights[i].arrivalDateTime).format('YYYY-MM-DD'));
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
@@ -32,17 +33,17 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 			if(FlightsSrv.isReturn()){
 			FlightsSrv.searchOurAirlineRound().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
-				
+
 				FlightsSrv.setReturningFlights(flight.returnFlights);
 				console.log(flight.outgoingFlights);
 				time();
-				
+
 			});
 		}else{
 			FlightsSrv.searchOurAirline().success(function(flight){
 				$scope.flights =flight.outgoingFlights;
 				time();
-				
+
 			});
 		}
 		}else{
@@ -61,11 +62,11 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
    });
 
 		}
-		
-		
+
+
 	};
 
-	
+
 
 var pagesShown = 1;
 
@@ -80,17 +81,17 @@ $scope.hasMoreItemsToShow = function() {
 };
 
 $scope.showMoreItems = function() {
- pagesShown = pagesShown + 1;       
-}; 
+ pagesShown = pagesShown + 1;
+};
 $scope.goToTop = function() {
-      
+
       $location.hash('topOfPage');
-	  
+
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
  	console.log($scope.my.flight);
- 	
+
  	FlightsSrv.setOutGoing($scope.my.flight);
  	var returning = FlightsSrv.isReturn();
  	if(returning === true){
