@@ -13,12 +13,13 @@ App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchor
     $anchorScroll();
 	};
 	function getReturning(){
-				
+
 				$scope.flights =FlightsSrv.getReturningFlights();
-				
+
 				for(var i=0;i<$scope.flights.length;i++){
 					var differnece=Number($scope.flights[i].arrivalDateTime)-Number($scope.flights[i].departureDateTime);
-				differnece=differnece/(3600000);
+				differnece = differnece/3600000;
+				differnece= Math.round( differnece * 10) / 10
 				$scope.dateFrom.push(moment($scope.flights[i].departureDateTime).format('YYYY-MM-DD'));
 				$scope.dateTo.push(moment($scope.flights[i].arrivalDateTime).format('YYYY-MM-DD'));
 				$scope.timeFrom.push(moment($scope.flights[i].departureDateTime).format('hh:mm'));
@@ -27,10 +28,10 @@ App.controller('flightListCtrl', function ($scope,FlightsSrv, $location, $anchor
 				console.log(differnece)
 				};
 				$scope.my.flight=$scope.flights[0];
-			
+
 	};
 
-	
+
 
 var pagesShown = 1;
 
@@ -45,22 +46,22 @@ $scope.hasMoreItemsToShow = function() {
 };
 
 $scope.showMoreItems = function() {
- pagesShown = pagesShown + 1;       
-}; 
+ pagesShown = pagesShown + 1;
+};
 $scope.goToTop = function() {
-      
+
       $location.hash('topOfPage');
-	  
+
       $anchorScroll();
     };
  $scope.goToNextPage=function(){
 
  		FlightsSrv.setReturningFlight($scope.my.flight);
  		$location.url('/confirmation');
- 	
+
  };
  $scope.goToPreviousPage=function(){
- 	
+
  	$location.url('/outgoingflights');
  }
  getReturning();
