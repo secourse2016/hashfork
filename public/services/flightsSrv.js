@@ -3,44 +3,46 @@ App.factory('FlightsSrv', function ($http) {
                var ips=[ "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
                "ec2-52-90-41-197.compute-1.amazonaws.com",
                "www.swiss-air.me",
-               "54.93.36.94",
-               "ec2-52-38-101-89.us-west-2.compute.amazonaws.com" //works properly but only with postman
-              // "www.mynksh.com" //loads forever again
+                 "54.93.36.94",
+                 "ec2-52-38-101-89.us-west-2.compute.amazonaws.com",
+                  "www.mynksh.com", //Loads Forever
 
 
-  // "52.27.150.19", //works correctley but wrong DateTime format
-  //
-  // "52.28.246.230", //works correctley but wrong dateTime format
-  //
-  // "52.25.15.124"  //working but return empty array
-  //
-  // "52.36.250.55", //Loads forever
-  //
-  // "54.187.208.145", //Throws Error
-  //
-  // "sebitsplease.com.s3-website-us-east-1.amazonaws.com", //return HTML page
-  //
-  // "52.58.46.74", // not working yet
-  //
-  // "54.191.202.17", //working but return empty array
-  //
-  // "54.213.157.185", //not working yet
-  //
-  // "52.36.195.124", // not working yet
-  //
-  // "52.207.211.179", //throws error
-  //
-  // "52.32.109.147", // not working yet
-  //
-  // "52.36.169.206", // not working yet
-  //
-  // "ec2-52-91-94-227.compute-1.amazonaws.com", // not working yet
-  //
-  // "ec2-54-152-123-100.compute-1.amazonaws.com", //loads forever
-  //
-  // "52.34.160.140", // not working yet
-  //
-  // "52.90.46.68", //not working yet
+
+
+
+  "52.28.246.230", //works correctley but wrong dateTime format
+
+  "52.25.15.124",  //working but return empty array
+
+  "52.36.250.55", //Loads forever
+
+  "54.187.208.145", //Throws Error
+
+  "sebitsplease.com.s3-website-us-east-1.amazonaws.com", //return HTML page
+
+  "52.58.46.74", // not working yet
+
+  "54.191.202.17", //working but return empty array
+
+  "54.213.157.185", //not working yet
+
+  "52.36.195.124", // not working yet
+
+  "52.207.211.179", //throws error
+
+  "52.32.109.147", // not working yet
+
+  "52.36.169.206", // not working yet
+
+  "ec2-52-91-94-227.compute-1.amazonaws.com", // not working yet
+
+  "ec2-54-152-123-100.compute-1.amazonaws.com", //loads forever
+
+  "52.34.160.140", // not working yet
+
+  "52.90.46.68", //not working yet
+  "52.27.150.19"//works correctley but wrong DateTime format
 ];
     var allC=[];
          var x={};
@@ -155,6 +157,7 @@ App.factory('FlightsSrv', function ($http) {
                  if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
                  else {
                      $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.returnDate+'/'+x.class+'?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
+                      timeout:1500
       }).success(function (res) {
                          allC.push(res);
 
@@ -168,7 +171,9 @@ App.factory('FlightsSrv', function ($http) {
                  if (idx === ips.length ) cb(allC);
                  else {
                      $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
-      }).success(function (res) {
+                      timeout:1500
+
+                    }).success(function (res) {
                          allC.push(res);
                     x.getDataFromAllCompaniesOneWay(idx + 1,cb);
 
@@ -227,4 +232,6 @@ App.factory('FlightsSrv', function ($http) {
              }
 
      return x;
- });
+ }).config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.timeout = 1000;
+}]);
