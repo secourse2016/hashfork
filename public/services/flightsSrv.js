@@ -38,7 +38,7 @@ App.factory('FlightsSrv', function ($http) {
   "ec2-52-91-94-227.compute-1.amazonaws.com",
   "ec2-54-152-123-100.compute-1.amazonaws.com",
 
-  "52.27.150.19",
+  //"52.27.150.19",
 
   "52.90.46.68",
 ];
