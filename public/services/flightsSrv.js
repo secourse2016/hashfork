@@ -3,8 +3,9 @@ App.factory('FlightsSrv', function ($http) {
                var ips=[ "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
                "ec2-52-90-41-197.compute-1.amazonaws.com",
                "www.swiss-air.me",
-                 "54.93.36.94",
-                  // "www.mynksh.com", //Loads Forever
+               "54.93.36.94",
+               "ec2-52-38-101-89.us-west-2.compute.amazonaws.com" //works properly but only with postman
+              // "www.mynksh.com" //loads forever again
 
 
   // "52.27.150.19", //works correctley but wrong DateTime format
