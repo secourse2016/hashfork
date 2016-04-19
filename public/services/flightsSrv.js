@@ -8,38 +8,39 @@ App.factory('FlightsSrv', function ($http) {
                   "www.mynksh.com", //Loads Forever
 
 
-   
-  
+
+
+
   "52.28.246.230", //works correctley but wrong dateTime format
-  
+
   "52.25.15.124",  //working but return empty array
-  
+
   "52.36.250.55", //Loads forever
-  
+
   "54.187.208.145", //Throws Error
-  
+
   "sebitsplease.com.s3-website-us-east-1.amazonaws.com", //return HTML page
-  
+
   "52.58.46.74", // not working yet
-  
+
   "54.191.202.17", //working but return empty array
-  
+
   "54.213.157.185", //not working yet
-  
+
   "52.36.195.124", // not working yet
-  
+
   "52.207.211.179", //throws error
-  
+
   "52.32.109.147", // not working yet
-  
+
   "52.36.169.206", // not working yet
-  
+
   "ec2-52-91-94-227.compute-1.amazonaws.com", // not working yet
-  
+
   "ec2-54-152-123-100.compute-1.amazonaws.com", //loads forever
-  
+
   "52.34.160.140", // not working yet
-  
+
   "52.90.46.68", //not working yet
   "52.27.150.19"//works correctley but wrong DateTime format
 ];
