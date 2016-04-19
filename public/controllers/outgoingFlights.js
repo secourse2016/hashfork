@@ -8,6 +8,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 	$scope.timeFrom=[];
 	$scope.timeTo=[];
 	$scope.duration=[];
+	$scope.dbFinished=false;
 	$scope.my = { flight: 'unicorns' };
 	$scope.scrollTo = function(div) {
     $location.hash(div);
@@ -16,6 +17,7 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 
 	function time(){
 			for(var i=0;i<$scope.flights.length;i++){
+				if(!isNaN($scope.flights[i].departureDateTime)){
 				var differnece=Number($scope.flights[i].arrivalDateTime)-Number($scope.flights[i].departureDateTime);
 				differnece = differnece/3600000;
 				differnece= Math.round( differnece * 10) / 10
@@ -25,8 +27,13 @@ App.controller('flightOutgoingCtrl', function ($scope,FlightsSrv, $location, $an
 				$scope.timeTo.push(moment($scope.flights[i].arrivalDateTime).format('hh:mm'));
 				$scope.duration.push(differnece);
 				console.log(differnece);
+			}else{
+				// console.log(i);
+				// $scope.flights.splice(i,1);
+			}
 				}
 				$scope.my.flight=$scope.flights[0];
+				$scope.dbFinished=true;
 	}
 	function getOutgoingFlights(){
 		if(!FlightsSrv.getOtherAirlines()){
