@@ -1,8 +1,8 @@
 <ion-view style="" id="page1" title="Return Flight">
     <ion-content class="has-header" padding="true" style="background: url(img/KNefe58PTyShnFNsDpxE_background.png) no-repeat center;background-size:cover;">
         <div style="" class="button-bar">
-            <button class="button button-positive  button-block icon-left ion-android-arrow-back" id="returnFlight-button3">Prev</button>
-            <button class="button button-positive  button-block icon-right ion-arrow-right-c" id="returnFlight-button5">Next</button>
+            <button class="button button-positive  button-block icon-left ion-android-arrow-back" id="returnFlight-button3" ng-click="goToPreviousPage()">Prev</button>
+            <button class="button button-positive  button-block icon-right ion-arrow-right-c" id="returnFlight-button5" ng-disabled="buttons.$invalid" ng-click="goToNextPage()">Next</button>
         </div>
         <form style="" class="list">
             <div>
