@@ -1,0 +1,43 @@
+<ion-view title="Confirmation" id="confirmation" style="background-color:#020202;">
+    <ion-content padding="false" style="background: url(../img/new.png) no-repeat center;background-size:cover;" class="has-header">
+        <div class="spacer" style="width: 320px; height: 35px;"></div>
+        <ion-list>
+            <ion-item class="item-thumbnail-left">
+                <img src="../img/out-flight.png">
+                <h2>Outgoing Flight</h2>
+                <p>From: {{from}}</p>
+                <p>To: {{to}}</p>
+                <p>Departure: {{date1}} {{time1}}</p>
+                <p>Arrival: {{date2}} {{time2}}</p>
+            </ion-item>
+        </ion-list>
+        <div ng-if="returnFlight>0" class="spacer" style="width: 320px; height: 32px;"></div>
+        <ion-list>
+            <ion-item class="item-thumbnail-left">
+                <img src="../img/return-flight.png">
+                <h2>Return Flight</h2>
+                <p>From: {{to}}</p>
+                <p>To: {{from}}</p>
+                <p>Departure: {{date3}} {{time3}}</p>
+                <p>Arrival: {{date4}} {{time4}}</p>
+            </ion-item>
+        </ion-list>
+        <div class="spacer" style="width: 320px; height: 28px;"></div>
+        <div id="confirmation-markdown2" style="color:#FFFFFF;">
+            <p>Number of Adults: {{adultNo}} Price per adult: {{adultPrice}}$</p>
+        </div>
+        <div ng-if="childNo>0" id="confirmation-markdown3" style="color:#FFFFFF;">
+            <p>Number of children: {{childNo}} Price per child: {{childPrice}}$</p>
+        </div>
+        <div ng-if="babyNo>0" id="confirmation-markdown4" style="color:#FFFFFF;">
+            <p>Number of babies: {{babyNo}} Price per baby: {{babyPrice}}$</p>
+        </div>
+        <div class="spacer" style="width: 320px; height: 29px;"></div>
+        <div id="confirmation-markdown5" style="color:#FFFFFF;font-size:20px;text-align:center;">
+            <p>Total cost: {{total}}$</p>
+        </div>
+        <div class="button-bar">
+            <button id="confirmation-button3" ng-click="goNext()" class="button button-positive  button-block icon-right ion-android-done">Confirm</button>
+        </div>
+    </ion-content>
+</ion-view>
