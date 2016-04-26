@@ -1,46 +1,43 @@
-<ion-view title="Confirmation" id="page1" style="background-color:#020202;">
+<ion-view title="Confirmation" id="confirmation" style="background-color:#020202;">
     <ion-content padding="false" style="background: url(../pics/new.png) no-repeat center;background-size:cover;" class="has-header">
         <div class="spacer" style="width: 320px; height: 35px;"></div>
         <ion-list>
             <ion-item class="item-thumbnail-left">
                 <img src="../pics/out-flight.png">
                 <h2>Outgoing Flight</h2>
-                <p>From: CAI</p>
-                <p>To: JED</p>
-                <p>Departure: 30/5/2016 14:00</p>
-                <p>Arrival: 30/5/2016 15:30</p>
-                <p>cost: 66 USD</p>
+                <p>From: {{from}}</p>
+                <p>To: {{to}}</p>
+                <p>Departure: {{date1}} {{time1}}</p>
+                <p>Arrival: {{date2}} {{time2}}</p>
             </ion-item>
         </ion-list>
-        <div class="spacer" style="width: 320px; height: 32px;"></div>
+        <div ng-if="returnFlight>0" class="spacer" style="width: 320px; height: 32px;"></div>
         <ion-list>
             <ion-item class="item-thumbnail-left">
                 <img src="../pics/return-flight.png">
                 <h2>Return Flight</h2>
-                <p>From: JED</p>
-                <p>To: CAI</p>
-                <p>Departure: 20/6/2016 19:00</p>
-                <p>Arrival: 20/6/2016 20:30</p>
-                <p>cost: 70 USD</p>
+                <p>From: {{to}}</p>
+                <p>To: {{from}}</p>
+                <p>Departure: {{date3}} {{time3}}</p>
+                <p>Arrival: {{date4}} {{time4}}</p>
             </ion-item>
         </ion-list>
         <div class="spacer" style="width: 320px; height: 28px;"></div>
         <div id="confirmation-markdown2" style="color:#FFFFFF;">
-            <p>Number of Adults: 1 Price per Adult: 500 USD</p>
+            <p>Number of Adults: {{adultNo}} Price per adult: {{adultPrice}}$</p>
         </div>
-        <div id="confirmation-markdown3" style="color:#FFFFFF;">
-            <p>Number of Children: 2 Price per Child: 250 USD</p>
+        <div ng-if="childNo>0" id="confirmation-markdown3" style="color:#FFFFFF;">
+            <p>Number of children: {{childNo}} Price per child: {{childPrice}}$</p>
         </div>
-        <div id="confirmation-markdown4" style="color:#FFFFFF;">
-            <p>Number of Babies: 4 Price per Baby: 125 USD</p>
+        <div ng-if="babyNo>0" id="confirmation-markdown4" style="color:#FFFFFF;">
+            <p>Number of babies: {{babyNo}} Price per baby: {{babyPrice}}$</p>
         </div>
         <div class="spacer" style="width: 320px; height: 29px;"></div>
         <div id="confirmation-markdown5" style="color:#FFFFFF;font-size:20px;text-align:center;">
-            <p>TOTAL: 1500 USD</p>
+            <p>Total cost: {{total}}$</p>
         </div>
         <div class="button-bar">
-            <button id="confirmation-button1" class="button button-positive  button-block icon-left ion-android-arrow-back">Prev</button>
-            <button id="confirmation-button3" class="button button-positive  button-block icon-right ion-android-arrow-forward">Confirm</button>
+            <button id="confirmation-button3" ng-click="goNext()" class="button button-positive  button-block icon-right ion-android-done">Confirm</button>
         </div>
     </ion-content>
 </ion-view>
