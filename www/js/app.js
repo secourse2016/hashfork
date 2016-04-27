@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+var app = angular.module('starter', ['ionic', 'app.mainCtrl', 'app.paymentCtrl', 'app.outgoingFlights', 'app.returnFlights', 'app.namesCtrl', 'app.confirmation']);
 
-.run(function($ionicPlatform) {
+app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -23,49 +23,49 @@ angular.module('starter', ['ionic'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
 
  $stateProvider
    .state('landingPage', {
      url: "/",
-     templateUrl: "../partials/landingPage.html",
+     templateUrl: "partials/landingPage.html",
      controller: "mainController"
    })
    .state('confirmation', {
      url: "/confirmation",
-     templateUrl: "../partials/confirmation.html",
+     templateUrl: "partials/confirmation.html",
      controller: "confirmation"
    })
    .state('payment', {
      url: "/payment",
-     templateUrl: "../partials/payment.html",
+     templateUrl: "partials/payment.html",
      controller: "paymentCtrl"
    })
    .state('names', {
      url: "/names",
-     templateUrl: "../partials/names.html",
+     templateUrl: "partials/names.html",
      controller: "nCtrl"
    })
    .state('returnflights', {
      url: "/returnflights",
-     templateUrl: "../partials/ReturnFlight.html",
+     templateUrl: "partials/returnFlight.html",
      controller: "flightListCtrl"
    })
    .state('outgoingflights', {
      url: "/outgoingflights",
-     templateUrl: "../partials/outgoingFlight.html",
+     templateUrl: "partials/outgoingFlight.html",
      controller: "flightOutgoingCtrl"
    })
-   .state('ref', {
-     url: "/ref",
-     templateUrl: "../partials/bookingreg.html",
-     controller: "bookingCtrl"
-   })
-   .state('bookings', {
-     url: "/bookings",
-     templateUrl: "../partials/bookings.html",
-     controller: "bookingrefCtrl"
-   });
+   // .state('ref', {
+   //   url: "/ref",
+   //   templateUrl: "partials/bookingreg.html",
+   //   controller: "bookingCtrl"
+   // })
+   // .state('bookings', {
+   //   url: "/bookings",
+   //   templateUrl: "partials/bookings.html",
+   //   controller: "bookingrefCtrl"
+   // });
 
  $urlRouterProvider.otherwise("/");
 })
