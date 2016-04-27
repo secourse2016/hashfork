@@ -7,14 +7,14 @@
           <ion-item collection-repeat="elements in travellers">
 
             <!-- Adding condition to check for first Adult to be Primary status -->
-          <!--  <div ng-if="$index === 0">
-              <div class="col-md-4"><h3>{{elements.type}} {{elements.counter}} (Primary)</h3></div>
+           <div ng-if="$index === 0">
+              <p>{{elements.type}} {{elements.counter}} (Primary)</p>
             </div>
 
             <div ng-if="$index > 0">
-              <div class="col-md-4"><h3>{{elements.type}} {{elements.counter}}</h3></div>
-            </div> -->
-            <p>Adult</p>
+              <p>{{elements.type}} {{elements.counter}}</p>
+            </div>
+
 
         </div>
         <form class="list">
@@ -22,15 +22,29 @@
                 <span class="input-label">First Name</span>
                 <input type="text" ng-model = "travellers[$index].firstName" placeholder="Enter your first name" required="required">
             </label>
-            <label class="item item-input" name="mname">
-                <span class="input-label">Middle Name</span>
-                <input type="text" ng-model = "travellers[$index].middleName" placeholder="Enter your middle name" required="required">
-            </label>
             <label class="item item-input" name="lname">
                 <span class="input-label">Last Name</span>
                 <input type="text" ng-model = "travellers[$index].lastName" placeholder="Enter your last name" required="required">
             </label>
-            <label class="item item-select" name="cname">
+
+            <label class="item item-input">
+                <span class="input-label">Email</span>
+                <input type="email" placeholder="Write your email">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Passport Number</span>
+                <input type="number" placeholder="" required="required">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Passport Expire Date</span>
+                <input type="date" placeholder="">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Date of Birth</span>
+                <input type="date" placeholder="" required="required">
+            </label>
+
+            <label class="item item-select" name="country">
                 <span class="input-label">Country</span>
                 <select ng-model = "travellers[$index].passport" required="required">
                     <option></option>
