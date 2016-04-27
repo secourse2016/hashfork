@@ -1,0 +1,53 @@
+<ion-view style="background-color: rgb(17, 224, 235);" id="page1" title="Outgoing Flights">
+    <ion-content class="has-header" padding="true" style="background: url(../img/new.png) no-repeat center;background-size:cover;">
+        <div style="" class="button-bar">
+            
+            <button ng-click="goNext()" class="button button-positive  button-block icon-right ion-android-arrow-forward" id="next">Next</button>
+        </div>
+        <h3 style="color: rgb(255, 255, 255); font-style: italic;" > <strong> From : </strong> <span style="color:#1C86EE ">{{from}}</span></h3>
+        <h3 style="color: rgb(255, 255, 255); font-style: italic;" > <strong> To : </strong>  <span style="color:#1C86EE">{{to}} </span></h3>
+
+             <div>
+            <img style="display: block; margin-left: auto; margin-right: auto;" src="../img/KLMft.jpg" height="auto" width="100%">
+        </div>
+
+        <ion-content>
+            <ion-item collection-repeat="flight in flights" | limitTo: paginationLimit()>
+                <div style="color: rgb(13, 239, 242);">
+                     <p>From : {{flight.origin}}</p>  
+                </div>
+                <div style="color: rgb(13, 239, 242);">
+                     <p>Date : {{dateFrom[$index] | date}}</p>
+                </div>
+                <div style="color: rgb(13, 239, 242);">
+                    <p>Time : {{timeFrom[$index] | date}}</p>
+                </div>
+                <div style="color: rgb(255, 255, 255);">
+                    <p>To : {{flight.destination}}</p>
+                </div>
+                <div style="color: rgb(255, 255, 255);">
+                    <p>Date : {{dateTo[$index] | date }}</p>
+                </div>
+                <div style="color: rgb(255, 255, 255);">
+                     <p>Time : {{timeTo[$index] | date }}</p>
+                </div>
+                <div style="color: rgb(13, 239, 242);">
+                    <p>Duration : {{duration[$index]}}h</p>  
+                </div>
+                <div style="color: rgb(255, 255, 255);">
+                    <p>Cost : {{flight.cost | currency}}</p>
+                </div>
+                <div style="color: rgb(255, 255, 255);">
+                    <p>Airline : {{flight.Airline}}</p>
+                </div>
+
+            </ion-item>
+        </ion-content>
+
+
+        <div>
+            <img style="display: block; margin-left: auto; margin-right: auto;" src="../img/out-flight.png" height="" width=""
+        </div>
+        <button class="button button-positive  button-block icon-right ion-android-arrow-down" id="showMore"  ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">Show More</button>
+    </ion-content>
+</ion-view>
