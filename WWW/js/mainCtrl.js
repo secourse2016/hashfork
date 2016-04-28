@@ -13,8 +13,6 @@ angular.module('app.mainCtrl', [])
         $scope.dt1 = new Date();
         $scope.dt2 = new Date();
 
-
-
          $scope.goNext=function(){
             if(FlightsSrv.isReturn()){
             FlightsSrv.setReturning(new Date($scope.dt2).getTime());
@@ -85,6 +83,7 @@ angular.module('app.mainCtrl', [])
         $scope.toggle = function(){
           $scope.value = 1 - $scope.value;
           if($scope.value === 1){
+            FlightsSrv.setReturn(true);
             $scope.dir = 'Tap for one way trip';
           }
           else{

@@ -9,6 +9,10 @@ $scope.goNext = function(){
   $state.go('names'); 
 }
 
+$scope.check = function(){
+  console.log(FlightsSrv.isReturn()+" >>>>");
+  return FlightsSrv.isReturn();
+}
 
   $scope.isThereFlights=true;
   var flight = FlightsSrv.getFlight();

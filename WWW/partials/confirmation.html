@@ -3,7 +3,7 @@
         <div class="spacer" style="width: 320px; height: 35px;"></div>
         <ion-list>
             <ion-item class="item-thumbnail-left">
-                <img src="../img/out-flight.png">
+                <img src="img/out-flight.png">
                 <h2>Outgoing Flight</h2>
                 <p>From: {{from}}</p>
                 <p>To: {{to}}</p>
@@ -12,9 +12,9 @@
             </ion-item>
         </ion-list>
         <div class="spacer" style="width: 320px; height: 32px;"></div>
-        <ion-list>
+        <ion-list ng-show="check()">
             <ion-item class="item-thumbnail-left">
-                <img src="../img/return-flight.png">
+                <img src="img/return-flight.png">
                 <h2>Return Flight</h2>
                 <p>From: {{to}}</p>
                 <p>To: {{from}}</p>
