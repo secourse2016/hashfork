@@ -3,41 +3,34 @@
       <br>
       <br>
       <h2 style="text-align: center;">Payment details</h2><br>
-       <form name="payment" novalidate="" ng-submit="">
+       <form name="payment">
           
           <br>
           <div class="list">
-          <label class="item item-input" ng-class="{ 'has-errors' : payment.cardNumber.$invalid, 'no-errors' : payment.cardNumber.$valid}">
+          <label class="item item-input">
               <span class="input-label">CARD NUMBER</span>
-              <input type="tel" name="cardNumber" ng-model="" ng-minlength="16" ng-maxlength="26" required>
+              <input type="tel" name="cardNumber" required>
             </label>
 
-            <div class="error-container" ng-show="payment.cardNumber.$error" ng-messages="payment.cardNumber.$error">
-              <div ng-messages-include="error-list.html"></div>
-            </div>
-
-             <label class="item item-input" ng-class="{ 'has-errors' : payment.cvv.$invalid , 'no-errors' : payment.cvv.$valid}">
+             <label class="item item-input">
               <span class="input-label">CVC</span>
-              <input type="tel" name="cvv" ng-model="" ng-minlength="3" ng-maxlength="3" required>
+              <input type="tel" name="cvv" required>
             </label>
-             
-            <div class="error-container last-error-container" ng-show="payment.cvv.$error" ng-messages="payment.cvv.$error">
-                <div ng-messages-include="error-list.html"></div> 
-            </div> 
+ 
 
               <h4 style="text-align:center;">EXPIRY DATE</h4>
 
             <div class="row">
              <div class="col">
-               <label class="item item-input" ng-class="{ 'has-errors' : payment.month.$invalid , 'no-errors' : payment.month.$valid}">
+               <label class="item item-input">
                 <span class="input-label">MONTH</span>
-                <input type="tel" name="month" ng-model="" ng-minlength="2" ng-maxlength="2" placeholder=" MM" required>
+                <input type="tel" name="month"placeholder=" MM" required>
                </label>
              </div>
              <div class="col">
-                <label class="item item-input" ng-class="{ 'has-errors' : payment.year.$invalid , 'no-errors' : payment.year.$valid}">
+                <label class="item item-input">
                 <span class="input-label">YEAR</span>
-                <input type="tel" name="year" ng-model="" ng-minlength="2" ng-maxlength="2" placeholder=" YY" required>
+                <input type="tel" name="year" placeholder=" YY" required>
                </label>
              </div>
             </div>
