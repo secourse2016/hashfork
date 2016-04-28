@@ -4,7 +4,7 @@
 
           <!-- Start looping -->
           <form name="buttons">
-          <ion-item collection-repeat="elements in travellers">
+          <ion-item ng-repeat="elements in travellers">
 
             <!-- Adding condition to check for first Adult to be Primary status -->
            <div ng-if="$index === 0">

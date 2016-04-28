@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic'])
+angular.module('app.flightsSrv', [])
 
 
 .factory('FlightsSrv', function ($http) {
@@ -49,16 +49,17 @@ angular.module('starter', ['ionic'])
     var allC=[];
          var x={};
          x.getAirportCodes = function() {
-          console.log("kkkkk");
-           return $http.get('/api/airports');
+           return $http.get('http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com/api/airports');
          }
             x.searchOurAirlineRound= function(){
-            return $http.get('/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.returnDate+'/'+x.class+'', {
+              console.log(x.getFrom()+" "+x.getTo()+" "+x.getClass()+" "+x.departDate+" "+x.returnDate);
+            return $http.get('http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com/api/flights/search/'+x.getFrom()+'/'+x.getTo()+'/'+x.departDate+'/'+x.returnDate+'/'+x.class+'', {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       });
          }
          x.searchOurAirline= function(){
-            return $http.get('/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'', {
+          console.log('sa7');
+            return $http.get('http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com/api/flights/search/'+x.getFrom()+'/'+x.getTo()+'/'+x.departDate+'/'+x.class+'', {
         "headers" : { 'x-access-token' :'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       });
          }
@@ -144,13 +145,13 @@ angular.module('starter', ['ionic'])
 
          }
          x.getBookingFromDb=function(ref){
-          return  $http.get('/api/booking/'+ref+'', {
+          return  $http.get('http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com/api/booking/'+ref+'', {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       });
          }
          x.postBooking=function(ref){
           x.booking.reference=ref;
-          return $http.post('api/booking',{
+          return $http.post('http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com/api/booking',{
             'booking':x.booking},{
           "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
         });
@@ -158,7 +159,7 @@ angular.module('starter', ['ionic'])
              x.getDataFromAllCompaniesRound=function(idx,cb) {
                  if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
                  else {
-                     $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.returnDate+'/'+x.class+'?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
+                     $http.get('http://' + ips[idx] + '/api/flights/search/'+x.getFrom()+'/'+x.getTo()+'/'+x.departDate+'/'+x.returnDate+'/'+x.class+'?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
                       timeout:1500
       }).success(function (res) {
                          allC.push(res);
@@ -172,7 +173,7 @@ angular.module('starter', ['ionic'])
               x.getDataFromAllCompaniesOneWay=function(idx,cb) {
                  if (idx === ips.length ) cb(allC);
                  else {
-                     $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
+                     $http.get('http://' + ips[idx] + '/api/flights/search/'+x.getFrom()+'/'+x.getTo()+'/'+x.departDate+'/'+x.class+'?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
                       timeout:1500
 
                     }).success(function (res) {
@@ -234,6 +235,6 @@ angular.module('starter', ['ionic'])
              }
 
      return x;
- }).config(['$httpProvider', function($httpProvider) {
+  }).config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.timeout = 1000;
 }]);
