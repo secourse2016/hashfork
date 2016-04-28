@@ -8,15 +8,15 @@
 
             <!-- Adding condition to check for first Adult to be Primary status -->
            <div ng-if="$index === 0">
-              <p>{{elements.type}} {{elements.counter}} (Primary)</p>
+              <p style="color: #7825A9;font-size:1.3em;font-weight:bold;">{{elements.type}} {{elements.counter}} (Primary)</p>
             </div>
 
             <div ng-if="$index > 0">
-              <p>{{elements.type}} {{elements.counter}}</p>
+              <p style="color: #7825A9;font-size:1.3em;font-weight:bold;">{{elements.type}} {{elements.counter}}</p>
             </div>
 
-
-        </div>
+                <br>
+        
         <form class="list">
             <label class="item item-input" name="fname">
                 <span class="input-label">First Name</span>
@@ -297,10 +297,15 @@
                     <option value="Zambia" title="Zambia">Zambia</option>
                     <option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
                 </select>
+                
+                </div>
+                
             </label>
+
         </form>
 
         </ion-item>
+<br><br>
         <div class="button-bar">
             <button id="travellerDetails-button3" ng-click="goNext()" ng-disabled="buttons.$invalid" class="button button-positive  button-block icon-right ion-android-arrow-forward">Next</button>
         </div>
