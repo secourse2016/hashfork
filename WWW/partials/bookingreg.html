@@ -1,25 +1,20 @@
-<ion-view style="" title="Reference">
-    <ion-content class="has-header" padding="true" style="background: url(../img/background.png) no-repeat center;background-size:cover;">
+<ion-view title="Booking Reference" style="background-color:#473F3F;">
 
-    <div class="alert alert-success">
-        <h1 style=" text-align: center;" >Remember your booking reference to know your flight</h1>
-        <form style="" class="list">
-            <label style="" class="item item-input">
-               <h3 class="text-center "><strong>{{bookingref}}</strong></h3>
+<br><br><br><br>
 
-        <h1 style="color: rgb(49, 105, 218); text-align: center;" >Remember your booking reference to know your flight</h1>
-        <form style="" class="list">
-            <label style="" class="item item-input">
-                <span class="input-label">Text</span><textarea placeholder=""> </textarea>
+<div class="padding" style="background-color: #D3EAC9; border-radius: 4%; margin: 0 15px;">
+	<h1 style="text-align: center;">Remember your booking reference</h1>
 
-            </label>
-        </form>
-        <div style="" class="button-bar">
-            <button class="button button-positive  button-block icon-left ion-android-arrow-back" id="reference-button1">Prev</button>
-            <button class="button button-positive  button-block icon-right ion-android-arrow-forward" style="font-size:-7px;text-align:left;">To payment</button>
-        </div>
+	<br>
+	<br>
 
-    </div>
+	<h4 style="text-align: center">Booking Ref: <strong>{{bookingref}}</strong></h4>
+<br>
 
-    </ion-content>
+</div>
+
+<br>
+
+<button id="confirmation-button3" ng-click="goNext()" class="button button-positive  button-block icon-right ion-android-done">Proceed to payment</button>
+
 </ion-view>

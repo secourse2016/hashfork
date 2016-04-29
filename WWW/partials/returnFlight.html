@@ -1,46 +1,50 @@
-<ion-view style=""title="Return Flight">
-    <ion-content class="has-header" padding="true" style="background: url(img/KNefe58PTyShnFNsDpxE_background.png) no-repeat center;background-size:cover;">
+<ion-view id="page1" title="Return Flight" style="background-color:#473F3F;">
+    <ion-content class="has-header" padding="true">
         <div style="" class="button-bar">
-            <button class="button button-positive  button-block icon-left ion-android-arrow-back" id="returnFlight-button3"  ng-click="goToPreviousPage()">Prev</button>
-            <button class="button button-positive  button-block icon-right ion-arrow-right-c" id="returnFlight-button5" ng-disabled="buttons.$invalid" ng-click="goToNextPage()">Next</button>
+            
+            <button ng-click="goNext()" class="button button-positive  button-block icon-right ion-android-arrow-forward" id="next">Go to next step</button>
         </div>
-        <h3 style="color: rgb(240, 227, 227);" >From :  <span style="color:#1C86EE ">{{from}}</span> </h3>
-        <h3 style="color: rgb(245, 231, 231);" >to :  <span style="color:#1C86EE">{{to}} </span></h3>
+        <h3> <strong style = "color: white"> From : </strong> <span style="color:#1C86EE ">{{to}}</span></h3>
+        <h3> <strong style = "color: white"> To : </strong>  <span style="color:#1C86EE">{{from}} </span></h3>
 
-<ion-content>        
-<ion-item collection-repeat="flight in flights | limitTo: paginationLimit()">
-<div>
-            <img style="display: block; margin-left: auto; margin-right: auto;" src="../img/KLMft.jpg" height="auto" width="100%">
-          <ion-radio style="" name="flights">.</ion-radio>
-        </div>
-        <div style="color: rgb(13, 239, 242);">
-            <p>From :  {{flight.from}}</p>
-        </div>
-        <div style="color: rgb(13, 239, 242);">
-            <p>Time :  {{flight.timeFrom | date}}</p>
-        </div>
-        <div style="color: rgb(13, 239, 242);">
-            <p>Date :  {{flight.dateFrom | date}}</p>
-        </div>
-        <div style="color: rgb(255, 255, 255);">
-            <p>To : {{flight.to}}</p>
-        </div>
-        <div style="color: rgb(255, 255, 255);">
-            <p>Time :  {{flight.timeTo | date }}</p>
-        </div>
-        <div style="color: rgb(255, 255, 255);">
-            <p>Date :  {{flight.dateTo | date }}</p>
-        </div>
-         <div style="color: rgb(13, 239, 242);">
-            <p>Duration :  {{flight.duartion}}</p>
-        </div>
-         <div style="color: rgb(13, 239, 242);">
-            <p>Cost :  {{flight.cost | currency}}</p>
-        </div>
-      
-      </ion-item>
- </ion-content>
-        
-        <button class="button button-positive  button-block icon-right ion-arrow-down-c" ng-show="hasMoreItemsToShow()" ng-click="showMoreItems()">Show more</button>
+        <img style="display: block; margin-left: auto; margin-right: auto;" src="img/KLMft.jpg" height="auto" width="100%">
+
+            <ion-radio ng-model="my" ng-change="changed(flight)" ng-value = "flight" collection-repeat="flight in flights">
+                <div style="color: rgb(13, 239, 242);">
+                     <p>From : {{flight.origin}}</p>  
+                </div>
+
+
+                <div style="color: rgb(255, 255, 255);">
+                    <p>To : {{flight.destination}}</p>
+                </div>
+
+                <div style="color: rgb(255, 255, 255);">
+                    <p>Airline : {{flight.Airline}}</p>
+                </div>
+
+                <div style="color: rgb(255, 255, 255);">
+                    <p>Cost : {{flight.cost | currency}}</p>
+                </div>
+
+                <div style="color: rgb(13, 239, 242);">
+                     <p>Date : {{flight.departureDateTime | date}}</p>
+                </div>
+                <!-- <div style="color: rgb(13, 239, 242);">
+                    <p>Time : {{timeFrom[$index] | date}}</p>
+                </div>
+                
+                <div style="color: rgb(255, 255, 255);">
+                    <p>Date : {{dateTo[$index] | date }}</p>
+                </div>
+                <div style="color: rgb(255, 255, 255);">
+                     <p>Time : {{timeTo[$index] | date }}</p>
+                </div>
+                <div style="color: rgb(13, 239, 242);">
+                    <p>Duration : {{duration[$index]}}h</p>  
+                </div> -->
+                
+                
+                </ion-radio>
     </ion-content>
 </ion-view>
