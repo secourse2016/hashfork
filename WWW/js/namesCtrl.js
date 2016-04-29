@@ -4,7 +4,7 @@ angular.module('app.namesCtrl', [])
 
 $scope.goNext = function(){
   //console.log("dosna");
-  $state.go('payment'); 
+  $state.go('ref'); 
 }
 
 
