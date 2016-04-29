@@ -26,10 +26,10 @@
         <div id="confirmation-markdown2" style="color:#FFFFFF;">
             <p>Number of Adults: {{adultNo}} &nbsp &nbsp Price per adult: {{adultPrice}}$</p>
         </div>
-        <div id="confirmation-markdown3" style="color:#FFFFFF;">
+        <div ng-if="childNo>0" id="confirmation-markdown3" style="color:#FFFFFF;">
             <p>Number of children: {{childNo}} &nbsp &nbsp Price per child: {{childPrice}}$</p>
         </div>
-        <div id="confirmation-markdown4" style="color:#FFFFFF;">
+        <div ng-if="babyNo>0" id="confirmation-markdown4" style="color:#FFFFFF;">
             <p>Number of babies: {{babyNo}} &nbsp &nbsp Price per baby: {{babyPrice}}$</p>
         </div>
         <div class="spacer" style="width: 320px; height: 29px;"></div>
