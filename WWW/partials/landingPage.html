@@ -12,13 +12,14 @@
             {{dir}}
           </button>
             <label class="item item-input">
-                <input type="text" placeholder="FROM" ng-model="from" ng-change="changeFrom(from)">
+                <input type="text" placeholder="FROM" ng-model="from" ng-change="changeFrom(from)" ionic-autocomplete="{items: Airports, onSelect:onSelect}">
             </label>
         </form>
         <form class="list">
             <label class="item item-input">
-                <input type="text" placeholder="TO" ng-model="to" ng-change="changeTo(to)">
+                <input type="text" placeholder="TO" ng-model="to" ionic-autocomplet="{items: Airports, onSelect:onSelect}" ng-change="changeTo(to)">
             </label>
+            <div class="spacer" style="width: 300px; height: 25px;"></div>
             <label class="item item-input">
                 <span class="input-label">Travel date</span>
                 <input type="date" placeholder="" ng-model="dt1" ng-change="changeDate1(dt1)">
