@@ -1,5 +1,16 @@
-<div ng-controller="mainController">
 <ion-view title="Home" id="page1" style="background-color:#473F3F;">
+<style>
+.default{
+    opacity: 1;
+}
+
+.fade{
+    -webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 2s;
+    opacity: 0;
+}
+</style>
+    <div ng-show='flag'>
     <ion-content padding="true" class="has-header">
         <div class="button-bar"></div>
         <div id="home-markdown2" style="color:#DCE3F1;font-size:33px;text-align:center;">
@@ -8,7 +19,7 @@
         </div>
         <div class="spacer" style="width: 300px; height: 25px;"></div>
         <form class="list">
-            <button ng-click="toggle()" class="button button-full button-royal">
+            <button ng-click="toggle()" class="button button-full button-royal icon-right ion-arrow-swap">
             {{dir}}
           </button>
             <label class="item item-input">
@@ -66,8 +77,24 @@
 
 
             <ion-checkbox ng-model="otherAirlines" ng-change="changeCheckbox(otherAirlines)">other airlines</ion-checkbox>
-            <button ng-click="goNext()" id="home-button5" class="button button-royal  button-block">Tap me!</button>
+            <button ng-click="goNext()" id="home-button5" class="button button-royal ion-plane icon-right button-block">Find Flights!</button>
         </form>
     </ion-content>
-</ion-view>
+    </div>
+<div ng-hide='flag' ng-class="{fade: startFade}" class="default" >
+<br><br><br>
+    
+    <div class="row">
+        <div class="col">
+               <div class="item item-input">
+                <span class="input-label"><button ng-click="goRef()" class="button button-royal ion-ios-search"></button></span>
+                <input type="search" ng-model="ref" ng-change="setRef(ref)" placeholder="Find existing booking" style="font-size:1.1em;">
+               </div>
+             </div>
 </div>
+<br>
+<img ng-src="img/first.jpg" style="width:100%;">
+    <button ng-click="hide()" class="button button-balanced button-block">Book a new flight</button>
+
+</div>
+</ion-view>

@@ -44,18 +44,4 @@ $scope.check = function(){
   $scope.total = $scope.adultNo*$scope.adultPrice + $scope.childNo*$scope.childPrice + $scope.babyNo*$scope.babyPrice;
   FlightsSrv.setCost($scope.total)
   }
-
-  // $scope.goToPrev=function(){
-  //   var returnFlights = FlightsSrv.isReturn();
-  // if(returnFlights === true){
-
-  //   $location.url('/returnflights');
-  // }else{
-  //   $location.url('/outgoingflights');
-  // }
-  // };
-  // $scope.goNext=function(){
-  //   $location.url('/names');
-  // };
-
   });

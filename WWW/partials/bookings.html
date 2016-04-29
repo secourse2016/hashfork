@@ -1,0 +1,37 @@
+<ion-view title="Reference" style="background-color:#020202;">
+    <ion-content padding="false" style="background: url(../img/new.png) no-repeat center;background-size:cover;" class="has-header">
+
+<div ng-if="isthereFlights==true">
+
+    <div class="col-md-3 col-xs-3"><br><h2 style="text-align:center;color:white;">BookingRef: {{bookingref}}</h2></div>
+        <div class="spacer" style="width: 320px; height: 35px;"></div>
+        <ion-list>
+            <ion-item class="item-thumbnail-left">
+                <img src="img/out-flight.png">
+                <h2>Outgoing Flight</h2>
+                <p>From: {{from}}</p>
+                <p>To: {{to}}</p>
+                <p>Departure: {{date1 | date}}</p>
+                <p>Arrival: {{date2 | date}}</p>
+            </ion-item>
+        </ion-list>
+        <div ng-if="isReturn===true">
+        <div class="spacer" style="width: 320px; height: 32px;"></div>
+        <ion-list>
+            <ion-item class="item-thumbnail-left">
+                <img src="img/return-flight.png">
+                <h2>Return Flight</h2>
+                <p>From: {{to}}</p>
+                <p>To: {{from}}</p>
+                <p>Departure: {{date3 | date}}</p>
+                <p>Arrival: {{date4 | date}}</p>
+            </ion-item>
+        </ion-list>
+        </div>
+        <div class="spacer" style="width: 320px; height: 28px;"></div>
+</div>
+<div ng-if="isthereFlights==false">
+<h1>there is no flights</h1>
+</div>
+    </ion-content>
+</ion-view>

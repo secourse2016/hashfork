@@ -1,6 +1,6 @@
 angular.module('app.mainCtrl', [])
 
-.controller('mainController', function ($scope, $state, FlightsSrv) { 
+.controller('mainController', function ($scope, $state, FlightsSrv, $timeout) { 
 
         $scope.Airports=    [{
         "iata": "BOM",
@@ -226,6 +226,7 @@ angular.module('app.mainCtrl', [])
         $scope.otherAirlines=false;
         FlightsSrv.setBooking();
 
+        $scope.flag = false;
         $scope.adult="1";
         $scope.child="0";
         $scope.baby="0";
@@ -248,6 +249,22 @@ angular.module('app.mainCtrl', [])
            FlightsSrv.setOtherAirlines($scope.otherAirlines);
            $state.go('outgoingflights');
         };
+
+        $scope.setRef = function(ref){
+            $scope.ref = ref;
+        }
+
+        $scope.goRef = function(){
+            FlightsSrv.setRefrence($scope.ref);
+            $state.go('bookings');
+        }
+
+        $scope.hide = function(){
+            $scope.startFade = true;
+        $timeout(function(){
+            $scope.flag = true;
+        }, 700);
+        }
 
         $scope.onSelect = function (item) {
         
