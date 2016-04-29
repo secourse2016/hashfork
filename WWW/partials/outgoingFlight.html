@@ -7,8 +7,8 @@
         <h3> <strong style = "color: white"> From : </strong> <span style="color:#1C86EE ">{{from}}</span></h3>
         <h3> <strong style = "color: white"> To : </strong>  <span style="color:#1C86EE">{{to}} </span></h3>
 
-        <img style="display: block; margin-left: auto; margin-right: auto;" src="img/KLMft.jpg" height="auto" width="100%">
-
+        <img style="display: block;border: 2px solid white; margin-left: auto; margin-right: auto;" src="img/KLMft.jpg" height="auto" width="100%">
+        <div ng-show="dbFinished">
             <ion-radio ng-model="my" ng-change="changed(flight)" ng-value = "flight" collection-repeat="flight in flights">
                 <div style="color: rgb(13, 239, 242);">
                      <p>From : {{flight.origin}}</p>  
@@ -46,5 +46,8 @@
                 
                 
                 </ion-radio>
+                </div>
+                <div ng-hide="dbFinished" style="text-align:center;color:white;"><br><ion-spinner></ion-spinner><br>Searching flights ...</div>
+
     </ion-content>
 </ion-view>
