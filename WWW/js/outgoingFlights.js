@@ -13,7 +13,7 @@ $scope.goNext = function(){
  	}
 }
 
-  
+  		$scope.dbFinished=false;
        $scope.my={};
     $scope.flights = [];
 	$scope.from = FlightsSrv.getFrom();
@@ -35,6 +35,7 @@ $scope.goNext = function(){
 				FlightsSrv.setReturningFlights(flight.returnFlights);
 				$scope.my=$scope.flights[0];
 				//time();
+				$scope.dbFinished=true;
 
 			});
 		}else{
@@ -43,6 +44,7 @@ $scope.goNext = function(){
 				//console.log($scope.flights);
 				//time();
 					$scope.my=$scope.flights[0];
+					$scope.dbFinished=true;
 			});
 		}
 		}else{
@@ -52,6 +54,7 @@ $scope.goNext = function(){
 				FlightsSrv.setReturningFlights(data.returnFlights);
 				//time();
 				$scope.my=$scope.flights[0];
+				$scope.dbFinished=true;
 				console.log("this is the end");
    });
 
