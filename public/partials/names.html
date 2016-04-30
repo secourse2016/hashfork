@@ -112,9 +112,9 @@
   <div class="col-xs-2">
     <p class="input-group">
 
-        <input id="date1"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="travellers[$index].pexpire" is-open="travellers[$index].popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+        <input id="date1"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="travellers[$index].pexpire" is-open="travellers[$index].popup1" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
   <span class="input-group-btn">
-  <button type="button" class="btn btn-default" ng-click="travellers[$index].open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+  <button type="button" class="btn btn-default" ng-click="open1($index)"><i class="glyphicon glyphicon-calendar"></i></button>
   </span>
     </p>
   </div>
@@ -123,9 +123,9 @@
 
   <p class="input-group">
 
-      <input id="date1"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="travellers[$index].dob" is-open="travellers[$index].popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      <input id="date1"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="travellers[$index].dob" is-open="travellers[$index].popup2" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
 <span class="input-group-btn">
-<button type="button" class="btn btn-default" ng-click="travellers[$index].open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+<button type="button" class="btn btn-default" ng-click="open2($index)"><i class="glyphicon glyphicon-calendar"></i></button>
 </span>
   </p>
 

@@ -17,6 +17,8 @@ $scope.travellers = [];
 		entry.pnumber='';
 		entry.pexpire='';
 		entry.dob='';
+		entry.popup1=false;
+		entry.popup2=false;
 		i++;
 		$scope.travellers.push(entry);
 
@@ -33,6 +35,8 @@ $scope.travellers = [];
 		entry.pnumber='';
 		entry.pexpire='';
 		entry.dob='';
+		entry.popup1=false;
+		entry.popup2=false;
 		i++;
 		$scope.travellers.push(entry);
 
@@ -48,6 +52,8 @@ $scope.travellers = [];
 		entry.pnumber='';
 		entry.pexpire='';
 		entry.dob='';
+		entry.popup1=false;
+		entry.popup2=false;
 		i++;
 		$scope.travellers.push(entry);
 
@@ -64,5 +70,16 @@ $scope.user =
     $location.url('/ref');
   };
 
+$scope.open1 = function(index) {
+
+	$scope.travellers[index].popup1 = true;
+
+}
+
+$scope.open2 = function(index) {
+
+	$scope.travellers[index].popup2 = true;
+
+}
 
 });
