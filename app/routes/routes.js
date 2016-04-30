@@ -47,6 +47,31 @@ module.exports = function(app) {
   "52.90.46.68", //not working yet
   "52.27.150.19"//works correctley but wrong DateTime format
 ];
+var airlines={
+  "Lufthansa": "ec2-54-152-123-100.compute-1.amazonaws.com",
+  // "KLM": "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
+  "KLM":"localhost:3000",
+  "Emirates Airlines": "52.90.46.68",
+  "Air France": "52.34.160.140",
+  "Swiss Air": "www.swiss-air.me",
+  "Delta Airlines": "52.25.15.124",
+  "Japan Airlines": "54.187.208.145",
+  "Singapore Airlines": "sebitsplease.com.s3-website-us-east-1.amazonaws.com",
+  "Dragonair": "52.58.46.74",
+  "Hawaiian": "54.93.36.94",
+  "Austrian Airlines": "ec2-52-90-41-197.compute-1.amazonaws.com",
+  "South African Airways": "54.213.157.185",
+  "Malaysia Airlines": "52.32.109.147",
+  "Northwest Airlines": "52.36.169.206",
+  "Cathay Pacific Airlines": "ec2-52-91-94-227.compute-1.amazonaws.com",
+  "Air Madagascar": "54.191.202.17",
+  "Alaska":"52.207.211.179",
+  "Turkish Airlines": "52.27.150.19",
+  "Virgin australia": "54.93.116.90",
+  "Iberia": "52.58.24.76",
+  "United":"54.187.103.196",
+  "AirNewZealand":"52.28.246.230"
+}
 var allC=[];
 app.use(require('body-parser').json());
 	app.use('*', function(req, res, next) {
@@ -277,15 +302,18 @@ db.findByReference(req.params.ref,function(err,data){
 
     // attempt to create a charge using token
     stripe.charges.create({
-      amount: 400,
+      amount: req.body.cost*100,
       currency: "usd",
       source: stripeToken,
-      description: "test"
+      description: "KLM payments"
     },function(err,data){
       if(err){
         res.send({refNum:null,errorMessage:err});
       }else{
-
+        db.insert(req.body.booking,function(ref){
+            res.statusCode = 200;
+            res.send({refNum:ref,errorMessage:null});
+          });
       }
     });
 
@@ -313,15 +341,18 @@ console.log('stripe is here');
 
     // attempt to create a charge using token
     stripe.charges.create({
-      amount: 400,
+      amount: req.body.cost*100,
       currency: "usd",
       source: stripeToken,
-      description: "test"
+      description: "KLM payments"
     },function(err,data){
       if(err){
         res.send({refNum:null,errorMessage:err});
       }else{
-        console.log('payment made');
+        db.insert(req.body.booking,function(ref){
+            res.statusCode = 200;
+            res.send({refNum:ref,errorMessage:null});
+          });
       }
     });
 

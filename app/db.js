@@ -153,12 +153,34 @@
     }
     //----------------------------------------------------------------------------------------------------------------------------------------
     // insert({"reference": "Marawan Mohsen 30"});
-     
+        var alpha='abcdefghijklmnopqrstuvwxyz';
+
+      function generateCode(){
+    var result="";
+    for(var i=0;i<6;i++){
+        var numOrAlp=Math.floor(Math.random()*2);
+        if(numOrAlp==0){
+            result+=alpha[Math.floor(Math.random()*alpha.length)];
+        }else{
+            result+=Math.floor(Math.random()*10);
+    }
+  }
+  return result;
+};
      function insert(booking,cb){
-        connect(function(err,DB){
+        var ref = generateCode();
+        findByReference(ref,function(err, bookings){
+            if(bookings.length>0){
+                insert(booking,cb);
+            }else{
+                booking.reference=ref;
+                connect(function(err,DB){
             DB.collection('Bookings').insert(booking);
-            cb();
+            cb(ref);
+        }); 
+            }
         });
+       
      
      }
      
@@ -199,6 +221,7 @@
         connect(function(err,DB){
             DB.collection('Bookings').find({reference : ref}).toArray(
             function (err, bookings){
+                console.log(bookings);
                 if (err) cb(err);
                 else cb(err, bookings);
             });

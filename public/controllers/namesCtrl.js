@@ -49,16 +49,15 @@ $scope.travellers = [];
 		$scope.travellers.push(entry);
 
 	}
-$scope.user =
-  {name: '',
-  email: ''};
+
   $scope.goToPrev=function(){
    
     $location.url('/confirmation');
   
   };
   $scope.goNext=function(){
-    $location.url('/ref');
+  	FlightsSrv.setTravellers($scope.travellers);
+    $location.url('/payment');
   };
 
 

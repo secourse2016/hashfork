@@ -47,17 +47,17 @@ App.factory('FlightsSrv', function ($http) {
     var allC=[];
          var x={};
          x.getAirportCodes = function() {
-          console.log("kkkkk");
+          
            return $http.get('/api/airports');
          }
             x.searchOurAirlineRound= function(){
-              var seats=x.getAdults()+x.getChild()+x.getBaby();
+              var seats=Number(x.getAdults())+Number(x.getChild())+Number(x.getBaby());
             return $http.get('/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.returnDate+'/'+x.class+'/'+seats, {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       });
          }
          x.searchOurAirline= function(){
-          var seats=x.getAdults()+x.getChild()+x.getBaby();
+          var seats=Number(x.getAdults())+Number(x.getChild())+Number(x.getBaby());
             return $http.get('/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'/'+seats, {
         "headers" : { 'x-access-token' :'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       });
@@ -143,18 +143,29 @@ App.factory('FlightsSrv', function ($http) {
            x.booking.flight={};
 
          }
+         x.setBookingref=function(value){
+          x.bookingref=value;
+         }
+
+         x.getBookingref=function(){
+          return x.bookingref;
+         }
          x.setToken=function(value){
           x.token=value;
+         }
+         x.setTravellers=function(value){
+          x.booking.Travellers=value;
          }
          x.getBookingFromDb=function(ref){
           return  $http.get('/api/booking/'+ref+'', {
         "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
       });
          }
-         x.postBooking=function(ref){
-          x.booking.reference=ref;
+         x.postBooking=function(){
+          
           return $http.post('/api/booking',{
             'booking':x.booking,
+            'cost':x.cost,
             'paymentToken':x.token},{
           "headers" : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'},
         });
@@ -162,7 +173,7 @@ App.factory('FlightsSrv', function ($http) {
              x.getDataFromAllCompaniesRound=function(idx,cb) {
                  if (idx === ips.length || (idx === 0 && allC.length > 0)) cb(allC);
                  else {
-                  var seats=x.getAdults()+x.getChild()+x.getBaby();
+                  var seats=Number(x.getAdults())+Number(x.getChild())+Number(x.getBaby());
                      $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.returnDate+'/'+x.class+'/'+seats+'?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
                       timeout:1500
       }).success(function (res) {
@@ -176,7 +187,7 @@ App.factory('FlightsSrv', function ($http) {
              }
               x.getDataFromAllCompaniesOneWay=function(idx,cb) {
                  if (idx === ips.length ) cb(allC);
-                 else {var seats=x.getAdults()+x.getChild()+x.getBaby();
+                 else {var seats=Number(x.getAdults())+Number(x.getChild())+Number(x.getBaby());
                      $http.get('http://' + ips[idx] + '/api/flights/search/'+x.from.iata+'/'+x.to.iata+'/'+x.departDate+'/'+x.class+'/'+seats+'?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
                       timeout:1500
 
