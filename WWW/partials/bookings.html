@@ -1,38 +1,55 @@
-<ion-view title="Bookings" id="bookings" style="background-color:#020202;">
+<ion-view title="Reference" style="background-color:#020202;">
     <ion-content padding="false" style="background: url(../img/new.png) no-repeat center;background-size:cover;" class="has-header">
-        <div id="confirmation-markdown3" style="color:#FFFFFF;">
-          <h3>BookingRef: {{bookingref}}</h3>
-        </div>
+
+<div ng-if="isthereFlights==true">
+
+    <div class="col-md-3 col-xs-3"><br><h2 style="text-align:center;color:white;">BookingRef: {{bookingref}}</h2></div>
         <div class="spacer" style="width: 320px; height: 35px;"></div>
-        <div ng-if="isthereFlights==true">
         <ion-list>
             <ion-item class="item-thumbnail-left">
-                <img src="../img/out-flight.png">
+                <img src="img/out-flight.png">
                 <h2>Outgoing Flight</h2>
                 <p>From: {{from}}</p>
                 <p>To: {{to}}</p>
-                <p>Departure: {{date1}} {{time1}}</p>
-                <p>Arrival: {{date2}} {{time2}}</p>
+                <p>Departure: {{date1 | date}}</p>
+                <p>Arrival: {{date2 | date}}</p>
             </ion-item>
         </ion-list>
-        <div ng-if="isReturn===true" class="spacer" style="width: 320px; height: 32px;"></div>
+        <div ng-if="isReturn===true">
+        <div class="spacer" style="width: 320px; height: 32px;"></div>
         <ion-list>
             <ion-item class="item-thumbnail-left">
-                <img src="../img/return-flight.png">
+                <img src="img/return-flight.png">
                 <h2>Return Flight</h2>
                 <p>From: {{to}}</p>
                 <p>To: {{from}}</p>
-                <p>Departure: {{date3}} {{time3}}</p>
-                <p>Arrival: {{date4}} {{time4}}</p>
+                <p>Departure: {{date3 | date}}</p>
+                <p>Arrival: {{date4 | date}}</p>
             </ion-item>
         </ion-list>
-      </div>
-
-      <div ng-if="isthereFlights==false">
-        <div class="alert alert-danger text-center" id="confirmation-markdown3" style="color:#FFFFFF;">
-          <h3>There is no such booking ,SORRY!</h3>
         </div>
-      </div>
+        <div class="spacer" style="width: 320px; height: 28px;"></div>
+</div>
+<div ng-if="isthereFlights==false">
+<div>
 
+<br><br><br><br>
+
+<div class="padding" style="background-color:#E7C3C3; border-radius: 4%; margin: 0 15px;">
+    <h2 style="text-align: center;color:#6B3D3D;">Sorry! we did not find any flights with this booking reference.</h2>
+
+    <br>
+    <br>
+
+
+</div>
+
+<br>
+
+
+
+</div>
+</div>
     </ion-content>
 </ion-view>
+

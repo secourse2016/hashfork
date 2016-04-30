@@ -11,9 +11,12 @@ $scope.travellers = [];
 		entry.type='Adult';
 		entry.counter=i;
 		entry.firstName='';
-		entry.middleName='';
 		entry.lastName='';
+		entry.email='';
 		entry.passport='';
+		entry.pnumber='';
+		entry.pexpire='';
+		entry.dob='';
 		i++;
 		$scope.travellers.push(entry);
 
@@ -24,9 +27,12 @@ $scope.travellers = [];
 		entry.type='Child';
 		entry.counter=i;
 		entry.firstName='';
-		entry.middleName='';
 		entry.lastName='';
+		entry.email='';
 		entry.passport='';
+		entry.pnumber='';
+		entry.pexpire='';
+		entry.dob='';
 		i++;
 		$scope.travellers.push(entry);
 
@@ -36,9 +42,12 @@ $scope.travellers = [];
 		entry.type='Baby';
 		entry.counter=i;
 		entry.firstName='';
-		entry.middleName='';
 		entry.lastName='';
+		entry.email='';
 		entry.passport='';
+		entry.pnumber='';
+		entry.pexpire='';
+		entry.dob='';
 		i++;
 		$scope.travellers.push(entry);
 
@@ -47,9 +56,9 @@ $scope.user =
   {name: '',
   email: ''};
   $scope.goToPrev=function(){
-   
+
     $location.url('/confirmation');
-  
+
   };
   $scope.goNext=function(){
     $location.url('/ref');
