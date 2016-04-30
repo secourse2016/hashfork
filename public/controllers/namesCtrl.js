@@ -1,5 +1,23 @@
 App.controller('nCtrl',function($scope,FlightsSrv,$location) {
 
+$scope.getMinDate = new function() {
+
+var flag = FlightsSrv.isReturn();
+
+if(flag === true) {
+
+$scope.minDate = FlightsSrv.getReturn();
+
+} else {
+
+	$scope.minDate = FlightsSrv.getDepart();
+
+	
+}
+
+};
+
+$scope.maxDate = new Date();
 
 $scope.travellers = [];
 	var adults=FlightsSrv.getAdults();
