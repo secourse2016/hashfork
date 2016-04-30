@@ -12,7 +12,6 @@ $scope.minDate = FlightsSrv.getReturn();
 
 	$scope.minDate = FlightsSrv.getDepart();
 
-	
 }
 
 };
