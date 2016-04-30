@@ -1,5 +1,22 @@
 App.controller('nCtrl',function($scope,FlightsSrv,$location) {
 
+$scope.getMinDate = new function() {
+
+var flag = FlightsSrv.isReturn();
+
+if(flag === true) {
+
+$scope.minDate = FlightsSrv.getReturn();
+
+} else {
+
+	$scope.minDate = FlightsSrv.getDepart();
+
+}
+
+};
+
+$scope.maxDate = new Date();
 
 $scope.travellers = [];
 	var adults=FlightsSrv.getAdults();
@@ -11,9 +28,14 @@ $scope.travellers = [];
 		entry.type='Adult';
 		entry.counter=i;
 		entry.firstName='';
-		entry.middleName='';
 		entry.lastName='';
+		entry.email='';
 		entry.passport='';
+		entry.pnumber='';
+		entry.pexpire='';
+		entry.dob='';
+		entry.popup1=false;
+		entry.popup2=false;
 		i++;
 		$scope.travellers.push(entry);
 
@@ -24,9 +46,14 @@ $scope.travellers = [];
 		entry.type='Child';
 		entry.counter=i;
 		entry.firstName='';
-		entry.middleName='';
 		entry.lastName='';
+		entry.email='';
 		entry.passport='';
+		entry.pnumber='';
+		entry.pexpire='';
+		entry.dob='';
+		entry.popup1=false;
+		entry.popup2=false;
 		i++;
 		$scope.travellers.push(entry);
 
@@ -36,9 +63,14 @@ $scope.travellers = [];
 		entry.type='Baby';
 		entry.counter=i;
 		entry.firstName='';
-		entry.middleName='';
 		entry.lastName='';
+		entry.email='';
 		entry.passport='';
+		entry.pnumber='';
+		entry.pexpire='';
+		entry.dob='';
+		entry.popup1=false;
+		entry.popup2=false;
 		i++;
 		$scope.travellers.push(entry);
 
@@ -47,13 +79,24 @@ $scope.user =
   {name: '',
   email: ''};
   $scope.goToPrev=function(){
-   
+
     $location.url('/confirmation');
-  
+
   };
   $scope.goNext=function(){
     $location.url('/ref');
   };
 
+$scope.open1 = function(index) {
+
+	$scope.travellers[index].popup1 = true;
+
+}
+
+$scope.open2 = function(index) {
+
+	$scope.travellers[index].popup2 = true;
+
+}
 
 });
