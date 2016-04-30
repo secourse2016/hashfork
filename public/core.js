@@ -1,4 +1,4 @@
-var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute','angularMoment']);
+ var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute','angularMoment','angular-stripe']);
 
 /**
  * Angular Routes
@@ -12,7 +12,8 @@ var App = angular.module('HashFork', ['ui.bootstrap', 'ngRoute','angularMoment']
 //     tempEmail: '',
 //     tempPass: ''};
 // })
-App.config(function($routeProvider) {
+App.config(function($routeProvider,Stripe) {
+    Stripe.setPublishableKey('pk_test_sQmJKmvytXUZo98BJ2eTVh7S');
     $routeProvider
 
         // route for the home page
@@ -53,5 +54,9 @@ App.config(function($routeProvider) {
         }).otherwise({
             templateUrl:'/partials/error.html'
         });
-
+        
+        
 });
+// App.config(function (stripeProvider) {
+//     stripeProvider.setPublishableKey('pk_test_sQmJKmvytXUZo98BJ2eTVh7S');
+//   });
