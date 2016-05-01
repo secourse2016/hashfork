@@ -302,7 +302,7 @@ db.findByReference(req.params.ref,function(err,data){
 
     // attempt to create a charge using token
     stripe.charges.create({
-      amount: req.body.cost*100,
+      amount: req.body.cost,
       currency: "usd",
       source: stripeToken,
       description: "KLM payments"
@@ -330,14 +330,32 @@ db.findByReference(req.params.ref,function(err,data){
   // });
 
 });
-
+app.get('/stripe/pubkey',function(req,res){
+  res.send('pk_test_sQmJKmvytXUZo98BJ2eTVh7S');
+})
 app.post('/api/booking', function(req, res) {
 console.log('stripe is here');
   // if(!req.body.hasOwnProperty('booking') ) {
   //   res.statusCode = 400;
   //   return res.send('Error 400: Post syntax incorrect.');
   // }
+
   var stripeToken = req.body.paymentToken;
+  if(req.body.booking.flight.outgoingFlights.Airline===req.body.booking.flight.returnFlights.Airline){
+   var options = {
+                  host: airlines[req.body.booking.flight.outgoingFlights.Airline],
+                  port: 80,
+                  path: '/booking',
+                  paymentToken:stripeToken,
+                  cost:req.body.cost*100,
+                  returnFlightId:req.body.booking.flight.returnFlights._id,
+                  outgoingFlightId:req.body.booking.flight.outgoingFlights._id,
+                  class:req.body.booking.flight.outgoingFlights.class,
+                  passengerDetails:req.body.booking.Travellers,
+                  timeout:1500 
+                  };
+  }
+  
 
     // attempt to create a charge using token
     stripe.charges.create({
