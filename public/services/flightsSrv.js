@@ -231,6 +231,9 @@ var airlines={
          x.setToken1=function(value){
           x.token1=value;
          }
+         x.getAirlineIP=function(value){
+          return airlines[value].IP;
+         }
          x.setPublickey=function(airline ,cd){
           $http.get('http://' + airlines[airline].IP + '/stripe/pubkey?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
                       timeout:1500

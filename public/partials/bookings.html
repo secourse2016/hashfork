@@ -1,6 +1,16 @@
 <div class="container" style="background-color: rgba(254, 254, 254, 0.59); box-shadow: 3px 2px 1px RGBA(0, 0, 0, 0.51);">
-
-
+<div ng-hide="getFlights">
+      <div class ="row text-center">
+            <h2>Enter The Booking Reference</h2>
+            <input type="text" style="width: 300px; margin-right: 35px, border: 1px solid black; " ng-model="bookingref" >
+            <button type="button" ng-click="searchFlights()" class="btn btn-default">
+                                  <span class="glyphicon glyphicon-search">
+                                    <span class="sr-only">Search</span>
+                                  </span>
+                                </button>
+      </div>
+</div>
+      <div ng-show="getFlights">
       <div class="row"><br></div>
       <div class="row"><br></div>
       <div class="row">
@@ -104,6 +114,7 @@
     
     <div class="alert alert-danger text-center">There is no such booking ,SORRY!</div>
    
+    </div>
     </div>
       <br>
       <br>

@@ -1,10 +1,15 @@
 App.controller('bookingCtrl',function($scope,FlightsSrv,$location){
 	$scope.dbFinished=false;
+  $scope.ourOutgoing=false;
+  $scope.ourReturn = false;
+  $scope.returnIP="";
+  $scope.outgoingIP="";
    FlightsSrv.postBooking().success(function(data){
       $scope.dbFinished=true;
       console.log(data);
-      $scope.bookingref=data.refNum;
-     
+      $scope.booking=data;
+      $scope.returnIP=FlightsSrv.getAirlineIP(data.return.airline);
+      $scope.outgoingIP=FlightsSrv.getAirlineIP(data.outgoing.airline);
     });
 	
 	// while(!found){
