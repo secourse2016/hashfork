@@ -8,6 +8,7 @@ module.exports = function(app) {
 	var db = require('../db');
  var stripe=require('stripe')('sk_test_lGsGRQLp2SDC1j7hmIwmqw5k');
 	var http =require('http');
+  var requestify = require('requestify');
 	 var ips=[ "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
                "ec2-52-90-41-197.compute-1.amazonaws.com",
                "www.swiss-air.me",
@@ -369,7 +370,7 @@ db.findByReference(req.params.ref,function(err,data){
   app.post('/booking', function(req, res) {
     // retrieve the token
     var stripeToken = req.body.paymentToken;
-
+    
     // attempt to create a charge using token
     stripe.charges.create({
       amount: req.body.cost,
@@ -412,130 +413,112 @@ console.log('stripe is here');
 
   var stripeToken = req.body.paymentToken;
   var stripeToken2 = req.body.Token2;
-  var cost=req.body.cost*100;
+  var outgoingcost = req.body.booking.flight.outgoingFlights.Airline*req.body.booking.Travellers.length*100;
+ 
   var oneway = false;
   if(req.body.booking.flight.returnFlights.Airline){
-
+var returncost = req.body.booking.flight.returnFlights.Airline*req.body.booking.Travellers.length*100;
   if(req.body.booking.flight.outgoingFlights.Airline===req.body.booking.flight.returnFlights.Airline){
-   var options = {
-                  host: airlines[req.body.booking.flight.outgoingFlights.Airline].IP,
-                  port: 80,
-                  path: '/booking',
-                  paymentToken:stripeToken,
-                  cost:cost,
-                  returnFlightId:req.body.booking.flight.returnFlights._id,
-                  outgoingFlightId:req.body.booking.flight.outgoingFlights._id,
-                  class:req.body.booking.flight.outgoingFlights.class,
+    
+    var body={  
+                  method:'POST',
+                  body:{
                   passengerDetails:req.body.booking.Travellers,
-                  timeout:1500,
+                  paymentToken:stripeToken,
+                  cost:outgoingcost+returncost,
+                  returnFlightId:req.body.booking.flight.returnFlights.flightId,
+                  outgoingFlightId:req.body.booking.flight.outgoingFlights.flightId,
+                  class:req.body.booking.flight.outgoingFlights.class,
+                  
+                  }
+                  ,
+    
+                  
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
-  
-  http.get(options,function(resp){
-  resp.setEncoding('utf8');
-  resp.on('data', function(chunk){
-    try{console.log(airlines[req.body.booking.flight.outgoingFlights.Airline].IP);
-      console.log(chunk);
-    console.log(JSON.parse(chunk));
-     chunk=JSON.parse(chunk);
-     res.send(chunk);
-    }catch(e){
-      console.log(e);
-    }
+   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking"
    
+  requestify.request(options,body)
+  .then(function(response){
+   console.log(response.body);
+   res.send(response.body);
   });
-}).on("error", function(e){
-  console.log("Got error: " + e.message);
-});
+  
+
 }else{
-   var options = {
-                  host: airlines[req.body.booking.flight.outgoingFlights.Airline].IP,
-                  port: 80,
-                  path: '/booking/?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c',
+   var body={  
+                  method:'POST',
+                  body:{
+                  passengerDetails:req.body.booking.Travellers,
                   paymentToken:stripeToken,
-                  cost:cost,
+                  cost:outgoingcost,
                   returnFlightId:null,
-                  outgoingFlightId:req.body.booking.flight.outgoingFlights._id,
-                  class:req.body.booking.flight.outgoingFlights.class,
-                  passengerDetails:req.body.booking.Travellers,
-                  timeout:1500 
-                  };
-  
-  http.get(options, function(resp){
-  resp.setEncoding('utf8');
-   var options = {
-                  host: airlines[req.body.booking.flight.outgoingFlights.Airline].IP,
-                  port: 80,
-                  path: '/booking/?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c',
-                  paymentToken:stripeToken2,
-                  cost:cost,
-                  returnFlightId:null,
-                  outgoingFlightId:req.body.booking.flight.outgoingFlights._id,
-                  class:req.body.booking.flight.outgoingFlights.class,
-                  passengerDetails:req.body.booking.Travellers,
-                  timeout:1500 
-                  };
-  
-  http.get(options, function(resp1){
-  resp.setEncoding('utf8');
-  resp1.on('data', function(chunk1){
-    try{
-    console.log(JSON.parse(chunk1));
-     chunk=JSON.parse(chunk1);
+                  outgoingFlightId:req.body.booking.flight.outgoingFlights.flightId,
+                  class:req.body.booking.flight.outgoingFlights.class
+                  
+                  }
+                  ,
     
-     resp.on('data', function(chunk){
-    try{
-    console.log(JSON.parse(chunk));
-     chunk=JSON.parse(chunk);
-     res.send(chunk);
-    }catch(e){
-      console.log(e);
-    }
-   
-  });
-    }catch(e){
-      console.log(e);
-    }
-   
-  });
-}).on("error", function(e){
-  console.log("Got error: " + e.message);
-});
+                  
+                  headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
+                  };
+   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking"
   
-}).on("error", function(e){
-  console.log("Got error: " + e.message);
-});
+  requestify.request(options,body)
+  .then(function(response){
+   console.log(response.body);
+   var body={  
+                  method:'POST',
+                  body:{
+                  paymentToken:stripeToken2,
+                  cost:returncost,
+                  returnFlightId:null,
+                  outgoingFlightId:req.body.booking.flight.returnFlights.flightId,
+                  class:req.body.booking.flight.returnFlights.class,
+                  passengerDetails:req.body.booking.Travellers
+                  }
+                  ,
+    
+                  
+                  headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
+                  };
+   var options = "http://"+airlines[req.body.booking.flight.returnFlights.Airline].IP+"/booking"
+   
+  requestify.request(options,body)
+  .then(function(response1){
+   console.log(response1.body);
+   res.send(response1.body);
+  });
+  
+  
+  });
+  
 }
 }else{
   oneway = true;
-   var options = {
-                  host: airlines[req.body.booking.flight.outgoingFlights.Airline].IP,
-                  port: 80,
-                  path: '/booking/?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c',
+   var body={  
+                  method:'POST',
+                  body:{
                   paymentToken:stripeToken,
-                  cost:cost,
+                  cost:outgoingcost,
                   returnFlightId:null,
-                  outgoingFlightId:req.body.booking.flight.outgoingFlights._id,
+                  outgoingFlightId:req.body.booking.flight.outgoingFlights.flightId,
                   class:req.body.booking.flight.outgoingFlights.class,
-                  passengerDetails:req.body.booking.Travell,
-                  timeout:1500 
+                  passengerDetails:req.body.booking.Travellers
+                  }
+                  ,
+    
+                  
+                  headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
-  
-  http.get(options, function(resp){
-  resp.setEncoding('utf8');
-  resp.on('data', function(chunk){
-    try{
-    console.log(JSON.parse(chunk));
-     chunk=JSON.parse(chunk);
-     res.send(chunk);
-    }catch(e){
-      console.log(e);
-    }
+   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking"
    
+  requestify.request(options,body)
+  .then(function(response){
+   console.log(response.body);
+   res.send(response.body);
   });
-}).on("error", function(e){
-  console.log("Got error: " + e.message);
-});
+  
 }
     // attempt to create a charge using token
     // stripe.charges.create({

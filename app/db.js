@@ -118,13 +118,15 @@
                     for(var i=0; i<tmp.outgoingFlights.length; i++){
                       if((changeTime(tmp.outgoingFlights[i].departureDateTime)) === deptDate){
                         console.log("One found" + tmp.outgoingFlights[i]);
+                        tmp.outgoingFlights[i].flightId=tmp.outgoingFlights[i]._id
                         data1.outgoingFlights.push(tmp.outgoingFlights[i]);
                       }
                     }
                     console.log("The number of flights found is"+tmp.returnFlights.length);
                     for(var i=0; i<tmp.returnFlights.length; i++){
                       if((changeTime(tmp.returnFlights[i].departureDateTime)) === retDate){
-                        console.log("One found" + tmp.outgoingFlights[i]);
+                        console.log("One found " + tmp.returnFlights[i]);
+                        tmp.returnFlights[i].flightId=tmp.returnFlights[i]._id
                         data1.returnFlights.push(tmp.returnFlights[i]);
                       }
                     }
@@ -139,6 +141,7 @@
             for(var i=0; i<tmp.outgoingFlights.length; i++){
               if((changeTime(tmp.outgoingFlights[i].departureDateTime)) === deptDate){
                 console.log("One found" + tmp.outgoingFlights[i].departureDateTime);
+                tmp.outgoingFlights[i].flightId=tmp.outgoingFlights[i]._id
                 data1.outgoingFlights.push(tmp.outgoingFlights[i]);
               }
             }

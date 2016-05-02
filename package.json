@@ -24,6 +24,7 @@
     "nodemon": "*",
     "stripe": "*",
     "supertest": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "requestify": "*"
   }
 }
