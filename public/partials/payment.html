@@ -22,13 +22,14 @@
                     </div>                    
                 </div>
                 <div class="panel-body">
-                    <form role="form" id="payment-form"  action="/">
+                    <form role="form" id="payment-form" >
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="cardNumber">CARD NUMBER</label>
                                     <div class="input-group">
                                         <input 
+                                            ng-model="cardNumber"
                                             type="tel" 
                                             class="form-control"
                                             name="cardNumber"
@@ -44,11 +45,22 @@
                             <div class="col-xs-7 col-md-7">
                                 <div class="form-group">
                                     <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <br>
                                     <input 
                                         type="tel" 
-                                        class="form-control" 
+                                        ng-model="expiryMonth"
+                                        size="2"
                                         name="cardExpiry"
-                                        placeholder="MM / YY"
+                                        placeholder="MM"
+                                        required 
+                                    />
+                                    <span>/</span>
+                                    <input 
+                                        type="tel" 
+                                        ng-model="expiryYear"
+                                        size="2" 
+                                        name="cardExpiry"
+                                        placeholder="YY"
                                         required 
                                     />
                                 </div>
@@ -59,6 +71,7 @@
                                     <input 
                                         type="tel" 
                                         class="form-control"
+                                        ng-model="cvc"
                                         name="cardCVC"
                                         placeholder="CVC"
                                         required
@@ -123,7 +136,7 @@
                                 <button class="btn btn-info btn-lg" type="button" ng-click="goToPrev()">Prev</button>
                             </div>
                             <div class="col-xs-1 col-xs-offset-3 col-sm-4 col-offset-sm-4 col-md-4 col-md-offset-3">
-                                <button class="btn btn-info btn-lg" type="submit">FINISH</button>
+                                <button class="btn btn-info btn-lg" type="button" ng-click='goNext()' >FINISH</button>
                             </div>
                         </div>
                         

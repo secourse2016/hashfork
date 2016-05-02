@@ -12,7 +12,7 @@
             return datetime;
         }
      
-    console.log(changeTime('1460930000000')); 
+  
     function connect (cb) {
         return mongo.connect(dbURL, function(err, db) {
             if (err) return cb(err);
@@ -153,12 +153,48 @@
     }
     //----------------------------------------------------------------------------------------------------------------------------------------
     // insert({"reference": "Marawan Mohsen 30"});
-     
-     function insert(booking,cb){
-        connect(function(err,DB){
+        var alpha='abcdefghijklmnopqrstuvwxyz';
+
+      function generateCode(){
+    var result="";
+    for(var i=0;i<6;i++){
+        var numOrAlp=Math.floor(Math.random()*2);
+        if(numOrAlp==0){
+            result+=alpha[Math.floor(Math.random()*alpha.length)];
+        }else{
+            result+=Math.floor(Math.random()*10);
+    }
+  }
+  return result;
+};
+     function insert(outID,retID,travellers,cb){
+        var ref = generateCode();
+        findByReference(ref,function(err, bookings){
+            if(bookings.length>0){
+                insert(outID,retID,travellers,cb);
+            }else{
+                DB.collection('Flights').find({_id:outID}).toArray(
+            function (err, outgoings){
+                var booking={};
+                booking.outgoingFlights=outgoings[0];
+                booking.reference=ref;
+                booking.Travellers=travellers;
+                DB.collection('Flights').find({_id:retID}).toArray(
+            function (err, returns){
+                booking.returnFlights=null;
+                if(returns.length>0){
+                    booking.returnFlights=returns[0];
+                }
+                
+                connect(function(err,DB){
             DB.collection('Bookings').insert(booking);
-            cb();
+            cb(ref);
         });
+        }); 
+            });
+        }
+        });
+       
      
      }
      
@@ -199,6 +235,7 @@
         connect(function(err,DB){
             DB.collection('Bookings').find({reference : ref}).toArray(
             function (err, bookings){
+                console.log(bookings);
                 if (err) cb(err);
                 else cb(err, bookings);
             });

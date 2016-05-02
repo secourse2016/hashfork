@@ -1,27 +1,29 @@
- {
-   "name": "secourse.com",
-   "repository": {
-     "type": "git",
-     "url" : "http://github.com/secourse2016/hashfork"
-   },
-   "scripts": {
-    "start": "nodemon server.js", 
+{
+  "name": "secourse.com",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/secourse2016/hashfork"
+  },
+  "scripts": {
+    "start": "nodemon server.js",
     "test": "./node_modules/mocha/bin/mocha ./test/test.js",
     "coverage": "istanbul cover ./test/quote.js"
   },
-   "dependencies": {
-     "body-parser" : "*", 
-     "express"     : "*",
-     "dotenv"      : "*",
-     "mongodb"     : "*",
-     "jsonwebtoken": "*",
-     "underscore"  : "*",
-     "moment"      : "*",
-     "cors"       :"*",
-     "http"  :"*",
-     "mocha"		:"*",
-     "chai"			: "*",
-     "supertest"	: "*",
-     "nodemon" :"*"
-     }
- }
+  "dependencies": {
+    "angular-stripe": "^4.2.12",
+    "body-parser": "*",
+    "chai": "*",
+    "cors": "*",
+    "dotenv": "*",
+    "express": "*",
+    "http": "*",
+    "jsonwebtoken": "*",
+    "mocha": "*",
+    "moment": "*",
+    "mongodb": "*",
+    "nodemon": "*",
+    "stripe": "*",
+    "supertest": "*",
+    "underscore": "*"
+  }
+}

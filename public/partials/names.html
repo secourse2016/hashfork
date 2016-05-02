@@ -89,15 +89,53 @@
 </div>
 
 <div class="row">
+  <div class="col-md-2 "></div>
+  <!-- Hint text -->
+    <div class="col-md-2 col-sm-2 col-xs-2">
+
+  <label for="passno">Passport Number<astrix>*</astrix></label>
+  </div>
+  <div class="col-md-2 col-sm-2 col-xs-2">
+
+  
+  </div>
+    <div class="col-md-2 col-sm-2 col-xs-2">
+
+  <label for="dob">Date of Birth<astrix>*</astrix></label>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-md-2"></div>
-  <div class="col-md-4"><label for="passport">Passport Country<astrix>*</astrix></div>
+  <div class="col-xs-2">
+  <!-- Text fields -->
+  <input class="form-control" id="fn" ng-model = "travellers[$index].passportNum" placeholder="Passport Number" type="text" required="required">
+  </div>
+  <div class="col-xs-2">
+  </div>
+  <div class="col-xs-2">
+   <p class="input-group"  >
+  <input id="date[$index]"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="travellers[$index].dateOfBirth" is-open="popup1.opened[$index]" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1($index)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                                        </p>
+  </div>
+</div>
+<div class="row">
+  <br>
+</div>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-4"><label for="passport">Nationality<astrix>*</astrix></div>
 </div>
 
 <div class = "row">
   <div class="col-md-2"></div>
   <div class="col-md-10">
     <!-- The legendary country's list -->
-  <select ng-model = "travellers[$index].passport" required="required">
+  <select ng-model = "travellers[$index].nationality" required="required">
     <option value="Afghanistan" title="Afghanistan">Afghanistan</option>
     <option value="Albania" title="Albania">Albania</option>
     <option value="Algeria" title="Algeria">Algeria</option>
@@ -351,8 +389,6 @@
 </div>
 
   <br>
-
-
 </div>
   <div class="row">
     <div class="col-md-2"></div>

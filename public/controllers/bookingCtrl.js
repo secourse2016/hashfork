@@ -1,8 +1,6 @@
 App.controller('bookingCtrl',function($scope,FlightsSrv,$location){
-	var alpha='abcdefghijklmnopqrstuvwxyz';
 	
-	$scope.bookingref=generateCode();
-	var found = false;
+	$scope.bookingref=FlightsSrv.getBookingref();
 	// while(!found){
 	// 	FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
 	// 		console.log(data);
@@ -14,24 +12,12 @@ App.controller('bookingCtrl',function($scope,FlightsSrv,$location){
 	 $scope.goToPrev=function(){
 	
    
-    $location.url('/names');
+    $location.url('/payment');
   
   };
   $scope.goNext=function(){
-  	// FlightsSrv.setBookingRef($scope.bookingref);
-  	FlightsSrv.postBooking($scope.bookingref);
-    $location.url('/payment');
+  	
+    $location.url('/');
   };
-  function generateCode(){
-  	var result="";
-  	for(var i=0;i<6;i++){
-  		var numOrAlp=Math.floor(Math.random()*2);
-  		if(numOrAlp==0){
-  			result+=alpha[Math.floor(Math.random()*alpha.length)];
-  		}else{
-  			result+=Math.floor(Math.random()*10);
-  	}
-  }
-  return result;
-};
+ 
 });
