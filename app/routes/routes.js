@@ -413,19 +413,22 @@ console.log('stripe is here');
 
   var stripeToken = req.body.paymentToken;
   var stripeToken2 = req.body.Token2;
-  var outgoingcost = req.body.booking.flight.outgoingFlights.Airline*req.body.booking.Travellers.length*100;
- 
-  var oneway = false;
-  if(req.body.booking.flight.returnFlights.Airline){
-var returncost = req.body.booking.flight.returnFlights.Airline*req.body.booking.Travellers.length*100;
+  var outgoingcost = Number(req.body.booking.flight.outgoingFlights.cost)*req.body.booking.Travellers.length*100;
+ var booking={};
+ booking.outgoing={};
+ booking.return={};
+  booking.oneway = false;
+
+  if((req.body.booking.flight.returnFlights!==undefined)){
+var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.booking.Travellers.length*100;
   if(req.body.booking.flight.outgoingFlights.Airline===req.body.booking.flight.returnFlights.Airline){
-    
+    var cost = Number(outgoingcost+returncost);
     var body={  
                   method:'POST',
                   body:{
                   passengerDetails:req.body.booking.Travellers,
                   paymentToken:stripeToken,
-                  cost:outgoingcost+returncost,
+                  cost:cost,
                   returnFlightId:req.body.booking.flight.returnFlights.flightId,
                   outgoingFlightId:req.body.booking.flight.outgoingFlights.flightId,
                   class:req.body.booking.flight.outgoingFlights.class,
@@ -436,12 +439,17 @@ var returncost = req.body.booking.flight.returnFlights.Airline*req.body.booking.
                   
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
-   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking"
+   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
    
   requestify.request(options,body)
   .then(function(response){
-   console.log(response.body);
-   res.send(response.body);
+   console.log(JSON.parse(response.body).refNum);
+   booking.outgoing.refNum=JSON.parse(response.body).refNum;
+   booking.outgoing.airline = req.body.booking.flight.outgoingFlights.Airline;
+   booking.return.refNum=JSON.parse(response.body).refNum;
+   booking.return.airline = req.body.booking.flight.returnFlights.Airline;
+   console.log(booking);
+   res.send(booking);
   });
   
 
@@ -462,11 +470,13 @@ var returncost = req.body.booking.flight.returnFlights.Airline*req.body.booking.
                   
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
-   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking"
-  
+   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
+  console.log(stripeToken);
   requestify.request(options,body)
   .then(function(response){
    console.log(response.body);
+    
+   
    var body={  
                   method:'POST',
                   body:{
@@ -482,12 +492,16 @@ var returncost = req.body.booking.flight.returnFlights.Airline*req.body.booking.
                   
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
-   var options = "http://"+airlines[req.body.booking.flight.returnFlights.Airline].IP+"/booking"
+   var options = "http://"+airlines[req.body.booking.flight.returnFlights.Airline].IP+"/booking";
    
   requestify.request(options,body)
   .then(function(response1){
    console.log(response1.body);
-   res.send(response1.body);
+   booking.outgoing.refNum=JSON.parse(response.body).refNum;
+   booking.outgoing.airline = req.body.booking.flight.outgoingFlights.Airline;
+   booking.return.refNum=JSON.parse(response1.body).refNum;
+   booking.return.airline = req.body.booking.flight.returnFlights.Airline;
+   res.send(booking);
   });
   
   
@@ -495,7 +509,7 @@ var returncost = req.body.booking.flight.returnFlights.Airline*req.body.booking.
   
 }
 }else{
-  oneway = true;
+  booking.oneway = true;
    var body={  
                   method:'POST',
                   body:{
@@ -511,12 +525,17 @@ var returncost = req.body.booking.flight.returnFlights.Airline*req.body.booking.
                   
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
-   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking"
+   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
    
   requestify.request(options,body)
   .then(function(response){
    console.log(response.body);
-   res.send(response.body);
+   booking.outgoing.refNum = JSON.parse(response.body).refNum;
+   booking.outgoing.airline = req.body.booking.flight.outgoingFlights.Airline;
+   booking.return.refNum='';
+   booking.return.airline = '';
+   
+   res.send(booking);
   });
   
 }

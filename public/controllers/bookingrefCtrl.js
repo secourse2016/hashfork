@@ -1,8 +1,12 @@
 App.controller('bookingrefCtrl',function($scope,FlightsSrv,$location){
-	$scope.bookingref=getUrlParameter("q");
+  $scope.getFlights=false;
+	$scope.bookingref="";
   $scope.flight={};
   $scope.isthereFlights=true;
   $scope.isReturn=true;
+  $scope.searchFlights=function(){
+    $scope.getFlights=true;
+    console.log("enter");
   FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
       if(data.length>0){
       $scope.flight=data[0].flight;
@@ -26,7 +30,9 @@ App.controller('bookingrefCtrl',function($scope,FlightsSrv,$location){
 else{
   $scope.isthereFlights=false;
 }
-  });
+  });   
+  }
+ 
    
   function getUrlParameter(param) {
         var sPageURL = window.location.search.substring(1),
