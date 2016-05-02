@@ -12,7 +12,7 @@
             return datetime;
         }
      
-    console.log(changeTime('1460930000000')); 
+  
     function connect (cb) {
         return mongo.connect(dbURL, function(err, db) {
             if (err) return cb(err);
@@ -167,18 +167,32 @@
   }
   return result;
 };
-     function insert(booking,cb){
+     function insert(outID,retID,travellers,cb){
         var ref = generateCode();
         findByReference(ref,function(err, bookings){
             if(bookings.length>0){
-                insert(booking,cb);
+                insert(outID,retID,travellers,cb);
             }else{
+                DB.collection('Flights').find({_id:outID}).toArray(
+            function (err, outgoings){
+                var booking={};
+                booking.outgoingFlights=outgoings[0];
                 booking.reference=ref;
+                booking.Travellers=travellers;
+                DB.collection('Flights').find({_id:retID}).toArray(
+            function (err, returns){
+                booking.returnFlights=null;
+                if(returns.length>0){
+                    booking.returnFlights=returns[0];
+                }
+                
                 connect(function(err,DB){
             DB.collection('Bookings').insert(booking);
             cb(ref);
+        });
         }); 
-            }
+            });
+        }
         });
        
      

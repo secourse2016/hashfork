@@ -114,7 +114,12 @@
   <div class="col-xs-2">
   </div>
   <div class="col-xs-2">
-    <input class="form-control" id="ln" ng-model = "travellers[$index].dateOfBirth" placeholder="Date of birth" type="text" required="required">
+   <p class="input-group"  >
+  <input id="date[$index]"  required="required" type="text" style="font-size: smaller;" class="form-control" uib-datepicker-popup="{{format}}" ng-model="travellers[$index].dateOfBirth" is-open="popup1.opened[$index]" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1($index)"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                                        </p>
   </div>
 </div>
 <div class="row">
