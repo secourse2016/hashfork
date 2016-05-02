@@ -1,4 +1,9 @@
-<div class="container">
+<div ng-hide="dbFinished" class="preloader text-center">
+  
+</div>
+<div ng-if="dbFininshed==true">
+<div class = "alert alert-success">{{bookingref}}</div>
+<!-- <div class="container">
 	<div class="alert alert-success">
 		<h2 class="text-center">Remember your booking reference to know Your flights</h2>
 		<br>
@@ -16,4 +21,5 @@
 		<button class="btn btn-primary" ng-click="goNext()">Thank You</button>
 		</div>
 	</div>
+</div> -->
 </div>
