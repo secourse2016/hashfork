@@ -1,16 +1,18 @@
 App.controller('bookingrefCtrl',function($scope,FlightsSrv,$location){
   $scope.getFlights=false;
 	$scope.bookingref="";
-  $scope.flight={};
+  $scope.flight={red:"blue"};
   $scope.isthereFlights=true;
   $scope.isReturn=true;
   $scope.searchFlights=function(){
     $scope.getFlights=true;
     console.log("enter");
   FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
+    $scope.flight={red:"blue"};
+    console.log($scope.flight);
     console.log(data);
       if(data.length>0){
-      $scope.flight=data[0].flight;
+      $scope.flight=data[0];
       if(!$scope.flight.returnFlights){
         $scope.isReturn=false;
       }else{

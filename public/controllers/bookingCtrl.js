@@ -1,10 +1,11 @@
-App.controller('bookingCtrl',function($scope,FlightsSrv,$location){
+App.controller('bookingCtrl',function($scope,FlightsSrv,$location,Stripe){
 	$scope.dbFinished=false;
   $scope.ourOutgoing=false;
   $scope.ourReturn = false;
   $scope.returnIP="";
   $scope.outgoingIP="";
     FlightsSrv.setPublickey(FlightsSrv.getBooking().flight.outgoingFlights.Airline,function(){
+      console.log("here is stripe");
        Stripe.card.createToken({
   number: FlightsSrv.getCardNumber(),
   cvc: FlightsSrv.getCVC(),
@@ -40,10 +41,10 @@ App.controller('bookingCtrl',function($scope,FlightsSrv,$location){
        });
     }else{
          Stripe.card.createToken({
-  number: $scope.cardNumber,
-  cvc: $scope.cvc,
-  exp_month: $scope.expiryMonth,
-  exp_year: $scope.expiryYear
+   number: FlightsSrv.getCardNumber(),
+  cvc: FlightsSrv.getCVC(),
+  exp_month: FlightsSrv.getExpirymonth(),
+  exp_year: FlightsSrv.getExpiryyear()
 }, stripeResponseHandler2);
 
    
