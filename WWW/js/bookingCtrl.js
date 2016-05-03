@@ -2,10 +2,12 @@ angular.module('app.bookingCtrl', [])
 
 .controller('bookingCtrl', function ($scope, $state, FlightsSrv, $ionicHistory, Stripe) { 
 
+// $state.go($state.currentState, {}, {reload:true});
 
 $scope.goNext = function(){
   //FlightsSrv.postBooking($scope.bookingref);
     $ionicHistory.clearCache().then(function(){
+      $ionicHistory.clearHistory();
     $state.go('landingPage');
   });
    
@@ -53,10 +55,10 @@ $scope.goNext = function(){
        });
     }else{
          Stripe.card.createToken({
-  number: $scope.cardNumber,
-  cvc: $scope.cvc,
-  exp_month: $scope.expiryMonth,
-  exp_year: $scope.expiryYear
+   number: FlightsSrv.getCardNumber(),
+  cvc: FlightsSrv.getCVC(),
+  exp_month: FlightsSrv.getExpirymonth(),
+  exp_year: FlightsSrv.getExpiryyear()
 }, stripeResponseHandler2);
 
    
