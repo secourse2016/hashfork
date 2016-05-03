@@ -370,10 +370,11 @@ db.findByReference(req.params.ref,function(err,data){
   app.post('/booking', function(req, res) {
     // retrieve the token
     var stripeToken = req.body.paymentToken;
+    var flightCost = req.body.cost*100;
     
     // attempt to create a charge using token
     stripe.charges.create({
-      amount: req.body.cost,
+      amount: flightCost,
       currency: "usd",
       source: stripeToken,
       description: "KLM payments"
@@ -413,14 +414,14 @@ console.log('stripe is here');
 
   var stripeToken = req.body.paymentToken;
   var stripeToken2 = req.body.Token2;
-  var outgoingcost = Number(req.body.booking.flight.outgoingFlights.cost)*req.body.booking.Travellers.length*100;
+  var outgoingcost = Number(req.body.booking.flight.outgoingFlights.cost)*req.body.booking.Travellers.length;
  var booking={};
  booking.outgoing={};
  booking.return={};
   booking.oneway = false;
 
   if((req.body.booking.flight.returnFlights!==undefined)){
-var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.booking.Travellers.length*100;
+var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.booking.Travellers.length;
   if(req.body.booking.flight.outgoingFlights.Airline===req.body.booking.flight.returnFlights.Airline){
     var cost = Number(outgoingcost+returncost);
     console.log(req.body.booking.flight.outgoingFlights);
