@@ -8,9 +8,9 @@ $scope.flight={};
   $scope.isthereFlights=true;
   $scope.isReturn=true;
   FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
-  	console.log(data+" wala")
+  	console.log(data);
       if(data.length>0){
-      $scope.flight=data[0].flight;
+      $scope.flight=data[0];
       if(!$scope.flight.returnFlights){
         $scope.isReturn=false;
       }else{

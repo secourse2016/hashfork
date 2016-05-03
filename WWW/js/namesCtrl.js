@@ -3,8 +3,10 @@ angular.module('app.namesCtrl', [])
 .controller('nCtrl',function($scope, $state, FlightsSrv) {
 
 $scope.goNext = function(){
-  //console.log("dosna");
-  $state.go('ref'); 
+  
+  FlightsSrv.setTravellers($scope.travellers);
+
+  $state.go('payment'); 
 }
 
 
