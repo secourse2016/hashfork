@@ -1,0 +1,88 @@
+
+
+    /*  bhoechie tab */
+div.bhoechie-tab-container{
+    z-index: 10;
+    padding: 0 !important;
+    margin-top: 20px;
+    margin-left: 50px;
+    background-clip: padding-box;
+    opacity: 0.97;
+    filter: alpha(opacity=97);
+}
+div.bhoechie-tab-menu{
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group{
+    margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a{
+    margin-bottom: 0;
+}
+div.bhoechie-tab-menu div.list-group>a .glyphicon,
+div.bhoechie-tab-menu div.list-group>a .fa {
+    color: #E02F2F;
+}
+div.bhoechie-tab-menu div.list-group>a:first-child{
+    border-top-right-radius: 0;
+    -moz-border-top-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a:last-child{
+    border-bottom-right-radius: 0;
+    -moz-border-bottom-right-radius: 0;
+}
+div.bhoechie-tab-menu div.list-group>a.active,
+div.bhoechie-tab-menu div.list-group>a.active .glyphicon,
+div.bhoechie-tab-menu div.list-group>a.active .fa{
+    background-color: #009CDA;
+    background-image: #009CDA;
+    color: #ffffff;
+}
+div.bhoechie-tab-menu div.list-group>a.active:after{
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    margin-top: -13px;
+    border-left: 0;
+    border-bottom: 13px solid transparent;
+    border-top: 13px solid transparent;
+    border-left: 10px solid #009CDA;
+}
+
+div.bhoechie-tab-menu {
+    box-shadow: #000 0px 0px 5px;
+}
+
+div.bhoechie-tab-content{
+    background-color: #ffffff;
+    /* border: 1px solid #eeeeee; */
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+div.bhoechie-tab {
+    background-color: #FFFFFF;
+    height: 350px;
+    border-radius: 0px 10px 10px 10px;
+    box-shadow: #000 0px 0px 5px;
+}
+
+div.bhoechie-tab div.bhoechie-tab-content:not(.active){
+    display: none;
+}
+.preloader {
+    margin:auto;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    padding: 50px;
+    background: url('../img/preloader.gif') no-repeat 50% 50% transparent;
+}
+.center{
+    position: relative;
+    left:25%;
+    
+}

@@ -1,0 +1,74 @@
+<div ng-hide="dbFinished" class="preloader text-center">
+  
+</div>
+<div ng-show="dbFinished">
+
+<div class="container">
+	<div class="jumbotron">
+	<div ng-if="booking.outgoing.airline == 'KLM'">
+		<h2 class="text-center">Remember your booking reference to look up Your <span ng-if="booking.return.airline!=='KLM'"><span ng-if='booking.oneway==false'>Outgoing</span> </span>flights</h2>
+		<br>
+		<h3 class="text-center">Booking Ref:</h3>
+		<div class="row text-center">
+		<div class="col-md-4 col-sm-4 col-xs-4"></div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+			<h3 class="text-center "><strong>{{booking.outgoing.refNum}}</strong></h3>
+			</div>	
+		</div>
+	</div>
+	<div ng-if="booking.outgoing.airline !== 'KLM'">
+		<h2 class="text-center">Remember your booking reference to look up Your <span ng-if="booking.return.airline!==booking.outgoing.airline"><span ng-if='booking.oneway==false'>Outgoing</span></span> flights</h2>
+		<br>
+		<h3 class="text-center">Booking Ref:</h3>
+		<div class="row text-center">
+		<div class="col-md-4 col-sm-4 col-xs-4"></div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+			<h3 class="text-center "><strong>{{booking.outgoing.refNum}}</strong></h3>
+			</div>	
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-4"></div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+			<h3 class="text-center "><strong>Go check it out at <a href = "http://{{outgoingIP}}">{{booking.outgoing.airline}}</a></strong></h3>
+			</div>	
+		</div>
+		<div ng-hide="booking.oneway">
+	<div ng-if="booking.return.airline !== booking.outgoing.airline">
+	<div ng-if="booking.return.airline == 'KLM'">
+		<h2 class="text-center">Remember your booking reference to look up Your Return flights</h2>
+		<br>
+		<h3 class="text-center">Booking Ref:</h3>
+		<div class="row text-center">
+		<div class="col-md-4 col-sm-4 col-xs-4"></div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+			<h3 class="text-center "><strong>{{booking.return.refNum}}</strong></h3>
+			</div>	
+		</div>
+	</div>
+	<div ng-if="booking.return.airline!== 'KLM' " >
+		<h2 class="text-center">Remember your booking reference to look up Your Return flights</h2>
+		<br>
+		<h3 class="text-center">Booking Ref:</h3>
+		<div class="row text-center">
+		<div class="col-md-4 col-sm-4 col-xs-4"></div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+			<h3 class="text-center "><strong>{{booking.return.refNum}}</strong></h3>
+			</div>	
+		</div>
+		<div class="col-md-4 col-sm-4 col-xs-4"></div>
+			<div class="col-md-4 col-sm-4 col-xs-4">
+			<h3 class="text-center "><strong>Go check it out at <a href = "http://{{returnIP}}">{{booking.return.airline}}</a></strong></h3>
+			</div>	
+		</div>
+		</div>
+		</div>
+	<br>
+		<div class="row text-center" >
+		<div class="col-md-4 col-sm-5 col-xs-5">
+		
+		<button class="btn btn-primary" ng-click="goNext()">Thank You</button>
+		</div>
+		</div>
+	</div>
+</div>
+</div>
+

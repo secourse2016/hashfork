@@ -1,4 +1,5 @@
     var mongo = require('mongodb').MongoClient;
+    var ObjectId = require('mongodb').ObjectID;
     var DB = null;
     var dbURL = 'mongodb://localhost:27017/klm';
     var Airports = require('../airports.json');
@@ -172,17 +173,22 @@
 };
      function insert(outID,retID,travellers,cb){
         var ref = generateCode();
+        console.log("insert booking");
         findByReference(ref,function(err, bookings){
+            console.log(bookings.length);
             if(bookings.length>0){
                 insert(outID,retID,travellers,cb);
             }else{
-                DB.collection('Flights').find({_id:outID}).toArray(
+                console.log(outID);
+                var objOut = new ObjectId(outID);
+                DB.collection('Flights').find({_id:objOut}).toArray(
             function (err, outgoings){
                 var booking={};
                 booking.outgoingFlights=outgoings[0];
                 booking.reference=ref;
                 booking.Travellers=travellers;
-                DB.collection('Flights').find({_id:retID}).toArray(
+                var objret = new ObjectId(retID);
+                DB.collection('Flights').find({_id:objret}).toArray(
             function (err, returns){
                 booking.returnFlights=null;
                 if(returns.length>0){
