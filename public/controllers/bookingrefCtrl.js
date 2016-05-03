@@ -8,6 +8,7 @@ App.controller('bookingrefCtrl',function($scope,FlightsSrv,$location){
     $scope.getFlights=true;
     console.log("enter");
   FlightsSrv.getBookingFromDb($scope.bookingref).success(function(data){
+    console.log(data);
       if(data.length>0){
       $scope.flight=data[0].flight;
       if(!$scope.flight.returnFlights){
