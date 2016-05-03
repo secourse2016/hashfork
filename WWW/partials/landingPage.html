@@ -82,19 +82,20 @@
     </ion-content>
     </div>
 <div ng-hide='flag' ng-class="{fade: startFade}" class="default" >
-<br><br><br>
+<br><br><br><br>
     
     <div class="row">
         <div class="col">
-               <div class="item item-input">
+               <div class="item item-input" style="border-radius:15px;">
+               <input type="search" ng-model="ref" ng-change="setRef(ref)" placeholder="Find existing booking" style="font-size:1.1em;">
                 <span class="input-label"><button ng-click="goRef()" class="button button-royal ion-ios-search"></button></span>
-                <input type="search" ng-model="ref" ng-change="setRef(ref)" placeholder="Find existing booking" style="font-size:1.1em;">
+                
                </div>
              </div>
 </div>
 <br>
-<img ng-src="img/first.jpg" style="width:100%;">
-    <button ng-click="hide()" class="button button-balanced button-block">Book a new flight</button>
+<img ng-src="img/first.jpg" style="width:100%;"><br><br>
+    <button ng-click="hide()" class="button button-royal button-block">Book a new flight</button>
 
 </div>
 </ion-view>

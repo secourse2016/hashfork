@@ -1,10 +1,10 @@
 angular.module('app.paymentCtrl', [])
 
-.controller('paymentCtrl',function($scope, $state){
+.controller('paymentCtrl',function($scope, $state, $ionicHistory, FlightsSrv){
 
 $scope.goNext = function(){
-  //console.log("dosna");
-  $state.go('landingPage'); 
+  FlightsSrv.setCardInfo($scope.cardNo,$scope.cvc,$scope.month,$scope.year);
+  $state.go('ref'); 
 }
 
 $scope.cardNo = "";

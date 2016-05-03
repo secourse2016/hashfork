@@ -3,8 +3,10 @@ angular.module('app.namesCtrl', [])
 .controller('nCtrl',function($scope, $state, FlightsSrv) {
 
 $scope.goNext = function(){
-  //console.log("dosna");
-  $state.go('ref');
+  
+  FlightsSrv.setTravellers($scope.travellers);
+
+  $state.go('payment'); 
 }
 
 
@@ -19,12 +21,9 @@ $scope.travellers = [];
 		entry.type='Adult';
 		entry.counter=i;
 		entry.firstName='';
+		entry.middleName='';
 		entry.lastName='';
-		entry.email='';
 		entry.passport='';
-		entry.pnumber='';
-		entry.pexpire='';
-		entry.dob='';
 		i++;
 		$scope.travellers.push(entry);
 
@@ -35,12 +34,9 @@ $scope.travellers = [];
 		entry.type='Child';
 		entry.counter=i;
 		entry.firstName='';
+		entry.middleName='';
 		entry.lastName='';
-		entry.email='';
 		entry.passport='';
-		entry.pnumber='';
-		entry.pexpire='';
-		entry.dob='';
 		i++;
 		$scope.travellers.push(entry);
 
@@ -50,12 +46,9 @@ $scope.travellers = [];
 		entry.type='Baby';
 		entry.counter=i;
 		entry.firstName='';
+		entry.middleName='';
 		entry.lastName='';
-		entry.email='';
 		entry.passport='';
-		entry.pnumber='';
-		entry.pexpire='';
-		entry.dob='';
 		i++;
 		$scope.travellers.push(entry);
 
