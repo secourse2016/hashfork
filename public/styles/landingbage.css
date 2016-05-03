@@ -81,3 +81,8 @@ div.bhoechie-tab div.bhoechie-tab-content:not(.active){
     padding: 50px;
     background: url('../img/preloader.gif') no-repeat 50% 50% transparent;
 }
+.center{
+    position: relative;
+    left:25%;
+    
+}

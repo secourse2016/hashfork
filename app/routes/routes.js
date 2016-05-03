@@ -370,10 +370,11 @@ db.findByReference(req.params.ref,function(err,data){
   app.post('/booking', function(req, res) {
     // retrieve the token
     var stripeToken = req.body.paymentToken;
+    var flightCost = req.body.cost*100;
     
     // attempt to create a charge using token
     stripe.charges.create({
-      amount: req.body.cost,
+      amount: flightCost,
       currency: "usd",
       source: stripeToken,
       description: "KLM payments"
@@ -413,16 +414,17 @@ console.log('stripe is here');
 
   var stripeToken = req.body.paymentToken;
   var stripeToken2 = req.body.Token2;
-  var outgoingcost = Number(req.body.booking.flight.outgoingFlights.cost)*req.body.booking.Travellers.length*100;
+  var outgoingcost = Number(req.body.booking.flight.outgoingFlights.cost)*req.body.booking.Travellers.length;
  var booking={};
  booking.outgoing={};
  booking.return={};
   booking.oneway = false;
 
   if((req.body.booking.flight.returnFlights!==undefined)){
-var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.booking.Travellers.length*100;
+var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.booking.Travellers.length;
   if(req.body.booking.flight.outgoingFlights.Airline===req.body.booking.flight.returnFlights.Airline){
     var cost = Number(outgoingcost+returncost);
+    console.log(req.body.booking.flight.outgoingFlights);
     var body={  
                   method:'POST',
                   body:{
@@ -431,7 +433,7 @@ var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.boo
                   cost:cost,
                   returnFlightId:req.body.booking.flight.returnFlights.flightId,
                   outgoingFlightId:req.body.booking.flight.outgoingFlights.flightId,
-                  class:req.body.booking.flight.outgoingFlights.class,
+                  class:req.body.booking.flight.outgoingFlights.class
                   
                   }
                   ,
@@ -526,6 +528,7 @@ var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.boo
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
    var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
+   
    
   requestify.request(options,body)
   .then(function(response){
