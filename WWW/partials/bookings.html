@@ -1,6 +1,7 @@
-<ion-view title="Reference" style="background-color:#020202;">
-    <ion-content padding="false" style="background: url(../img/new.png) no-repeat center;background-size:cover;" class="has-header">
+<ion-view title="Reference" style="background-color:#020202;" >
+    <ion-content padding="false" style="background-color:#473F3F;" class="has-header" >
 
+<div ng-show = 'flag'>
 <div ng-if="isthereFlights==true">
 
     <div class="col-md-3 col-xs-3"><br><h2 style="text-align:center;color:white;">BookingRef: {{bookingref}}</h2></div>
@@ -50,6 +51,14 @@
 
 </div>
 </div>
+</div>
+<div ng-hide= 'flag' style="text-align:center;padding-top:150px;">
+        <ion-spinner ></ion-spinner>
+        <p style="color:white;">Finding bookings...</p>
+</div>
+
     </ion-content>
+
+    
 </ion-view>
 

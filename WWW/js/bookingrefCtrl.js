@@ -3,7 +3,7 @@ angular.module('app.bookingrefCtrl', [])
 .controller('bookingrefCtrl', function($scope, $state, FlightsSrv){
 
 $scope.bookingref = FlightsSrv.getReference();
-
+$scope.flag = false;
 $scope.flight={};
   $scope.isthereFlights=true;
   $scope.isReturn=true;
@@ -26,6 +26,8 @@ $scope.flight={};
 else{
   $scope.isthereFlights=false;
 }
+  
+$scope.flag = true;
   });
 
 });

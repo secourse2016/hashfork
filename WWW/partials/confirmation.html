@@ -1,5 +1,5 @@
 <ion-view title="Confirmation" id="confirmation" style="background-color:#020202;">
-    <ion-content padding="false" style="background: url(../img/new.png) no-repeat center;background-size:cover;" class="has-header">
+    <ion-content padding="false" style="background-color:#473F3F;" class="has-header">
         <div class="spacer" style="width: 320px; height: 35px;"></div>
         <ion-list>
             <ion-item class="item-thumbnail-left">
@@ -26,10 +26,10 @@
         <div id="confirmation-markdown2" style="color:#FFFFFF;">
             <p>Number of Adults: {{adultNo}} &nbsp &nbsp Price per adult: {{adultPrice}}$</p>
         </div>
-        <div ng-if="childNo>0" id="confirmation-markdown3" style="color:#FFFFFF;">
+        <div id="confirmation-markdown3" style="color:#FFFFFF;">
             <p>Number of children: {{childNo}} &nbsp &nbsp Price per child: {{childPrice}}$</p>
         </div>
-        <div ng-if="babyNo>0" id="confirmation-markdown4" style="color:#FFFFFF;">
+        <div id="confirmation-markdown4" style="color:#FFFFFF;">
             <p>Number of babies: {{babyNo}} &nbsp &nbsp Price per baby: {{babyPrice}}$</p>
         </div>
         <div class="spacer" style="width: 320px; height: 29px;"></div>
@@ -37,7 +37,7 @@
             <p>Total cost: {{total}}$</p>
         </div>
         <div class="button-bar">
-            <button id="confirmation-button3" ng-click="goNext()" class="button button-positive  button-block icon-right ion-android-done">Confirm</button>
+            <button id="confirmation-button3" ng-click="goNext()" class="button button-royal  button-block icon-right ion-android-done">Confirm</button>
         </div>
     </ion-content>
 </ion-view>

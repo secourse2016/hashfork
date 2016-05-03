@@ -1,5 +1,5 @@
 <ion-view title="Traveller Details" id="page1">
-    <ion-content padding="true" style="background: url(img/new.png) no-repeat center;background-size:cover;" class="has-header">
+    <ion-content padding="true" style="background-color:#473F3F;" class="has-header">
         <div id="travellerDetails-markdown1" style="color:#FFFFFF;font-size:16px;text-align:center;">
 
           <!-- Start looping -->
@@ -16,7 +16,7 @@
             </div>
 
                 <br>
-
+        
         <form class="list">
             <label class="item item-input" name="fname">
                 <span class="input-label">First Name</span>
@@ -29,19 +29,19 @@
 
             <label class="item item-input">
                 <span class="input-label">Email</span>
-                <input type="email" ng-model = "travellers[$index].email"placeholder="Write your email">
+                <input type="email" placeholder="Write your email">
             </label>
             <label class="item item-input">
                 <span class="input-label">Passport Number</span>
-                <input type="text" ng-model = "travellers[$index].pnumber" placeholder="" required="required">
+                <input type="number" placeholder="" required="required">
             </label>
             <label class="item item-input">
                 <span class="input-label">Passport Expire Date</span>
-                <input type="date" ng-model = "travellers[$index].pexpire" placeholder="">
+                <input type="date" placeholder="">
             </label>
             <label class="item item-input">
                 <span class="input-label">Date of Birth</span>
-                <input type="date" ng-model = "travellers[$index].dob" placeholder="" required="required">
+                <input type="date" placeholder="" required="required">
             </label>
 
             <label class="item item-select" name="country">
@@ -297,9 +297,9 @@
                     <option value="Zambia" title="Zambia">Zambia</option>
                     <option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
                 </select>
-
+                
                 </div>
-
+                
             </label>
 
         </form>
@@ -307,7 +307,7 @@
         </ion-item>
 <br><br>
         <div class="button-bar">
-            <button id="travellerDetails-button3" ng-click="goNext()" ng-disabled="buttons.$invalid" class="button button-positive  button-block icon-right ion-android-arrow-forward">Next</button>
+            <button id="travellerDetails-button3" ng-click="goNext()" ng-disabled="buttons.$invalid" class="button button-royal  button-block icon-right ion-android-arrow-forward">Next</button>
         </div>
       </form>
     </ion-content>
