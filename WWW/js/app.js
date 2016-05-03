@@ -57,6 +57,7 @@ app.config(function($stateProvider, $urlRouterProvider, Stripe) {
      controller: "flightOutgoingCtrl"
    })
    .state('ref', {
+     cache : false,
      url: "/ref",
      templateUrl: "partials/bookingreg.html",
      controller: "bookingCtrl"
