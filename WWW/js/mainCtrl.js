@@ -1,6 +1,8 @@
 angular.module('app.mainCtrl', [])
 
-.controller('mainController', function ($scope, $state, FlightsSrv, $timeout) { 
+.controller('mainController', function ($scope, $state, FlightsSrv, $timeout, $ionicHistory) { 
+
+
 
         $scope.Airports=    [{
         "iata": "BOM",

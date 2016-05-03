@@ -21,6 +21,7 @@
 
 
 <ion-view title="Booking Reference" style="background-color:#473F3F;">
+<ion-content>
 <br><br><br><br>
 <div ng-hide="dbFinished" style="text-align:center;padding-top:150px;">
         <ion-spinner ></ion-spinner>
@@ -45,6 +46,7 @@
 
 				
 		</div>
+		<div ng-hide="booking.oneway">
 	<div ng-if="booking.return.airline !== booking.outgoing.airline">
 	<div ng-if="booking.return.airline == 'KLM'">
 		<h2 class="text-center">Remember your booking reference to look up Your Return flights</h2>
@@ -56,7 +58,7 @@
 	<div  ng-if="booking.return.airline !== 'KLM'">
 		<h2 class="text-center">Remember your booking reference to look up Your Return flights</h2>
 		<br>
-		<h3 class="text-center">Booking Ref:</strong></h3>
+		<h3 class="text-center"><strong>Booking Ref:</strong></h3>
 		<h3 class="text-center"><strong>{{booking.return.refNum}}</strong></h3>
 
 		
@@ -67,12 +69,12 @@
 		</div>
 	<br>
 		
-		<div>
 		
+		</div>
 		<button id="confirmation-button3" ng-click="goNext()" class="button button-royal  button-block icon-right ion-android-done">Done</button>
 		</div>
 		
 
 </div>
-
+</ion-content>
 </ion-view>
