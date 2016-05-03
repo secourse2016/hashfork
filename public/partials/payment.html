@@ -1,0 +1,151 @@
+<div class="container">
+<br>
+<br>
+<br>
+<!-- <div class="well well-sm notification col-md-8 col-md-offset-2" style="border: 1px solid gray; background: #00aced;">
+    <h2 style="color: white;"><span class="glyphicon glyphicon-user">&nbsp;</span> If you already have an account, Please Sign In!</h2>
+</div> -->
+
+<div class="row">
+        
+        <div class="col-xs-12 col-md-6 col-md-offset-3">
+        
+        
+            <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table" style="background: gray;">
+                    <div class="row display-tr" style="color: white;">
+                        <h3 class="panel-title display-td" ><span class="glyphicon glyphicon-plane">&nbsp;</span> Payment Details</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="panel-body">
+                    <form role="form" id="payment-form" >
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <div class="input-group">
+                                        <input 
+                                            ng-model="cardNumber"
+                                            type="tel" 
+                                            class="form-control"
+                                            name="cardNumber"
+                                            placeholder="Valid Card Number"
+                                            required
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    <label for="cardExpiry"><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                                    <br>
+                                    <input 
+                                        type="tel" 
+                                        ng-model="expiryMonth"
+                                        size="2"
+                                        name="cardExpiry"
+                                        placeholder="MM"
+                                        required 
+                                    />
+                                    <span>/</span>
+                                    <input 
+                                        type="tel" 
+                                        ng-model="expiryYear"
+                                        size="2" 
+                                        name="cardExpiry"
+                                        placeholder="YY"
+                                        required 
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    <label for="cardCVC">CV CODE</label>
+                                    <input 
+                                        type="tel" 
+                                        class="form-control"
+                                        ng-model="cvc"
+                                        name="cardCVC"
+                                        placeholder="CVC"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="height:2px;border:none;color:#C3C3C3;background-color:#C3C3C3;"/>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="fullname">Full Name</label>
+                                    <input type="text" class="form-control" placeholder="Your Full Name" name="fullname" required="required"/>
+                                </div>
+                            </div>                        
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="country">Country</label>
+                                    <input type="text" class="form-control" placeholder="Country" name="country" required="required"/>
+                                </div>
+                            </div>
+
+                        
+                            <div class="col-xs-12 col-md-6">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" class="form-control" placeholder="City" name="city" required="required"/>
+                                </div>
+                            </div>                        
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" placeholder="Address" name="address" required="required"/>
+                                </div>
+                            </div>                        
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12 col-md-4">
+                                <div class="form-group">
+                                    <label for="zip">Zip</label>
+                                    <input type="text" class="form-control" placeholder="Zip" name="zip" required="required"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-md-8">
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" placeholder="example@example.com" name="email" required/>
+                                </div>
+                            </div>                        
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1 col-xs-offset-1 col-sm-4 col-md-4 col-md-offset-1">
+                                <button class="btn btn-info btn-lg" type="button" ng-click="goToPrev()">Prev</button>
+                            </div>
+                            <div class="col-xs-1 col-xs-offset-3 col-sm-4 col-offset-sm-4 col-md-4 col-md-offset-3">
+                                <button class="btn btn-info btn-lg" type="button" ng-click='goNext()' >FINISH</button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<br>
+<br>
