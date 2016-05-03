@@ -1,0 +1,101 @@
+<ion-view title="Home" id="page1" style="background-color:#473F3F;">
+<style>
+.default{
+    opacity: 1;
+}
+
+.fade{
+    -webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
+    transition: opacity 2s;
+    opacity: 0;
+}
+</style>
+    <div ng-show='flag'>
+    <ion-content padding="true" class="has-header">
+        <div class="button-bar"></div>
+        <div id="home-markdown2" style="color:#DCE3F1;font-size:33px;text-align:center;">
+            <br>
+            <p>Book Your Flight</p>
+        </div>
+        <div class="spacer" style="width: 300px; height: 25px;"></div>
+        <form class="list">
+            <button ng-click="toggle()" class="button button-full button-royal icon-right ion-arrow-swap">
+            {{dir}}
+          </button>
+            <label class="item item-input">
+                <input type="text" placeholder="FROM" ng-model="from" ng-change="changeFrom(from)" ionic-autocomplete="{items: Airports, onSelect:onSelect}">
+            </label>
+        </form>
+        <form class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="TO" ng-model="to" ionic-autocomplet="{items: Airports, onSelect:onSelect}" ng-change="changeTo(to)">
+            </label>
+            <div class="spacer" style="width: 300px; height: 25px;"></div>
+            <label class="item item-input">
+                <span class="input-label">Travel date</span>
+                <input type="date" placeholder="" ng-model="dt1" ng-change="changeDate1(dt1)">
+            </label>
+            <label ng-show = "value==1" class="item item-input">
+                <span class="input-label">Return date</span>
+                <input type="date"  placeholder="" ng-model="dt2" ng-change="changeDate2(dt2)">
+            </label>
+            <label class="item item-select">
+                <span class="input-label">Adults</span>
+                <select ng-model="adult" ng-change="changeAdult(adult)">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                </select>
+            </label>
+            <label class="item item-select">
+                <span class="input-label">Children</span>
+                <select ng-model="child" ng-change="changeChild(child)">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </label>
+            <label class="item item-select">
+                <span class="input-label">Babies</span>
+                <select ng-model="baby" ng-change="changeBaby(baby)">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </label>
+
+            <label class="item item-select">
+                <span class="input-label">Class</span>
+                <select>
+                    <option>economy</option>
+                    <option>business</option>
+                    <option>first</option>
+                </select>
+            </label>
+
+
+            <ion-checkbox ng-model="otherAirlines" ng-change="changeCheckbox(otherAirlines)">other airlines</ion-checkbox>
+            <button ng-click="goNext()" id="home-button5" class="button button-royal ion-plane icon-right button-block">Find Flights!</button>
+        </form>
+    </ion-content>
+    </div>
+<div ng-hide='flag' ng-class="{fade: startFade}" class="default" >
+<br><br><br><br>
+    
+    <div class="row">
+        <div class="col">
+               <div class="item item-input" style="border-radius:15px;">
+               <input type="search" ng-model="ref" ng-change="setRef(ref)" placeholder="Find existing booking" style="font-size:1.1em;">
+                <span class="input-label"><button ng-click="goRef()" class="button button-royal ion-ios-search"></button></span>
+                
+               </div>
+             </div>
+</div>
+<br>
+<img ng-src="img/first.jpg" style="width:100%;"><br><br>
+    <button ng-click="hide()" class="button button-royal button-block">Book a new flight</button>
+
+</div>
+</ion-view>
