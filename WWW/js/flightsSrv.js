@@ -261,6 +261,7 @@ var airlines={
                x.postBooking=function(){
                 console.log('hena');
           console.log(x.booking);
+          console.log("le hena");
           return $http.post('http://ec2-52-26-166-80.us-west-2.compute.amazonaws.com/api/booking',{
             'booking':x.booking,
             'cost':x.cost,

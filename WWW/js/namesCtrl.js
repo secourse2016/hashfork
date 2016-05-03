@@ -23,7 +23,10 @@ $scope.travellers = [];
 		entry.firstName='';
 		entry.middleName='';
 		entry.lastName='';
-		entry.passport='';
+		entry.nationality='';
+		entry.passportExpiryDate= new Date();
+		entry.dateOfBirth = new Date();
+		entry.passportNum = 1
 		i++;
 		$scope.travellers.push(entry);
 
@@ -36,7 +39,10 @@ $scope.travellers = [];
 		entry.firstName='';
 		entry.middleName='';
 		entry.lastName='';
-		entry.passport='';
+		entry.nationality='';
+		entry.passportExpiryDate= new Date();
+		entry.dateOfBirth = new Date();
+		entry.passportNum = 1;
 		i++;
 		$scope.travellers.push(entry);
 
@@ -48,7 +54,10 @@ $scope.travellers = [];
 		entry.firstName='';
 		entry.middleName='';
 		entry.lastName='';
-		entry.passport='';
+		entry.nationality='';
+		entry.passportExpiryDate= new Date();
+		entry.dateOfBirth = new Date();
+		entry.passportNum = 1
 		i++;
 		$scope.travellers.push(entry);
 
