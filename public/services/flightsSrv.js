@@ -234,9 +234,28 @@ var airlines={
          x.getAirlineIP=function(value){
           return airlines[value].IP;
          }
+         x.setCardInfo=function(cardNumber,cvc,expirymonth,expiryyear){
+          x.cardNumber=cardNumber;
+          x.cvc=cvc;
+          x.expirymonth=expirymonth;
+          x.expiryyear=expiryyear;
+         }
+         x.getCardNumber=function(){
+          return x.cardNumber;
+         }
+         x.getCVC=function(){
+          return x.cvc;
+         }
+         x.getExpirymonth=function(){
+          return x.expirymonth;
+         }
+
+         x.getExpiryyear=function(){
+          return x.expiryyear;
+         }
          x.setPublickey=function(airline ,cd){
           $http.get('http://' + airlines[airline].IP + '/stripe/pubkey?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c', {
-                      timeout:1500
+                      timeout:2000
 
                     }).success(function (res) {
                         Stripe.setPublishableKey(res)
