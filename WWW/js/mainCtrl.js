@@ -1,8 +1,8 @@
 angular.module('app.mainCtrl', [])
 
-.controller('mainController', function ($scope, $state, FlightsSrv, $timeout, $ionicHistory) { 
+.controller('mainController', function ($scope, $state, FlightsSrv, $timeout, $ionicHistory, $ionicNavBarDelegate) { 
 
-
+$ionicNavBarDelegate.showBackButton(false);
 
         $scope.Airports=    [{
         "iata": "BOM",
@@ -238,6 +238,7 @@ angular.module('app.mainCtrl', [])
         $scope.dt2 = new Date();
 
          $scope.goNext=function(){
+            $ionicNavBarDelegate.showBackButton(true);
             if(FlightsSrv.isReturn()){
             FlightsSrv.setReturning(new Date($scope.dt2).getTime());
             }
@@ -257,6 +258,7 @@ angular.module('app.mainCtrl', [])
         }
 
         $scope.goRef = function(){
+            $ionicNavBarDelegate.showBackButton(true);
             FlightsSrv.setRefrence($scope.ref);
             $state.go('bookings');
         }
