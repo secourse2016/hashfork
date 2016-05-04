@@ -9,138 +9,162 @@ module.exports = function(app) {
  var stripe=require('stripe')('sk_test_lGsGRQLp2SDC1j7hmIwmqw5k');
 	var http =require('http');
   var requestify = require('requestify');
-	 var ips=[ "ec2-52-26-166-80.us-west-2.compute.amazonaws.com",
-               "ec2-52-90-41-197.compute-1.amazonaws.com",
-               "www.swiss-air.me",
-                 "54.93.36.94",
-                 "ec2-52-38-101-89.us-west-2.compute.amazonaws.com",
-                  "www.mynksh.com", //Loads Forever
-  "52.28.246.230", //works correctley but wrong dateTime format
+	var ips=['ec2-52-26-166-80.us-west-2.compute.amazonaws.com','sebitsplease.com.s3-website-us-east-1.amazonaws.com,52.58.46.74','ec2-52-90-41-197.compute-1.amazonaws.com','52.27.150.19','52.36.169.206','52.32.109.147','52.36.195.124','ec2-54-213-214-212.us-west-2.compute.amazonaws.com:3000','52.36.250.55','ec2-52-38-101-89.us-west-2.compute.amazonaws.com:8080','52.25.15.124','52.207.211.179','54.213.157.185','52.34.160.140','52.90.46.68','52.38.78.176','mynksh.com','ec2-54-152-123-100.compute-1.amazonaws.com',
+'54.93.36.94','ec2-52-91-94-227.compute-1.amazonaws.com','www.swiss-air.me','54.191.202.17','52.28.246.230','54.187.103.196:3000','54.93.116.90']
+var airlines ={
 
-  "52.25.15.124",  //working but return empty array
-
-  //Loads forever
-
-  "54.187.208.145", //Throws Error
-
-  "sebitsplease.com.s3-website-us-east-1.amazonaws.com", //return HTML page
-
-  "52.58.46.74", // not working yet
-
-  "54.191.202.17", //working but return empty array
-
-  "54.213.157.185", //not working yet
-
-  "52.36.195.124", // not working yet
-
-  "52.207.211.179", //throws error
-
-  "52.32.109.147", // not working yet
-
-  "52.36.169.206", // not working yet
-
-  "ec2-52-91-94-227.compute-1.amazonaws.com", // not working yet
-
-  "ec2-54-152-123-100.compute-1.amazonaws.com", //loads forever
-
-  "52.34.160.140", // not working yet
-
-  "52.90.46.68", //not working yet
-  "52.27.150.19"//works correctley but wrong DateTime format
-];
-var airlines={
   "Lufthansa": { 
-    "publishable key": '', 
+
     "IP": "ec2-54-152-123-100.compute-1.amazonaws.com" 
+
   },
+
   "KLM": { 
-    "publishable key": "pk_test_sQmJKmvytXUZo98BJ2eTVh7S", 
+
     "IP": "ec2-52-26-166-80.us-west-2.compute.amazonaws.com" 
+
   },
+
   "Emirates Airlines": { 
-    "publishable key": '', 
+
     "IP": "52.90.46.68" 
+
   },
-  "Air France": { 
-    "publishable key": '', 
-    "IP": "52.34.160.140"
+
+  "AirFrance": { 
+
+    "IP": "52.26.173.245"
+
   },
+
   "Swiss Air": { 
-    "publishable key": '', 
+
     "IP": "www.swiss-air.me"
+
   },
+
   "Delta Airlines": { 
-    "publishable key": '', 
+
     "IP": "52.25.15.124"
+
   },
+
   "Japan Airlines": { 
-    "publishable key": '', 
+
     "IP": "54.187.208.145"
+
   },
-  "Singapore Airlines": { 
-    "publishable key": '', 
-    "IP": "sebitsplease.com.s3-website-us-east-1.amazonaws.com"
+
+  "Singapore air": { 
+
+    "IP": "52.38.234.54"
+
   },
+
   "Dragonair": { 
-    "publishable key": '', 
+
     "IP": "52.58.46.74"
+
   },
+
   "Hawaiian": { 
-    "publishable key": "pk_test_wAzEmAILhEkjKJZdSiui6s98", 
+
     "IP": "54.93.36.94"
+
   },
+
   "Austrian": { 
-    "publishable key": '', 
+
     "IP": "ec2-52-90-41-197.compute-1.amazonaws.com"
+
   },
+
   "South African Airways": { 
-    "publishable key": '', 
+
     "IP": "54.213.157.185"
+
   },
+
   "Malaysia Airlines": { 
-    "publishable key": '', 
+
     "IP": "52.32.109.147"
+
   },
-  "Northwest Airlines": {
-    "publishable key": '', 
+
+  "Northwest Airlines": { 
+
     "IP": "52.36.169.206"
+
   },
+
   "Cathay Pacific Airlines": { 
-    "publishable key": '', 
+
     "IP": "ec2-52-91-94-227.compute-1.amazonaws.com"
+
   },
+
   "Air Madagascar": { 
-    "publishable key": "pk_test_0hp9j1pvGDdsbY4zEyqvfwpD", 
+
     "IP": "54.191.202.17"
+
   },
+
   "Alaska": { 
-    "publishable key": '', 
+
     "IP":"52.207.211.179"
+
   },
+
   "Turkish Airlines": { 
-    "publishable key": '', 
+
     "IP": "52.27.150.19"
+
   },
+
   "Virgin australia": { 
-    "publishable key": "pk_test_FX4O5SPvyU2LpRV7xFGVTOIL", 
+
     "IP": "54.93.116.90"
+
   },
+
   "Iberia": { 
-    "publishable key": "pk_test_fWP8viqFbT95teED8zWD3ieK", 
+
     "IP": "52.58.24.76"
+
   },
+
   "United": { 
-    "publishable key": '', 
+
     "IP":"54.187.103.196"
+
   },
+
   "AirNewZealand": { 
-    "publishable key": '', 
 
     "IP":"52.28.246.230"
 
+  },
+
+  "Alitalia": { 
+
+    "IP":"54.93.74.125"
+
+  },
+
+  "Air Canada": { 
+
+   "IP": "52.36.250.55"
+
+  },
+
+  "Air Berlin": { 
+
+   "IP": "ec2-52-38-101-89.us-west-2.compute.amazonaws.com"
+
   }
 
-};
+}
+
 
 
 var allC=[];
@@ -340,7 +364,7 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats',
   });
 
 });
-app.get('/api/flights/searchOthers/:origin/:destination/:departingDate/:returningDate/:class',function(req,res){
+app.get('/api/flights/searchOthers/:origin/:destination/:departingDate/:returningDate/:class/:seats',function(req,res){
      allC=[];
      var seats=Number(req.params.seats);
     foo('/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'/'+seats+'/?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c',0,function(data){
