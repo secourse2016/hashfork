@@ -109,6 +109,69 @@
       </div>
 
     </div>
+    <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8"><hr></div>
+    <div class="col-md-2"></div>
+</div>
+    <div ng-repeat="traveller in flight.Travellers">
+    <div class="row">
+            
+            <div class="col-md-3 col-xs-3"><h3>Passenger Details</h3></div>
+            
+      </div>
+      <div class="row">
+            
+            <div class="col-md-3 col-xs-3"><h5><strong>First Name</strong></h5></div>
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3"><h5><strong>Last Name</strong></h5></div>
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3"><h5><strong>Date Of Birth</strong></h5></div>
+      </div>
+      <div class="row">
+            
+            <div class="col-md-3 col-xs-3"><h5>{{traveller.firstName}}</h5></div>
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3"><h5>{{traveller.lastName}}</h5></div>
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3"><h5>{{traveller.dateOfBirth | date}}</h5></div>
+      </div>
+      <div class="row">
+            
+            <div class="col-md-3 col-xs-3"><h5><strong>Counrty</strong></h5></div>
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3"><h5><strong>Passport Number</strong></h5></div>
+           
+      </div>
+      <div class="row">
+            
+            <div class="col-md-3 col-xs-3"><h5>{{traveller.nationality}}</h5></div>
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3"><h5>{{traveller.passportNum}}</h5></div>
+           
+      </div>
+      <div class="row">
+           
+            <div class="col-md-3 col-xs-3"><h5><strong>Outgoing Seat Number</strong></h5></div>
+            <div ng-if="isReturn===true">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3"><h5><strong>Return Seat Number</strong></h5></div>
+           </div>
+      </div>
+      <div class="row">
+          
+            <div class="col-md-3 col-xs-3"><h5>{{flight.outgoingseats[$index].number}}</h5></div>
+            <div ng-if="isReturn===true">
+            <div class="col-md-1 col-xs-1"></div>
+            <div class="col-md-3 col-xs-3"><h5>{{flight.returnseats[$index].number}}</h5></div>
+           </div>
+      </div>
+      <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8"><hr></div>
+    <div class="col-md-2"></div>
+</div>
+    </div>
     </div>
     <div ng-if="isthereFlights==false">
     

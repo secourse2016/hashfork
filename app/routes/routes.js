@@ -443,8 +443,8 @@ var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.boo
                   
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
-   // var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
-   var options = "http://localhost:3000/booking";
+   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
+   // var options = "http://localhost:3000/booking";
   requestify.request(options,body)
   .then(function(response){
    console.log(JSON.parse(response.body).refNum);
@@ -529,8 +529,8 @@ var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.boo
                   
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
-   // var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
-   var options = "http://localhost:3000/booking";
+   var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
+   // var options = "http://localhost:3000/booking";
    
   requestify.request(options,body)
   .then(function(response){

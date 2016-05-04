@@ -172,6 +172,7 @@
   return result;
 };
      function insert(outID,retID,travellers,cb){
+        var seatnumbers=['A','B','C','D','E','F','G','H','I'];
         var ref = generateCode();
         console.log("insert booking");
         findByReference(ref,function(err, bookings){
@@ -186,9 +187,19 @@
                 var booking={};
                 booking.outgoingFlights=outgoings[0];
                 booking.outgoingFlights.capacity-=travellers.length;
+                booking.outgoingseats=[];
+                for(var i =0;i<travellers.length;){
+                    var seat ={};
+                    seat.number=seatnumbers[Math.floor(Math.random()*seatnumbers.length)]+''+Math.floor(Math.random()*3)+''+Math.floor(Math.random()*10);
+                    if(!containsObject(seat,booking.outgoingFlights.seats)){
+                        booking.outgoingFlights.seats.push(seat);
+                        booking.outgoingseats.push(seat);
+                        i++;
+                    }
+                }
                 DB.collection('restaurants').updateOne(
                     { "_id" : outID },
-                      { $set: { "capacity": booking.outgoingFlights.capacity } },
+                      { $set: { "capacity": booking.outgoingFlights.capacity,"seats": booking.outgoingFlights.seats } },
                       function(err, results) {
                         console.log(results);
                         booking.reference=ref;
@@ -200,9 +211,19 @@
                 if(returns.length>0){
                     booking.returnFlights=returns[0];
                     booking.returnFlights.capacity-=travellers.length;
+                    booking.returnseats=[];
+                    for(var i =0;i<travellers.length;){
+                    var seat ={};
+                    seat.number=seatnumbers[Math.floor(Math.random()*seatnumbers.length)]+''+Math.floor(Math.random()*3)+''+Math.floor(Math.random()*10);
+                    if(!containsObject(seat,booking.returnFlights.seats)){
+                        booking.returnFlights.seats.push(seat);
+                        booking.returnseats.push(seat);
+                        i++;
+                    }
+                }
                     DB.collection('restaurants').updateOne(
                     { "_id" : objret },
-                      { $set: { "capacity": booking.returnFlights.capacity } },
+                      { $set: { "capacity": booking.returnFlights.capacity,"seats": booking.returnFlights.seats} },
                       function(err, results) {
                         console.log(results);
                     });
@@ -222,7 +243,16 @@
        
      
      }
-     
+     function containsObject(obj, list) {
+    var i;
+    for (i = 0; i < list.length; i++) {
+        if (list[i] === obj) {
+            return true;
+        }
+    }
+
+    return false;
+}
     //  //---------------------------------------------------------------------------------------------------------------------------------------
     // findAirports(function(err,data){
     //  console.log(data);
