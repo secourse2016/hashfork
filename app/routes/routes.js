@@ -327,7 +327,7 @@ function parse(data){
 
 app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/:class/:seats', function(req, res){
 
-    db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
+    db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,Number(req.params.seats),function(err,data){
                     res.send(data);
     },req.params.returningDate);
 
@@ -335,14 +335,15 @@ app.get('/api/flights/search/:origin/:destination/:departingDate/:returningDate/
 
 app.get('/api/flights/search/:origin/:destination/:departingDate/:class/:seats', function(req, res) {
 
-  db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,function(err,data){
+  db.find(req.params.origin,req.params.destination,req.params.departingDate,req.params.class,Number(req.params.seats),function(err,data){
     res.send(data);
   });
 
 });
 app.get('/api/flights/searchOthers/:origin/:destination/:departingDate/:returningDate/:class',function(req,res){
      allC=[];
-    foo('/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'/?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c',0,function(data){
+     var seats=Number(req.params.seats);
+    foo('/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.returningDate+'/'+req.params.class+'/'+seats+'/?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c',0,function(data){
       console.log("done");
       console.log(parse(data));
       res.send(parse(data));
@@ -350,9 +351,10 @@ app.get('/api/flights/searchOthers/:origin/:destination/:departingDate/:returnin
     
 
 });
-app.get('/api/flights/searchOthers/:origin/:destination/:departingDate/:class',function(req,res){
+app.get('/api/flights/searchOthers/:origin/:destination/:departingDate/:class/:seats',function(req,res){
      allC=[];
-    foo('/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.class+'/?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c',0,function(data){
+     var seats=Number(req.params.seats);
+    foo('/api/flights/search/'+req.params.origin+'/'+req.params.destination+'/'+req.params.departingDate+'/'+req.params.class+'/'+seats+'/?wt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c',0,function(data){
       console.log("done");
       console.log(data);
       res.send(parse(data));
@@ -442,7 +444,7 @@ var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.boo
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
    var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
-   
+   // var options = "http://localhost:3000/booking";
   requestify.request(options,body)
   .then(function(response){
    console.log(JSON.parse(response.body).refNum);
@@ -528,7 +530,7 @@ var returncost = Number(req.body.booking.flight.returnFlights.cost)*req.body.boo
                   headers : { 'x-access-token' : 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJIYXNoRm9yayIsImlhdCI6MTQ2MDYzMjk5NCwiZXhwIjoxNDkyMTY4OTk1LCJhdWQiOiJodHRwOi8vZWMyLTUyLTI2LTE2Ni04MC51cy13ZXN0LTIuY29tcHV0ZS5hbWF6b25hd3MuY29tLyIsInN1YiI6IkFkbWluaXN0cmF0b3IifQ.WTu7g6aTNULCmNMJ6I78x5jfRScOsRpJ1IRipeLOK5c'} 
                   };
    var options = "http://"+airlines[req.body.booking.flight.outgoingFlights.Airline].IP+"/booking";
-   
+   // var options = "http://localhost:3000/booking";
    
   requestify.request(options,body)
   .then(function(response){
