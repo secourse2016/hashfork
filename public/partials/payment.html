@@ -5,7 +5,15 @@
 <!-- <div class="well well-sm notification col-md-8 col-md-offset-2" style="border: 1px solid gray; background: #00aced;">
     <h2 style="color: white;"><span class="glyphicon glyphicon-user">&nbsp;</span> If you already have an account, Please Sign In!</h2>
 </div> -->
-
+<div ng-hide="card" class="alert alert-danger alert-dismissible" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+Please Enter a valid Credit card Number</div>
+<div ng-hide="expiry" class="alert alert-danger alert-dismissible" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+Please Enter a valid Expiry</div>
+<div ng-hide="cvcs" class="alert alert-danger alert-dismissible" role="alert">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+Please Enter a valid cvc</div>
 <div class="row">
         
         <div class="col-xs-12 col-md-6 col-md-offset-3">
