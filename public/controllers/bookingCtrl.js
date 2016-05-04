@@ -1,3 +1,4 @@
+
 App.controller('bookingCtrl',function($scope,FlightsSrv,$location,Stripe){
 	$scope.dbFinished=false;
   $scope.ourOutgoing=false;

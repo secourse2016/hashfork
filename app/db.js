@@ -85,7 +85,7 @@
     // //------------------------------------------------------------------------------------------------------------------------------------
      
      
-    function find(orig , dest , deptDate , class1 , callback , retDate){
+    function find(orig , dest , deptDate , class1,seats , callback , retDate){
         // deptDate=deptDate/86400000;
         // deptDate=changeTime(deptDate);
         // deptDate=deptDate/86400000;
@@ -101,8 +101,8 @@
         var data1={outgoingFlights:[],returnFlights:[] };
         var er1;
         var er2;
-
-        DB.collection('Flights').find({origin : orig , destination : dest ,"class": class1 }).toArray(
+        console.log(seats);
+        DB.collection('Flights').find({origin : orig , destination : dest ,"class": class1,capacity:{$gt:seats} }).toArray(
             function (err, outgoings){
                 tmp.outgoingFlights=outgoings;
                 //data1.outgoingFlights=outgoings;
@@ -110,7 +110,7 @@
                 if(retDate !== undefined){
                     retDate=changeTime(retDate);
 
-                    DB.collection('Flights').find({origin : dest , destination : orig ,"class":class1}).toArray(
+                    DB.collection('Flights').find({origin : dest , destination : orig ,"class":class1,capacity:{$gt:seats}}).toArray(
                     function(err, returns){
 
                     tmp.returnFlights=returns;
@@ -185,7 +185,13 @@
             function (err, outgoings){
                 var booking={};
                 booking.outgoingFlights=outgoings[0];
-                booking.reference=ref;
+                booking.outgoingFlights.capacity-=travellers.length;
+                DB.collection('restaurants').updateOne(
+                    { "_id" : outID },
+                      { $set: { "capacity": booking.outgoingFlights.capacity } },
+                      function(err, results) {
+                        console.log(results);
+                        booking.reference=ref;
                 booking.Travellers=travellers;
                 var objret = new ObjectId(retID);
                 DB.collection('Flights').find({_id:objret}).toArray(
@@ -193,6 +199,13 @@
                 booking.returnFlights=null;
                 if(returns.length>0){
                     booking.returnFlights=returns[0];
+                    booking.returnFlights.capacity-=travellers.length;
+                    DB.collection('restaurants').updateOne(
+                    { "_id" : objret },
+                      { $set: { "capacity": booking.returnFlights.capacity } },
+                      function(err, results) {
+                        console.log(results);
+                    });
                 }
                 
                 connect(function(err,DB){
@@ -200,6 +213,9 @@
             cb(ref);
         });
         }); 
+                        
+                   });
+                
             });
         }
         });
